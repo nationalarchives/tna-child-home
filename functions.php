@@ -46,3 +46,14 @@ function tna_child_styles() {
     wp_enqueue_style( 'tna-child-styles' );
 }
 add_action( 'wp_enqueue_scripts', 'tna_child_styles' );
+
+
+//Added menu function
+add_theme_support( 'menus' );
+
+add_filter('nav_menu_css_class', 'my_css_attributes_filter', 100, 1);
+add_filter('nav_menu_item_id', 'my_css_attributes_filter', 100, 1);
+add_filter('page_css_class', 'my_css_attributes_filter', 100, 1);
+function my_css_attributes_filter($var) {
+    return is_array($var) ? array_intersect($var, array('current-menu-item')) : '';
+}
