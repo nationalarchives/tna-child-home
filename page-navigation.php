@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Template Name: Navigation Template
+ *
+ * @package WordPress
+ * @subpackage TNA-Base-Mega-Menu
+ * @since TNA-Base-Mega-Menu 1.0
+ */
 
 echo '<nav id="nav" role="navigation"><div class="row">';
 
@@ -12,5 +18,3 @@ wp_nav_menu(
 );
 
 echo '</div></nav>';
-
-
