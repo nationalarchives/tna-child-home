@@ -2,7 +2,7 @@ window.addEventListener("load", function () {
 
     if (!$) {
         var jq = document.createElement('script');
-        jq.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js';
+        jq.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js';
         document.getElementsByTagName('body')[0].appendChild(jq);
     }
 
