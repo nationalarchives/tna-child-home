@@ -19,6 +19,7 @@ wp_nav_menu(
 
 echo '</div>';
 ?>
-
+<!-- TODO Remove reference to jQuery -->
 <script type ='text/javascript' src='https://code.jquery.com/jquery-1.12.4.min.js'></script>
+<script type ='text/javascript' src='/wp-content/themes/tna-child-home/js/link-removal.js'></script>
 <script type ='text/javascript' src='/wp-content/themes/tna-child-home/js/webtrends-click-handlers.js'></script>
