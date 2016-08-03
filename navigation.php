@@ -7,7 +7,7 @@
  * @since tna-child-home 1.0
  */
 
-echo '<nav id="nav" role="navigation" class="mega-menu"><div class="row">';
+echo '<div class="mega-menu">';
 
 wp_nav_menu(
 	array(  'menu'              =>  'mega-menu',
@@ -17,7 +17,7 @@ wp_nav_menu(
 	)
 );
 
-echo '</div></nav>';
+echo '</div>';
 ?>
 
 <script type ='text/javascript' src='https://code.jquery.com/jquery-1.12.4.min.js'></script>
