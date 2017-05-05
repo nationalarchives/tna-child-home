@@ -15,7 +15,7 @@ get_header(); ?>
 
 						$url = get_post_meta( $post->ID, 'home_card_url_'.$i, true );
 
-						get_content_and_display_card( $url );
+						echo get_content_and_display_card( $url );
 
 					}
 

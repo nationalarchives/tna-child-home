@@ -186,6 +186,9 @@ add_action( 'init', 'home_meta_boxes' );
 
 function get_content_and_display_card( $url ) {
 
+	$meta_og_img = null;
+	$meta_og_title = null;
+
 	if ( $url ) {
 		$content_html = file_get_contents($url);
 
@@ -199,22 +202,9 @@ function get_content_and_display_card( $url ) {
 			if($meta->getAttribute('property')=='og:image'){
 				$meta_og_img = $meta->getAttribute('content');
 			}
-		} ?>
-		<div class="card-grid">
-			<div class="card">
-				<a href="<?php echo $url ?>">
-					<div class="entry-thumbnail" style="background-image: url(<?php echo $meta_og_img ?>);">
-					</div>
-					<div class="entry-content">
-						<div class="content-type">
-							<?php echo content_type( $url ) ?>
-						</div>
-						<h3><?php echo $meta_og_title ?></h3>
-					</div>
-				</a>
-			</div>
-		</div>
-		<?php
+		}
+
+		return card_html( $url, $meta_og_img, content_type( $url ), $meta_og_title );
 	}
 }
 
@@ -228,4 +218,23 @@ function content_type( $url ) {
 	if (strpos($url, 'eventbrite') !== false) {
 		return 'Event';
 	}
+}
+
+function card_html( $url, $image, $type, $title ) {
+
+	$html = '<div class="card-grid">
+				<div class="card">
+					<a href="%s">
+						<div class="entry-thumbnail" style="background-image: url(%s)">
+						</div>
+						<div class="entry-content">
+							<div class="content-type">%s</div>
+							<h3>%s</h3>
+						</div>
+					</a>
+				</div>
+			</div>';
+
+	return sprintf( $html, $url, $image, $type, $title );
+
 }
