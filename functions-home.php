@@ -40,7 +40,7 @@ function home_meta_boxes() {
 					'desc' => '',
 					'id' => 'home_card_order_1',
 					'type' => 'select',
-					'options' => array('Disabled', '1', '2', '3', '4', '5', '6')
+					'options' => array('1', '2', '3', '4', '5', '6')
 				),
 				array(
 					'name' => 'Content URL',
@@ -84,7 +84,7 @@ function home_meta_boxes() {
 					'desc' => '',
 					'id' => 'home_card_order_2',
 					'type' => 'select',
-					'options' => array('Disabled', '1', '2', '3', '4', '5', '6')
+					'options' => array('1', '2', '3', '4', '5', '6')
 				),
 				array(
 					'name' => 'Content URL',
@@ -128,7 +128,7 @@ function home_meta_boxes() {
 					'desc' => '',
 					'id' => 'home_card_order_3',
 					'type' => 'select',
-					'options' => array('Disabled', '1', '2', '3', '4', '5', '6')
+					'options' => array('1', '2', '3', '4', '5', '6')
 				),
 				array(
 					'name' => 'Content URL',
@@ -183,3 +183,4 @@ function home_meta_boxes() {
 }
 
 add_action( 'init', 'home_meta_boxes' );
+

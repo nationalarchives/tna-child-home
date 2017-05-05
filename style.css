@@ -12,3 +12,93 @@ Text Domain:    tna-base
 */
 
 /* Add custom CSS here to overwrite parent theme CSS */
+
+.equal-heights-flex-box {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.card-wrapper {
+    margin: 1.6em 0;
+}
+.card-grid {
+    width: 33.33333%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 1.5em;
+}
+.card {
+    position: relative;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px #ddd;
+}
+.card a {
+    position: relative;
+    height: 100%;
+    display: block;
+}
+.card a:hover {
+    text-decoration: none;
+}
+.card a:hover h3 {
+    text-decoration: underline;
+}
+.card .entry-thumbnail {
+    width: 100%;
+    height: 185px;
+    background-color: #ddd;
+    background-position: center center;
+    background-size: cover;
+}
+.card .entry-thumbnail img {
+    width: 100%;
+}
+.card p {
+    margin-bottom: 0.5em;
+}
+.card .entry-content {
+    padding: 1em;
+}
+.card .entry-content p {
+    color: #444;
+}
+.card h3 {
+    margin: 0.5em 0;
+}
+.card h3 a {
+    font-family: Bitter,"Open Sans",arial,serif !important;
+}
+.card a:link .content-type,
+.card a:link .content-date,
+.card a:visited .content-type,
+.card a:visited .content-date {
+    color: #8b8b8b;
+    font-size: 0.9em;
+}
+.card .content-type {
+    width: 100%;
+}
+.card .content-type img {
+    float: right;
+    opacity: 0.5;
+}
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+    .card-grid {
+        width: 33%;
+    }
+}
+@media (max-width: 768px) {
+    .card-grid {
+        width: 100%;
+    }
+}
