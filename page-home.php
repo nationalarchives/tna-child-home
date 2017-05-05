@@ -11,14 +11,28 @@ get_header(); ?>
 				<div class="card-wrapper equal-heights-flex-box clearfix">
 					<?php
 
-					for ( $i=1 ; $i<=3 ; $i++ ) {
+					$transient = get_transient( 'homepage_cards_html' );
 
-						$url = get_post_meta( $post->ID, 'home_card_url_'.$i, true );
+					if( ! empty( $transient ) ) {
 
-						echo get_content_and_display_card( $url );
+						echo $transient ;
 
+					} else {
+
+						$html = '';
+
+						for ( $i=1 ; $i<=6 ; $i++ ) {
+
+							$url = get_post_meta( $post->ID, 'home_card_url_'.$i, true );
+
+							$html .= get_content_and_display_card( $url );
+
+						}
+
+						set_transient( 'homepage_cards_html', $html, HOUR_IN_SECONDS );
+
+						echo $html;
 					}
-
 					?>
 				</div>
 

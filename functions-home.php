@@ -159,6 +159,138 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 			)
+		),
+		array(
+			'id' => 'home_card_4',
+			'title' => 'Homepage card',
+			'pages' => 'page',
+			'context' => 'normal',
+			'priority' => 'high',
+			'fields' => array(
+				array(
+					'name' => 'Order',
+					'desc' => '',
+					'id' => 'home_card_order_4',
+					'type' => 'select',
+					'options' => array('1', '2', '3', '4', '5', '6')
+				),
+				array(
+					'name' => 'Content URL',
+					'desc' => 'Card dynamically populated via Open Graph',
+					'id' => 'home_card_url_4',
+					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override title',
+					'desc' => '',
+					'id' => 'home_card_title_4',
+					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_4',
+					'type' => 'textarea',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override image',
+					'desc' => '',
+					'id' => 'home_card_img_4',
+					'type' => 'text',
+					'std' => ''
+				),
+			)
+		),
+		array(
+			'id' => 'home_card_5',
+			'title' => 'Homepage card',
+			'pages' => 'page',
+			'context' => 'normal',
+			'priority' => 'high',
+			'fields' => array(
+				array(
+					'name' => 'Order',
+					'desc' => '',
+					'id' => 'home_card_order_5',
+					'type' => 'select',
+					'options' => array('1', '2', '3', '4', '5', '6')
+				),
+				array(
+					'name' => 'Content URL',
+					'desc' => 'Card dynamically populated via Open Graph',
+					'id' => 'home_card_url_5',
+					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override title',
+					'desc' => '',
+					'id' => 'home_card_title_5',
+					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_5',
+					'type' => 'textarea',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override image',
+					'desc' => '',
+					'id' => 'home_card_img_5',
+					'type' => 'text',
+					'std' => ''
+				),
+			)
+		),
+		array(
+			'id' => 'home_card_6',
+			'title' => 'Homepage card',
+			'pages' => 'page',
+			'context' => 'normal',
+			'priority' => 'high',
+			'fields' => array(
+				array(
+					'name' => 'Order',
+					'desc' => '',
+					'id' => 'home_card_order_6',
+					'type' => 'select',
+					'options' => array('1', '2', '3', '4', '5', '6')
+				),
+				array(
+					'name' => 'Content URL',
+					'desc' => 'Card dynamically populated via Open Graph',
+					'id' => 'home_card_url_6',
+					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override title',
+					'desc' => '',
+					'id' => 'home_card_title_6',
+					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_6',
+					'type' => 'textarea',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override image',
+					'desc' => '',
+					'id' => 'home_card_img_6',
+					'type' => 'text',
+					'std' => ''
+				),
+			)
 		)
 	);
 
