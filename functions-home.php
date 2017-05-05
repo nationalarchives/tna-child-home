@@ -184,3 +184,48 @@ function home_meta_boxes() {
 
 add_action( 'init', 'home_meta_boxes' );
 
+function get_content_and_display_card( $url ) {
+
+	if ( $url ) {
+		$content_html = file_get_contents($url);
+
+		$html = new DOMDocument();
+		@$html->loadHTML($content_html);
+
+		foreach($html->getElementsByTagName('meta') as $meta) {
+			if($meta->getAttribute('property')=='og:title'){
+				$meta_og_title = $meta->getAttribute('content');
+			}
+			if($meta->getAttribute('property')=='og:image'){
+				$meta_og_img = $meta->getAttribute('content');
+			}
+		} ?>
+		<div class="card-grid">
+			<div class="card">
+				<a href="<?php echo $url ?>">
+					<div class="entry-thumbnail" style="background-image: url(<?php echo $meta_og_img ?>);">
+					</div>
+					<div class="entry-content">
+						<div class="content-type">
+							<?php echo content_type( $url ) ?>
+						</div>
+						<h3><?php echo $meta_og_title ?></h3>
+					</div>
+				</a>
+			</div>
+		</div>
+		<?php
+	}
+}
+
+function content_type( $url ) {
+	if (strpos($url, 'nationalarchives.gov.uk/about/news/') !== false) {
+		return 'News';
+	}
+	if (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
+		return 'Blog';
+	}
+	if (strpos($url, 'eventbrite') !== false) {
+		return 'Event';
+	}
+}
