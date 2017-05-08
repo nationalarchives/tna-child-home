@@ -29,6 +29,50 @@ function hide_editor_from_homepage() {
 function home_meta_boxes() {
 	$home_meta_boxes = array(
 		array(
+			'id' => 'home_banner',
+			'title' => 'Homepage banner',
+			'pages' => 'page',
+			'context' => 'normal',
+			'priority' => 'high',
+			'fields' => array(
+				array(
+					'name' => 'Banner',
+					'desc' => '',
+					'id' => 'home_banner',
+					'type' => 'select',
+					'options' => array('Disable', 'Enable')
+				),
+				array(
+					'name' => 'URL',
+					'desc' => '',
+					'id' => 'home_banner_url',
+					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Title',
+					'desc' => '',
+					'id' => 'home_banner_title',
+					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Excerpt',
+					'desc' => '',
+					'id' => 'home_banner_excerpt',
+					'type' => 'textarea',
+					'std' => ''
+				),
+				array(
+					'name' => 'Image',
+					'desc' => '',
+					'id' => 'home_banner_img',
+					'type' => 'text',
+					'std' => ''
+				),
+			)
+		),
+		array(
 			'id' => 'home_card_1',
 			'title' => 'Homepage card',
 			'pages' => 'page',
