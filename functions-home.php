@@ -334,12 +334,12 @@ function get_content_and_display_card( $url ) {
 			if($meta->getAttribute('property')=='og:image'){
 				$meta_og_img = $meta->getAttribute('content');
 			}
-			if($meta->getAttribute('property')=='og:description'){
+			/*if($meta->getAttribute('property')=='og:description'){
 				$meta_og_description = $meta->getAttribute('content');
-			}
+			}*/
 		}
 
-		return card_html( $url, $meta_og_img, content_type( $url ), $meta_og_title, substr($meta_og_description,0,140) );
+		return card_html( $url, $meta_og_img, content_type( $url ), $meta_og_title );
 	}
 }
 
@@ -355,7 +355,7 @@ function content_type( $url ) {
 	}
 }
 
-function card_html( $url, $image, $type, $title, $description ) {
+function card_html( $url, $image, $type, $title ) {
 
 	$html = '<div class="card-grid">
 				<div class="card">
@@ -365,12 +365,17 @@ function card_html( $url, $image, $type, $title, $description ) {
 						<div class="entry-content">
 							<div class="content-type">%s</div>
 							<h3>%s</h3>
-							<p>%s</p>
 						</div>
 					</a>
 				</div>
 			</div>';
 
-	return sprintf( $html, $url, $image, $type, $title, $description );
+	return sprintf( $html, $url, $image, $type, $title );
 
 }
+
+function update_page_delete_transient(){
+	delete_transient( 'homepage_cards_html' );
+}
+
+add_action( 'save_post', 'update_page_delete_transient' );

@@ -29,7 +29,7 @@ get_header(); ?>
 
 						}
 
-						set_transient( 'homepage_cards_html', $html, HOUR_IN_SECONDS );
+						set_transient( 'homepage_cards_html', $html, MONTH_IN_SECONDS );
 
 						echo $html;
 					}
