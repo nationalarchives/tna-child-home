@@ -3,8 +3,6 @@
  * Homepage functions
  */
 
-add_action( 'admin_init', 'hide_editor_from_homepage' );
-
 function hide_editor_from_homepage() {
 
 	if (isset($_GET['post'])) {
@@ -365,8 +363,6 @@ function home_meta_boxes() {
 	}
 }
 
-add_action( 'init', 'home_meta_boxes' );
-
 function get_content_and_display_card( $url ) {
 
 	$meta_og_img = null;
@@ -459,5 +455,3 @@ function home_banner( $status, $image, $title, $excerpt, $url, $button ) {
 function update_page_delete_transient(){
 	delete_transient( 'homepage_cards_html' );
 }
-
-add_action( 'save_post', 'update_page_delete_transient' );
