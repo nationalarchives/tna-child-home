@@ -418,6 +418,29 @@ function card_html( $url, $image, $type, $title ) {
 
 }
 
+function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
+
+	$html = '<div class="container">
+		        <div class="row">
+		            <div class="feature-banner" style="background-image: url(%s);">
+		                <div class="banner-content-wrapper">
+		                    <div class="banner-content">
+		                        <div class="content-type">%s</div>
+		                        <h2>%s</h2>
+		                        <p>%s</p>
+		                        <div class="banner-call-to-action”>
+		                            <a class="ghost-button" href="%s">%s</a>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>';
+
+	return sprintf( $html, $image, $type, $title, $excerpt, $url, $button );
+
+}
+
 function update_page_delete_transient(){
 	delete_transient( 'homepage_cards_html' );
 }
