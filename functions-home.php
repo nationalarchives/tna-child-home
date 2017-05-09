@@ -422,7 +422,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 
 	$html = '<div class="container">
 		        <div class="row">
-		            <div class="feature-banner" style="background-image: url(%s);">
+		            <div class="home-banner" style="background-image: url(%s);">
 		                <div class="banner-content-wrapper">
 		                    <div class="banner-content">
 		                        <div class="content-type">%s</div>
@@ -438,6 +438,14 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 		    </div>';
 
 	return sprintf( $html, $image, $type, $title, $excerpt, $url, $button );
+
+}
+
+function home_banner( $status, $image, $title, $excerpt, $url, $button ) {
+
+	if ( $status == 'Enabled' ) {
+		return banner_html( $image, content_type( $url ), $title, $excerpt, $url, $button );
+	}
 
 }
 
