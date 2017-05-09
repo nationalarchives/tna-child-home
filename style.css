@@ -22,7 +22,7 @@ Text Domain:    tna-base
     flex-wrap: wrap;
 }
 .card-wrapper {
-    margin: 1.6em 0;
+    margin-bottom: 1.6em;
 }
 .card-grid {
     width: 33.33333%;
@@ -101,4 +101,25 @@ and (orientation : landscape) {
     .card-grid {
         width: 100%;
     }
+}
+
+.home-banner {
+    margin: 1.6em 15px;
+    background-position: center center;
+    background-size: cover;
+}
+.banner-content-wrapper {
+    padding: 1.3em;
+    width: 100%;
+    background: #000;
+    background: -webkit-linear-gradient(left, #000 , transparent);
+    background: -o-linear-gradient(right, #000, transparent);
+    background: -moz-linear-gradient(right, #000, transparent);
+    background: linear-gradient(to right, #000 , transparent);
+}
+.banner-content {
+    color: #fff;
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 0 48% 0 15px;
 }

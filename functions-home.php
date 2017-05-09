@@ -38,7 +38,7 @@ function home_meta_boxes() {
 				array(
 					'name' => 'Banner',
 					'desc' => '',
-					'id' => 'home_banner',
+					'id' => 'home_banner_status',
 					'type' => 'select',
 					'options' => array('Disable', 'Enable')
 				),
@@ -69,6 +69,13 @@ function home_meta_boxes() {
 					'id' => 'home_banner_img',
 					'type' => 'text',
 					'std' => ''
+				),
+				array(
+					'name' => 'Button text',
+					'desc' => 'Call to action button',
+					'id' => 'home_banner_btn',
+					'type' => 'select',
+					'options' => array('Find out more', 'Book now')
 				),
 			)
 		),
@@ -428,8 +435,8 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 		                        <div class="content-type">%s</div>
 		                        <h2>%s</h2>
 		                        <p>%s</p>
-		                        <div class="banner-call-to-action”>
-		                            <a class="ghost-button" href="%s">%s</a>
+		                        <div class="banner-call-to-action">
+		                            <a href="%s" class="ghost-button">%s</a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -443,7 +450,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 
 function home_banner( $status, $image, $title, $excerpt, $url, $button ) {
 
-	if ( $status == 'Enabled' ) {
+	if ( $status == 'Enable' ) {
 		return banner_html( $image, content_type( $url ), $title, $excerpt, $url, $button );
 	}
 
