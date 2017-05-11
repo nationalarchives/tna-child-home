@@ -21,27 +21,26 @@ get_header(); ?>
 			<div class="cards-wrapper equal-heights-flex-box clearfix">
 				<?php
 
-				$transient = get_transient( 'homepage_cards_html' );
+				for ( $i=1 ; $i<=6 ; $i++ ) {
 
-				if( ! empty( $transient ) ) {
+					$transient = get_transient( 'homepage_cards_html'.$i );
 
-					echo $transient ;
+					if( ! empty( $transient ) ) {
 
-				} else {
+						echo $transient ;
 
-					$html = '';
-
-					for ( $i=1 ; $i<=6 ; $i++ ) {
+					} else {
 
 						$url = get_post_meta( $post->ID, 'home_card_url_'.$i, true );
 
-						$html .= get_content_and_display_card( $url );
+						$html = get_content_and_display_card( $url );
+
+						set_transient( 'homepage_cards_html'.$i, $html, MONTH_IN_SECONDS );
+
+						echo $html;
 
 					}
 
-					set_transient( 'homepage_cards_html', $html, MONTH_IN_SECONDS );
-
-					echo $html;
 				}
 				?>
 			</div>

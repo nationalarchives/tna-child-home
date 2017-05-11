@@ -381,6 +381,9 @@ function get_content_and_display_card( $url ) {
 			if($meta->getAttribute('property')=='og:image'){
 				$meta_og_img = $meta->getAttribute('content');
 			}
+			if($meta->getAttribute('property')=='event:end_time'){
+				$meta_og_event_end_time = $meta->getAttribute('content');
+			}
 			/*if($meta->getAttribute('property')=='og:description'){
 				$meta_og_description = $meta->getAttribute('content');
 			}*/
@@ -453,5 +456,12 @@ function home_banner( $status, $image, $title, $excerpt, $url, $button ) {
 }
 
 function update_page_delete_transient(){
-	delete_transient( 'homepage_cards_html' );
+	for ( $i=1 ; $i<=6 ; $i++ ) {
+
+		$transient = get_transient( 'homepage_cards_html'.$i );
+
+		if( $transient  ) {
+			delete_transient( 'homepage_cards_html'.$i );
+		}
+	}
 }
