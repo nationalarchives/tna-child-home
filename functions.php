@@ -59,3 +59,10 @@ function attributes_filter($var) {
 add_filter('nav_menu_css_class', 'attributes_filter', 100, 1);
 add_filter('nav_menu_item_id', 'attributes_filter', 100, 1);
 add_filter('page_css_class', 'attributes_filter', 100, 1);
+
+// Include functions
+include 'functions-home.php';
+
+add_action( 'admin_init', 'hide_editor_from_homepage' );
+add_action( 'init', 'home_meta_boxes' );
+add_action( 'save_post', 'update_page_delete_transient' );
