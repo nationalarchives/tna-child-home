@@ -1,0 +1,89 @@
+/*!
+ * TNA home styles
+ *
+ */
+/* Home global */
+.equal-heights-flex-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
+/* Cards */
+.cards-wrapper {
+  margin-bottom: 1.6em; }
+  .cards-wrapper .card-grid {
+    width: 33.33333%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 1.5em; }
+    .cards-wrapper .card-grid .card {
+      position: relative;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 0px 2px 5px #ddd; }
+      .cards-wrapper .card-grid .card a {
+        position: relative;
+        height: 100%;
+        display: block; }
+      .cards-wrapper .card-grid .card a:hover {
+        text-decoration: none; }
+      .cards-wrapper .card-grid .card a:hover h3 {
+        text-decoration: underline; }
+      .cards-wrapper .card-grid .card h3 {
+        margin: 0.5em 0; }
+      .cards-wrapper .card-grid .card h3 a {
+        font-family: Bitter,"Open Sans",arial,serif !important; }
+      .cards-wrapper .card-grid .card p {
+        margin-bottom: 0.5em; }
+      .cards-wrapper .card-grid .card a:link .content-type,
+      .cards-wrapper .card-grid .card a:visited .content-type {
+        color: #8b8b8b;
+        font-size: 0.9em; }
+      .cards-wrapper .card-grid .card .entry-thumbnail {
+        width: 100%;
+        height: 185px;
+        background-color: #ddd;
+        background-position: center center;
+        background-size: cover; }
+      .cards-wrapper .card-grid .card .entry-thumbnail img {
+        width: 100%; }
+      .cards-wrapper .card-grid .card .entry-content {
+        padding: 1em; }
+      .cards-wrapper .card-grid .card .entry-content p {
+        color: #444; }
+      .cards-wrapper .card-grid .card .content-type {
+        width: 100%; }
+      .cards-wrapper .card-grid .card .content-type img {
+        float: right;
+        opacity: 0.5; }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .card-grid {
+    width: 33%; } }
+@media (max-width: 768px) {
+  .card-grid {
+    width: 100%; } }
+/* Home banner */
+.home-banner {
+  margin: 1.6em 15px;
+  background-position: center center;
+  background-size: cover; }
+  .home-banner .entry-wrapper {
+    padding: 1.3em;
+    width: 100%;
+    background: #000;
+    background: -webkit-linear-gradient(left, #000, transparent);
+    background: -o-linear-gradient(right, #000, transparent);
+    background: -moz-linear-gradient(right, #000, transparent);
+    background: linear-gradient(to right, #000, transparent); }
+  .home-banner .entry-content {
+    color: #fff;
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 0 48% 0 15px; }

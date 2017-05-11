@@ -1,8 +1,8 @@
 /*
 Theme Name:     Home page - child theme
-Theme URI:      http://www.nationalarchives.gov.uk/
+Theme URI:      https://github.com/nationalarchives/tna-child-home
 Author:         The National Archives
-Author URI:     http://www.nationalarchives.gov.uk/
+Author URI:     https://github.com/nationalarchives/
 Description:    This is a basic theme created from https://github.com/nationalarchives/tna-base-child-template
 Template:       tna-base
 Version:        0.1
@@ -10,116 +10,3 @@ License:        GNU General Public License
 License URI:    license.txt
 Text Domain:    tna-base
 */
-
-/* Add custom CSS here to overwrite parent theme CSS */
-
-.equal-heights-flex-box {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
-.card-wrapper {
-    margin-bottom: 1.6em;
-}
-.card-grid {
-    width: 33.33333%;
-    float: left;
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-bottom: 1.5em;
-}
-.card {
-    position: relative;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: 0px 2px 5px #ddd;
-}
-.card a {
-    position: relative;
-    height: 100%;
-    display: block;
-}
-.card a:hover {
-    text-decoration: none;
-}
-.card a:hover h3 {
-    text-decoration: underline;
-}
-.card .entry-thumbnail {
-    width: 100%;
-    height: 185px;
-    background-color: #ddd;
-    background-position: center center;
-    background-size: cover;
-}
-.card .entry-thumbnail img {
-    width: 100%;
-}
-.card p {
-    margin-bottom: 0.5em;
-}
-.card .entry-content {
-    padding: 1em;
-}
-.card .entry-content p {
-    color: #444;
-}
-.card h3 {
-    margin: 0.5em 0;
-}
-.card h3 a {
-    font-family: Bitter,"Open Sans",arial,serif !important;
-}
-.card a:link .content-type,
-.card a:link .content-date,
-.card a:visited .content-type,
-.card a:visited .content-date {
-    color: #8b8b8b;
-    font-size: 0.9em;
-}
-.card .content-type {
-    width: 100%;
-}
-.card .content-type img {
-    float: right;
-    opacity: 0.5;
-}
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : landscape) {
-    .card-grid {
-        width: 33%;
-    }
-}
-@media (max-width: 768px) {
-    .card-grid {
-        width: 100%;
-    }
-}
-
-.home-banner {
-    margin: 1.6em 15px;
-    background-position: center center;
-    background-size: cover;
-}
-.banner-content-wrapper {
-    padding: 1.3em;
-    width: 100%;
-    background: #000;
-    background: -webkit-linear-gradient(left, #000 , transparent);
-    background: -o-linear-gradient(right, #000, transparent);
-    background: -moz-linear-gradient(right, #000, transparent);
-    background: linear-gradient(to right, #000 , transparent);
-}
-.banner-content {
-    color: #fff;
-    max-width: 1270px;
-    margin: 0 auto;
-    padding: 0 48% 0 15px;
-}
