@@ -18,7 +18,7 @@ get_header(); ?>
 	?>
 	<div class="container">
 		<div class="row">
-			<div class="card-wrapper equal-heights-flex-box clearfix">
+			<div class="cards-wrapper equal-heights-flex-box clearfix">
 				<?php
 
 				$transient = get_transient( 'homepage_cards_html' );

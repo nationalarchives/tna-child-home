@@ -426,8 +426,8 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 	$html = '<div class="container">
 		        <div class="row">
 		            <div class="home-banner" style="background-image: url(%s);">
-		                <div class="banner-content-wrapper">
-		                    <div class="banner-content">
+		                <div class="entry-wrapper">
+		                    <div class="entry-content">
 		                        <div class="content-type">%s</div>
 		                        <h2>%s</h2>
 		                        <p>%s</p>
