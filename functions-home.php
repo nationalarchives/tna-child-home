@@ -125,6 +125,13 @@ function home_meta_boxes() {
 					'id' => 'home_card_expire_1',
 					'type' => 'date',
 					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_1',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'What’s on')
 				)
 			)
 		),
@@ -169,6 +176,13 @@ function home_meta_boxes() {
 					'id' => 'home_card_expire_2',
 					'type' => 'date',
 					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_2',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'What’s on')
 				)
 			)
 		),
@@ -213,6 +227,13 @@ function home_meta_boxes() {
 					'id' => 'home_card_expire_3',
 					'type' => 'date',
 					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_3',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'What’s on')
 				)
 			)
 		),
@@ -257,6 +278,13 @@ function home_meta_boxes() {
 					'id' => 'home_card_expire_4',
 					'type' => 'date',
 					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_4',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'What’s on')
 				)
 			)
 		),
@@ -301,6 +329,13 @@ function home_meta_boxes() {
 					'id' => 'home_card_expire_5',
 					'type' => 'date',
 					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_5',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'What’s on')
 				)
 			)
 		),
@@ -345,6 +380,13 @@ function home_meta_boxes() {
 					'id' => 'home_card_expire_6',
 					'type' => 'date',
 					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_6',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'What’s on')
 				)
 			)
 		)
@@ -468,4 +510,40 @@ function update_page_delete_transient(){
 			delete_transient( 'homepage_cards_html'.$i );
 		}
 	}
+}
+
+function is_card_active( $expire ) {
+
+	if ($expire) {
+		$expire_date = strtotime($expire);
+	} else {
+		$expire_date = 9999999999;
+	}
+
+	$current_date = strtotime('today');
+
+	if ( $current_date <= $expire_date ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function card_fallback( $fallback ) {
+
+	$html = '<div class="card-grid">
+				<div class="card">
+					<a href="#">
+						<div class="entry-thumbnail" style="background-image: url()">
+						</div>
+						<div class="entry-content">
+							<div class="content-type">%s</div>
+							<h3>Fallback card</h3>
+						</div>
+					</a>
+				</div>
+			</div>';
+
+	return sprintf( $html, $fallback );
+
 }
