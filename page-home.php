@@ -23,13 +23,25 @@ get_header(); ?>
 
 				for ( $i=1 ; $i<=6 ; $i++ ) {
 
+					$expire = get_post_meta( $post->ID, 'home_card_expire_'.$i, true );
+
+					if ($expire) {
+						$expire_date = strtotime($expire);
+					} else {
+						$expire_date = 9999999999;
+					}
+
+					$current_date = strtotime('today');
+
 					$transient = get_transient( 'homepage_cards_html'.$i );
 
-					if( ! empty( $transient ) ) {
+					echo '<!--' . $expire_date . ' - ' . $current_date . '-->';
+
+					if( ! empty( $transient ) && $current_date <= $expire_date ) {
 
 						echo $transient ;
 
-					} else {
+					} elseif ( $current_date <= $expire_date ) {
 
 						$url = get_post_meta( $post->ID, 'home_card_url_'.$i, true );
 
@@ -39,6 +51,8 @@ get_header(); ?>
 
 						echo $html;
 
+					} else {
+						echo 'expired';
 					}
 
 				}

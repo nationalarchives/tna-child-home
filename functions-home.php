@@ -73,8 +73,15 @@ function home_meta_boxes() {
 					'desc' => 'Call to action button',
 					'id' => 'home_banner_btn',
 					'type' => 'select',
-					'options' => array('Find out more', 'Book now')
+					'options' => array('Find out more', 'Read more', 'Book now')
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_banner_expire',
+					'type' => 'date',
+					'std' => ''
+				)
 			)
 		),
 		array(
@@ -84,13 +91,6 @@ function home_meta_boxes() {
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_1',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -119,6 +119,13 @@ function home_meta_boxes() {
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_1',
+					'type' => 'date',
+					'std' => ''
+				)
 			)
 		),
 		array(
@@ -128,13 +135,6 @@ function home_meta_boxes() {
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_2',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -163,6 +163,13 @@ function home_meta_boxes() {
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_2',
+					'type' => 'date',
+					'std' => ''
+				)
 			)
 		),
 		array(
@@ -172,13 +179,6 @@ function home_meta_boxes() {
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_3',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -207,6 +207,13 @@ function home_meta_boxes() {
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_3',
+					'type' => 'date',
+					'std' => ''
+				)
 			)
 		),
 		array(
@@ -216,13 +223,6 @@ function home_meta_boxes() {
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_4',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -251,6 +251,13 @@ function home_meta_boxes() {
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_4',
+					'type' => 'date',
+					'std' => ''
+				)
 			)
 		),
 		array(
@@ -260,13 +267,6 @@ function home_meta_boxes() {
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_5',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -295,6 +295,13 @@ function home_meta_boxes() {
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_5',
+					'type' => 'date',
+					'std' => ''
+				)
 			)
 		),
 		array(
@@ -304,13 +311,6 @@ function home_meta_boxes() {
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_6',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -339,6 +339,13 @@ function home_meta_boxes() {
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_6',
+					'type' => 'date',
+					'std' => ''
+				)
 			)
 		)
 	);
@@ -380,9 +387,6 @@ function get_content_and_display_card( $url ) {
 			}
 			if($meta->getAttribute('property')=='og:image'){
 				$meta_og_img = $meta->getAttribute('content');
-			}
-			if($meta->getAttribute('property')=='event:end_time'){
-				$meta_og_event_end_time = $meta->getAttribute('content');
 			}
 			/*if($meta->getAttribute('property')=='og:description'){
 				$meta_og_description = $meta->getAttribute('content');
