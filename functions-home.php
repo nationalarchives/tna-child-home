@@ -531,19 +531,37 @@ function is_card_active( $expire ) {
 
 function card_fallback( $fallback ) {
 
+	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
+	$image = '';
+	$content_type = 'What’s on';
+	$title = 'We offer a range of events, exhibitions and talks';
+
+	if ( $fallback == 'Latest news' ) {
+
+		$rss = file_get_contents( 'http://www.nationalarchives.gov.uk/category/news/feed/' );
+
+		$content = new SimpleXmlElement( $rss );
+
+		$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
+		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
+		$content_type = 'Latest news';
+		$title = $content->channel->item[0]->title;
+
+	}
+
 	$html = '<div class="card-grid">
 				<div class="card">
-					<a href="#">
-						<div class="entry-thumbnail" style="background-image: url()">
+					<a href="%s">
+						<div class="entry-thumbnail" style="background-image: url(%s)">
 						</div>
 						<div class="entry-content">
 							<div class="content-type">%s</div>
-							<h3>Fallback card</h3>
+							<h3>%s</h3>
 						</div>
 					</a>
 				</div>
 			</div>';
 
-	return sprintf( $html, $fallback );
+	return sprintf( $html, $url, $image, $content_type, $title );
 
 }
