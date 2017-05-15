@@ -62,13 +62,13 @@
       .cards-wrapper .card-grid .card .content-type img {
         float: right;
         opacity: 0.5; }
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    .cards-wrapper .card-grid {
+      width: 33%; } }
+  @media (max-width: 768px) {
+    .cards-wrapper .card-grid {
+      width: 100%; } }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  .card-grid {
-    width: 33%; } }
-@media (max-width: 768px) {
-  .card-grid {
-    width: 100%; } }
 /* Home banner */
 .home-banner {
   margin: 1.6em 15px;

@@ -86,7 +86,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_1',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 1',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -103,13 +103,6 @@ function home_meta_boxes() {
 					'desc' => '',
 					'id' => 'home_card_title_1',
 					'type' => 'text',
-					'std' => ''
-				),
-				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_1',
-					'type' => 'textarea',
 					'std' => ''
 				),
 				array(
@@ -137,7 +130,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_2',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 2',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -154,13 +147,6 @@ function home_meta_boxes() {
 					'desc' => '',
 					'id' => 'home_card_title_2',
 					'type' => 'text',
-					'std' => ''
-				),
-				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_2',
-					'type' => 'textarea',
 					'std' => ''
 				),
 				array(
@@ -188,7 +174,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_3',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 3',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -205,13 +191,6 @@ function home_meta_boxes() {
 					'desc' => '',
 					'id' => 'home_card_title_3',
 					'type' => 'text',
-					'std' => ''
-				),
-				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_3',
-					'type' => 'textarea',
 					'std' => ''
 				),
 				array(
@@ -239,7 +218,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_4',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 4',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -256,13 +235,6 @@ function home_meta_boxes() {
 					'desc' => '',
 					'id' => 'home_card_title_4',
 					'type' => 'text',
-					'std' => ''
-				),
-				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_4',
-					'type' => 'textarea',
 					'std' => ''
 				),
 				array(
@@ -290,7 +262,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_5',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 5',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -307,13 +279,6 @@ function home_meta_boxes() {
 					'desc' => '',
 					'id' => 'home_card_title_5',
 					'type' => 'text',
-					'std' => ''
-				),
-				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_5',
-					'type' => 'textarea',
 					'std' => ''
 				),
 				array(
@@ -341,7 +306,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_6',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 6',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -358,13 +323,6 @@ function home_meta_boxes() {
 					'desc' => '',
 					'id' => 'home_card_title_6',
 					'type' => 'text',
-					'std' => ''
-				),
-				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_6',
-					'type' => 'textarea',
 					'std' => ''
 				),
 				array(
@@ -412,10 +370,10 @@ function home_meta_boxes() {
 	}
 }
 
-function get_content_and_display_card( $url ) {
+function get_content_and_display_card( $url, $title, $image ) {
 
-	$meta_og_img = null;
-	$meta_og_title = null;
+	$meta_og_img = trim($image);
+	$meta_og_title = trim($title);
 
 	if ( $url ) {
 		$content_html = file_get_contents($url);
@@ -423,16 +381,15 @@ function get_content_and_display_card( $url ) {
 		$html = new DOMDocument();
 		@$html->loadHTML($content_html);
 
-		foreach($html->getElementsByTagName('meta') as $meta) {
-			if($meta->getAttribute('property')=='og:title'){
+		foreach( $html->getElementsByTagName('meta') as $meta ) {
+
+			if( $meta->getAttribute('property')=='og:title' && trim($title)=='' ) {
 				$meta_og_title = $meta->getAttribute('content');
 			}
-			if($meta->getAttribute('property')=='og:image'){
+
+			if( $meta->getAttribute('property')=='og:image' && trim($image)=='' ) {
 				$meta_og_img = $meta->getAttribute('content');
 			}
-			/*if($meta->getAttribute('property')=='og:description'){
-				$meta_og_description = $meta->getAttribute('content');
-			}*/
 		}
 
 		return card_html( $url, $meta_og_img, content_type( $url ), $meta_og_title );
