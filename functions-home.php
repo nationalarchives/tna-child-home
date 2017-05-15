@@ -124,7 +124,7 @@ function home_meta_boxes() {
 					'desc' => 'Select a fallback card if an expiry date is set',
 					'id' => 'home_card_fallback_1',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'What’s on')
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		),
@@ -168,7 +168,7 @@ function home_meta_boxes() {
 					'desc' => 'Select a fallback card if an expiry date is set',
 					'id' => 'home_card_fallback_2',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'What’s on')
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		),
@@ -212,7 +212,7 @@ function home_meta_boxes() {
 					'desc' => 'Select a fallback card if an expiry date is set',
 					'id' => 'home_card_fallback_3',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'What’s on')
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		),
@@ -256,7 +256,7 @@ function home_meta_boxes() {
 					'desc' => 'Select a fallback card if an expiry date is set',
 					'id' => 'home_card_fallback_4',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'What’s on')
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		),
@@ -300,7 +300,7 @@ function home_meta_boxes() {
 					'desc' => 'Select a fallback card if an expiry date is set',
 					'id' => 'home_card_fallback_5',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'What’s on')
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		),
@@ -344,7 +344,7 @@ function home_meta_boxes() {
 					'desc' => 'Select a fallback card if an expiry date is set',
 					'id' => 'home_card_fallback_6',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'What’s on')
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		)
