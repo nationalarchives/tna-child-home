@@ -107,7 +107,7 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_1',
 					'type' => 'text',
 					'std' => ''
@@ -151,7 +151,7 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_2',
 					'type' => 'text',
 					'std' => ''
@@ -195,7 +195,7 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_3',
 					'type' => 'text',
 					'std' => ''
@@ -239,7 +239,7 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_4',
 					'type' => 'text',
 					'std' => ''
@@ -283,7 +283,7 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_5',
 					'type' => 'text',
 					'std' => ''
@@ -327,7 +327,7 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_6',
 					'type' => 'text',
 					'std' => ''
