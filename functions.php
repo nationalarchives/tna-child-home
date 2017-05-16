@@ -8,16 +8,11 @@ function tnatheme_globals() {
     // If internal TNA
     if (substr($_SERVER['REMOTE_ADDR'], 0, 3) === '10.') {
         $pre_path = '';
-        $pre_crumbs = array(
-            'Site home title' => '/'
-        );
+        $pre_crumbs = '';
     // If external TNA
     } else {
-        $pre_crumbs = array(
-            'About' => '/about/',
-            'Site home title' => '/about/site-home-title/'
-        );
-        $pre_path = '/about/site-home-title';
+        $pre_crumbs = '';
+        $pre_path = '';
     }
 }
 // If web development machine
@@ -25,9 +20,7 @@ if ( $_SERVER['SERVER_ADDR'] !== $_SERVER['REMOTE_ADDR'] ) {
         tnatheme_globals();
     } else {
         $pre_path = '';
-        $pre_crumbs = array(
-            'Site home title' => '/'
-    );
+        $pre_crumbs = '';
 }
 
 // Dequeue parent styles for re-enqueuing in the correct order
