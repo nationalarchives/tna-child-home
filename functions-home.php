@@ -370,13 +370,32 @@ function home_meta_boxes() {
 	}
 }
 
+function get_html_content( $url ) {
+
+	$ch = curl_init();
+
+	$timeout = 10;
+	$userAgent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)';
+
+	curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+
+	$content = curl_exec($ch);
+
+	curl_close($ch);
+
+	return $content;
+}
+
 function get_content_and_display_card( $url, $title, $image ) {
 
 	$meta_og_img = trim($image);
 	$meta_og_title = trim($title);
 
 	if ( $url ) {
-		$content_html = file_get_contents($url);
+		$content_html = get_html_content($url);
 
 		$html = new DOMDocument();
 		@$html->loadHTML($content_html);
