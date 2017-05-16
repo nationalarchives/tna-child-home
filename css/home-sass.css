@@ -73,7 +73,8 @@
 .home-banner {
   margin: 1.6em 15px;
   background-position: center center;
-  background-size: cover; }
+  background-size: cover;
+  box-shadow: 0px 2px 5px #ddd; }
   .home-banner .entry-wrapper {
     padding: 1.3em;
     width: 100%;
