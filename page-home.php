@@ -37,7 +37,7 @@ get_header(); ?>
 
 					} elseif ( is_card_active( $expire ) ) {
 
-						$html = get_content_and_display_card( $url, $title, $image );
+						$html = get_content_and_display_card( $i, $url, $title, $image );
 
 						set_transient( 'homepage_cards_html'.$i, $html, MONTH_IN_SECONDS );
 

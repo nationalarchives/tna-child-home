@@ -3,7 +3,7 @@
 .cards-wrapper {
   margin-bottom: 1.6em;
 
-  .card-grid {
+  .col-card {
     width: 33.33333%;
     float: left;
     position: relative;
@@ -72,12 +72,12 @@
   and (min-device-width : 768px)
   and (max-device-width : 1024px)
   and (orientation : landscape) {
-    .card-grid {
+    .col-card {
       width: 33%;
     }
   }
   @media (max-width: 768px) {
-    .card-grid {
+    .col-card {
       width: 100%;
     }
   }

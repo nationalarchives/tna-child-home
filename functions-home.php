@@ -389,7 +389,7 @@ function get_html_content( $url ) {
 	return $content;
 }
 
-function get_content_and_display_card( $url, $title, $image ) {
+function get_content_and_display_card( $id, $url, $title, $image ) {
 
 	$meta_og_img = trim($image);
 	$meta_og_title = trim($title);
@@ -411,7 +411,7 @@ function get_content_and_display_card( $url, $title, $image ) {
 			}
 		}
 
-		return card_html( $url, $meta_og_img, content_type( $url ), $meta_og_title );
+		return card_html( $id, $url, $meta_og_img, content_type( $url ), $meta_og_title );
 	}
 }
 
@@ -427,11 +427,11 @@ function content_type( $url ) {
 	}
 }
 
-function card_html( $url, $image, $type, $title ) {
+function card_html( $id, $url, $image, $type, $title ) {
 
-	$html = '<div class="card-grid">
+	$html = '<div class="col-card">
 				<div class="card">
-					<a href="%s">
+					<a id="card-%s" href="%s" class="homepage-card">
 						<div class="entry-thumbnail" style="background-image: url(%s)">
 						</div>
 						<div class="entry-content">
@@ -442,7 +442,7 @@ function card_html( $url, $image, $type, $title ) {
 				</div>
 			</div>';
 
-	return sprintf( $html, $url, $image, $type, $title );
+	return sprintf( $html, $id, $url, $image, $type, $title );
 
 }
 
@@ -457,7 +457,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 		                        <h2>%s</h2>
 		                        <p>%s</p>
 		                        <div class="banner-call-to-action">
-		                            <a href="%s" class="ghost-button">%s</a>
+		                            <a id="hero-banner" href="%s" class="ghost-button homepage-hero" title="%s">%s</a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -465,7 +465,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 		        </div>
 		    </div>';
 
-	return sprintf( $html, $image, $type, $title, $excerpt, $url, $button );
+	return sprintf( $html, $image, $type, $title, $excerpt, $url, $title, $button );
 
 }
 
@@ -525,9 +525,9 @@ function card_fallback( $fallback ) {
 
 	}
 
-	$html = '<div class="card-grid">
+	$html = '<div class="col-card">
 				<div class="card">
-					<a href="%s">
+					<a href="%s" class="homepage-card">
 						<div class="entry-thumbnail" style="background-image: url(%s)">
 						</div>
 						<div class="entry-content">
