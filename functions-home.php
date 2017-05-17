@@ -505,7 +505,7 @@ function is_card_active( $expire ) {
 	}
 }
 
-function card_fallback( $fallback ) {
+function card_fallback( $fallback, $id ) {
 
 	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
 	$image = '';
@@ -527,7 +527,7 @@ function card_fallback( $fallback ) {
 
 	$html = '<div class="col-card">
 				<div class="card">
-					<a href="%s" class="homepage-card">
+					<a id="card-%s" href="%s" class="homepage-card">
 						<div class="entry-thumbnail" style="background-image: url(%s)">
 						</div>
 						<div class="entry-content">
@@ -538,6 +538,6 @@ function card_fallback( $fallback ) {
 				</div>
 			</div>';
 
-	return sprintf( $html, $url, $image, $content_type, $title );
+	return sprintf( $html, $id, $url, $image, $content_type, $title );
 
 }

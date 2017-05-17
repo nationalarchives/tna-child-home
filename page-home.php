@@ -45,7 +45,7 @@ get_header(); ?>
 
 					} else {
 
-						echo card_fallback( $fallback );
+						echo card_fallback( $fallback, $i );
 
 					}
 				}
