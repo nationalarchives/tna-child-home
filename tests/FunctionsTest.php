@@ -7,6 +7,25 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(true);
         $this->assertFalse(false);
     }
+
+    public function test_tnatheme_globals()
+    {
+        $this->assertTrue(function_exists('tnatheme_globals'));
+    }
+    public function test_dequeue_parent_style()
+    {
+        $this->assertTrue(function_exists('dequeue_parent_style'));
+    }
+    public function test_tna_child_styles()
+    {
+        $this->assertTrue(function_exists('tna_child_styles'));
+    }
+
+    public function test_attributes_filter()
+    {
+        $this->assertTrue(function_exists('attributes_filter'));
+    }
+
     public function test_hide_editor_from_homepage()
     {
         $this->assertTrue(function_exists('hide_editor_from_homepage'));
@@ -46,5 +65,13 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     public function test_card_fallback()
     {
         $this->assertTrue(function_exists('card_fallback'));
+    }
+    public function test_check_cards()
+    {
+        $this->assertTrue(function_exists('check_cards'));
+    }
+    public function test_cards_admin_notice()
+    {
+        $this->assertTrue(function_exists('cards_admin_notice'));
     }
 }
