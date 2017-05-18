@@ -520,7 +520,19 @@ function card_fallback( $fallback, $id ) {
 
 		$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
 		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
-		$content_type = 'Latest news';
+		$content_type = 'News';
+		$title = $content->channel->item[0]->title;
+
+	}
+	if ( $fallback == 'Latest blog post' ) {
+
+		$rss = file_get_contents( 'http://blog.nationalarchives.gov.uk/feed/' );
+
+		$content = new SimpleXmlElement( $rss );
+
+		$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
+		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
+		$content_type = 'Blog';
 		$title = $content->channel->item[0]->title;
 
 	}
