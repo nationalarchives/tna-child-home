@@ -508,9 +508,9 @@ function is_card_active( $expire ) {
 function card_fallback( $fallback, $id ) {
 
 	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
-	$image = '';
-	$content_type = 'What’s on';
-	$title = 'We offer a range of events, exhibitions and talks';
+	$image = get_stylesheet_directory_uri().'/img/events.jpg';
+	$content_type = 'Events';
+	$title = 'Upcoming events and exhibitions at The National Archives';
 
 	if ( $fallback == 'Latest news' ) {
 
