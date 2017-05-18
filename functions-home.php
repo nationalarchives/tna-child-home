@@ -469,9 +469,9 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 
 }
 
-function home_banner( $status, $image, $title, $excerpt, $url, $button ) {
+function home_banner( $expire, $status, $image, $title, $excerpt, $url, $button ) {
 
-	if ( $status == 'Enable' ) {
+	if ( $status == 'Enable' && is_card_active( $expire ) ) {
 		return banner_html( $image, content_type( $url ), $title, $excerpt, $url, $button );
 	}
 
