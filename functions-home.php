@@ -541,3 +541,37 @@ function card_fallback( $fallback, $id ) {
 	return sprintf( $html, $id, $url, $image, $content_type, $title );
 
 }
+
+function check_cards() {
+
+	$stack = array();
+
+	for ( $i=1 ; $i<=6 ; $i++ ) {
+
+		$url = $_POST['home_card_url_'.$i];
+
+		if ($url) {
+			array_push($stack, $url);
+		}
+	}
+
+	$result = count($stack);
+
+	if ( $result == 3 || $result == 6 ) {
+		// do nothing
+	} else {
+		set_transient( get_current_user_id().'cards_error', $result );
+	}
+}
+
+function cards_admin_notice() {
+	$cards_error = get_transient( get_current_user_id().'cards_error' );
+	if ($cards_error) { ?>
+		<div class="notice notice-error">
+			<p><?php _e( 'You have completed '.$cards_error.' cards. Please have either a combination of 3 or 6 cards completed.', 'cards-error' ); ?></p>
+		</div>
+	<?php
+		delete_transient( get_current_user_id().'cards_error' );
+	}
+}
+
