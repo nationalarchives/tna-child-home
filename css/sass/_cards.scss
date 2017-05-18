@@ -3,7 +3,7 @@
 .cards-wrapper {
   margin-bottom: 1.6em;
 
-  .card-grid {
+  .col-card {
     width: 33.33333%;
     float: left;
     position: relative;
@@ -16,7 +16,7 @@
       position: relative;
       height: 100%;
       background-color: #fff;
-      box-shadow: 0px 2px 5px #ddd;
+      box-shadow: 0 2px 5px #ddd;
 
       a {
         position: relative;
@@ -68,18 +68,18 @@
       }
     }
   }
+  @media only screen
+  and (min-device-width : 768px)
+  and (max-device-width : 1024px)
+  and (orientation : landscape) {
+    .col-card {
+      width: 33%;
+    }
+  }
+  @media (max-width: 768px) {
+    .col-card {
+      width: 100%;
+    }
+  }
 }
 
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : landscape) {
-  .card-grid {
-    width: 33%;
-  }
-}
-@media (max-width: 768px) {
-  .card-grid {
-    width: 100%;
-  }
-}

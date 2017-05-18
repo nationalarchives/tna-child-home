@@ -39,4 +39,12 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('update_page_delete_transient'));
     }
+    public function test_is_card_active()
+    {
+        $this->assertTrue(function_exists('is_card_active'));
+    }
+    public function test_card_fallback()
+    {
+        $this->assertTrue(function_exists('card_fallback'));
+    }
 }

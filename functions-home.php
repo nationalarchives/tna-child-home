@@ -73,24 +73,24 @@ function home_meta_boxes() {
 					'desc' => 'Call to action button',
 					'id' => 'home_banner_btn',
 					'type' => 'select',
-					'options' => array('Find out more', 'Book now')
+					'options' => array('Find out more', 'Read more', 'Book now')
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_banner_expire',
+					'type' => 'date',
+					'std' => ''
+				)
 			)
 		),
 		array(
 			'id' => 'home_card_1',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 1',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_1',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -106,35 +106,35 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_1',
-					'type' => 'textarea',
-					'std' => ''
-				),
-				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_1',
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_1',
+					'type' => 'date',
+					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_1',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+				)
 			)
 		),
 		array(
 			'id' => 'home_card_2',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 2',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_2',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -150,35 +150,35 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_2',
-					'type' => 'textarea',
-					'std' => ''
-				),
-				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_2',
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_2',
+					'type' => 'date',
+					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_2',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+				)
 			)
 		),
 		array(
 			'id' => 'home_card_3',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 3',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_3',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -194,35 +194,35 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_3',
-					'type' => 'textarea',
-					'std' => ''
-				),
-				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_3',
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_3',
+					'type' => 'date',
+					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_3',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+				)
 			)
 		),
 		array(
 			'id' => 'home_card_4',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 4',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_4',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -238,35 +238,35 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_4',
-					'type' => 'textarea',
-					'std' => ''
-				),
-				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_4',
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_4',
+					'type' => 'date',
+					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_4',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+				)
 			)
 		),
 		array(
 			'id' => 'home_card_5',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 5',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_5',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -282,35 +282,35 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_5',
-					'type' => 'textarea',
-					'std' => ''
-				),
-				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_5',
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_5',
+					'type' => 'date',
+					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_5',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+				)
 			)
 		),
 		array(
 			'id' => 'home_card_6',
-			'title' => 'Homepage card',
+			'title' => 'Homepage card 6',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
 			'fields' => array(
-				array(
-					'name' => 'Order',
-					'desc' => '',
-					'id' => 'home_card_order_6',
-					'type' => 'select',
-					'options' => array('1', '2', '3', '4', '5', '6')
-				),
 				array(
 					'name' => 'Content URL',
 					'desc' => 'Card dynamically populated via Open Graph',
@@ -326,19 +326,26 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_6',
-					'type' => 'textarea',
-					'std' => ''
-				),
-				array(
 					'name' => 'Override image',
-					'desc' => '',
+					'desc' => 'Image size 768px x 576px',
 					'id' => 'home_card_img_6',
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Expire date',
+					'desc' => 'Date format dd/mm/yyyy',
+					'id' => 'home_card_expire_6',
+					'type' => 'date',
+					'std' => ''
+				),
+				array(
+					'name' => 'Fallback',
+					'desc' => 'Select a fallback card if an expiry date is set',
+					'id' => 'home_card_fallback_6',
+					'type' => 'select',
+					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+				)
 			)
 		)
 	);
@@ -363,30 +370,48 @@ function home_meta_boxes() {
 	}
 }
 
-function get_content_and_display_card( $url ) {
+function get_html_content( $url ) {
 
-	$meta_og_img = null;
-	$meta_og_title = null;
+	$ch = curl_init();
+
+	$timeout = 10;
+	$userAgent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)';
+
+	curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+
+	$content = curl_exec($ch);
+
+	curl_close($ch);
+
+	return $content;
+}
+
+function get_content_and_display_card( $id, $url, $title, $image ) {
+
+	$meta_og_img = trim($image);
+	$meta_og_title = trim($title);
 
 	if ( $url ) {
-		$content_html = file_get_contents($url);
+		$content_html = get_html_content($url);
 
 		$html = new DOMDocument();
 		@$html->loadHTML($content_html);
 
-		foreach($html->getElementsByTagName('meta') as $meta) {
-			if($meta->getAttribute('property')=='og:title'){
+		foreach( $html->getElementsByTagName('meta') as $meta ) {
+
+			if( $meta->getAttribute('property')=='og:title' && trim($title)=='' ) {
 				$meta_og_title = $meta->getAttribute('content');
 			}
-			if($meta->getAttribute('property')=='og:image'){
+
+			if( $meta->getAttribute('property')=='og:image' && trim($image)=='' ) {
 				$meta_og_img = $meta->getAttribute('content');
 			}
-			/*if($meta->getAttribute('property')=='og:description'){
-				$meta_og_description = $meta->getAttribute('content');
-			}*/
 		}
 
-		return card_html( $url, $meta_og_img, content_type( $url ), $meta_og_title );
+		return card_html( $id, $url, $meta_og_img, content_type( $url ), $meta_og_title );
 	}
 }
 
@@ -402,11 +427,11 @@ function content_type( $url ) {
 	}
 }
 
-function card_html( $url, $image, $type, $title ) {
+function card_html( $id, $url, $image, $type, $title ) {
 
-	$html = '<div class="card-grid">
+	$html = '<div class="col-card">
 				<div class="card">
-					<a href="%s">
+					<a id="card-%s" href="%s" class="homepage-card">
 						<div class="entry-thumbnail" style="background-image: url(%s)">
 						</div>
 						<div class="entry-content">
@@ -417,7 +442,7 @@ function card_html( $url, $image, $type, $title ) {
 				</div>
 			</div>';
 
-	return sprintf( $html, $url, $image, $type, $title );
+	return sprintf( $html, $id, $url, $image, $type, $title );
 
 }
 
@@ -432,7 +457,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 		                        <h2>%s</h2>
 		                        <p>%s</p>
 		                        <div class="banner-call-to-action">
-		                            <a href="%s" class="ghost-button">%s</a>
+		                            <a id="hero-banner" href="%s" class="ghost-button homepage-hero" title="%s">%s</a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -440,7 +465,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 		        </div>
 		    </div>';
 
-	return sprintf( $html, $image, $type, $title, $excerpt, $url, $button );
+	return sprintf( $html, $image, $type, $title, $excerpt, $url, $title, $button );
 
 }
 
@@ -453,5 +478,66 @@ function home_banner( $status, $image, $title, $excerpt, $url, $button ) {
 }
 
 function update_page_delete_transient(){
-	delete_transient( 'homepage_cards_html' );
+	for ( $i=1 ; $i<=6 ; $i++ ) {
+
+		$transient = get_transient( 'homepage_cards_html'.$i );
+
+		if( $transient  ) {
+			delete_transient( 'homepage_cards_html'.$i );
+		}
+	}
+}
+
+function is_card_active( $expire ) {
+
+	if ($expire) {
+		$expire_date = strtotime($expire);
+	} else {
+		$expire_date = 9999999999;
+	}
+
+	$current_date = strtotime('today');
+
+	if ( $current_date <= $expire_date ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function card_fallback( $fallback, $id ) {
+
+	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
+	$image = '';
+	$content_type = 'What’s on';
+	$title = 'We offer a range of events, exhibitions and talks';
+
+	if ( $fallback == 'Latest news' ) {
+
+		$rss = file_get_contents( 'http://www.nationalarchives.gov.uk/category/news/feed/' );
+
+		$content = new SimpleXmlElement( $rss );
+
+		$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
+		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
+		$content_type = 'Latest news';
+		$title = $content->channel->item[0]->title;
+
+	}
+
+	$html = '<div class="col-card">
+				<div class="card">
+					<a id="card-%s" href="%s" class="homepage-card">
+						<div class="entry-thumbnail" style="background-image: url(%s)">
+						</div>
+						<div class="entry-content">
+							<div class="content-type">%s</div>
+							<h3>%s</h3>
+						</div>
+					</a>
+				</div>
+			</div>';
+
+	return sprintf( $html, $id, $url, $image, $content_type, $title );
+
 }
