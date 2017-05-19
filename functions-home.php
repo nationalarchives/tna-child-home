@@ -422,6 +422,9 @@ function content_type( $url ) {
 	if (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
 		return 'Blog';
 	}
+	if (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
+		return 'Media';
+	}
 	if (strpos($url, 'eventbrite') !== false) {
 		return 'Event';
 	}
