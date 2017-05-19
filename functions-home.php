@@ -432,9 +432,14 @@ function content_type( $url ) {
 
 function card_html( $id, $url, $image, $type, $title ) {
 
+	$target = '';
+	if ($type=='Event') {
+		$target = 'target="_blank"';
+	}
+
 	$html = '<div class="col-card">
 				<div class="card">
-					<a id="card-%s" href="%s" class="homepage-card">
+					<a id="card-%s" href="%s" class="homepage-card" %s>
 						<div class="entry-thumbnail" style="background-image: url(%s)">
 						</div>
 						<div class="entry-content">
@@ -445,7 +450,7 @@ function card_html( $id, $url, $image, $type, $title ) {
 				</div>
 			</div>';
 
-	return sprintf( $html, $id, $url, $image, $type, $title );
+	return sprintf( $html, $id, $url, $target, $image, $type, $title );
 
 }
 
