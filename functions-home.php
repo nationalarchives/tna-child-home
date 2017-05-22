@@ -25,6 +25,13 @@ function hide_editor_from_homepage() {
 }
 
 function home_meta_boxes() {
+
+	$descUrl = 'Card title and image dynamically populated via Open Graph.';
+	$descExpire = 'Date format dd/mm/yyyy. If set the content will expire at midnight on day specified and fallback content will be displayed.';
+	$descFallback = 'Select a fallback card if an expiry date is set.';
+	$descCardTitle = 'Overrides Open Graph title.';
+	$descCardImage = 'Overrides Open Graph image. Paste image URL from media library. Image size 768px x 576px.';
+
 	$home_meta_boxes = array(
 		array(
 			'id' => 'home_banner',
@@ -63,7 +70,7 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Image',
-					'desc' => '',
+					'desc' => 'Paste image URL from media library. Image size 1196px x 288px.',
 					'id' => 'home_banner_img',
 					'type' => 'text',
 					'std' => ''
@@ -77,7 +84,7 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Expire date',
-					'desc' => 'Date format dd/mm/yyyy',
+					'desc' => $descExpire,
 					'id' => 'home_banner_expire',
 					'type' => 'date',
 					'std' => ''
@@ -93,35 +100,35 @@ function home_meta_boxes() {
 			'fields' => array(
 				array(
 					'name' => 'Content URL',
-					'desc' => 'Card dynamically populated via Open Graph',
+					'desc' => $descUrl,
 					'id' => 'home_card_url_1',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override title',
-					'desc' => '',
+					'desc' => $descCardTitle,
 					'id' => 'home_card_title_1',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => 'Image size 768px x 576px',
+					'desc' => $descCardImage,
 					'id' => 'home_card_img_1',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Expire date',
-					'desc' => 'Date format dd/mm/yyyy',
+					'desc' => $descExpire,
 					'id' => 'home_card_expire_1',
 					'type' => 'date',
 					'std' => ''
 				),
 				array(
 					'name' => 'Fallback',
-					'desc' => 'Select a fallback card if an expiry date is set',
+					'desc' => $descFallback,
 					'id' => 'home_card_fallback_1',
 					'type' => 'select',
 					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
@@ -137,35 +144,35 @@ function home_meta_boxes() {
 			'fields' => array(
 				array(
 					'name' => 'Content URL',
-					'desc' => 'Card dynamically populated via Open Graph',
+					'desc' => $descUrl,
 					'id' => 'home_card_url_2',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override title',
-					'desc' => '',
+					'desc' => $descCardTitle,
 					'id' => 'home_card_title_2',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => 'Image size 768px x 576px',
+					'desc' => $descCardImage,
 					'id' => 'home_card_img_2',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Expire date',
-					'desc' => 'Date format dd/mm/yyyy',
+					'desc' => $descExpire,
 					'id' => 'home_card_expire_2',
 					'type' => 'date',
 					'std' => ''
 				),
 				array(
 					'name' => 'Fallback',
-					'desc' => 'Select a fallback card if an expiry date is set',
+					'desc' => $descFallback,
 					'id' => 'home_card_fallback_2',
 					'type' => 'select',
 					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
@@ -181,35 +188,35 @@ function home_meta_boxes() {
 			'fields' => array(
 				array(
 					'name' => 'Content URL',
-					'desc' => 'Card dynamically populated via Open Graph',
+					'desc' => $descUrl,
 					'id' => 'home_card_url_3',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override title',
-					'desc' => '',
+					'desc' => $descCardTitle,
 					'id' => 'home_card_title_3',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => 'Image size 768px x 576px',
+					'desc' => $descCardImage,
 					'id' => 'home_card_img_3',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Expire date',
-					'desc' => 'Date format dd/mm/yyyy',
+					'desc' => $descExpire,
 					'id' => 'home_card_expire_3',
 					'type' => 'date',
 					'std' => ''
 				),
 				array(
 					'name' => 'Fallback',
-					'desc' => 'Select a fallback card if an expiry date is set',
+					'desc' => $descFallback,
 					'id' => 'home_card_fallback_3',
 					'type' => 'select',
 					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
@@ -225,35 +232,35 @@ function home_meta_boxes() {
 			'fields' => array(
 				array(
 					'name' => 'Content URL',
-					'desc' => 'Card dynamically populated via Open Graph',
+					'desc' => $descUrl,
 					'id' => 'home_card_url_4',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override title',
-					'desc' => '',
+					'desc' => $descCardTitle,
 					'id' => 'home_card_title_4',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => 'Image size 768px x 576px',
+					'desc' => $descCardImage,
 					'id' => 'home_card_img_4',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Expire date',
-					'desc' => 'Date format dd/mm/yyyy',
+					'desc' => $descExpire,
 					'id' => 'home_card_expire_4',
 					'type' => 'date',
 					'std' => ''
 				),
 				array(
 					'name' => 'Fallback',
-					'desc' => 'Select a fallback card if an expiry date is set',
+					'desc' => $descFallback,
 					'id' => 'home_card_fallback_4',
 					'type' => 'select',
 					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
@@ -269,35 +276,35 @@ function home_meta_boxes() {
 			'fields' => array(
 				array(
 					'name' => 'Content URL',
-					'desc' => 'Card dynamically populated via Open Graph',
+					'desc' => $descUrl,
 					'id' => 'home_card_url_5',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override title',
-					'desc' => '',
+					'desc' => $descCardTitle,
 					'id' => 'home_card_title_5',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => 'Image size 768px x 576px',
+					'desc' => $descCardImage,
 					'id' => 'home_card_img_5',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Expire date',
-					'desc' => 'Date format dd/mm/yyyy',
+					'desc' => $descExpire,
 					'id' => 'home_card_expire_5',
 					'type' => 'date',
 					'std' => ''
 				),
 				array(
 					'name' => 'Fallback',
-					'desc' => 'Select a fallback card if an expiry date is set',
+					'desc' => $descFallback,
 					'id' => 'home_card_fallback_5',
 					'type' => 'select',
 					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
@@ -313,35 +320,35 @@ function home_meta_boxes() {
 			'fields' => array(
 				array(
 					'name' => 'Content URL',
-					'desc' => 'Card dynamically populated via Open Graph',
+					'desc' => $descUrl,
 					'id' => 'home_card_url_6',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override title',
-					'desc' => '',
+					'desc' => $descCardTitle,
 					'id' => 'home_card_title_6',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Override image',
-					'desc' => 'Image size 768px x 576px',
+					'desc' => $descCardImage,
 					'id' => 'home_card_img_6',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
 					'name' => 'Expire date',
-					'desc' => 'Date format dd/mm/yyyy',
+					'desc' => $descExpire,
 					'id' => 'home_card_expire_6',
 					'type' => 'date',
 					'std' => ''
 				),
 				array(
 					'name' => 'Fallback',
-					'desc' => 'Select a fallback card if an expiry date is set',
+					'desc' => $descFallback,
 					'id' => 'home_card_fallback_6',
 					'type' => 'select',
 					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
@@ -423,10 +430,16 @@ function content_type( $url ) {
 		return 'Blog';
 	}
 	if (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
-		return 'Media';
+
+		$icon = '<img src="'.get_stylesheet_directory_uri().'/img/icon-play-circle-o.svg">';
+
+		return 'Media'.$icon;
 	}
 	if (strpos($url, 'eventbrite') !== false) {
-		return 'Event';
+
+		$icon = '<img src="'.get_stylesheet_directory_uri().'/img/icon-calendar.svg">';
+
+		return 'Event'.$icon;
 	}
 }
 
