@@ -14,6 +14,7 @@ add_action( 'init', 'home_meta_boxes' );
 add_action( 'save_post', 'update_page_delete_transient' );
 add_action( 'save_post', 'check_cards' );
 add_action( 'admin_notices', 'cards_admin_notice' );
+add_action( 'admin_enqueue_scripts', 'admin_style' );
 
 // add_filter
 add_filter( 'nav_menu_css_class', 'attributes_filter', 100, 1 );

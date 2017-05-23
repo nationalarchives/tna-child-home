@@ -39,3 +39,7 @@ function tna_child_styles() {
 	wp_enqueue_style( 'tna-parent-styles' );
 	wp_enqueue_style( 'tna-child-styles' );
 }
+
+function admin_style() {
+	wp_enqueue_style( 'tna-child-admin-styles', get_stylesheet_directory_uri() . '/css/admin.css' );
+}

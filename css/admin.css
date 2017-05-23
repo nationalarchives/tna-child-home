@@ -1,0 +1,16 @@
+/*
+Admin css
+*/
+
+#home_banner h2,
+#home_card_1 h2,
+#home_card_2 h2,
+#home_card_3 h2,
+#home_card_4 h2,
+#home_card_5 h2,
+#home_card_6 h2 {
+    font-size: 18px;
+}
+.form-table th {
+    padding: 20px 10px 20px 10px;
+}
