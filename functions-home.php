@@ -30,7 +30,7 @@ function home_meta_boxes() {
 	$descExpire = 'Date format dd/mm/yyyy. If set the content will expire at midnight on day specified and fallback content will be displayed.';
 	$descFallback = 'Select a fallback card if an expiry date is set.';
 	$descCardTitle = 'Overrides Open Graph title.';
-	$descCardImage = 'Overrides Open Graph image. Paste image URL from media library. Image size 768px x 576px.';
+	$descCardImage = 'Overrides Open Graph image. Add or paste image URL from media library. Image size 768px x 576px.';
 
 	$home_meta_boxes = array(
 		array(
@@ -72,7 +72,7 @@ function home_meta_boxes() {
 					'name' => 'Image',
 					'desc' => 'Paste image URL from media library. Image size 1196px x 288px.',
 					'id' => 'home_banner_img',
-					'type' => 'text',
+					'type' => 'media',
 					'std' => ''
 				),
 				array(
@@ -116,7 +116,7 @@ function home_meta_boxes() {
 					'name' => 'Override image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_1',
-					'type' => 'text',
+					'type' => 'media',
 					'std' => ''
 				),
 				array(
@@ -131,7 +131,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_1',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		),
@@ -160,7 +160,7 @@ function home_meta_boxes() {
 					'name' => 'Override image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_2',
-					'type' => 'text',
+					'type' => 'media',
 					'std' => ''
 				),
 				array(
@@ -175,7 +175,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_2',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		),
@@ -204,7 +204,7 @@ function home_meta_boxes() {
 					'name' => 'Override image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_3',
-					'type' => 'text',
+					'type' => 'media',
 					'std' => ''
 				),
 				array(
@@ -219,7 +219,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_3',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		),
@@ -248,7 +248,7 @@ function home_meta_boxes() {
 					'name' => 'Override image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_4',
-					'type' => 'text',
+					'type' => 'media',
 					'std' => ''
 				),
 				array(
@@ -263,7 +263,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_4',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		),
@@ -292,7 +292,7 @@ function home_meta_boxes() {
 					'name' => 'Override image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_5',
-					'type' => 'text',
+					'type' => 'media',
 					'std' => ''
 				),
 				array(
@@ -307,7 +307,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_5',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		),
@@ -336,7 +336,7 @@ function home_meta_boxes() {
 					'name' => 'Override image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_6',
-					'type' => 'text',
+					'type' => 'media',
 					'std' => ''
 				),
 				array(
@@ -351,7 +351,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_6',
 					'type' => 'select',
-					'options' => array('Please select', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
 				)
 			)
 		)
@@ -577,23 +577,39 @@ function card_fallback( $fallback, $id ) {
 
 function check_cards() {
 
-	$stack = array();
-
-	for ( $i=1 ; $i<=6 ; $i++ ) {
-
-		$url = $_POST['home_card_url_'.$i];
-
-		if ($url) {
-			array_push($stack, $url);
+	if (isset($_GET['post'])) {
+		$post_id = $_GET['post'];
+	} else {
+		if (isset($_POST['post_ID'])) {
+			$post_id = $_POST['post_ID'];
+		} else {
+			$post_id = '';
 		}
 	}
+	if( !isset( $post_id ) ) return;
 
-	$result = count($stack);
+	$template_file = get_post_meta($post_id, '_wp_page_template', true);
 
-	if ( $result == 3 || $result == 6 ) {
-		// do nothing
-	} else {
-		set_transient( get_current_user_id().'cards_error', $result );
+	if( $template_file == 'page-home.php' ) {
+
+		$stack = array();
+
+		for ( $i = 1; $i <= 6; $i ++ ) {
+
+			$url = $_POST[ 'home_card_url_' . $i ];
+
+			if ( $url ) {
+				array_push( $stack, $url );
+			}
+		}
+
+		$result = count( $stack );
+
+		if ( $result == 3 || $result == 6 ) {
+			// do nothing
+		} else {
+			set_transient( get_current_user_id() . 'cards_error', $result );
+		}
 	}
 }
 

@@ -42,4 +42,7 @@ function tna_child_styles() {
 
 function admin_style() {
 	wp_enqueue_style( 'tna-child-admin-styles', get_stylesheet_directory_uri() . '/css/admin.css' );
+
+	wp_register_script('admin-scripts', get_stylesheet_directory_uri() . '/js/admin.js', array(), '1.0.0' );
+	wp_enqueue_script('admin-scripts');
 }
