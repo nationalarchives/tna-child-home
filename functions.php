@@ -1,9 +1,9 @@
 <?php
 
 // Include functions
-include 'functions-global.php';
-include 'functions-menu.php';
-include 'functions-home.php';
+include 'inc/functions-global.php';
+include 'inc/functions-menu.php';
+include 'inc/functions-home.php';
 
 // add_action
 add_action( 'wp_enqueue_scripts', 'dequeue_parent_style', 9999 );
