@@ -5,20 +5,7 @@
 
 function hide_editor_from_homepage() {
 
-	if (isset($_GET['post'])) {
-		$post_id = $_GET['post'];
-	} else {
-		if (isset($_POST['post_ID'])) {
-			$post_id = $_POST['post_ID'];
-		} else {
-			$post_id = '';
-		}
-	}
-	if( !isset( $post_id ) ) return;
-
-	$template_file = get_post_meta($post_id, '_wp_page_template', true);
-
-	if( $template_file == 'page-home.php' ) {
+	if ( is_homepage_template() ) {
 		remove_meta_box( 'postexcerpt' , 'page' , 'normal' );
 		remove_post_type_support('page', 'editor');
 	}
@@ -357,20 +344,7 @@ function home_meta_boxes() {
 		)
 	);
 
-	if (isset($_GET['post'])) {
-		$post_id = $_GET['post'];
-	} else {
-		if (isset($_POST['post_ID'])) {
-			$post_id = $_POST['post_ID'];
-		} else {
-			$post_id = '';
-		}
-	}
-	if( !isset( $post_id ) ) return;
-
-	$template_file = get_post_meta($post_id, '_wp_page_template', true);
-
-	if( $template_file == 'page-home.php' ) {
+	if( is_homepage_template() ) {
 		foreach ( $home_meta_boxes as $meta_box ) {
 			$home_box = new CreateMetaBox( $meta_box );
 		}
@@ -577,20 +551,7 @@ function card_fallback( $fallback, $id ) {
 
 function check_cards() {
 
-	if (isset($_GET['post'])) {
-		$post_id = $_GET['post'];
-	} else {
-		if (isset($_POST['post_ID'])) {
-			$post_id = $_POST['post_ID'];
-		} else {
-			$post_id = '';
-		}
-	}
-	if( !isset( $post_id ) ) return;
-
-	$template_file = get_post_meta($post_id, '_wp_page_template', true);
-
-	if( $template_file == 'page-home.php' ) {
+	if( is_homepage_template() ) {
 
 		$stack = array();
 
@@ -621,6 +582,27 @@ function cards_admin_notice() {
 		</div>
 	<?php
 		delete_transient( get_current_user_id().'cards_error' );
+	}
+}
+
+function is_homepage_template() {
+	if (isset($_GET['post'])) {
+		$post_id = $_GET['post'];
+	} else {
+		if (isset($_POST['post_ID'])) {
+			$post_id = $_POST['post_ID'];
+		} else {
+			$post_id = '';
+		}
+	}
+	if( !isset( $post_id ) ) return;
+
+	$template_file = get_post_meta($post_id, '_wp_page_template', true);
+
+	if( $template_file == 'page-home.php' ) {
+		return true;
+	} else {
+		return false;
 	}
 }
 
