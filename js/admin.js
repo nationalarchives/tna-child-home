@@ -2,84 +2,22 @@
  * Admin JS.
  */
 
-(function($){
-    $.fn.addMediaMetabox = function(options){
-        return this.each(function(){
-            var $this = $(this);
-            $this.on('click', function() {
-                console.log('I am happy');
-            })
-        });
-    };
-}(jQuery));
-
-console.log('.add-media-metabox is' + jQuery('.add-media-metabox').length);
-
-
-
 jQuery(document).ready(function() {
-jQuery('.add-media-metabox').addMediaMetabox();
-    jQuery('#home_banner_img_button').click(function() {
+    jQuery('.media-metabox-button-js').click(function() {
+
+        var $this = jQuery(this);
+
+        $target = jQuery('#' + $this.attr('name'));
+
         tb_show('', 'media-upload.php?TB_iframe=true');
+
         window.send_to_editor = function(html) {
             url = jQuery(html).attr('href');
-            jQuery('#home_banner_img').val(url);
+            $target.val(url);
             tb_remove();
         };
-        return false;
-    });
-    jQuery('#home_card_img_1_button').click(function() {
-        tb_show('', 'media-upload.php?TB_iframe=true');
-        window.send_to_editor = function(html) {
-            url = jQuery(html).attr('href');
-            jQuery('#home_card_img_1').val(url);
-            tb_remove();
-        };
-        return false;
-    });
-    jQuery('#home_card_img_2_button').click(function() {
-        tb_show('', 'media-upload.php?TB_iframe=true');
-        window.send_to_editor = function(html) {
-            url = jQuery(html).attr('href');
-            jQuery('#home_card_img_2').val(url);
-            tb_remove();
-        };
-        return false;
-    });
-    jQuery('#home_card_img_3_button').click(function() {
-        tb_show('', 'media-upload.php?TB_iframe=true');
-        window.send_to_editor = function(html) {
-            url = jQuery(html).attr('href');
-            jQuery('#home_card_img_3').val(url);
-            tb_remove();
-        };
-        return false;
-    });
-    jQuery('#home_card_img_4_button').click(function() {
-        tb_show('', 'media-upload.php?TB_iframe=true');
-        window.send_to_editor = function(html) {
-            url = jQuery(html).attr('href');
-            jQuery('#home_card_img_4').val(url);
-            tb_remove();
-        };
-        return false;
-    });
-    jQuery('#home_card_img_5_button').click(function() {
-        tb_show('', 'media-upload.php?TB_iframe=true');
-        window.send_to_editor = function(html) {
-            url = jQuery(html).attr('href');
-            jQuery('#home_card_img_5').val(url);
-            tb_remove();
-        };
-        return false;
-    });
-    jQuery('#home_card_img_6_button').click(function() {
-        tb_show('', 'media-upload.php?TB_iframe=true');
-        window.send_to_editor = function(html) {
-            url = jQuery(html).attr('href');
-            jQuery('#home_card_img_6').val(url);
-            tb_remove();
-        };
+
         return false;
     });
 });
+
