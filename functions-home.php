@@ -18,6 +18,7 @@ function home_meta_boxes() {
 	$descFallback = 'Select a fallback card if an expiry date is set.';
 	$descCardTitle = 'Overrides Open Graph title.';
 	$descCardImage = 'Overrides Open Graph image. Add or paste image URL from media library. Image size 768px x 576px.';
+	$descBannerImage = 'Add or paste image URL from media library. Image size 1200px x 630px (1.91:1 aspect ratio).';
 
 	$home_meta_boxes = array(
 		array(
@@ -57,7 +58,7 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Image',
-					'desc' => 'Paste image URL from media library. Image size 1196px x 288px.',
+					'desc' => $descBannerImage,
 					'id' => 'home_banner_img',
 					'type' => 'media',
 					'std' => ''
@@ -559,8 +560,15 @@ function check_cards() {
 
 			$url = $_POST[ 'home_card_url_' . $i ];
 
+			$expire = $_POST[ 'home_card_expire_' . $i ];
+			$fallback = $_POST[ 'home_card_fallback_' . $i ];
+
 			if ( $url ) {
 				array_push( $stack, $url );
+			}
+
+			if ( $expire && $fallback == 'Select fallback content' ) {
+				set_transient( get_current_user_id() . 'cards_error_fallback', 'error' );
 			}
 		}
 
@@ -582,6 +590,14 @@ function cards_admin_notice() {
 		</div>
 	<?php
 		delete_transient( get_current_user_id().'cards_error' );
+	}
+	$cards_error_fallback = get_transient( get_current_user_id().'cards_error_fallback' );
+	if ($cards_error_fallback) { ?>
+		<div class="notice notice-error">
+			<p><?php _e( 'You have select a card to expire without a fallback. Please select a fallback option.', 'cards-error' ); ?></p>
+		</div>
+		<?php
+		delete_transient( get_current_user_id().'cards_error_fallback' );
 	}
 }
 
