@@ -2,8 +2,23 @@
  * Admin JS.
  */
 
+(function($){
+    $.fn.addMediaMetabox = function(options){
+        return this.each(function(){
+            var $this = $(this);
+            $this.on('click', function() {
+                console.log('I am happy');
+            })
+        });
+    };
+}(jQuery));
+
+console.log('.add-media-metabox is' + jQuery('.add-media-metabox').length);
+
+
 
 jQuery(document).ready(function() {
+jQuery('.add-media-metabox').addMediaMetabox();
     jQuery('#home_banner_img_button').click(function() {
         tb_show('', 'media-upload.php?TB_iframe=true');
         window.send_to_editor = function(html) {
