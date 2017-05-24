@@ -35,7 +35,7 @@ function home_meta_boxes() {
 	$home_meta_boxes = array(
 		array(
 			'id' => 'home_banner',
-			'title' => 'Homepage banner',
+			'title' => 'Homepage hero banner',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -93,7 +93,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_1',
-			'title' => 'Homepage card 1',
+			'title' => 'Homepage card 1 - top left position',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -137,7 +137,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_2',
-			'title' => 'Homepage card 2',
+			'title' => 'Homepage card 2 - top middle position',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -181,7 +181,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_3',
-			'title' => 'Homepage card 3',
+			'title' => 'Homepage card 3 - top right position',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -225,7 +225,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_4',
-			'title' => 'Homepage card 4',
+			'title' => 'Homepage card 4 - bottom left position',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -269,7 +269,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_5',
-			'title' => 'Homepage card 5',
+			'title' => 'Homepage card 5 - bottom middle position',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
@@ -313,7 +313,7 @@ function home_meta_boxes() {
 		),
 		array(
 			'id' => 'home_card_6',
-			'title' => 'Homepage card 6',
+			'title' => 'Homepage card 6 - bottom right position',
 			'pages' => 'page',
 			'context' => 'normal',
 			'priority' => 'high',
