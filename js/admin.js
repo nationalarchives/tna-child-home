@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
         tb_show('', 'media-upload.php?TB_iframe=true');
 
         window.send_to_editor = function(html) {
-            url = jQuery(html).attr('href');
+            url = jQuery( 'img', jQuery( html ) ).attr('src');
             $target.val(url);
             tb_remove();
         };
