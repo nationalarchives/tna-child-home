@@ -13,11 +13,11 @@ function hide_editor_from_homepage() {
 
 function home_meta_boxes() {
 
-	$descUrl = 'Card title and image dynamically populated via Open Graph.';
+	$descUrl = 'Enter the URL from the page you want to link to. This will automatically pull in the title and image (press preview to view).';
 	$descExpire = 'Date format dd/mm/yyyy. If set the content will expire at midnight on day specified and fallback content will be displayed.';
-	$descFallback = 'Select a fallback card if an expiry date is set.';
-	$descCardTitle = 'Overrides Open Graph title.';
-	$descCardImage = 'Overrides Open Graph image. Add or paste image URL from media library. Image size 768px x 576px.';
+	$descFallback = '‘Latest news/blog’ will display the most recently published content. ‘What’s On’ is a static card.';
+	$descCardTitle = 'Only enter substitute text here when you need to override the automated title.';
+	$descCardImage = 'If you need to override the automated image, paste the image URL here after uploading it to the image library. Image size 768px x 576px.';
 	$descBannerImage = 'Add or paste image URL from media library. Image size 1240px x 630px (~1.91:1 aspect ratio).';
 
 	$home_meta_boxes = array(
@@ -87,7 +87,7 @@ function home_meta_boxes() {
 			'priority' => 'high',
 			'fields' => array(
 				array(
-					'name' => 'Content URL',
+					'name' => 'Content URL*',
 					'desc' => $descUrl,
 					'id' => 'home_card_url_1',
 					'type' => 'text',
@@ -131,7 +131,7 @@ function home_meta_boxes() {
 			'priority' => 'high',
 			'fields' => array(
 				array(
-					'name' => 'Content URL',
+					'name' => 'Content URL*',
 					'desc' => $descUrl,
 					'id' => 'home_card_url_2',
 					'type' => 'text',
@@ -175,7 +175,7 @@ function home_meta_boxes() {
 			'priority' => 'high',
 			'fields' => array(
 				array(
-					'name' => 'Content URL',
+					'name' => 'Content URL*',
 					'desc' => $descUrl,
 					'id' => 'home_card_url_3',
 					'type' => 'text',
@@ -219,7 +219,7 @@ function home_meta_boxes() {
 			'priority' => 'high',
 			'fields' => array(
 				array(
-					'name' => 'Content URL',
+					'name' => 'Content URL*',
 					'desc' => $descUrl,
 					'id' => 'home_card_url_4',
 					'type' => 'text',
@@ -263,7 +263,7 @@ function home_meta_boxes() {
 			'priority' => 'high',
 			'fields' => array(
 				array(
-					'name' => 'Content URL',
+					'name' => 'Content URL*',
 					'desc' => $descUrl,
 					'id' => 'home_card_url_5',
 					'type' => 'text',
@@ -307,7 +307,7 @@ function home_meta_boxes() {
 			'priority' => 'high',
 			'fields' => array(
 				array(
-					'name' => 'Content URL',
+					'name' => 'Content URL*',
 					'desc' => $descUrl,
 					'id' => 'home_card_url_6',
 					'type' => 'text',
@@ -356,6 +356,7 @@ function get_html_content( $url ) {
 
 	$ch = curl_init();
 
+	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_PROXY, WP_PROXY_HOST . ':' . WP_PROXY_PORT);
 	curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 1);
 	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
@@ -363,9 +364,6 @@ function get_html_content( $url ) {
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
 
 	$content = curl_exec($ch);
 
