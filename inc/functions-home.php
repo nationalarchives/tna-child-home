@@ -378,7 +378,11 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 	$meta_og_title = trim($title);
 
 	if ( $url ) {
-		$content_html = get_html_content($url);
+		if (strpos($url, 'eventbrite') !== false) {
+			$content_html = get_html_content($url);
+		} else {
+			$content_html = file_get_contents($url);
+		}
 
 		$html = new DOMDocument();
 		@$html->loadHTML($content_html);
