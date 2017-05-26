@@ -377,8 +377,10 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 	$meta_og_img = trim($image);
 	$meta_og_title = trim($title);
 
+	$environment = identifyEnvironmentFromIP($_SERVER['SERVER_ADDR'], $_SERVER['REMOTE_ADDR']);
+
 	if ( $url ) {
-		if (strpos($url, 'eventbrite') !== false) {
+		if (strpos($url, 'eventbrite') !== false && $environment !== 'development' ) {
 			$content_html = get_html_content($url);
 		} else {
 			$content_html = file_get_contents($url);
@@ -426,7 +428,7 @@ function content_type( $url ) {
 function card_html( $id, $url, $image, $type, $title ) {
 
 	$target = '';
-	if ($type=='Event') {
+	if ($type=='Event<img src="'.get_stylesheet_directory_uri().'/img/icon-calendar.svg">') {
 		$target = 'target="_blank"';
 	}
 

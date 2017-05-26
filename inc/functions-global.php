@@ -46,3 +46,17 @@ function admin_style() {
 	wp_register_script('admin-scripts', get_stylesheet_directory_uri() . '/js/admin.js', array(), '1.0.0' );
 	wp_enqueue_script('admin-scripts');
 }
+
+function identifyEnvironmentFromIP($server_ip = null, $client_ip = null)
+{
+	if ($server_ip === null || $client_ip === null) {
+		throw new BadFunctionCallException('identifyEnvironmentFromIP function must be passed at IP');
+	}
+	if ($client_ip === $server_ip) {
+		return 'development';
+	}
+	if (substr($client_ip, 0, 3) === '10.') {
+		return 'internal';
+	}
+	return 'external';
+}
