@@ -30,6 +30,9 @@ get_header(); ?>
 					$expire     = get_post_meta( $post->ID, 'home_card_expire_'.$i, true );
 					$fallback   = get_post_meta( $post->ID, 'home_card_fallback_'.$i, true );
 
+					$title = '';
+					$image = '';
+
 					$transient  = get_transient( 'homepage_cards_html'.$i );
 
 					if( !empty( $transient ) && is_card_active( $expire ) ) {
