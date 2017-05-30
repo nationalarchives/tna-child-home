@@ -40,6 +40,12 @@ function tna_child_styles() {
 	wp_enqueue_style( 'tna-child-styles' );
 }
 
+function tna_chile_scripts() {
+	wp_register_script( 'tna-child-home-js', get_stylesheet_directory_uri() . '/js/tna-child-home.js', array(), '0.1', true );
+	wp_enqueue_script( 'tna-child-home-js' );
+}
+
+
 function admin_style() {
 	wp_enqueue_style( 'tna-child-admin-styles', get_stylesheet_directory_uri() . '/css/admin.css' );
 
