@@ -559,7 +559,7 @@ function card_fallback( $fallback, $id ) {
 
 function check_cards() {
 
-	if( is_homepage_template() ) {
+	if( is_homepage_template() && isset($_POST['home_card_url_1']) ) {
 
 		$stack = array();
 
