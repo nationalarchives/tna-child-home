@@ -592,15 +592,15 @@ function check_cards() {
 function cards_admin_notice() {
 	$cards_error = get_transient( get_current_user_id().'cards_error' );
 	if ($cards_error) { ?>
-		<div class="notice notice-error">
-			<p><?php _e( 'You have completed '.$cards_error.' cards. Please have either a combination of 3 or 6 cards completed.', 'cards-error' ); ?></p>
+		<div class="notice notice-error card-error">
+			<p><?php _e( 'You haven\'t edited the fields correctly. Please enter content for either 3 or 6 cards.', 'cards-error' ); ?></p>
 		</div>
 	<?php
 		delete_transient( get_current_user_id().'cards_error' );
 	}
 	$cards_error_fallback = get_transient( get_current_user_id().'cards_error_fallback' );
 	if ($cards_error_fallback) { ?>
-		<div class="notice notice-error">
+		<div class="notice notice-error card-error">
 			<p><?php _e( 'You have select a card to expire without a fallback. Please select a fallback option.', 'cards-error' ); ?></p>
 		</div>
 		<?php

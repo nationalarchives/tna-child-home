@@ -14,3 +14,10 @@ Admin css
 .form-table th {
     padding: 20px 10px 20px 10px;
 }
+.card-error {
+    background: #f2dede;
+    padding: 1em;
+}
+.card-error p {
+    font-size: 18px;
+}
