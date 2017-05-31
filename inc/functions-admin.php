@@ -10,7 +10,7 @@ function tna_homepage_menu() {
 }
 
 function homepage_admin_page_settings() {
-	register_setting( 'homepage-settings-group', 'home_masthead_descr' );
+	register_setting( 'homepage-settings-group', 'home_masthead_desc' );
 	register_setting( 'homepage-settings-group', 'home_masthead_btn_text_1' );
 
 	register_setting( 'homepage-settings-group', 'home_landing_page_title_1' );
@@ -41,8 +41,8 @@ function homepage_admin_page() {
 			<h2>Masthead description</h2>
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"><label for="home_masthead_descr">Description</label></th>
-					<td><textarea name="home_masthead_descr"><?php echo esc_attr( get_option('home_masthead_descr') ); ?></textarea></td>
+					<th scope="row"><label for="home_masthead_desc">Description</label></th>
+					<td><textarea name="home_masthead_desc"><?php echo esc_attr( get_option('home_masthead_desc') ); ?></textarea></td>
 				</tr>
 			</table>
 

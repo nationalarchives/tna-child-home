@@ -5,6 +5,9 @@ Template Name: Homepage
 get_header(); ?>
 
 <main id="primary" role="main" class="content-area">
+
+	<?php get_template_part( 'partials/masthead' ); ?>
+
 	<?php
 		global $post;
 		$expire     = get_post_meta( $post->ID, 'home_banner_expire', true );
