@@ -478,7 +478,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 										data-gtm-id="hero_1"
 										data-gtm-position="hero_position_banner"
 										data-gtm-creative="homepage_hero_%s"
-		                            class="ghost-button homepage-hero" title="%s">%s</a>
+		                            class="ghost-button homepage-hero" aria-label="%s" role="button">%s</a>
 		                        </div>
 		                    </div>
 		                </div>
