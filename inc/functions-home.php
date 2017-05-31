@@ -406,46 +406,59 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 
 function content_type( $url ) {
 	if (strpos($url, 'nationalarchives.gov.uk/about/news/') !== false) {
+
 		return 'News';
 	}
 	if (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
+
 		return 'Blog';
 	}
 	if (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
 
-		$icon = '<img src="'.get_stylesheet_directory_uri().'/img/icon-play-circle-o.svg">';
-
-		return 'Media'.$icon;
+		return 'Media';
 	}
 	if (strpos($url, 'eventbrite') !== false) {
 
-		$icon = '<img src="'.get_stylesheet_directory_uri().'/img/icon-calendar.svg">';
-
-		return 'Event'.$icon;
+		return 'Event';
 	}
 }
 
-function card_html( $id, $url, $image, $type, $title ) {
-
-	$target = '';
-	if ($type=='Event<img src="'.get_stylesheet_directory_uri().'/img/icon-calendar.svg">') {
-		$target = 'target="_blank"';
-	}
+function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
 
 	$html = '<div class="col-card">
 				<div class="card">
-					<a id="card-%s" href="%s" class="homepage-card" %s>
+					<a id="card-%s" href="%s" %s
+						data-gtm-name="%s"
+						data-gtm-id="card_%s"
+						data-gtm-position="card_position_%s"
+						data-gtm-creative="homepage_card_%s"
+					class="homepage-card">
 						<div class="entry-thumbnail" style="background-image: url(%s)">
 						</div>
 						<div class="entry-content">
-							<div class="content-type">%s</div>
+							<div class="content-type %s">%s</div>
 							<h3>%s</h3>
 						</div>
 					</a>
 				</div>
 			</div>';
 
-	return sprintf( $html, $id, $url, $target, $image, $type, $title );
+	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $icon, $type, $title );
+}
+
+function card_html( $id, $url, $image, $type, $title ) {
+
+	$target = '';
+	$icon = '';
+	if ($type=='Event') {
+		$target = 'target="_blank"';
+		$icon = 'event-icon';
+	}
+	if ($type=='Media') {
+		$icon = 'media-icon';
+	}
+
+	return card_html_markup( $id, $url, $target, $image, $icon, $type, $title );
 
 }
 
@@ -512,8 +525,10 @@ function card_fallback( $fallback, $id ) {
 
 	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
 	$image = get_stylesheet_directory_uri().'/img/events.jpg';
-	$content_type = 'Events';
+	$type = 'Events';
 	$title = 'Upcoming events and exhibitions at The National Archives';
+	$target = '';
+	$icon = 'event-icon';
 
 	if ( $fallback == 'Latest news' ) {
 
@@ -523,8 +538,9 @@ function card_fallback( $fallback, $id ) {
 
 		$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
 		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
-		$content_type = 'News';
+		$type = 'News';
 		$title = $content->channel->item[0]->title;
+		$icon = '';
 
 	}
 	if ( $fallback == 'Latest blog post' ) {
@@ -535,26 +551,13 @@ function card_fallback( $fallback, $id ) {
 
 		$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
 		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
-		$content_type = 'Blog';
+		$type = 'Blog';
 		$title = $content->channel->item[0]->title;
+		$icon = '';
 
 	}
 
-	$html = '<div class="col-card">
-				<div class="card">
-					<a id="card-%s" href="%s" class="homepage-card">
-						<div class="entry-thumbnail" style="background-image: url(%s)">
-						</div>
-						<div class="entry-content">
-							<div class="content-type">%s</div>
-							<h3>%s</h3>
-						</div>
-					</a>
-				</div>
-			</div>';
-
-	return sprintf( $html, $id, $url, $image, $content_type, $title );
-
+	return card_html_markup( $id, $url, $target, $image, $icon, $type, $title );
 }
 
 function check_cards() {
