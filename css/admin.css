@@ -1,0 +1,30 @@
+/*
+Admin css
+*/
+
+#home_banner h2,
+#home_card_1 h2,
+#home_card_2 h2,
+#home_card_3 h2,
+#home_card_4 h2,
+#home_card_5 h2,
+#home_card_6 h2 {
+    font-size: 18px;
+}
+.form-table th {
+    padding: 20px 10px 20px 10px;
+}
+.card-error {
+    background: #f2dede;
+    padding: 1em;
+}
+.card-error p {
+    font-size: 18px;
+}
+
+.tna-homepage input[type=text],
+.tna-homepage textarea {
+    width: 100%;
+    max-width: 480px;
+}
+.tna-homepage

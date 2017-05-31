@@ -1,7 +1,6 @@
 /* Cards */
 
 .cards-wrapper {
-  margin-bottom: 1.6em;
 
   .col-card {
     width: 33.33333%;
@@ -64,7 +63,8 @@
       }
       .content-type img {
         float: right;
-        opacity: 0.5;
+        width: 1em;
+        height: 1em;
       }
     }
   }
