@@ -473,7 +473,12 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 		                        <h2>%s</h2>
 		                        <p>%s</p>
 		                        <div class="banner-call-to-action">
-		                            <a id="hero-banner" href="%s" class="ghost-button homepage-hero" title="%s">%s</a>
+		                            <a id="hero-banner" href="%s"
+			                            data-gtm-name="%s"
+										data-gtm-id="hero_1"
+										data-gtm-position="hero_position_banner"
+										data-gtm-creative="homepage_hero_%s"
+		                            class="ghost-button homepage-hero" title="%s">%s</a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -481,7 +486,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 		        </div>
 		    </div>';
 
-	return sprintf( $html, $image, $type, $title, $excerpt, $url, $title, $button );
+	return sprintf( $html, $image, $type, $title, $excerpt, $url, $title, $type, $title, $button );
 
 }
 
