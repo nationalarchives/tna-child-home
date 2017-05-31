@@ -425,6 +425,8 @@ function content_type( $url ) {
 
 function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
 
+	$title = esc_attr($title);
+
 	$html = '<div class="col-card">
 				<div class="card">
 					<a id="card-%s" href="%s" %s
@@ -463,6 +465,8 @@ function card_html( $id, $url, $image, $type, $title ) {
 }
 
 function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
+
+	$title = esc_attr($title);
 
 	$html = '<div class="container">
 		        <div class="row">
