@@ -3,7 +3,7 @@
  */
 
 jQuery(document).ready(function() {
-    jQuery('.media-metabox-button-js').click(function() {
+    jQuery('.media-metabox-button-js').on('click', function() {
 
         var $this = jQuery(this);
 

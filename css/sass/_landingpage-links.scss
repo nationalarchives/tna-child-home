@@ -1,0 +1,37 @@
+/* Landingpage links */
+
+.landingpage-links-wrapper {
+  margin-bottom: 1.5em;
+  a {
+    position: relative;
+    height: 100%;
+    display: block;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  .landingpage-link-card {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px #ddd;
+    margin-bottom: 1em;
+  }
+  .entry-head {
+    display: table;
+    padding: 1em 1.5em;
+    background-color: #597a87;
+    min-height: 98px;
+    height: auto;
+    width: 100%;
+    color: #fff;
+    h3 {
+      margin: 0;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  .entry-description {
+    padding: 1em 1em 0 1em;
+    color: #444;
+  }
+}

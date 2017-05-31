@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
 
         for (var i = 0; i < elements.length; i++) {
 
-            elements[i].style.display = "none";
+            elements[i].hide();
         }
     }
 
@@ -20,7 +20,7 @@ jQuery(document).ready(function() {
 
         for (var i = 3; i < elements.length; i++) {
 
-            elements[i].style.display = "none";
+            elements[i].hide();
         }
     }
 

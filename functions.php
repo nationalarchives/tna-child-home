@@ -10,7 +10,7 @@ include 'inc/functions-admin.php';
 add_action( 'wp_enqueue_scripts', 'dequeue_parent_style', 9999 );
 add_action( 'wp_head', 'dequeue_parent_style', 9999 );
 add_action( 'wp_enqueue_scripts', 'tna_child_styles' );
-add_action( 'wp_enqueue_scripts', 'tna_chile_scripts' );
+add_action( 'wp_enqueue_scripts', 'tna_child_scripts' );
 add_action( 'admin_init', 'hide_editor_from_homepage' );
 add_action( 'init', 'home_meta_boxes' );
 add_action( 'save_post', 'update_page_delete_transient' );

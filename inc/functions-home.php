@@ -643,7 +643,7 @@ function is_homepage_template() {
 
 function landingpage_link_html_markup( $title, $url, $text ) {
 
-	$html = '<div class="col-md-3">
+	$html = '<div class="col-md-3 col-sm-6">
                     <div class="landingpage-link-card">
                         <a href="%s">
                             <div class="entry-content">
