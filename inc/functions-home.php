@@ -641,3 +641,24 @@ function is_homepage_template() {
 	}
 }
 
+function landingpage_link_html_markup( $title, $url, $text ) {
+
+	$html = '<div class="col-md-3">
+                    <div class="landingpage-link-card">
+                        <a href="%s">
+                            <div class="entry-content">
+                                <div class="entry-head">
+                                    <h3>%s</h3>
+                                </div>
+                                <div class="entry-description">
+                                    <p>%s</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>';
+
+	return sprintf( $html, $url, $title, $text );
+
+}
+

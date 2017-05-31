@@ -57,6 +57,9 @@ get_header(); ?>
 			</div>
 		</div>
 	</div>
+
+	<?php get_template_part( 'partials/landingpage', 'links' ); ?>
+
 </main>
 
 <?php get_footer(); ?>

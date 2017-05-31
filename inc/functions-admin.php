@@ -38,24 +38,24 @@ function homepage_admin_page() {
 			<?php settings_fields( 'homepage-settings-group' ); ?>
 			<?php do_settings_sections( 'homepage-settings-group' ); ?>
 
+			<h2>Masthead description</h2>
 			<table class="form-table">
-				<h2>Masthead description</h2>
 				<tr valign="top">
 					<th scope="row"><label for="home_masthead_descr">Description</label></th>
 					<td><textarea name="home_masthead_descr"><?php echo esc_attr( get_option('home_masthead_descr') ); ?></textarea></td>
 				</tr>
 			</table>
 
+			<h2>Masthead buttons</h2>
 			<table class="form-table">
-				<h2>Masthead buttons</h2>
 				<tr valign="top">
 					<th scope="row"><label for="home_masthead_btn_text_1">Button label</label></th>
 					<td><input type="text" name="home_masthead_btn_text_1" value="<?php echo esc_attr( get_option('home_masthead_btn_text_1') ); ?>" /></td>
 				</tr>
 			</table>
 
+			<h2>Landing page link content box 1</h2>
 			<table class="form-table">
-				<h2>Landing page link content box 1</h2>
 				<tr valign="top">
 					<th scope="row"><label for="home_landing_page_title_1">Title</label></th>
 					<td><input type="text" name="home_landing_page_title_1" value="<?php echo esc_attr( get_option('home_landing_page_title_1') ); ?>" /></td>
@@ -70,8 +70,8 @@ function homepage_admin_page() {
 				</tr>
 			</table>
 
+			<h2>Landing page link content box 2</h2>
 			<table class="form-table">
-				<h2>Landing page link content box 2</h2>
 				<tr valign="top">
 					<th scope="row"><label for="home_landing_page_title_2">Title</label></th>
 					<td><input type="text" name="home_landing_page_title_2" value="<?php echo esc_attr( get_option('home_landing_page_title_2') ); ?>" /></td>
@@ -86,8 +86,8 @@ function homepage_admin_page() {
 				</tr>
 			</table>
 
+			<h2>Landing page link content box 3</h2>
 			<table class="form-table">
-				<h2>Landing page link content box 3</h2>
 				<tr valign="top">
 					<th scope="row"><label for="home_landing_page_title_3">Title</label></th>
 					<td><input type="text" name="home_landing_page_title_3" value="<?php echo esc_attr( get_option('home_landing_page_title_3') ); ?>" /></td>
@@ -102,8 +102,8 @@ function homepage_admin_page() {
 				</tr>
 			</table>
 
+			<h2>Landing page link content box 4</h2>
 			<table class="form-table">
-				<h2>Landing page link content box 4</h2>
 				<tr valign="top">
 					<th scope="row"><label for="home_landing_page_title_4">Title</label></th>
 					<td><input type="text" name="home_landing_page_title_4" value="<?php echo esc_attr( get_option('home_landing_page_title_4') ); ?>" /></td>

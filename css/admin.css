@@ -21,3 +21,10 @@ Admin css
 .card-error p {
     font-size: 18px;
 }
+
+.tna-homepage input[type=text],
+.tna-homepage textarea {
+    width: 100%;
+    max-width: 480px;
+}
+.tna-homepage
