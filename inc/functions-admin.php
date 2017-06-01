@@ -26,6 +26,13 @@ function homepage_admin_page_settings() {
 		register_setting( 'homepage-settings-group', 'home_landing_page_text_'.$i );
 
 	}
+
+	for ( $i=1 ; $i<=9 ; $i++ ) {
+
+		register_setting( 'homepage-settings-group', 'open_date_'.$i );
+		register_setting( 'homepage-settings-group', 'open_status_'.$i );
+
+	}
 }
 
 function homepage_admin_page() {
@@ -61,6 +68,8 @@ function homepage_admin_page() {
 				</table>
 			<?php } ?>
 
+			<?php submit_button(); ?>
+
 			<?php for ( $i=1 ; $i<=4 ; $i++ ) { ?>
 					<h2>Landing page link card <?php echo $i; ?></h2>
 					<table class="form-table">
@@ -79,13 +88,21 @@ function homepage_admin_page() {
 					</table>
 			<?php } ?>
 
+			<?php submit_button(); ?>
+
 			<h2>Opening times override</h2>
 			<table class="form-table opening-times">
 			<?php for ( $i=1 ; $i<=9 ; $i++ ) { ?>
 					<tr valign="top">
 						<th scope="row"><label for="open_date_<?php echo $i; ?>">Date / times</label></th>
-						<td><input type="date" name="open_date_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('open_date_'.$i) ); ?>" />
-						<input type="text" name="open_time_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('open_time_'.$i) ); ?>" /></td>
+						<td>
+							<select name="open_status_<?php echo $i; ?>">
+								<option value="disabled">Please select</option>
+								<option <?php if (get_option('open_status_'.$i) == 'open') { echo ' selected="selected"'; }; ?> value="open">Open</option>
+								<option <?php if (get_option('open_status_'.$i) == 'closed') { echo ' selected="selected"'; }; ?> value="closed">Closed</option>
+							</select>
+							<input type="date" name="open_date_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('open_date_'.$i) ); ?>" />
+						</td>
 					</tr>
 			<?php } ?>
 			</table>

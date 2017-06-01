@@ -3,8 +3,7 @@
  * Opening times
  */
 
-function is_tna_opening() {
-	$day_of_week  = date('l');
+function is_tna_open( $day_of_week ) {
 
 	if ($day_of_week === 'Sunday' || $day_of_week === 'Monday') {
 		return 'Closed today';
@@ -15,19 +14,36 @@ function is_tna_opening() {
 	}
 }
 
-function tna_openingtimes_exceptions() {
-	$current_date = date('Y-m-d');
+function tna_openingtimes_overrides( $current_date ) {
 
-	if (have_rows('opening-time-changes', 'option')) {
+	for ( $i=1 ; $i<=9 ; $i++ ) {
 
-		if (get_sub_field('date') === $current_date && strtolower(get_sub_field('tna-open')) === 'closed') {
+		$status = get_option('open_status_'.$i);
+		$override_date = get_option('open_date_'.$i);
 
-			return 'Closed today';
+		if ( $override_date === $current_date && $status !== 'disabled') {
 
-		} elseif (get_sub_field('date') === $current_date && strtolower(get_sub_field('tna-open')) === 'open') {
+			if ( $override_date === $current_date && $status === 'closed' ) {
 
-			return 'Open today ';
+				return 'Closed today';
+
+			} elseif ( $override_date === $current_date && $status === 'open' ) {
+
+				return 'Open today';
+			}
 		}
+	}
+}
+
+function display_tna_opening_status( $current_date, $day_of_week ) {
+
+	if ( tna_openingtimes_overrides( $current_date ) ) {
+
+		return tna_openingtimes_overrides( $current_date );
+
+	} else {
+
+		return is_tna_open( $day_of_week );
 
 	}
 }

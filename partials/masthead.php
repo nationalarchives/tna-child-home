@@ -10,6 +10,7 @@ if ( get_option('home_masthead_desc') ) { ?>
 			<div class="row">
 				<?php
 
+				echo display_tna_opening_status( date('Y-m-d'), date('l') );
 
 				?>
 			</div>

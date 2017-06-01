@@ -5,6 +5,7 @@ include 'inc/functions-global.php';
 include 'inc/functions-menu.php';
 include 'inc/functions-home.php';
 include 'inc/functions-admin.php';
+include 'inc/functions-openingtimes.php';
 
 // add_action
 add_action( 'wp_enqueue_scripts', 'dequeue_parent_style', 9999 );
