@@ -21,7 +21,7 @@ if ( get_option('home_masthead_desc') ) {
 					</div>
 					<div class="col-md-6 col-sm-6">
 						<div class="opening-times">
-							<?php echo display_tna_opening_status( date('Y-m-d'), date('l') ); ?><br>
+							<?php echo display_tna_opening_status( date('Y-m-d'), date('l'), get_openingtimes_overrides() ); ?><br>
 							<a href="http://www.nationalarchives.gov.uk/about/visit-us/">Plan your visit</a>
 						</div>
 					</div>
