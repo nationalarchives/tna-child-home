@@ -27,10 +27,11 @@ function homepage_admin_page_settings() {
 
 	}
 
-	for ( $i=1 ; $i<=9 ; $i++ ) {
+	for ( $i=1 ; $i<=12 ; $i++ ) {
 
 		register_setting( 'homepage-settings-group', 'open_date_'.$i );
 		register_setting( 'homepage-settings-group', 'open_status_'.$i );
+		register_setting( 'homepage-settings-group', 'open_times_'.$i );
 
 	}
 }
@@ -92,9 +93,9 @@ function homepage_admin_page() {
 
 			<h2>Opening times override</h2>
 			<table class="form-table opening-times">
-			<?php for ( $i=1 ; $i<=9 ; $i++ ) { ?>
+			<?php for ( $i=1 ; $i<=12 ; $i++ ) { ?>
 					<tr valign="top">
-						<th scope="row"><label for="open_date_<?php echo $i; ?>">Date / times</label></th>
+						<th scope="row"><label for="open_date_<?php echo $i; ?>">Status / date / times</label></th>
 						<td>
 							<select name="open_status_<?php echo $i; ?>">
 								<option value="disabled">Please select</option>
@@ -102,6 +103,7 @@ function homepage_admin_page() {
 								<option <?php if (get_option('open_status_'.$i) == 'closed') { echo ' selected="selected"'; }; ?> value="closed">Closed</option>
 							</select>
 							<input type="date" name="open_date_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('open_date_'.$i) ); ?>" />
+							<input type="text" name="open_times_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('open_times_'.$i) ); ?>" />
 						</td>
 					</tr>
 			<?php } ?>

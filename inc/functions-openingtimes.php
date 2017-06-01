@@ -16,7 +16,7 @@ function is_tna_open( $day_of_week ) {
 
 function tna_openingtimes_overrides( $current_date ) {
 
-	for ( $i=1 ; $i<=9 ; $i++ ) {
+	for ( $i=1 ; $i<=12 ; $i++ ) {
 
 		$status = get_option('open_status_'.$i);
 		$override_date = get_option('open_date_'.$i);
@@ -29,7 +29,9 @@ function tna_openingtimes_overrides( $current_date ) {
 
 			} elseif ( $override_date === $current_date && $status === 'open' ) {
 
-				return 'Open today';
+				$times = get_option('open_times_'.$i);
+
+				return 'Open today ' . $times;
 			}
 		}
 	}
