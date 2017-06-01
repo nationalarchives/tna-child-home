@@ -79,6 +79,17 @@ function homepage_admin_page() {
 					</table>
 			<?php } ?>
 
+			<h2>Opening times override</h2>
+			<table class="form-table opening-times">
+			<?php for ( $i=1 ; $i<=9 ; $i++ ) { ?>
+					<tr valign="top">
+						<th scope="row"><label for="open_date_<?php echo $i; ?>">Date / times</label></th>
+						<td><input type="date" name="open_date_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('open_date_'.$i) ); ?>" />
+						<input type="text" name="open_time_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('open_time_'.$i) ); ?>" /></td>
+					</tr>
+			<?php } ?>
+			</table>
+
 			<?php submit_button(); ?>
 		</form>
 	</div>

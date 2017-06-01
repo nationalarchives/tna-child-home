@@ -27,4 +27,7 @@ Admin css
     width: 100%;
     max-width: 480px;
 }
-.tna-homepage
+.opening-times input[type=text],
+.opening-times input[type=date] {
+    max-width: 180px;
+}
