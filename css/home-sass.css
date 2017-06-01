@@ -127,3 +127,9 @@
   display: block;
   background-color: #ddd;
   min-height: 180px; }
+  .masthead-wrapper a.button {
+    width: 100%;
+    margin-bottom: 1em; }
+  .masthead-wrapper a.button span {
+    font-size: 1.2em;
+    font-family: bitter; }

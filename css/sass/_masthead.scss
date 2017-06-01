@@ -4,4 +4,12 @@
   display: block;
   background-color: #ddd;
   min-height: 180px;
+  a.button {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  a.button span {
+    font-size: 1.2em;
+    font-family: bitter;
+  }
 }

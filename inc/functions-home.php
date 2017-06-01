@@ -467,6 +467,7 @@ function card_html( $id, $url, $image, $type, $title ) {
 function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 
 	$title = esc_attr($title);
+	$image = make_path_relative($image);
 
 	$html = '<div class="container">
 		        <div class="row">
