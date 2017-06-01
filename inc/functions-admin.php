@@ -11,20 +11,21 @@ function tna_homepage_menu() {
 
 function homepage_admin_page_settings() {
 	register_setting( 'homepage-settings-group', 'home_masthead_desc' );
-	register_setting( 'homepage-settings-group', 'home_masthead_btn_text_1' );
 
-	register_setting( 'homepage-settings-group', 'home_landing_page_title_1' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_url_1' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_text_1' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_title_2' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_url_2' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_text_2' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_title_3' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_url_3' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_text_3' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_title_4' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_url_4' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_text_4' );
+	for ( $i=1 ; $i<=3 ; $i++ ) {
+
+		register_setting( 'homepage-settings-group', 'home_masthead_btn_text_'.$i );
+		register_setting( 'homepage-settings-group', 'home_masthead_btn_url_'.$i );
+
+	}
+
+	for ( $i=1 ; $i<=4 ; $i++ ) {
+
+		register_setting( 'homepage-settings-group', 'home_landing_page_title_'.$i );
+		register_setting( 'homepage-settings-group', 'home_landing_page_url_'.$i );
+		register_setting( 'homepage-settings-group', 'home_landing_page_text_'.$i );
+
+	}
 }
 
 function homepage_admin_page() {
@@ -47,76 +48,36 @@ function homepage_admin_page() {
 			</table>
 
 			<h2>Masthead buttons</h2>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><label for="home_masthead_btn_text_1">Button label</label></th>
-					<td><input type="text" name="home_masthead_btn_text_1" value="<?php echo esc_attr( get_option('home_masthead_btn_text_1') ); ?>" /></td>
-				</tr>
-			</table>
+			<?php for ( $i=1 ; $i<=3 ; $i++ ) { ?>
+				<table class="form-table">
+					<tr valign="top">
+						<th scope="row"><label for="home_masthead_btn_text_<?php echo $i; ?>">Button <?php echo $i; ?> label</label></th>
+						<td><input type="text" name="home_masthead_btn_text_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('home_masthead_btn_text_'.$i) ); ?>" /></td>
+					</tr>
+					<tr valign="top">
+						<th scope="row"><label for="home_masthead_btn_url_<?php echo $i; ?>">Button <?php echo $i; ?> URL</label></th>
+						<td><input type="text" name="home_masthead_btn_url_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('home_masthead_btn_url_'.$i) ); ?>" /></td>
+					</tr>
+				</table>
+			<?php } ?>
 
-			<h2>Landing page link content box 1</h2>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_title_1">Title</label></th>
-					<td><input type="text" name="home_landing_page_title_1" value="<?php echo esc_attr( get_option('home_landing_page_title_1') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_url_1">URL</label></th>
-					<td><input type="text" name="home_landing_page_url_1" value="<?php echo esc_attr( get_option('home_landing_page_url_1') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_text_1">Description</label></th>
-					<td><textarea name="home_landing_page_text_1"><?php echo esc_attr( get_option('home_landing_page_text_1') ); ?></textarea></td>
-				</tr>
-			</table>
-
-			<h2>Landing page link content box 2</h2>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_title_2">Title</label></th>
-					<td><input type="text" name="home_landing_page_title_2" value="<?php echo esc_attr( get_option('home_landing_page_title_2') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_url_2">URL</label></th>
-					<td><input type="text" name="home_landing_page_url_2" value="<?php echo esc_attr( get_option('home_landing_page_url_2') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_text_2">Description</label></th>
-					<td><textarea name="home_landing_page_text_2"><?php echo esc_attr( get_option('home_landing_page_text_2') ); ?></textarea></td>
-				</tr>
-			</table>
-
-			<h2>Landing page link content box 3</h2>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_title_3">Title</label></th>
-					<td><input type="text" name="home_landing_page_title_3" value="<?php echo esc_attr( get_option('home_landing_page_title_3') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_url_3">URL</label></th>
-					<td><input type="text" name="home_landing_page_url_3" value="<?php echo esc_attr( get_option('home_landing_page_url_3') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_text_3">Description</label></th>
-					<td><textarea name="home_landing_page_text_3"><?php echo esc_attr( get_option('home_landing_page_text_3') ); ?></textarea></td>
-				</tr>
-			</table>
-
-			<h2>Landing page link content box 4</h2>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_title_4">Title</label></th>
-					<td><input type="text" name="home_landing_page_title_4" value="<?php echo esc_attr( get_option('home_landing_page_title_4') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_url_4">URL</label></th>
-					<td><input type="text" name="home_landing_page_url_4" value="<?php echo esc_attr( get_option('home_landing_page_url_4') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_text_4">Description</label></th>
-					<td><textarea name="home_landing_page_text_4"><?php echo esc_attr( get_option('home_landing_page_text_4') ); ?></textarea></td>
-				</tr>
-			</table>
+			<?php for ( $i=1 ; $i<=4 ; $i++ ) { ?>
+					<h2>Landing page link card <?php echo $i; ?></h2>
+					<table class="form-table">
+						<tr valign="top">
+							<th scope="row"><label for="home_landing_page_title_<?php echo $i; ?>">Title</label></th>
+							<td><input type="text" name="home_landing_page_title_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('home_landing_page_title_'.$i) ); ?>" /></td>
+						</tr>
+						<tr valign="top">
+							<th scope="row"><label for="home_landing_page_url_<?php echo $i; ?>">URL</label></th>
+							<td><input type="text" name="home_landing_page_url_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('home_landing_page_url_'.$i) ); ?>" /></td>
+						</tr>
+						<tr valign="top">
+							<th scope="row"><label for="home_landing_page_text_<?php echo $i; ?>">Description</label></th>
+							<td><textarea name="home_landing_page_text_<?php echo $i; ?>"><?php echo esc_attr( get_option('home_landing_page_text_'.$i) ); ?></textarea></td>
+						</tr>
+					</table>
+			<?php } ?>
 
 			<?php submit_button(); ?>
 		</form>
