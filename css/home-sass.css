@@ -93,20 +93,20 @@
     height: 1em; }
 
 /* Landingpage links */
-.landingpage-links-wrapper {
-  margin-bottom: 1.5em; }
-  .landingpage-links-wrapper a {
+.link-cards-wrapper {
+  margin-bottom: 0.5em; }
+  .link-cards-wrapper .col-link-card {
+    margin-bottom: 1em; }
+  .link-cards-wrapper a {
     position: relative;
-    height: 100%;
     display: block; }
-  .landingpage-links-wrapper a:hover {
+  .link-cards-wrapper a:hover {
     text-decoration: none; }
-  .landingpage-links-wrapper .landingpage-link-card {
+  .link-cards-wrapper .link-card {
     height: 100%;
     background-color: #fff;
-    box-shadow: 0 2px 5px #ddd;
-    margin-bottom: 1em; }
-  .landingpage-links-wrapper .entry-head {
+    box-shadow: 0 2px 5px #ddd; }
+  .link-cards-wrapper .entry-head {
     display: table;
     padding: 1em 1.5em;
     background-color: #597a87;
@@ -114,11 +114,11 @@
     height: auto;
     width: 100%;
     color: #fff; }
-    .landingpage-links-wrapper .entry-head h3 {
+    .link-cards-wrapper .entry-head h3 {
       margin: 0;
       display: table-cell;
       vertical-align: middle; }
-  .landingpage-links-wrapper .entry-description {
+  .link-cards-wrapper .entry-content {
     padding: 1em 1em 0 1em;
     color: #444; }
 

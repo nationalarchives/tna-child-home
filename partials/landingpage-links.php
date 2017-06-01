@@ -7,7 +7,7 @@ if ( get_option('home_landing_page_title_1') ) { ?>
 
 	<div class="container">
 		<div class="row">
-			<div class="landingpage-links-wrapper equal-heights-flex-box clearfix">
+			<div class="link-cards-wrapper equal-heights-flex-box clearfix">
 			<?php
 
 			for ( $i=1 ; $i<=4 ; $i++ ) {
