@@ -14,24 +14,26 @@ function is_tna_open( $day_of_week ) {
 	}
 }
 
-function tna_openingtimes_overrides( $current_date, $array ) {
+function tna_openingtimes_overrides( $current_date, $array = array() ) {
 
-	for ( $i=1 ; $i<=12 ; $i++ ) {
+	if ($array) {
 
-		$status = $array['status'.$i];
-		$override_date = $array['date'.$i];
+		for ( $i = 1; $i <= 12; $i ++ ) {
 
-		if ( $override_date === $current_date && $status !== 'disabled') {
+			$status = ( isset( $array[ 'status' . $i ] ) ) ?  $array[ 'status' . $i ]  : false;
+			$override_date = ( isset( $array[ 'date' . $i ] ) ) ?  $array[ 'date' . $i ]  : false;
+			$times = ( isset( $array[ 'times' . $i ] ) ) ?  $array[ 'times' . $i ]  : false;
 
-			if ( $override_date === $current_date && $status === 'closed' ) {
+			if ( $override_date === $current_date && $status !== 'disabled' ) {
 
-				return 'Closed today';
+				if ( $override_date === $current_date && $status === 'closed' ) {
 
-			} elseif ( $override_date === $current_date && $status === 'open' ) {
+					return 'Closed today';
 
-				$times = $array['times'.$i];
+				} elseif ( $override_date === $current_date && $status === 'open' ) {
 
-				return 'Open today ' . $times;
+					return 'Open today ' . $times;
+				}
 			}
 		}
 	}
