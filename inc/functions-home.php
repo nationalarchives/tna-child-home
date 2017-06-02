@@ -389,6 +389,8 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 		$html = new DOMDocument();
 		@$html->loadHTML($content_html);
 
+		$i = 1;
+
 		foreach( $html->getElementsByTagName('meta') as $meta ) {
 
 			if( $meta->getAttribute('property')=='og:title' && trim($title)=='' ) {
@@ -396,11 +398,12 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 			}
 
 			if( $meta->getAttribute('property')=='og:image' && trim($image)=='' ) {
-				$meta_og_img = $meta->getAttribute('content');
+				$meta_og_img[$i] = $meta->getAttribute('content');
+				$i++;
 			}
 		}
 
-		return card_html( $id, $url, $meta_og_img, content_type( $url ), $meta_og_title );
+		return card_html( $id, $url, $meta_og_img[1], content_type( $url ), $meta_og_title );
 	}
 }
 
