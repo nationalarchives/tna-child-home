@@ -54,7 +54,7 @@ function display_tna_opening_status( $current_date, $day_of_week, $overrides ) {
 
 function get_openingtimes_overrides() {
 
-	$openingtimes_overrides = array();
+	$overrides = array();
 
 	for ( $i=1 ; $i<=12 ; $i++ ) {
 
@@ -64,11 +64,11 @@ function get_openingtimes_overrides() {
 			$date = get_option( 'open_date_' . $i );
 			$times = get_option( 'open_times_' . $i );
 
-			$openingtimes_overrides['status'.$i] = $status;
-			$openingtimes_overrides['date'.$i] = $date;
-			$openingtimes_overrides['times'.$i] = $times;
+			$overrides['status'.$i] = $status;
+			$overrides['date'.$i] = $date;
+			$overrides['times'.$i] = $times;
 
 		}
 	}
-	return $openingtimes_overrides;
+	return $overrides;
 }
