@@ -3,6 +3,7 @@
 // Include functions
 include 'inc/functions-global.php';
 include 'inc/functions-menu.php';
+include 'inc/functions-metaboxes.php';
 include 'inc/functions-home.php';
 include 'inc/functions-admin.php';
 include 'inc/functions-openingtimes.php';

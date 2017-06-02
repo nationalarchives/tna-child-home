@@ -70,7 +70,7 @@
 
 /* Home banner */
 .home-banner {
-  margin: 1.6em 15px;
+  margin: 0 15px 1.5em 15px;
   background-position: center center;
   background-size: cover;
   box-shadow: 0 2px 5px #ddd; }
@@ -134,7 +134,8 @@
   height: auto;
   min-height: 300px;
   padding: 0;
-  position: relative; }
+  position: relative;
+  margin-bottom: 1.5em; }
   .masthead-wrapper .masthead-overlay {
     background-color: #000;
     background-color: rgba(0, 0, 0, 0.7);

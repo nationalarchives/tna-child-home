@@ -20,9 +20,9 @@ function tna_openingtimes_overrides( $current_date, $array = array() ) {
 
 		for ( $i = 1; $i <= 12; $i ++ ) {
 
-			$status = ( isset( $array[ 'status' . $i ] ) ) ?  $array[ 'status' . $i ]  : false;
-			$override_date = ( isset( $array[ 'date' . $i ] ) ) ?  $array[ 'date' . $i ]  : false;
-			$times = ( isset( $array[ 'times' . $i ] ) ) ?  $array[ 'times' . $i ]  : false;
+			$status = ( isset( $array[ 'status'.$i ] ) ) ?  $array[ 'status'.$i ]  : false;
+			$override_date = ( isset( $array[ 'date'.$i ] ) ) ?  $array[ 'date'.$i ]  : false;
+			$times = ( isset( $array[ 'times'.$i ] ) ) ?  $array[ 'times'.$i ]  : false;
 
 			if ( $override_date === $current_date && $status !== 'disabled' ) {
 
@@ -58,11 +58,11 @@ function get_openingtimes_overrides() {
 
 	for ( $i=1 ; $i<=12 ; $i++ ) {
 
-		if (get_option( 'open_date_' . $i )) {
+		if (get_option( 'open_date_'.$i )) {
 
-			$status = get_option( 'open_status_' . $i );
-			$date = get_option( 'open_date_' . $i );
-			$times = get_option( 'open_times_' . $i );
+			$status = get_option( 'open_status_'.$i );
+			$date = get_option( 'open_date_'.$i );
+			$times = get_option( 'open_times_'.$i );
 
 			$overrides['status'.$i] = $status;
 			$overrides['date'.$i] = $date;
