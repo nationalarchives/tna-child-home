@@ -3,7 +3,7 @@
  * Masthead
  */
 
-if ( get_option('home_masthead_desc') ) {
+if ( get_option('home_masthead_btn_text_1') ) {
 
 	$masthead_image = '';
 	if ( has_post_thumbnail() ) {
