@@ -86,34 +86,66 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('display_tna_opening_status'));
     }
-    public function test_display_tna_opening_status_override()
+    public function test_display_tna_opening_status_override_open()
     {
         $array = array(
             'status1' => 'open',
             'date1' => '2017-06-01',
-            'times1' => '09:00 - 21:00'
+            'times1' => '09:00 - 17:00'
         );
         $results = display_tna_opening_status('2017-06-01', 'Thursday', $array);
-        $this->assertEquals($results, 'Open today 09:00 - 21:00');
+        $this->assertEquals($results, 'Open today 09:00 - 17:00');
     }
-    public function test_display_tna_opening_status_open()
+    public function test_display_tna_opening_status_override_closed()
     {
         $array = array(
-            'status1' => 'open',
-            'date1' => '2017-06-02',
-            'times1' => '09:00 - 21:00'
+            'status1' => 'closed',
+            'date1' => '2017-06-01',
+            'times1' => ''
         );
+        $results = display_tna_opening_status('2017-06-01', 'Thursday', $array);
+        $this->assertEquals($results, 'Closed today');
+    }
+    public function test_display_tna_opening_status_sunday()
+    {
+        $array = array();
+        $results = display_tna_opening_status('2017-05-28', 'Sunday', $array);
+        $this->assertEquals($results, 'Closed today');
+    }
+    public function test_display_tna_opening_status_monday()
+    {
+        $array = array();
+        $results = display_tna_opening_status('2017-05-29', 'Monday', $array);
+        $this->assertEquals($results, 'Closed today');
+    }
+    public function test_display_tna_opening_status_tuesday()
+    {
+        $array = array();
+        $results = display_tna_opening_status('2017-05-30', 'Tuesday', $array);
+        $this->assertEquals($results, 'Open today 09:00 - 19:00');
+    }
+    public function test_display_tna_opening_status_wednesday()
+    {
+        $array = array();
+        $results = display_tna_opening_status('2017-05-31', 'Wednesday', $array);
+        $this->assertEquals($results, 'Open today 09:00 - 17:00');
+    }
+    public function test_display_tna_opening_status_thursday()
+    {
+        $array = array();
         $results = display_tna_opening_status('2017-06-01', 'Thursday', $array);
         $this->assertEquals($results, 'Open today 09:00 - 19:00');
     }
-    public function test_display_tna_opening_status_closed()
+    public function test_display_tna_opening_status_friday()
     {
-        $array = array(
-            'status1' => 'open',
-            'date1' => '2017-06-02',
-            'times1' => '09:00 - 21:00'
-        );
-        $results = display_tna_opening_status('2017-06-04', 'Sunday', $array);
-        $this->assertEquals($results, 'Closed today');
+        $array = array();
+        $results = display_tna_opening_status('2017-05-31', 'Friday', $array);
+        $this->assertEquals($results, 'Open today 09:00 - 17:00');
+    }
+    public function test_display_tna_opening_status_saturday()
+    {
+        $array = array();
+        $results = display_tna_opening_status('2017-05-31', 'Saturday', $array);
+        $this->assertEquals($results, 'Open today 09:00 - 17:00');
     }
 }
