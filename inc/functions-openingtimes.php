@@ -60,9 +60,9 @@ function get_openingtimes_overrides() {
 
 		if (get_option( 'open_date_'.$i )) {
 
-			$status = get_option( 'open_status_'.$i );
-			$date = get_option( 'open_date_'.$i );
-			$times = get_option( 'open_times_'.$i );
+			$status = esc_attr( get_option( 'open_status_'.$i ) );
+			$date = esc_attr( get_option( 'open_date_'.$i ) );
+			$times = esc_attr( get_option( 'open_times_'.$i ) );
 
 			$overrides['status'.$i] = $status;
 			$overrides['date'.$i] = $date;

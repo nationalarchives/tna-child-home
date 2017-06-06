@@ -29,8 +29,8 @@ if ( get_option('home_masthead_btn_text_1') ) {
 				<div class="row">
 					<?php for ( $i=1 ; $i<=3 ; $i++ ) {
 
-						$btn_text = get_option('home_masthead_btn_text_'.$i);
-						$btn_url = get_option('home_masthead_btn_url_'.$i);
+						$btn_text = esc_attr( get_option('home_masthead_btn_text_'.$i) );
+						$btn_url = esc_attr( get_option('home_masthead_btn_url_'.$i) );
 
 						?>
 
