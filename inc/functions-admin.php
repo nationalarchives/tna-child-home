@@ -34,8 +34,6 @@ function homepage_admin_page_settings() {
 		register_setting( 'homepage-settings-group', 'open_times_'.$i );
 
 	}
-
-	register_setting( 'homepage-settings-group', 'home_plan_visit_link' );
 }
 
 function homepage_admin_page() {
@@ -109,12 +107,6 @@ function homepage_admin_page() {
 						</td>
 					</tr>
 			<?php } ?>
-				<tr valign="top">
-					<th scope="row"><label for="home_plan_visit_link">Plan your visit link</label></th>
-					<td>
-						<input type="text" name="home_plan_visit_link" value="<?php echo esc_attr( get_option('home_plan_visit_link') ); ?>" />
-					</td>
-				</tr>
 			</table>
 
 			<?php submit_button(); ?>
