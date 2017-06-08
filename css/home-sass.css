@@ -61,6 +61,12 @@
       float: right;
       width: 1em;
       height: 1em; }
+    .cards-wrapper .col-card .card .event-icon {
+      background: url(../img/icon-calendar.svg) no-repeat top right;
+      background-size: 16px 16px; }
+    .cards-wrapper .col-card .card .media-icon {
+      background: url(../img/icon-play-circle-o.svg) no-repeat top right;
+      background-size: 16px 16px; }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   .cards-wrapper .col-card {
     width: 33%; } }

@@ -74,18 +74,18 @@ function content_type( $url ) {
 	if (strpos($url, 'nationalarchives.gov.uk/about/news/') !== false) {
 
 		return 'News';
-	}
-	if (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
+	} elseif (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
 
 		return 'Blog';
-	}
-	if (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
+	} elseif (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
 
 		return 'Media';
-	}
-	if (strpos($url, 'eventbrite') !== false) {
+	} elseif (strpos($url, 'eventbrite') !== false) {
 
 		return 'Event';
+	} else {
+
+		return 'Feature';
 	}
 }
 
