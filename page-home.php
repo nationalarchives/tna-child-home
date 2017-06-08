@@ -12,7 +12,7 @@ get_header(); ?>
 
 	<div class="container">
 		<div class="row">
-			<div class="cards-wrapper equal-heights-flex-box clearfix">
+			<div class="cards-wrapper equal-heights equal-heights-flex-box clearfix">
 
 				<?php get_template_part( 'partials/cards' ); ?>
 
