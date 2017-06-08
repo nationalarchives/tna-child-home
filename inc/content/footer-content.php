@@ -12,38 +12,38 @@
             <div class="footer-col col-xs-12 col-sm-6 col-md-12 col-lg-12">
                 <h4>Standard opening times</h4>
                 <div class="opening-times">
-                    <table>
-                        <tbody>
-                        <tr>
-                            <td>Monday</td>
-                            <td>Closed</td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td>09:00 – 19:00</td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday</td>
-                            <td>09:00 – 17:00</td>
-                        </tr>
-                        <tr>
-                            <td>Thursday</td>
-                            <td>09:00 – 19:00</td>
-                        </tr>
-                        <tr>
-                            <td>Friday</td>
-                            <td>09:00 – 17:00</td>
-                        </tr>
-                        <tr>
-                            <td>Saturday</td>
-                            <td>09:00 – 17:00</td>
-                        </tr>
-                        <tr>
-                            <td>Sunday</td>
-                            <td>Closed</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="open_table">
+                        <div class="open_tableBody">
+                            <div class="open_tableRow">
+                                <div class="open_tableCell">Monday</div>
+                                <div class="open_tableCell">Closed</div>
+                            </div>
+                            <div class="open_tableRow">
+                                <div class="open_tableCell">Tuesday</div>
+                                <div class="open_tableCell">09:00 &ndash; 19:00</div>
+                            </div>
+                            <div class="open_tableRow">
+                                <div class="open_tableCell">Wednesday</div>
+                                <div class="open_tableCell">09:00 &ndash; 17:00</div>
+                            </div>
+                            <div class="open_tableRow">
+                                <div class="open_tableCell">Thursday</div>
+                                <div class="open_tableCell">09:00 &ndash; 19:00</div>
+                            </div>
+                            <div class="open_tableRow">
+                                <div class="open_tableCell">Friday</div>
+                                <div class="open_tableCell">09:00 &ndash; 17:00</div>
+                            </div>
+                            <div class="open_tableRow">
+                                <div class="open_tableCell">Saturday</div>
+                                <div class="open_tableCell">09:00 &ndash; 17:00</div>
+                            </div>
+                            <div class="open_tableRow">
+                                <div class="open_tableCell">Sunday</div>
+                                <div class="open_tableCell">Closed</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <a href="/about/visit-us/opening-times/">Full opening times</a>
             </div>
@@ -104,17 +104,16 @@
             <div class="footer-col col-xs-12 col-sm-6 col-md-12">
                 <h4>Follow us</h4>
                 <div class="follow-us">
-                    <a href="https://twitter.com/@UKNatArchives" title="Follow us on Twitter">
+                    <a href="https://twitter.com/@UKNatArchives" title="Follow us on Twitter" target="_blank">
                         <img src="<?php echo get_stylesheet_directory_uri() ?>/img/social/twitter.png"
                              alt="Twitter logo"></a>
-                    <a href="https://www.youtube.com/c/TheNationalArchivesUK">
+                    <a href="https://www.youtube.com/c/TheNationalArchivesUK" title="Follow us on YouTube" target="_blank">
                         <img src="<?php echo get_stylesheet_directory_uri() ?>/img/social/youtube-play.png" alt="YouTube logo"></a>
-                    <a href="https://www.flickr.com/photos/nationalarchives">
+                    <a href="https://www.flickr.com/photos/nationalarchives" title="Follow us on Flikr" target="_blank">
                         <img src="<?php echo get_stylesheet_directory_uri() ?>/img/social/flickr.png" alt="Flikr logo"></a>
-                    <a href="https://www.facebook.com/TheNationalArchives">
-                        <img src="<?php echo get_stylesheet_directory_uri() ?>/img/social/facebook.png"
-                             alt="Facebook logo"></a>
-                    <a href="http://www.nationalarchives.gov.uk/rss/">
+                    <a href="https://www.facebook.com/TheNationalArchives" title="Follow us on Facebook" target="_blank" >
+                        <img src="<?php echo get_stylesheet_directory_uri() ?>/img/social/facebook.png" alt="Facebook logo"></a>
+                    <a href="http://www.nationalarchives.gov.uk/rss/" title="Follow us on RSS" target="_blank">
                         <img src="<?php echo get_stylesheet_directory_uri() ?>/img/social/rss.png" alt="RSS logo"></a>
                 </div>
             </div>

@@ -182,12 +182,6 @@
 /*
  * Footer stylesheet
  */
-.opening-times table {
-  width: 100%; }
-
-.open {
-  margin-top: 40px; }
-
 .follow-us a {
   display: inline-block; }
   .follow-us a img {
@@ -195,10 +189,35 @@
     border-radius: 50%;
     padding: 9px;
     margin: 0 0.2em 0.3em 0;
-    width: 46px; }
+    width: 46px;
+    transition: 0.4s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+    -moz-transition: 0.4s ease-in-out; }
+    .follow-us a img:hover {
+      background: #fce45c; }
 
 .footer-col {
   padding: 0 20px 0 20px; }
+  .footer-col .opening-times .open_table {
+    display: table;
+    width: 100%; }
+    .footer-col .opening-times .open_table .open_tableRow {
+      display: table-row; }
+    .footer-col .opening-times .open_table .open_tableHeading {
+      display: table-header-group; }
+    .footer-col .opening-times .open_table .open_tableCell, .footer-col .opening-times .open_table .open_tableHead {
+      display: table-cell;
+      padding: 3px 0px; }
+    .footer-col .opening-times .open_table .open_tableHeading {
+      display: table-header-group;
+      font-weight: bold; }
+    .footer-col .opening-times .open_table .open_tableFoot {
+      display: table-footer-group;
+      font-weight: bold; }
+    .footer-col .opening-times .open_table .open_tableBody {
+      display: table-row-group; }
+  .footer-col .opening-times .open {
+    margin-top: 40px; }
   @media (max-width: 767px) {
     .footer-col {
       box-sizing: border-box;
@@ -206,8 +225,7 @@
       -moz-box-sizing: border-box;
       padding: 0 25px 0 25px; } }
   .footer-col .footer-col {
-    padding: 10px;
-    margin: 0; }
+    padding: 10px; }
   .footer-col:first-child {
     height: 304.77px; }
     @media (max-width: 767px) {
