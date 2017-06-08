@@ -113,7 +113,7 @@
                         <img src="<?php echo get_stylesheet_directory_uri() ?>/img/social/flickr.png" alt="Flickr logo"></a>
                     <a href="https://www.facebook.com/TheNationalArchives" title="Follow us on Facebook" target="_blank" >
                         <img src="<?php echo get_stylesheet_directory_uri() ?>/img/social/facebook.png" alt="Facebook logo"></a>
-                    <a href="http://www.nationalarchives.gov.uk/rss/" title="Follow us via RSS" target="_blank">
+                    <a href="http://www.nationalarchives.gov.uk/rss/" title="Follow us via RSS">
                         <img src="<?php echo get_stylesheet_directory_uri() ?>/img/social/rss.png" alt="RSS logo"></a>
                 </div>
             </div>
