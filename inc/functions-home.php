@@ -62,7 +62,11 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 			}
 		}
 
-		return card_html( $id, $url, $meta_og_img[1], content_type( $url ), $meta_og_title );
+		if ($meta_og_title == 'Page Not Found - The National Archives') {
+			return card_fallback( 'Latest news', $id );
+		} else {
+			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), $meta_og_title );
+		}
 	}
 }
 

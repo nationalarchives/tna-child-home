@@ -25,9 +25,12 @@
     width: 100%;
     margin-bottom: 12px;
   }
+  a.button:focus {
+    color: #fff !important;
+  }
   a.button span {
     font-size: 1.2em;
-    font-family: bitter;
+    font-family: 'Bitter', 'Open Sans', arial, serif;
   }
   .opening-times {
     max-width: 300px;

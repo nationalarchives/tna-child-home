@@ -38,11 +38,23 @@ function tna_child_styles() {
 	wp_register_style( 'tna-child-styles', get_stylesheet_directory_uri() . '/css/home-sass.css.min', array(), '0.1', 'all' );
 	wp_enqueue_style( 'tna-parent-styles' );
 	wp_enqueue_style( 'tna-child-styles' );
+	global $is_safari;
+	if ($is_safari) {
+		wp_register_style( 'tna-child-styles-safari', get_stylesheet_directory_uri() . '/css/safari.css', array(), '0.1', 'all' );
+		wp_enqueue_style( 'tna-child-styles-safari' );
+	}
 }
 
 function tna_child_scripts() {
 	wp_register_script( 'tna-child-home-js', get_stylesheet_directory_uri() . '/js/tna-child-home.js', array(), '0.1', true );
 	wp_enqueue_script( 'tna-child-home-js' );
+	global $is_safari;
+	if ($is_safari) {
+		wp_register_script( 'equal-heights', get_stylesheet_directory_uri() . '/js/jQuery.equalHeights.js', array(), '0.1', true );
+		wp_register_script( 'equal-heights-var', get_stylesheet_directory_uri() . '/js/equalHeights.js', array(), '0.1', true );
+		wp_enqueue_script( 'equal-heights' );
+		wp_enqueue_script( 'equal-heights-var' );
+	}
 }
 
 
