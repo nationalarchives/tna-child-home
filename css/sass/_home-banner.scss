@@ -1,7 +1,7 @@
 /* Home banner */
 
 .home-banner {
-  margin: 1.6em 15px;
+  margin: 0 15px 1.5em 15px;
   background-position: center center;
   background-size: cover;
   box-shadow: 0 2px 5px #ddd;
@@ -10,10 +10,10 @@
     padding: 1.3em;
     width: 100%;
     background: #000;
-    background: -webkit-linear-gradient(left, #000 , transparent);
+    background: -webkit-linear-gradient(left, #000, transparent);
     background: -o-linear-gradient(right, #000, transparent);
     background: -moz-linear-gradient(right, #000, transparent);
-    background: linear-gradient(to right, #000 , transparent);
+    background: linear-gradient(to right, #000, transparent);
   }
   .entry-content {
     color: #fff;
@@ -25,5 +25,10 @@
     float: right;
     width: 1em;
     height: 1em;
+  }
+  @media (max-width: 480px) {
+    .entry-content {
+      padding: 0 15px;
+    }
   }
 }

@@ -8,9 +8,7 @@ jQuery(document).ready(function() {
 
     if ($count < 3) {
         var elements = document.getElementsByClassName("col-card");
-
         for (var i = 0; i < elements.length; i++) {
-
             elements[i].hide();
         }
     }

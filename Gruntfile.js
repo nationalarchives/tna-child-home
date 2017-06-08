@@ -22,16 +22,24 @@ module.exports = function (grunt) {
                     'css/home-sass.css.min': ['css/home-sass.css']
                 }
             }
+        },
+        watch: {
+            css: {
+                files: 'css/sass/*.scss',
+                tasks: ['sass', 'cssmin']
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
     grunt.registerTask('default', [
         'sass',
-        'cssmin'
+        'cssmin',
+        'watch'
     ]);
 
 };

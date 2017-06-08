@@ -10,21 +10,30 @@ function tna_homepage_menu() {
 }
 
 function homepage_admin_page_settings() {
-	register_setting( 'homepage-settings-group', 'home_masthead_descr' );
-	register_setting( 'homepage-settings-group', 'home_masthead_btn_text_1' );
+	register_setting( 'homepage-settings-group', 'home_masthead_desc' );
 
-	register_setting( 'homepage-settings-group', 'home_landing_page_title_1' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_url_1' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_text_1' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_title_2' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_url_2' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_text_2' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_title_3' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_url_3' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_text_3' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_title_4' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_url_4' );
-	register_setting( 'homepage-settings-group', 'home_landing_page_text_4' );
+	for ( $i=1 ; $i<=3 ; $i++ ) {
+
+		register_setting( 'homepage-settings-group', 'home_masthead_btn_text_'.$i );
+		register_setting( 'homepage-settings-group', 'home_masthead_btn_url_'.$i );
+
+	}
+
+	for ( $i=1 ; $i<=4 ; $i++ ) {
+
+		register_setting( 'homepage-settings-group', 'home_landing_page_title_'.$i );
+		register_setting( 'homepage-settings-group', 'home_landing_page_url_'.$i );
+		register_setting( 'homepage-settings-group', 'home_landing_page_text_'.$i );
+
+	}
+
+	for ( $i=1 ; $i<=12 ; $i++ ) {
+
+		register_setting( 'homepage-settings-group', 'open_date_'.$i );
+		register_setting( 'homepage-settings-group', 'open_status_'.$i );
+		register_setting( 'homepage-settings-group', 'open_times_'.$i );
+
+	}
 }
 
 function homepage_admin_page() {
@@ -41,81 +50,63 @@ function homepage_admin_page() {
 			<h2>Masthead description</h2>
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"><label for="home_masthead_descr">Description</label></th>
-					<td><textarea name="home_masthead_descr"><?php echo esc_attr( get_option('home_masthead_descr') ); ?></textarea></td>
+					<th scope="row"><label for="home_masthead_desc">Description</label></th>
+					<td><textarea name="home_masthead_desc"><?php echo esc_attr( get_option('home_masthead_desc') ); ?></textarea></td>
 				</tr>
 			</table>
 
 			<h2>Masthead buttons</h2>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><label for="home_masthead_btn_text_1">Button label</label></th>
-					<td><input type="text" name="home_masthead_btn_text_1" value="<?php echo esc_attr( get_option('home_masthead_btn_text_1') ); ?>" /></td>
-				</tr>
-			</table>
+			<?php for ( $i=1 ; $i<=3 ; $i++ ) { ?>
+				<table class="form-table">
+					<tr valign="top">
+						<th scope="row"><label for="home_masthead_btn_text_<?php echo $i; ?>">Button <?php echo $i; ?> label</label></th>
+						<td><input type="text" name="home_masthead_btn_text_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('home_masthead_btn_text_'.$i) ); ?>" /></td>
+					</tr>
+					<tr valign="top">
+						<th scope="row"><label for="home_masthead_btn_url_<?php echo $i; ?>">Button <?php echo $i; ?> URL</label></th>
+						<td><input type="text" name="home_masthead_btn_url_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('home_masthead_btn_url_'.$i) ); ?>" /></td>
+					</tr>
+				</table>
+			<?php } ?>
 
-			<h2>Landing page link content box 1</h2>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_title_1">Title</label></th>
-					<td><input type="text" name="home_landing_page_title_1" value="<?php echo esc_attr( get_option('home_landing_page_title_1') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_url_1">URL</label></th>
-					<td><input type="text" name="home_landing_page_url_1" value="<?php echo esc_attr( get_option('home_landing_page_url_1') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_text_1">Description</label></th>
-					<td><textarea name="home_landing_page_text_1"><?php echo esc_attr( get_option('home_landing_page_text_1') ); ?></textarea></td>
-				</tr>
-			</table>
+			<?php submit_button(); ?>
 
-			<h2>Landing page link content box 2</h2>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_title_2">Title</label></th>
-					<td><input type="text" name="home_landing_page_title_2" value="<?php echo esc_attr( get_option('home_landing_page_title_2') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_url_2">URL</label></th>
-					<td><input type="text" name="home_landing_page_url_2" value="<?php echo esc_attr( get_option('home_landing_page_url_2') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_text_2">Description</label></th>
-					<td><textarea name="home_landing_page_text_2"><?php echo esc_attr( get_option('home_landing_page_text_2') ); ?></textarea></td>
-				</tr>
-			</table>
+			<?php for ( $i=1 ; $i<=4 ; $i++ ) { ?>
+					<h2>Landing page link card <?php echo $i; ?></h2>
+					<table class="form-table">
+						<tr valign="top">
+							<th scope="row"><label for="home_landing_page_title_<?php echo $i; ?>">Title</label></th>
+							<td><input type="text" name="home_landing_page_title_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('home_landing_page_title_'.$i) ); ?>" /></td>
+						</tr>
+						<tr valign="top">
+							<th scope="row"><label for="home_landing_page_url_<?php echo $i; ?>">URL</label></th>
+							<td><input type="text" name="home_landing_page_url_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('home_landing_page_url_'.$i) ); ?>" /></td>
+						</tr>
+						<tr valign="top">
+							<th scope="row"><label for="home_landing_page_text_<?php echo $i; ?>">Description</label></th>
+							<td><textarea name="home_landing_page_text_<?php echo $i; ?>"><?php echo esc_attr( get_option('home_landing_page_text_'.$i) ); ?></textarea></td>
+						</tr>
+					</table>
+			<?php } ?>
 
-			<h2>Landing page link content box 3</h2>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_title_3">Title</label></th>
-					<td><input type="text" name="home_landing_page_title_3" value="<?php echo esc_attr( get_option('home_landing_page_title_3') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_url_3">URL</label></th>
-					<td><input type="text" name="home_landing_page_url_3" value="<?php echo esc_attr( get_option('home_landing_page_url_3') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_text_3">Description</label></th>
-					<td><textarea name="home_landing_page_text_3"><?php echo esc_attr( get_option('home_landing_page_text_3') ); ?></textarea></td>
-				</tr>
-			</table>
+			<?php submit_button(); ?>
 
-			<h2>Landing page link content box 4</h2>
-			<table class="form-table">
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_title_4">Title</label></th>
-					<td><input type="text" name="home_landing_page_title_4" value="<?php echo esc_attr( get_option('home_landing_page_title_4') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_url_4">URL</label></th>
-					<td><input type="text" name="home_landing_page_url_4" value="<?php echo esc_attr( get_option('home_landing_page_url_4') ); ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label for="home_landing_page_text_4">Description</label></th>
-					<td><textarea name="home_landing_page_text_4"><?php echo esc_attr( get_option('home_landing_page_text_4') ); ?></textarea></td>
-				</tr>
+			<h2>Opening times override</h2>
+			<table class="form-table opening-times">
+			<?php for ( $i=1 ; $i<=12 ; $i++ ) { ?>
+					<tr valign="top">
+						<th scope="row"><label for="open_date_<?php echo $i; ?>">Status / date / times</label></th>
+						<td>
+							<select name="open_status_<?php echo $i; ?>">
+								<option value="disabled">Please select</option>
+								<option <?php if (get_option('open_status_'.$i) == 'open') { echo ' selected="selected"'; }; ?> value="open">Open</option>
+								<option <?php if (get_option('open_status_'.$i) == 'closed') { echo ' selected="selected"'; }; ?> value="closed">Closed</option>
+							</select>
+							<input type="date" name="open_date_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('open_date_'.$i) ); ?>" />
+							<input type="text" name="open_times_<?php echo $i; ?>" value="<?php echo esc_attr( get_option('open_times_'.$i) ); ?>" />
+						</td>
+					</tr>
+			<?php } ?>
 			</table>
 
 			<?php submit_button(); ?>
