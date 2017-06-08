@@ -36,7 +36,7 @@
     .cards-wrapper .col-card .card h3 {
       margin: 0.5em 0; }
     .cards-wrapper .col-card .card h3 a {
-      font-family: Bitter,"Open Sans",arial,serif !important; }
+      font-family: 'Bitter', 'Open Sans', arial, serif !important; }
     .cards-wrapper .col-card .card p {
       margin-bottom: 0.5em; }
     .cards-wrapper .col-card .card a:link .content-type,
@@ -102,7 +102,8 @@
     margin-bottom: 1em; }
   .link-cards-wrapper a {
     position: relative;
-    display: block; }
+    display: block;
+    height: 100%; }
   .link-cards-wrapper a:hover {
     text-decoration: none; }
   .link-cards-wrapper .link-card {
@@ -148,9 +149,11 @@
   .masthead-wrapper a.button {
     width: 100%;
     margin-bottom: 12px; }
+  .masthead-wrapper a.button:focus {
+    color: #fff !important; }
   .masthead-wrapper a.button span {
     font-size: 1.2em;
-    font-family: bitter; }
+    font-family: 'Bitter', 'Open Sans', arial, serif; }
   .masthead-wrapper .opening-times {
     max-width: 300px;
     float: right;
