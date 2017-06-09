@@ -9,7 +9,7 @@ if ( get_option('home_masthead_btn_text_1') ) {
 	if ( has_post_thumbnail() ) {
 		global $post;
 		$feature_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-		$masthead_image = 'style="background-image: url(' . $feature_image[0] . ')"';
+		$masthead_image = 'style="background-image: url(' . make_path_relative_no_pre_path($feature_image[0]) . ')"';
 	} ?>
 
 	<div class="masthead-wrapper" <?php echo $masthead_image; ?>>

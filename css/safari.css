@@ -8,4 +8,28 @@ Safari css
 .col-link-card {
     width: 24.9% !important;
 }
+@media (max-width: 1240px) {
+    .cards-wrapper .col-card {
+        width: 33.2% !important;
+    }
+}
+@media (max-width: 768px) {
+    .cards-wrapper .col-card {
+        width: 100% !important;
+    }
+    .col-link-card {
+        width: 49.9% !important;
+    }
+}
+@media (max-width: 480px) {
+    .col-link-card {
+        width: 100% !important;
+    }
+}
+.cards-wrapper .col-card {
+    display: table;
+}
+.cards-wrapper .col-card .card {
+    display: table-cell;
+}
 

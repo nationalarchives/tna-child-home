@@ -131,6 +131,9 @@
   .link-cards-wrapper .entry-content {
     padding: 1em 1em 0 1em;
     color: #444; }
+  @media (max-width: 767px) {
+    .link-cards-wrapper .col-link-card {
+      width: 100% !important; } }
 
 /* Masthead */
 .masthead-wrapper {
