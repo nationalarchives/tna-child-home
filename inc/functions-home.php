@@ -74,19 +74,21 @@ function content_type( $url ) {
 	if (strpos($url, 'nationalarchives.gov.uk/about/news/') !== false) {
 
 		return 'News';
-	} elseif (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
+	}
+	if (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
 
 		return 'Blog';
-	} elseif (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
+	}
+	if (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
 
 		return 'Media';
-	} elseif (strpos($url, 'eventbrite') !== false) {
+	}
+	if (strpos($url, 'eventbrite') !== false) {
 
 		return 'Event';
-	} else {
-
-		return 'Feature';
 	}
+
+	return 'Feature';
 }
 
 function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
