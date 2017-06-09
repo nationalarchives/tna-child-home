@@ -206,6 +206,7 @@ function card_fallback( $fallback, $id ) {
 
 	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
 	$image = get_stylesheet_directory_uri().'/img/events.jpg';
+	$image = make_path_relative_no_pre_path($image);
 	$type = 'Events';
 	$title = 'Upcoming events and exhibitions at The National Archives';
 	$target = '';
