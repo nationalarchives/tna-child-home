@@ -3,6 +3,6 @@ Firefox css
 */
 
 .link-cards-wrapper .entry-head {
-    display: block !important;
+    display: flex !important;
+    align-items: center;
 }
-
