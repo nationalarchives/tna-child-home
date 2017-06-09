@@ -87,6 +87,8 @@ function content_type( $url ) {
 
 		return 'Event';
 	}
+
+	return 'Feature';
 }
 
 function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {

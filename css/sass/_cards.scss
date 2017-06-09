@@ -66,6 +66,14 @@
         width: 1em;
         height: 1em;
       }
+      .event-icon {
+        background: url(../img/icon-calendar.svg) no-repeat top right;
+        background-size: 16px 16px;
+      }
+      .media-icon {
+        background: url(../img/icon-play-circle-o.svg) no-repeat top right;
+        background-size: 16px 16px;
+      }
     }
   }
   @media only screen
