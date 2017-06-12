@@ -131,6 +131,9 @@
   .link-cards-wrapper .entry-content {
     padding: 1em 1em 0 1em;
     color: #444; }
+  @media (max-width: 767px) {
+    .link-cards-wrapper .col-link-card {
+      width: 100% !important; } }
 
 /* Masthead */
 .masthead-wrapper {
@@ -139,7 +142,7 @@
   background-position: center center;
   background-size: cover;
   height: auto;
-  min-height: 300px;
+  min-height: 380px;
   padding: 0;
   position: relative;
   margin-bottom: 1.5em; }
@@ -176,17 +179,19 @@
     .masthead-wrapper a.button {
       padding: 0.5em 1.5em; } }
   @media (max-width: 767px) {
-    .masthead-wrapper h1 {
-      margin-top: 32px;
-      margin-bottom: 16px;
-      font-size: 1.8em; }
-    .masthead-wrapper .masthead-overlay {
-      position: relative;
-      height: 100%;
-      text-align: center; }
-    .masthead-wrapper .opening-times {
-      float: none;
-      margin: 12px auto; } }
+    .masthead-wrapper {
+      min-height: 300px; }
+      .masthead-wrapper h1 {
+        margin-top: 32px;
+        margin-bottom: 16px;
+        font-size: 1.8em; }
+      .masthead-wrapper .masthead-overlay {
+        position: relative;
+        height: 100%;
+        text-align: center; }
+      .masthead-wrapper .opening-times {
+        float: none;
+        margin: 12px auto; } }
 
 /*
  * Footer stylesheet

@@ -65,6 +65,9 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 		if ($meta_og_title == 'Page Not Found - The National Archives') {
 			return card_fallback( 'Latest news', $id );
 		} else {
+			if (isset($meta_og_img[1]) == false) {
+				$meta_og_img[1] = '';
+			}
 			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), $meta_og_title );
 		}
 	}
@@ -81,7 +84,7 @@ function content_type( $url ) {
 	}
 	if (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
 
-		return 'Media';
+		return 'Multimedia';
 	}
 	if (strpos($url, 'eventbrite') !== false) {
 
@@ -124,7 +127,7 @@ function card_html( $id, $url, $image, $type, $title ) {
 		$target = 'target="_blank"';
 		$icon = 'event-icon';
 	}
-	if ($type=='Media') {
+	if ($type=='Multimedia') {
 		$icon = 'media-icon';
 	}
 
@@ -203,6 +206,7 @@ function card_fallback( $fallback, $id ) {
 
 	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
 	$image = get_stylesheet_directory_uri().'/img/events.jpg';
+	$image = make_path_relative_no_pre_path($image);
 	$type = 'Events';
 	$title = 'Upcoming events and exhibitions at The National Archives';
 	$target = '';
