@@ -1,5 +1,8 @@
 <?php
 
+// Theme version
+define( 'HOME_EDD_VERSION', '1.0' );
+
 // Include functions
 include 'inc/functions-global.php';
 include 'inc/functions-menu.php';
