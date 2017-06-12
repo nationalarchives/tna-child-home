@@ -6,7 +6,10 @@ Safari css
     width: 33.3% !important;
 }
 .col-link-card {
-    width: 24.9% !important;
+    width: 24.8% !important;
+}
+.cards-wrapper .col-card .card, .link-cards-wrapper .link-card {
+    box-shadow: none;
 }
 @media (max-width: 1240px) {
     .cards-wrapper .col-card {
@@ -17,11 +20,6 @@ Safari css
     .cards-wrapper .col-card {
         width: 100% !important;
     }
-    .col-link-card {
-        width: 49.9% !important;
-    }
-}
-@media (max-width: 480px) {
     .col-link-card {
         width: 100% !important;
     }
