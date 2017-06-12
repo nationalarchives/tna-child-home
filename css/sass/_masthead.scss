@@ -6,7 +6,7 @@
   background-position: center center;
   background-size: cover;
   height: auto;
-  min-height: 300px;
+  min-height: 400px;
   padding: 0;
   position: relative;
   margin-bottom: 1.5em;
@@ -52,6 +52,7 @@
     }
   }
   @media (max-width: 767px) {
+    min-height: 300px;
     h1 {
       margin-top: 32px;
       margin-bottom: 16px;
