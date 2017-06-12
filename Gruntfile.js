@@ -9,29 +9,37 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    // 'css/tna-forms.css': 'css/tna-forms.scss'
+                    'css/home-sass.css': 'css/sass/home-sass.scss'
+                }
+            }
+        },
+        cssmin: {
+            options: {
+                sourceMap: true
+            },
+            target: {
+                files: {
+                    'css/home-sass.css.min': ['css/home-sass.css']
                 }
             }
         },
         watch: {
-            scripts: {
-                // files: 'js/*.js',
-                // tasks: ['concat', 'uglify']
-            },
             css: {
-                // files: 'css/*.scss',
-                // tasks: ['sass']
+                files: 'css/sass/*.scss',
+                tasks: ['sass', 'cssmin']
             }
-        },
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
 
     // Default task(s).
-    grunt.registerTask('default', ['sass', 'concat', 'uglify', 'watch', 'qunit']);
+    grunt.registerTask('default', [
+        'sass',
+        'cssmin',
+        'watch'
+    ]);
 
 };
