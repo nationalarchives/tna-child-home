@@ -38,30 +38,17 @@ function tna_child_styles() {
 	wp_register_style( 'tna-child-styles', get_stylesheet_directory_uri() . '/css/home-sass.css.min', array(), HOME_EDD_VERSION, 'all' );
 	wp_enqueue_style( 'tna-parent-styles' );
 	wp_enqueue_style( 'tna-child-styles' );
-
-	global $is_safari, $is_gecko ;
-
-	if ($is_safari) {
-		wp_register_style( 'tna-child-styles-safari', get_stylesheet_directory_uri() . '/css/safari.css', array(), HOME_EDD_VERSION, 'all' );
-		wp_enqueue_style( 'tna-child-styles-safari' );
-	}
-	if ($is_gecko) {
-		wp_register_style( 'tna-child-styles-firefox', get_stylesheet_directory_uri() . '/css/firefox.css', array(), HOME_EDD_VERSION, 'all' );
-		wp_enqueue_style( 'tna-child-styles-firefox' );
-	}
 }
 
 function tna_child_scripts() {
+
 	wp_register_script( 'tna-child-home-js', get_stylesheet_directory_uri() . '/js/tna-child-home.js', array(), HOME_EDD_VERSION, true );
 	wp_enqueue_script( 'tna-child-home-js' );
 
 	wp_register_script( 'equal-heights', get_stylesheet_directory_uri() . '/js/jQuery.equalHeights.js', array(), HOME_EDD_VERSION, true );
 	wp_register_script( 'equal-heights-var', get_stylesheet_directory_uri() . '/js/equalHeights.js', array(), HOME_EDD_VERSION, true );
-	global $is_safari, $is_IE;
-	if ($is_safari || $is_IE) {
-		wp_enqueue_script( 'equal-heights' );
-		wp_enqueue_script( 'equal-heights-var' );
-	}
+	wp_enqueue_script( 'equal-heights' );
+	wp_enqueue_script( 'equal-heights-var' );
 }
 
 

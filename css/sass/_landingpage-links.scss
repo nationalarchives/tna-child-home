@@ -19,7 +19,8 @@
     box-shadow: 0 2px 5px #ddd;
   }
   .entry-head {
-    display: table;
+    display: flex;
+    align-items: center;
     padding: 1em 1.5em;
     background-color: #597a87;
     min-height: 98px;
