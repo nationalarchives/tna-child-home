@@ -83,7 +83,7 @@
   .home-banner .entry-wrapper {
     padding: 1.3em;
     width: 100%;
-    background: #000;
+    background: transparent;
     background: -webkit-linear-gradient(left, #000, transparent);
     background: -o-linear-gradient(right, #000, transparent);
     background: -moz-linear-gradient(right, #000, transparent);
