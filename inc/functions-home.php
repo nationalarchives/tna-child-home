@@ -41,6 +41,8 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 	if ( $url ) {
 		if (strpos($url, 'eventbrite') !== false && $environment !== 'development' ) {
 			$content_html = get_html_content($url);
+		} elseif (strpos($url, 'bookshop.nationalarchives.gov.uk') !== false) {
+			$content_html = get_html_content($url);
 		} else {
 			$content_html = file_get_contents($url);
 		}
