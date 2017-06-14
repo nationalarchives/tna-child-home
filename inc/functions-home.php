@@ -41,9 +41,7 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 	$environment = identifyEnvironmentFromIP($_SERVER['SERVER_ADDR'], $_SERVER['REMOTE_ADDR']);
 
 	if ( $url ) {
-		if (strpos($url, 'eventbrite') !== false && $environment !== 'development' ) {
-			$content_html = get_html_content($url);
-		} elseif (strpos($url, 'bookshop.nationalarchives.gov.uk') !== false) {
+		if ( $environment !== 'development' ) {
 			$content_html = get_html_content($url);
 		} else {
 			$content_html = file_get_contents($url);
