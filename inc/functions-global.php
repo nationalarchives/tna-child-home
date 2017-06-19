@@ -48,7 +48,9 @@ function tna_child_scripts() {
 	wp_register_script( 'equal-heights', get_stylesheet_directory_uri() . '/js/jQuery.equalHeights.js', array(), HOME_EDD_VERSION, true );
 	wp_register_script( 'equal-heights-var', get_stylesheet_directory_uri() . '/js/equalHeights.js', array(), HOME_EDD_VERSION, true );
 	wp_enqueue_script( 'equal-heights' );
+	wp_script_add_data( 'equal-heights', 'conditional', 'lte IE 9' );
 	wp_enqueue_script( 'equal-heights-var' );
+	wp_script_add_data( 'equal-heights-var', 'conditional', 'lte IE 9' );
 }
 
 
