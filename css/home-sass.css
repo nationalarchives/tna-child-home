@@ -12,68 +12,6 @@
   flex-wrap: wrap; }
 
 /* Cards */
-.cards-wrapper .col-card {
-  width: 33.33333%;
-  float: left;
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-bottom: 1.5em; }
-  .cards-wrapper .col-card .card {
-    position: relative;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: 0 2px 5px #ddd; }
-    .cards-wrapper .col-card .card a {
-      position: relative;
-      height: 100%;
-      display: block; }
-    .cards-wrapper .col-card .card a:hover {
-      text-decoration: none; }
-    .cards-wrapper .col-card .card a:hover h3 {
-      text-decoration: underline; }
-    .cards-wrapper .col-card .card h3 {
-      margin: 0.5em 0; }
-    .cards-wrapper .col-card .card h3 a {
-      font-family: 'Bitter', 'Open Sans', arial, serif !important; }
-    .cards-wrapper .col-card .card p {
-      margin-bottom: 0.5em; }
-    .cards-wrapper .col-card .card a:link .content-type,
-    .cards-wrapper .col-card .card a:visited .content-type {
-      color: #8b8b8b;
-      font-size: 0.9em; }
-    .cards-wrapper .col-card .card .entry-thumbnail {
-      width: 100%;
-      height: 185px;
-      background-color: #ddd;
-      background-position: center center;
-      background-size: cover; }
-    .cards-wrapper .col-card .card .entry-thumbnail img {
-      width: 100%; }
-    .cards-wrapper .col-card .card .entry-content {
-      padding: 1em; }
-    .cards-wrapper .col-card .card .entry-content p {
-      color: #444; }
-    .cards-wrapper .col-card .card .content-type {
-      width: 100%; }
-    .cards-wrapper .col-card .card .content-type img {
-      float: right;
-      width: 1em;
-      height: 1em; }
-    .cards-wrapper .col-card .card .event-icon {
-      background: url(../img/icon-calendar.svg) no-repeat top right;
-      background-size: 16px 16px; }
-    .cards-wrapper .col-card .card .media-icon {
-      background: url(../img/icon-play-circle-o.svg) no-repeat top right;
-      background-size: 16px 16px; }
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  .cards-wrapper .col-card {
-    width: 33%; } }
-@media (max-width: 768px) {
-  .cards-wrapper .col-card {
-    width: 100%; } }
-
 .flex-row {
   display: -webkit-box;
   display: -webkit-flex;

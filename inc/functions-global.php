@@ -36,8 +36,12 @@ function dequeue_parent_style() {
 function tna_child_styles() {
 	wp_register_style( 'tna-parent-styles', get_template_directory_uri() . '/css/base-sass.css.min', array(), EDD_VERSION, 'all' );
 	wp_register_style( 'tna-child-styles', get_stylesheet_directory_uri() . '/css/home-sass.css.min', array(), HOME_EDD_VERSION, 'all' );
+	wp_register_style( 'tna-child-ie9-styles', get_stylesheet_directory_uri() . '/css/ie9.css', array(), HOME_EDD_VERSION, 'all' );
 	wp_enqueue_style( 'tna-parent-styles' );
 	wp_enqueue_style( 'tna-child-styles' );
+	wp_enqueue_style( 'tna-child-ie9-styles' );
+	global $wp_styles;
+	$wp_styles->add_data( 'tna-child-ie9-styles', 'conditional', 'lte IE 9' );
 }
 
 function tna_child_scripts() {
