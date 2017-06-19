@@ -11,12 +11,10 @@ get_header(); ?>
 	<?php get_template_part( 'partials/hero', 'banner' ); ?>
 
 	<div class="container">
-		<div class="row">
-			<div class="cards-wrapper equal-heights clearfix">
+		<div class="flex-row equal-heights">
 
-				<?php get_template_part( 'partials/cards' ); ?>
+			<?php get_template_part( 'partials/cards' ); ?>
 
-			</div>
 		</div>
 	</div>
 

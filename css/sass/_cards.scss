@@ -143,18 +143,18 @@
       display: block;
       width: 100%;
     }
+    h3 {
+      margin: .5em 0;
+    }
+    p {
+      color: #444;
+    }
     a:hover {
       text-decoration: none;
       box-shadow: 0 4px 7px #ccc;
     }
     a:hover .entry-content h3 {
       text-decoration: underline;
-    }
-    h3 {
-      margin: .5em 0;
-    }
-    p {
-      color: #444;
     }
     .entry-image {
       display: block;

@@ -98,23 +98,23 @@ function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
 
 	$title = esc_attr($title);
 
-	$html = '<div class="col-card">
-				<div class="card">
-					<a id="card-%s" href="%s" %s
-						data-gtm-name="%s"
+	$html = '<div class="col-card-4">
+                <div class="card">
+                    <a id="card-%s" href="%s" %s
+                    	data-gtm-name="%s"
 						data-gtm-id="card_%s"
 						data-gtm-position="card_position_%s"
 						data-gtm-creative="homepage_card_%s"
 					class="homepage-card">
-						<div class="entry-thumbnail" style="background-image: url(%s)">
-						</div>
-						<div class="entry-content">
-							<div class="content-type %s">%s</div>
-							<h3>%s</h3>
-						</div>
-					</a>
-				</div>
-			</div>';
+                        <div class="entry-image" style="background-image: url(%s)">
+                        </div>
+                        <div class="entry-content">
+                            <div class="content-type %s">%s</div>
+                            <h3>%s</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>';
 
 	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $icon, $type, $title );
 }
@@ -316,18 +316,18 @@ function is_homepage_template() {
 
 function landingpage_link_html_markup( $title, $url, $text ) {
 
-	$html = '<div class="col-md-3 col-sm-6 col-link-card">
-                    <div class="link-card">
-                        <a href="%s">
-                            <div class="entry-head">
-                                <h3>%s</h3>
-                            </div>
-                            <div class="entry-content">
-                                <p>%s</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>';
+	$html = '<div class="col-card-3">
+                <div class="card">
+                    <a href="%s">
+                        <div class="entry-header">
+                            <h3>%s</h3>
+                        </div>
+                        <div class="entry-content">
+                            <p>%s</p>
+                        </div>
+                    </a>
+                </div>
+            </div>';
 
 	return sprintf( $html, $url, $title, $text );
 
