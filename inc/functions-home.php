@@ -13,20 +13,13 @@ function hide_editor_from_homepage() {
 
 function get_html_content( $url ) {
 
-	$ch = curl_init();
+	if ( !class_exists('WP_Http') ) {
+		include_once( ABSPATH . WPINC . '/class-http.php');
+	}
 
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_PROXY, WP_PROXY_HOST . ':' . WP_PROXY_PORT);
-	curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 1);
-	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-	curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)");
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-
-	$content = curl_exec($ch);
-
-	curl_close($ch);
+	$request = new WP_Http;
+	$result = $request->request( $url );
+	$content = $result['body'];
 
 	return $content;
 }
@@ -36,14 +29,9 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 	$meta_og_img = trim($image);
 	$meta_og_title = trim($title);
 
-	$environment = identifyEnvironmentFromIP($_SERVER['SERVER_ADDR'], $_SERVER['REMOTE_ADDR']);
-
 	if ( $url ) {
-		if (strpos($url, 'eventbrite') !== false && $environment !== 'development' ) {
-			$content_html = get_html_content($url);
-		} else {
-			$content_html = file_get_contents($url);
-		}
+
+		$content_html = get_html_content($url);
 
 		$html = new DOMDocument();
 		@$html->loadHTML($content_html);
