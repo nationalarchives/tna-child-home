@@ -121,8 +121,8 @@ function homepage_admin_page() {
 					<th scope="row"><label for="home_alert_status">Homepage alert</label></th>
 					<td>
 						<select name="home_alert_status">
-							<option <?php if (get_option('home_alert_status') == 'disable') { echo ' selected="selected"'; }; ?> value="disable">Disabled</option>
-							<option <?php if (get_option('home_alert_status') == 'enable') { echo ' selected="selected"'; }; ?> value="enable">Enabled</option>
+							<option <?php if (get_option('home_alert_status') == 'disabled') { echo ' selected="selected"'; }; ?> value="disabled">Disabled</option>
+							<option <?php if (get_option('home_alert_status') == 'enabled') { echo ' selected="selected"'; }; ?> value="enabled">Enabled</option>
 						</select>
 					</td>
 				</tr>
