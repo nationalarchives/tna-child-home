@@ -8,6 +8,8 @@ get_header(); ?>
 
 	<?php get_template_part( 'partials/masthead' ); ?>
 
+	<?php get_template_part( 'partials/alert' ); ?>
+
 	<?php get_template_part( 'partials/hero', 'banner' ); ?>
 
 	<div class="container">
