@@ -22,4 +22,8 @@ jQuery(document).ready(function() {
         }
     }
 
+    $("#alert_close_button").click(function () {
+        $("#home_alert").css("display", "none");
+    });
+
 });

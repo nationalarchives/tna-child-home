@@ -431,11 +431,11 @@ function home_alert( $status, $title, $text ) {
 
 		$icon = make_path_relative_no_pre_path( get_stylesheet_directory_uri() . '/img/close.svg' );
 
-		        $html = '<div class="container">
+		        $html = '<div id="home_alert" class="container">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="home-alert">
-								<a href="#"><img src="%s"></a>
+								<a id="alert_close_button" role="button" href="#"><img src="%s"></a>
 								<div class="alert-content">
 									<h3>%s</h3>
 									<p>%s</p>
