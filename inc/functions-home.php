@@ -428,18 +428,24 @@ function landingpage_link_html_markup( $title, $url, $text ) {
 function home_alert( $status, $title, $text ) {
 
 	if ( $status == 'enabled' ) {
-		$html = '<div class="container">
+
+		$icon = make_path_relative_no_pre_path( get_stylesheet_directory_uri() . '/img/close.svg' );
+
+		        $html = '<div class="container">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="home-alert">
-								<h3>%s</h3>
-								<p>%s</p>
+								<a href="#"><img src="%s"></a>
+								<div class="alert-content">
+									<h3>%s</h3>
+									<p>%s</p>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>';
 
-		return sprintf( $html, $title, $text );
+		return sprintf( $html, $icon, $title, $text );
 	}
 }
 

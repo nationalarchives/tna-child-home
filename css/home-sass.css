@@ -153,9 +153,19 @@
 .home-alert {
   background-color: #fff2ae;
   border-left: #FCE45C 4px solid;
-  padding: .5em 2em;
+  padding: 7px 32px;
   margin-bottom: 1.5em;
   box-shadow: 0 2px 5px #ddd; }
+  .home-alert .alert-content {
+    padding-right: 30px; }
+  .home-alert a {
+    float: right;
+    margin-top: 20px;
+    width: 24px;
+    height: 24px; }
+    .home-alert a img {
+      width: 24px;
+      height: 24px; }
 
 /* Masthead */
 .masthead-wrapper {
