@@ -3,6 +3,11 @@
  * Homepage functions
  */
 
+/**
+ * Removes the editor from the page set as the homepage.
+ *
+ * @since 1.0
+ */
 function hide_editor_from_homepage() {
 
 	if ( is_homepage_template() ) {
@@ -11,6 +16,14 @@ function hide_editor_from_homepage() {
 	}
 }
 
+/**
+ * Gets the content of a URL via a HTTP request and returns the content.
+ *
+ * @since 1.0
+ *
+ * @param string $url
+ * @return string
+ */
 function get_html_content( $url ) {
 
 	if ( !class_exists('WP_Http') ) {
@@ -24,6 +37,19 @@ function get_html_content( $url ) {
 	return $content;
 }
 
+/**
+ * Extracts the OG title and OG image of HTML content and returns HTML markup with title and image.
+ *
+ * @since 1.0
+ *
+ * @see get_html_content and card_html
+ *
+ * @param string $id
+ * @param string $url
+ * @param string $title
+ * @param string $image
+ * @return string
+ */
 function get_content_and_display_card( $id, $url, $title, $image ) {
 
 	$meta_og_img = trim($image);
@@ -61,6 +87,14 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 	}
 }
 
+/**
+ * Returns content type based on URL.
+ *
+ * @since 1.0
+ *
+ * @param string $url
+ * @return string
+ */
 function content_type( $url ) {
 	if (strpos($url, 'nationalarchives.gov.uk/about/news/') !== false) {
 
@@ -82,6 +116,20 @@ function content_type( $url ) {
 	return 'Feature';
 }
 
+/**
+ * Returns HTML markup for the cards.
+ *
+ * @since 1.0
+ *
+ * @param string $id
+ * @param string $url
+ * @param string $target
+ * @param string $image
+ * @param string $icon
+ * @param string $type
+ * @param string $title
+ * @return string
+ */
 function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
 
 	$title = esc_attr($title);
@@ -107,6 +155,20 @@ function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
 	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $icon, $type, $title );
 }
 
+/**
+ * Returns HTML markup for the cards with icons.
+ *
+ * @since 1.0
+ *
+ * @see card_html_markup
+ *
+ * @param string $id
+ * @param string $url
+ * @param string $image
+ * @param string $type
+ * @param string $title
+ * @return string
+ */
 function card_html( $id, $url, $image, $type, $title ) {
 
 	$target = '';
@@ -123,6 +185,19 @@ function card_html( $id, $url, $image, $type, $title ) {
 
 }
 
+/**
+ * Returns HTML markup for the banner.
+ *
+ * @since 1.0
+ *
+ * @param string $image
+ * @param string $type
+ * @param string $title
+ * @param string $excerpt
+ * @param string $url
+ * @param string $button
+ * @return string
+ */
 function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 
 	$title = esc_attr($title);
@@ -154,6 +229,22 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 
 }
 
+/**
+ * Returns HTML markup for the banner if not expired.
+ *
+ * @since 1.0
+ *
+ * @see banner_html and is_card_active
+ *
+ * @param string $expire
+ * @param string $status
+ * @param string $image
+ * @param string $title
+ * @param string $excerpt
+ * @param string $url
+ * @param string $button
+ * @return string
+ */
 function home_banner( $expire, $status, $image, $title, $excerpt, $url, $button ) {
 
 	if ( $status == 'Enable' && is_card_active( $expire ) ) {
@@ -162,6 +253,11 @@ function home_banner( $expire, $status, $image, $title, $excerpt, $url, $button 
 
 }
 
+/**
+ * Deletes the transient (card HTML) when the homepage is updated.
+ *
+ * @since 1.0
+ */
 function update_page_delete_transient(){
 	for ( $i=1 ; $i<=6 ; $i++ ) {
 
@@ -173,6 +269,14 @@ function update_page_delete_transient(){
 	}
 }
 
+/**
+ * Checks if the card has expired based on date input.
+ *
+ * @since 1.0
+ *
+ * @param string $expire
+ * @return bool
+ */
 function is_card_active( $expire ) {
 
 	if ($expire) {
