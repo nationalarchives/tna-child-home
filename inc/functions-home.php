@@ -425,3 +425,7 @@ function landingpage_link_html_markup( $title, $url, $text ) {
 
 }
 
+function home_alert() {
+
+}
+
