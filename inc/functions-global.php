@@ -61,8 +61,8 @@ function tna_child_scripts() {
 function admin_style() {
 	wp_enqueue_style( 'tna-child-admin-styles', get_stylesheet_directory_uri() . '/css/admin.css' );
 
-	wp_register_script('admin-scripts', get_stylesheet_directory_uri() . '/js/admin.js', array(), HOME_EDD_VERSION );
-	wp_enqueue_script('admin-scripts');
+	// wp_register_script('admin-scripts', get_stylesheet_directory_uri() . '/js/admin.js', array(), HOME_EDD_VERSION );
+	// wp_enqueue_script('admin-scripts');
 }
 
 function identifyEnvironmentFromIP($server_ip = null, $client_ip = null)
