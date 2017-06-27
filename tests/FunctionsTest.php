@@ -42,6 +42,41 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('content_type'));
     }
+    public function test_content_type_news()
+    {
+        $url = 'http://www.nationalarchives.gov.uk/about/news/the-national-archives-gets-top-marks-for-educational-visits/';
+        $type = content_type( $url );
+
+        $this->assertEquals($type, 'News');
+    }
+    public function test_content_type_blog()
+    {
+        $url = 'http://blog.nationalarchives.gov.uk/blog/decolonising-archaeology-iraq/';
+        $type = content_type( $url );
+
+        $this->assertEquals($type, 'Blog');
+    }
+    public function test_content_type_event()
+    {
+        $url = 'https://www.eventbrite.co.uk/e/annual-pipe-roll-society-lecture-the-charter-of-the-forest-1217-tickets-35002383070';
+        $type = content_type( $url );
+
+        $this->assertEquals($type, 'Event');
+    }
+    public function test_content_type_multimedia()
+    {
+        $url = 'http://media.nationalarchives.gov.uk/index.php/black-british-politics-anti-apartheid-struggle/';
+        $type = content_type( $url );
+
+        $this->assertEquals($type, 'Multimedia');
+    }
+    public function test_content_type_feature()
+    {
+        $url = 'http://www.google.com';
+        $type = content_type( $url );
+
+        $this->assertEquals($type, 'Feature');
+    }
     public function test_card_html()
     {
         $this->assertTrue(function_exists('card_html'));
