@@ -294,6 +294,17 @@ function is_card_active( $expire ) {
 	}
 }
 
+/**
+ * Displays a fallback card based on type. Default generic events fallback card.
+ *
+ * @since 1.0
+ *
+ * @see card_html_markup
+ *
+ * @param string $fallback
+ * @param string $id
+ * @return string
+ */
 function card_fallback( $fallback, $id ) {
 
 	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
@@ -334,6 +345,13 @@ function card_fallback( $fallback, $id ) {
 	return card_html_markup( $id, $url, $target, $image, $icon, $type, $title );
 }
 
+/**
+ * Checks for errors when publishing homepage template.
+ *
+ * @since 1.0
+ *
+ * @see is_homepage_template
+ */
 function check_cards() {
 
 	if( is_homepage_template() && isset($_POST['home_card_url_1']) ) {
@@ -366,6 +384,13 @@ function check_cards() {
 	}
 }
 
+/**
+ * Displays error message when errors are found.
+ *
+ * @since 1.0
+ *
+ * @see check_cards
+ */
 function cards_admin_notice() {
 	$cards_error = get_transient( get_current_user_id().'cards_error' );
 	if ($cards_error) { ?>
@@ -385,6 +410,13 @@ function cards_admin_notice() {
 	}
 }
 
+/**
+ * Checks if homepage template.
+ *
+ * @since 1.0
+ *
+ * @return bool
+ */
 function is_homepage_template() {
 	if (isset($_GET['post'])) {
 		$post_id = $_GET['post'];
@@ -406,6 +438,16 @@ function is_homepage_template() {
 	}
 }
 
+/**
+ * Returns landing page link cards HTML markup.
+ *
+ * @since 1.0
+ *
+ * @param string $title
+ * @param string $url
+ * @param string $text
+ * @return string
+ */
 function landingpage_link_html_markup( $title, $url, $text ) {
 
 	$html = '<div class="col-card-3">
@@ -425,6 +467,16 @@ function landingpage_link_html_markup( $title, $url, $text ) {
 
 }
 
+/**
+ * Returns home alert message HTML markup.
+ *
+ * @since 1.0
+ *
+ * @param string $status
+ * @param string $title
+ * @param string $text
+ * @return string
+ */
 function home_alert( $status, $title, $text ) {
 
 	if ( $status == 'enabled' ) {
