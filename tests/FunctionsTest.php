@@ -74,6 +74,19 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('cards_admin_notice'));
     }
+    public function test_is_homepage_template()
+    {
+        $this->assertTrue(function_exists('is_homepage_template'));
+    }
+    public function test_landingpage_link_html_markup()
+    {
+        $this->assertTrue(function_exists('landingpage_link_html_markup'));
+    }
+    public function test_home_alert()
+    {
+        $this->assertTrue(function_exists('home_alert'));
+    }
+
     public function test_is_tna_open()
     {
         $this->assertTrue(function_exists('is_tna_open'));
