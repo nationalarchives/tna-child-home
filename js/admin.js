@@ -2,7 +2,7 @@
  * Admin JS.
  */
 
-jQuery(document).ready(function() {
+/*jQuery(document).ready(function() {
     jQuery('.media-metabox-button-js').on('click', function() {
 
         var $this = jQuery(this);
@@ -19,5 +19,5 @@ jQuery(document).ready(function() {
 
         return false;
     });
-});
+});*/
 

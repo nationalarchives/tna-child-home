@@ -3,6 +3,11 @@
  * Homepage functions
  */
 
+/**
+ * Removes the editor from the page set as the homepage.
+ *
+ * @since 1.0
+ */
 function hide_editor_from_homepage() {
 
 	if ( is_homepage_template() ) {
@@ -11,6 +16,14 @@ function hide_editor_from_homepage() {
 	}
 }
 
+/**
+ * Gets the content of a URL via a HTTP request and returns the content.
+ *
+ * @since 1.0
+ *
+ * @param string $url
+ * @return string
+ */
 function get_html_content( $url ) {
 
 	if ( !class_exists('WP_Http') ) {
@@ -24,6 +37,19 @@ function get_html_content( $url ) {
 	return $content;
 }
 
+/**
+ * Extracts the OG title and OG image of HTML content and returns HTML markup with title and image.
+ *
+ * @since 1.0
+ *
+ * @see get_html_content and card_html
+ *
+ * @param string $id
+ * @param string $url
+ * @param string $title
+ * @param string $image
+ * @return string
+ */
 function get_content_and_display_card( $id, $url, $title, $image ) {
 
 	$meta_og_img = trim($image);
@@ -56,11 +82,19 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 			if (isset($meta_og_img[1]) == false) {
 				$meta_og_img[1] = '';
 			}
-			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), $meta_og_title );
+			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ) );
 		}
 	}
 }
 
+/**
+ * Returns content type based on URL.
+ *
+ * @since 1.0
+ *
+ * @param string $url
+ * @return string
+ */
 function content_type( $url ) {
 	if (strpos($url, 'nationalarchives.gov.uk/about/news/') !== false) {
 
@@ -82,31 +116,57 @@ function content_type( $url ) {
 	return 'Feature';
 }
 
+/**
+ * Returns HTML markup for the cards.
+ *
+ * @since 1.0
+ *
+ * @param string $id
+ * @param string $url
+ * @param string $target
+ * @param string $image
+ * @param string $icon
+ * @param string $type
+ * @param string $title
+ * @return string
+ */
 function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
 
-	$title = esc_attr($title);
-
-	$html = '<div class="col-card">
-				<div class="card">
-					<a id="card-%s" href="%s" %s
-						data-gtm-name="%s"
+	$html = '<div class="col-card-4">
+                <div class="card">
+                    <a id="card-%s" href="%s" %s
+                    	data-gtm-name="%s"
 						data-gtm-id="card_%s"
 						data-gtm-position="card_position_%s"
 						data-gtm-creative="homepage_card_%s"
 					class="homepage-card">
-						<div class="entry-thumbnail" style="background-image: url(%s)">
-						</div>
-						<div class="entry-content">
-							<div class="content-type %s">%s</div>
-							<h3>%s</h3>
-						</div>
-					</a>
-				</div>
-			</div>';
+                        <div class="entry-image" style="background-image: url(%s)">
+                        </div>
+                        <div class="entry-content">
+                            <div class="content-type %s">%s</div>
+                            <h3>%s</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>';
 
 	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $icon, $type, $title );
 }
 
+/**
+ * Returns HTML markup for the cards with icons.
+ *
+ * @since 1.0
+ *
+ * @see card_html_markup
+ *
+ * @param string $id
+ * @param string $url
+ * @param string $image
+ * @param string $type
+ * @param string $title
+ * @return string
+ */
 function card_html( $id, $url, $image, $type, $title ) {
 
 	$target = '';
@@ -123,10 +183,23 @@ function card_html( $id, $url, $image, $type, $title ) {
 
 }
 
+/**
+ * Returns HTML markup for the banner.
+ *
+ * @since 1.0
+ *
+ * @param string $image
+ * @param string $type
+ * @param string $title
+ * @param string $excerpt
+ * @param string $url
+ * @param string $button
+ * @return string
+ */
 function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 
 	$title = esc_attr($title);
-	$image = make_path_relative_no_pre_path($image);
+	$image = make_path_relative($image);
 
 	$html = '<div class="container">
 		        <div class="row">
@@ -154,6 +227,22 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 
 }
 
+/**
+ * Returns HTML markup for the banner if not expired.
+ *
+ * @since 1.0
+ *
+ * @see banner_html and is_card_active
+ *
+ * @param string $expire
+ * @param string $status
+ * @param string $image
+ * @param string $title
+ * @param string $excerpt
+ * @param string $url
+ * @param string $button
+ * @return string
+ */
 function home_banner( $expire, $status, $image, $title, $excerpt, $url, $button ) {
 
 	if ( $status == 'Enable' && is_card_active( $expire ) ) {
@@ -162,6 +251,11 @@ function home_banner( $expire, $status, $image, $title, $excerpt, $url, $button 
 
 }
 
+/**
+ * Deletes the transient (card HTML) when the homepage is updated.
+ *
+ * @since 1.0
+ */
 function update_page_delete_transient(){
 	for ( $i=1 ; $i<=6 ; $i++ ) {
 
@@ -173,6 +267,14 @@ function update_page_delete_transient(){
 	}
 }
 
+/**
+ * Checks if the card has expired based on date input.
+ *
+ * @since 1.0
+ *
+ * @param string $expire
+ * @return bool
+ */
 function is_card_active( $expire ) {
 
 	if ($expire) {
@@ -190,11 +292,22 @@ function is_card_active( $expire ) {
 	}
 }
 
+/**
+ * Displays a fallback card based on type. Default generic events fallback card.
+ *
+ * @since 1.0
+ *
+ * @see card_html_markup
+ *
+ * @param string $fallback
+ * @param string $id
+ * @return string
+ */
 function card_fallback( $fallback, $id ) {
 
 	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
 	$image = get_stylesheet_directory_uri().'/img/events.jpg';
-	$image = make_path_relative_no_pre_path($image);
+	$image = make_path_relative($image);
 	$type = 'Events';
 	$title = 'Upcoming events and exhibitions at The National Archives';
 	$target = '';
@@ -230,6 +343,13 @@ function card_fallback( $fallback, $id ) {
 	return card_html_markup( $id, $url, $target, $image, $icon, $type, $title );
 }
 
+/**
+ * Checks for errors when publishing homepage template.
+ *
+ * @since 1.0
+ *
+ * @see is_homepage_template
+ */
 function check_cards() {
 
 	if( is_homepage_template() && isset($_POST['home_card_url_1']) ) {
@@ -262,6 +382,13 @@ function check_cards() {
 	}
 }
 
+/**
+ * Displays error message when errors are found.
+ *
+ * @since 1.0
+ *
+ * @see check_cards
+ */
 function cards_admin_notice() {
 	$cards_error = get_transient( get_current_user_id().'cards_error' );
 	if ($cards_error) { ?>
@@ -281,6 +408,13 @@ function cards_admin_notice() {
 	}
 }
 
+/**
+ * Checks if homepage template.
+ *
+ * @since 1.0
+ *
+ * @return bool
+ */
 function is_homepage_template() {
 	if (isset($_GET['post'])) {
 		$post_id = $_GET['post'];
@@ -302,22 +436,66 @@ function is_homepage_template() {
 	}
 }
 
+/**
+ * Returns landing page link cards HTML markup.
+ *
+ * @since 1.0
+ *
+ * @param string $title
+ * @param string $url
+ * @param string $text
+ * @return string
+ */
 function landingpage_link_html_markup( $title, $url, $text ) {
 
-	$html = '<div class="col-md-3 col-sm-6 col-link-card">
-                    <div class="link-card">
-                        <a href="%s">
-                            <div class="entry-head">
-                                <h3>%s</h3>
-                            </div>
-                            <div class="entry-content">
-                                <p>%s</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>';
+	$html = '<div class="col-card-3">
+                <div class="card">
+                    <a href="%s">
+                        <div class="entry-header">
+                            <h3>%s</h3>
+                        </div>
+                        <div class="entry-content">
+                            <p>%s</p>
+                        </div>
+                    </a>
+                </div>
+            </div>';
 
 	return sprintf( $html, $url, $title, $text );
 
+}
+
+/**
+ * Returns home alert message HTML markup.
+ *
+ * @since 1.0
+ *
+ * @param string $status
+ * @param string $title
+ * @param string $text
+ * @return string
+ */
+function home_alert( $status, $title, $text ) {
+
+	if ( $status == 'enabled' ) {
+
+		$icon = make_path_relative( get_stylesheet_directory_uri() . '/img/close.svg' );
+
+		        $html = '<div id="home_alert" class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="home-alert">
+								<a id="alert_close_button" role="button" href="#"><img src="%s"></a>
+								<div class="alert-content">
+									<h3>%s</h3>
+									<p>%s</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>';
+
+		return sprintf( $html, $icon, $title, $text );
+	}
 }
 

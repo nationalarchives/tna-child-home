@@ -34,6 +34,10 @@ function homepage_admin_page_settings() {
 		register_setting( 'homepage-settings-group', 'open_times_'.$i );
 
 	}
+
+	register_setting( 'homepage-settings-group', 'home_alert_status' );
+	register_setting( 'homepage-settings-group', 'home_alert_title' );
+	register_setting( 'homepage-settings-group', 'home_alert_text' );
 }
 
 function homepage_admin_page() {
@@ -107,6 +111,29 @@ function homepage_admin_page() {
 						</td>
 					</tr>
 			<?php } ?>
+			</table>
+
+			<?php submit_button(); ?>
+
+			<h2>Alert message</h2>
+			<table class="form-table home-alert">
+				<tr valign="top">
+					<th scope="row"><label for="home_alert_status">Homepage alert</label></th>
+					<td>
+						<select name="home_alert_status">
+							<option <?php if (get_option('home_alert_status') == 'disabled') { echo ' selected="selected"'; }; ?> value="disabled">Disabled</option>
+							<option <?php if (get_option('home_alert_status') == 'enabled') { echo ' selected="selected"'; }; ?> value="enabled">Enabled</option>
+						</select>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><label for="home_alert_title">Title</label></th>
+					<td><input type="text" name="home_alert_title" value="<?php echo esc_attr( get_option('home_alert_title') ); ?>" /></td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><label for="home_alert_text">Description</label></th>
+					<td><textarea name="home_alert_text"><?php echo esc_attr( get_option('home_alert_text') ); ?></textarea></td>
+				</tr>
 			</table>
 
 			<?php submit_button(); ?>

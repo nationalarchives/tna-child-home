@@ -42,9 +42,72 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('content_type'));
     }
+    public function test_content_type_news()
+    {
+        $url = 'http://www.nationalarchives.gov.uk/about/news/the-national-archives-gets-top-marks-for-educational-visits/';
+        $type = content_type( $url );
+
+        $this->assertEquals($type, 'News');
+    }
+    public function test_content_type_blog()
+    {
+        $url = 'http://blog.nationalarchives.gov.uk/blog/decolonising-archaeology-iraq/';
+        $type = content_type( $url );
+
+        $this->assertEquals($type, 'Blog');
+    }
+    public function test_content_type_event()
+    {
+        $url = 'https://www.eventbrite.co.uk/e/annual-pipe-roll-society-lecture-the-charter-of-the-forest-1217-tickets-35002383070';
+        $type = content_type( $url );
+
+        $this->assertEquals($type, 'Event');
+    }
+    public function test_content_type_multimedia()
+    {
+        $url = 'http://media.nationalarchives.gov.uk/index.php/black-british-politics-anti-apartheid-struggle/';
+        $type = content_type( $url );
+
+        $this->assertEquals($type, 'Multimedia');
+    }
+    public function test_content_type_feature()
+    {
+        $url = 'http://www.google.com';
+        $type = content_type( $url );
+
+        $this->assertEquals($type, 'Feature');
+    }
     public function test_card_html()
     {
         $this->assertTrue(function_exists('card_html'));
+    }
+    public function test_card_html_output()
+    {
+        $id = 1;
+        $url = 'http://www.google.com';
+        $image = 'image.jpg';
+        $type = 'Event';
+        $title = 'Title';
+
+        $card = card_html( $id, $url, $image, $type, $title );
+
+        $this->assertEquals($card, '<div class="col-card-4">
+                <div class="card">
+                    <a id="card-1" href="http://www.google.com" target="_blank"
+                    	data-gtm-name="Title"
+						data-gtm-id="card_1"
+						data-gtm-position="card_position_1"
+						data-gtm-creative="homepage_card_Event"
+					class="homepage-card">
+                        <div class="entry-image" style="background-image: url(image.jpg)">
+                        </div>
+                        <div class="entry-content">
+                            <div class="content-type event-icon">Event</div>
+                            <h3>Title</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>');
     }
     public function test_banner_html()
     {
@@ -74,6 +137,19 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('cards_admin_notice'));
     }
+    public function test_is_homepage_template()
+    {
+        $this->assertTrue(function_exists('is_homepage_template'));
+    }
+    public function test_landingpage_link_html_markup()
+    {
+        $this->assertTrue(function_exists('landingpage_link_html_markup'));
+    }
+    public function test_home_alert()
+    {
+        $this->assertTrue(function_exists('home_alert'));
+    }
+
     public function test_is_tna_open()
     {
         $this->assertTrue(function_exists('is_tna_open'));

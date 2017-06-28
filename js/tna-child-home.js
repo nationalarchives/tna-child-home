@@ -2,7 +2,7 @@
  * TNA Child home JS
  */
 
-jQuery(document).ready(function() {
+$(document).ready(function() {
 
     var $count = jQuery(".col-card").length;
 
@@ -22,4 +22,17 @@ jQuery(document).ready(function() {
         }
     }
 
+    $(function () {
+        if (!tnaCheckForThisCookie("dontShowHomeAlert")) {
+
+            $("#home_alert").show();
+        }
+    });
+
+    $("#alert_close_button").click(function () {
+
+        tnaSetThisCookie('dontShowHomeAlert', 1);
+
+        $("#home_alert").hide();
+    });
 });
