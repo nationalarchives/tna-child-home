@@ -82,7 +82,7 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 			if (isset($meta_og_img[1]) == false) {
 				$meta_og_img[1] = '';
 			}
-			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), $meta_og_title );
+			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ) );
 		}
 	}
 }
@@ -131,8 +131,6 @@ function content_type( $url ) {
  * @return string
  */
 function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
-
-	$title = esc_attr($title);
 
 	$html = '<div class="col-card-4">
                 <div class="card">

@@ -81,6 +81,34 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('card_html'));
     }
+    public function test_card_html_output()
+    {
+        $id = 1;
+        $url = 'http://www.google.com';
+        $image = 'image.jpg';
+        $type = 'Event';
+        $title = 'Title';
+
+        $card = card_html( $id, $url, $image, $type, $title );
+
+        $this->assertEquals($card, '<div class="col-card-4">
+                <div class="card">
+                    <a id="card-1" href="http://www.google.com" target="_blank"
+                    	data-gtm-name="Title"
+						data-gtm-id="card_1"
+						data-gtm-position="card_position_1"
+						data-gtm-creative="homepage_card_Event"
+					class="homepage-card">
+                        <div class="entry-image" style="background-image: url(image.jpg)">
+                        </div>
+                        <div class="entry-content">
+                            <div class="content-type event-icon">Event</div>
+                            <h3>Title</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>');
+    }
     public function test_banner_html()
     {
         $this->assertTrue(function_exists('banner_html'));
