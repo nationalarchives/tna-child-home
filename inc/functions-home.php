@@ -54,6 +54,7 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 
 	$meta_og_img = trim($image);
 	$meta_og_title = trim($title);
+	$meta_event_date = '';
 
 	if ( $url ) {
 
@@ -74,6 +75,12 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 				$meta_og_img[$i] = $meta->getAttribute('content');
 				$i++;
 			}
+
+			if (strpos($url, 'eventbrite') !== false) {
+				if( $meta->getAttribute('property')=='event:start_time' ) {
+					$meta_event_date = $meta->getAttribute('content');
+				}
+			}
 		}
 
 		if ($meta_og_title == 'Page Not Found - The National Archives') {
@@ -82,7 +89,12 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 			if (isset($meta_og_img[1]) == false) {
 				$meta_og_img[1] = '';
 			}
-			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ) );
+			if ($meta_event_date) {
+				$date = $meta_event_date;
+			} else {
+				$date = '';
+			}
+			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ), $date );
 		}
 	}
 }
@@ -128,9 +140,10 @@ function content_type( $url ) {
  * @param string $icon
  * @param string $type
  * @param string $title
+ * @param string $date
  * @return string
  */
-function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
+function card_html_markup( $id, $url, $target, $image, $icon, $type, $title, $date ) {
 
 	$html = '<div class="col-card-4">
                 <div class="card">
@@ -145,12 +158,13 @@ function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
                         <div class="entry-content">
                             <div class="content-type %s">%s</div>
                             <h3>%s</h3>
+                            <div class="date">%s</div>
                         </div>
                     </a>
                 </div>
             </div>';
 
-	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $icon, $type, $title );
+	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $icon, $type, $title, $date );
 }
 
 /**
@@ -165,9 +179,10 @@ function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
  * @param string $image
  * @param string $type
  * @param string $title
+ * @param string $date
  * @return string
  */
-function card_html( $id, $url, $image, $type, $title ) {
+function card_html( $id, $url, $image, $type, $title, $date ) {
 
 	$target = '';
 	$icon = '';
@@ -179,7 +194,7 @@ function card_html( $id, $url, $image, $type, $title ) {
 		$icon = 'media-icon';
 	}
 
-	return card_html_markup( $id, $url, $target, $image, $icon, $type, $title );
+	return card_html_markup( $id, $url, $target, $image, $icon, $type, $title, $date );
 
 }
 
