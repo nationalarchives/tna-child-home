@@ -90,7 +90,7 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 				$meta_og_img[1] = '';
 			}
 			if ($meta_event_date) {
-				$date = $meta_event_date;
+				$date = date('l j F Y, g:i a', strtotime($meta_event_date));
 			} else {
 				$date = '';
 			}
