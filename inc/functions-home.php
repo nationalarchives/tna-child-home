@@ -143,7 +143,7 @@ function content_type( $url ) {
  * @param string $date
  * @return string
  */
-function card_html_markup( $id, $url, $target, $image, $icon, $type, $title, $date ) {
+function card_html_markup( $id, $url, $target, $image, $type, $title, $date ) {
 
 	$html = '<div class="col-card-4">
                 <div class="card">
@@ -156,15 +156,15 @@ function card_html_markup( $id, $url, $target, $image, $icon, $type, $title, $da
                         <div class="entry-image" style="background-image: url(%s)">
                         </div>
                         <div class="entry-content">
-                            <div class="content-type %s">%s</div>
+                            <div class="content-type">%s</div>
                             <h3>%s</h3>
-                            <div class="date">%s</div>
                         </div>
+                        <div class="date">%s</div>
                     </a>
                 </div>
             </div>';
 
-	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $icon, $type, $title, $date );
+	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $type, $title, $date );
 }
 
 /**
@@ -185,16 +185,11 @@ function card_html_markup( $id, $url, $target, $image, $icon, $type, $title, $da
 function card_html( $id, $url, $image, $type, $title, $date ) {
 
 	$target = '';
-	$icon = '';
 	if ($type=='Event') {
 		$target = 'target="_blank"';
-		$icon = 'event-icon';
-	}
-	if ($type=='Multimedia') {
-		$icon = 'media-icon';
 	}
 
-	return card_html_markup( $id, $url, $target, $image, $icon, $type, $title, $date );
+	return card_html_markup( $id, $url, $target, $image, $type, $title, $date );
 
 }
 
