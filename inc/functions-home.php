@@ -145,6 +145,12 @@ function content_type( $url ) {
  */
 function card_html_markup( $id, $url, $target, $image, $type, $title, $date ) {
 
+	if ( $date ) {
+		$date = '<div class="entry-date"><div class="date">' . $date . '</div></div>';
+	}
+
+	$type_class = strtolower($type);
+
 	$html = '<div class="col-card-4">
                 <div class="card">
                     <a id="card-%s" href="%s" %s
@@ -155,16 +161,16 @@ function card_html_markup( $id, $url, $target, $image, $type, $title, $date ) {
 					class="homepage-card">
                         <div class="entry-image" style="background-image: url(%s)">
                         </div>
-                        <div class="entry-content">
+                        <div class="entry-content %s">
                             <div class="content-type">%s</div>
                             <h3>%s</h3>
                         </div>
-                        <div class="date">%s</div>
+                        %s
                     </a>
                 </div>
             </div>';
 
-	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $type, $title, $date );
+	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $type_class, $type, $title, $date );
 }
 
 /**

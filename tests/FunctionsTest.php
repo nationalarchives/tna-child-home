@@ -106,7 +106,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
                             <div class="content-type">Event</div>
                             <h3>Title</h3>
                         </div>
-                        <div class="date">Friday 26 May 2017, 10:00 am</div>
+                        <div class="entry-date"><div class="date">Friday 26 May 2017, 10:00 am</div></div>
                     </a>
                 </div>
             </div>');
