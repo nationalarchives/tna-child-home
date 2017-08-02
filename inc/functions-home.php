@@ -99,9 +99,9 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 			} else {
 				$date = '';
 			}
-			if (str_word_count($meta_og_description, 0) > 21) {
+			if (str_word_count($meta_og_description, 0) > 14) {
 				$words = explode(' ',$meta_og_description);
-				$meta_og_description = implode(' ', array_splice( $words , 0, 21)) . '...';
+				$meta_og_description = implode(' ', array_splice( $words , 0, 14)) . '...';
 			}
 			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ), $meta_og_description, $date );
 		}
