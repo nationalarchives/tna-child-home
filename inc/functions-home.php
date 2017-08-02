@@ -137,7 +137,6 @@ function content_type( $url ) {
  * @param string $url
  * @param string $target
  * @param string $image
- * @param string $icon
  * @param string $type
  * @param string $title
  * @param string $date
