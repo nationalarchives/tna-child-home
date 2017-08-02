@@ -183,6 +183,25 @@ function card_html_markup( $id, $url, $target, $image, $type, $title, $descripti
 	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $type_class, $type, $title, $description, $date );
 }
 
+function card_html_wrapper( $content ) {
+
+	$html = '<div class="col-card-4"><div class="card">%s</div></div>';
+
+	return sprintf( $html, $content );
+}
+
+function card_html_link( $id, $url, $target, $type, $title, $content ) {
+
+	$html = '<a id="card-%s" href="%s" %s
+                    	data-gtm-name="%s"
+						data-gtm-id="card_%s"
+						data-gtm-position="card_position_%s"
+						data-gtm-creative="homepage_card_%s"
+					class="homepage-card">%s</a>';
+
+	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $content );
+}
+
 /**
  * Returns HTML markup for the cards with icons.
  *
