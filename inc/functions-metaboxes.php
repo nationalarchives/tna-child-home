@@ -85,6 +85,13 @@ function home_meta_boxes() {
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Override excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_1',
+					'type' => 'text',
+					'std' => ''
+				),
 				/*array(
 					'name' => 'Override title',
 					'desc' => $descCardTitle,
@@ -126,6 +133,13 @@ function home_meta_boxes() {
 					'name' => 'Content URL*',
 					'desc' => $descUrl,
 					'id' => 'home_card_url_2',
+					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_2',
 					'type' => 'text',
 					'std' => ''
 				),
@@ -173,6 +187,13 @@ function home_meta_boxes() {
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Override excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_3',
+					'type' => 'text',
+					'std' => ''
+				),
 				/*array(
 					'name' => 'Override title',
 					'desc' => $descCardTitle,
@@ -214,6 +235,13 @@ function home_meta_boxes() {
 					'name' => 'Content URL*',
 					'desc' => $descUrl,
 					'id' => 'home_card_url_4',
+					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_4',
 					'type' => 'text',
 					'std' => ''
 				),
@@ -261,6 +289,13 @@ function home_meta_boxes() {
 					'type' => 'text',
 					'std' => ''
 				),
+				array(
+					'name' => 'Override excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_5',
+					'type' => 'text',
+					'std' => ''
+				),
 				/*array(
 					'name' => 'Override title',
 					'desc' => $descCardTitle,
@@ -302,6 +337,13 @@ function home_meta_boxes() {
 					'name' => 'Content URL*',
 					'desc' => $descUrl,
 					'id' => 'home_card_url_6',
+					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Override excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_6',
 					'type' => 'text',
 					'std' => ''
 				),
