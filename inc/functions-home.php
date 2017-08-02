@@ -50,11 +50,11 @@ function get_html_content( $url ) {
  * @param string $image
  * @return string
  */
-function get_content_and_display_card( $id, $url, $title, $image ) {
+function get_content_and_display_card( $id, $url, $title, $description, $image ) {
 
 	$meta_og_img = trim($image);
 	$meta_og_title = trim($title);
-	$meta_og_description = '';
+	$meta_og_description = trim($description);
 	$meta_event_date = '';
 
 	if ( $url ) {
@@ -72,7 +72,7 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 				$meta_og_title = $meta->getAttribute('content');
 			}
 
-			if( $meta->getAttribute('property')=='og:description' && trim($title)=='' ) {
+			if( $meta->getAttribute('property')=='og:description' && trim($description)=='' ) {
 				$meta_og_description = $meta->getAttribute('content');
 			}
 
@@ -103,7 +103,7 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 				$words = explode(' ',$meta_og_description);
 				$meta_og_description = implode(' ', array_splice( $words , 0, 14)) . '...';
 			}
-			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ), $meta_og_description, $date );
+			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ), esc_attr( $meta_og_description ), $date );
 		}
 	}
 }
