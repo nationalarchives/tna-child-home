@@ -6,12 +6,17 @@
   background-position: center right;
   background-size: cover;
   height: auto;
-  min-height: 280px;
+  min-height: 260px;
   padding: 0;
   position: relative;
   margin-bottom: 1.5em;
   h1 {
-    margin: 12px 0;
+    font-size: 3.6em;
+    color: #008484;
+    margin: 1em 0 0;
+  }
+  h2 {
+    margin: 0 0 1em;
   }
   a.button {
     padding: 0.5em 2.6em;
@@ -29,9 +34,6 @@
     background: url(../img/clock.png) 12px center no-repeat;
     position: relative;
     margin: 12px 0;
-    a {
-      color: #fce45c;
-    }
   }
   @media (max-width: 826px) {
     a.button {
