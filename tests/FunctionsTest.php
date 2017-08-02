@@ -102,7 +102,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
 					class="homepage-card">
                         <div class="entry-image" style="background-image: url(image.jpg)">
                         </div>
-                        <div class="entry-content">
+                        <div class="entry-content event">
                             <div class="content-type">Event</div>
                             <h3>Title</h3>
                         </div>
