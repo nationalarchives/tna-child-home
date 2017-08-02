@@ -17,22 +17,22 @@ if ( get_option('home_masthead_btn_text_1') ) {
 				<div class="row">
 					<div class="col-md-12">
 						<h1><?php echo get_option('home_masthead_desc'); ?></h1>
-					</div>
-					<div class="opening-times">
-						<?php echo display_tna_opening_status( date('Y-m-d'), date('l'), get_openingtimes_overrides() ); ?><br>
-						<a href="http://www.nationalarchives.gov.uk/about/visit-us/">Plan your visit</a>
-					</div>
-					<div class="masthead-buttons">
-						<?php for ( $i=1 ; $i<=3 ; $i++ ) {
+						<div class="opening-times">
+							<?php echo display_tna_opening_status( date('Y-m-d'), date('l'), get_openingtimes_overrides() ); ?>
+							<a href="http://www.nationalarchives.gov.uk/about/visit-us/">Plan your visit</a>
+						</div>
+						<div class="masthead-buttons">
+							<?php for ( $i=1 ; $i<=3 ; $i++ ) {
 
-							$btn_text = esc_attr( get_option('home_masthead_btn_text_'.$i) );
-							$btn_url = esc_attr( get_option('home_masthead_btn_url_'.$i) );
+								$btn_text = esc_attr( get_option('home_masthead_btn_text_'.$i) );
+								$btn_url = esc_attr( get_option('home_masthead_btn_url_'.$i) );
 
-							?>
-								<a class="button" role="button" href="<?php echo $btn_url ?>">
-									<span><?php echo $btn_text ?></span>
-								</a>
-						<?php } ?>
+								?>
+									<a class="button" role="button" href="<?php echo $btn_url ?>">
+										<span><?php echo $btn_text ?></span>
+									</a>
+							<?php } ?>
+						</div>
 					</div>
 				</div>
 			</div>

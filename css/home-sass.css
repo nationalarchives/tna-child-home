@@ -174,7 +174,7 @@
 .masthead-wrapper {
   display: block;
   background-color: #ddd;
-  background-position: center center;
+  background-position: center right;
   background-size: cover;
   height: auto;
   min-height: 280px;
@@ -184,19 +184,14 @@
   .masthead-wrapper h1 {
     margin: 12px 0; }
   .masthead-wrapper a.button {
-    width: 100%;
+    padding: 0.5em 2.6em;
     margin-bottom: 12px; }
   .masthead-wrapper a.button:focus {
     color: #fff !important; }
   .masthead-wrapper a.button span {
-    font-size: 1.2em;
-    font-family: 'Bitter', 'Open Sans', arial, serif; }
+    font-size: 1.2em; }
   .masthead-wrapper .opening-times {
-    max-width: 300px;
-    float: right;
-    padding: 0.5em 1.5em 0.5em 70px;
-    border: 1px solid #fff;
-    border-radius: 0px;
+    padding: 0.9em 1.5em 0.9em 70px;
     text-align: left;
     background: url(../img/clock.png) 12px center no-repeat;
     position: relative;
@@ -205,21 +200,14 @@
       color: #fce45c; }
   @media (max-width: 826px) {
     .masthead-wrapper a.button {
-      padding: 0.5em 1.5em; } }
+      padding: 0.5em 1.6em; } }
   @media (max-width: 767px) {
     .masthead-wrapper {
       min-height: 300px; }
       .masthead-wrapper h1 {
         margin-top: 32px;
         margin-bottom: 16px;
-        font-size: 1.8em; }
-      .masthead-wrapper .masthead-overlay {
-        position: relative;
-        height: 100%;
-        text-align: center; }
-      .masthead-wrapper .opening-times {
-        float: none;
-        margin: 12px auto; } }
+        font-size: 1.8em; } }
 
 /*
  * Footer stylesheet
