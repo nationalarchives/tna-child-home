@@ -54,6 +54,7 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 
 	$meta_og_img = trim($image);
 	$meta_og_title = trim($title);
+	$meta_og_description = '';
 	$meta_event_date = '';
 
 	if ( $url ) {
@@ -69,6 +70,10 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 
 			if( $meta->getAttribute('property')=='og:title' && trim($title)=='' ) {
 				$meta_og_title = $meta->getAttribute('content');
+			}
+
+			if( $meta->getAttribute('property')=='og:description' && trim($title)=='' ) {
+				$meta_og_description = $meta->getAttribute('content');
 			}
 
 			if( $meta->getAttribute('property')=='og:image' && trim($image)=='' ) {
@@ -90,11 +95,15 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 				$meta_og_img[1] = '';
 			}
 			if ($meta_event_date) {
-				$date = date('l j F Y, g:i a', strtotime($meta_event_date));
+				$date = date('l j F Y, H:i', strtotime($meta_event_date));
 			} else {
 				$date = '';
 			}
-			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ), $date );
+			if (str_word_count($meta_og_description, 0) > 21) {
+				$words = explode(' ',$meta_og_description);
+				$meta_og_description = implode(' ', array_splice( $words , 0, 21)) . '...';
+			}
+			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ), $meta_og_description, $date );
 		}
 	}
 }
@@ -139,10 +148,11 @@ function content_type( $url ) {
  * @param string $image
  * @param string $type
  * @param string $title
+ * @param string $description
  * @param string $date
  * @return string
  */
-function card_html_markup( $id, $url, $target, $image, $type, $title, $date ) {
+function card_html_markup( $id, $url, $target, $image, $type, $title, $description, $date ) {
 
 	if ( $date ) {
 		$date = '<div class="entry-date"><div class="date">' . $date . '</div></div>';
@@ -163,13 +173,14 @@ function card_html_markup( $id, $url, $target, $image, $type, $title, $date ) {
                         <div class="entry-content %s">
                             <div class="content-type">%s</div>
                             <h3>%s</h3>
+                            <p>%s</p>
                         </div>
                         %s
                     </a>
                 </div>
             </div>';
 
-	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $type_class, $type, $title, $date );
+	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $type_class, $type, $title, $description, $date );
 }
 
 /**
@@ -184,17 +195,18 @@ function card_html_markup( $id, $url, $target, $image, $type, $title, $date ) {
  * @param string $image
  * @param string $type
  * @param string $title
+ * @param string $description
  * @param string $date
  * @return string
  */
-function card_html( $id, $url, $image, $type, $title, $date ) {
+function card_html( $id, $url, $image, $type, $title, $description, $date ) {
 
 	$target = '';
 	if ($type=='Event') {
 		$target = 'target="_blank"';
 	}
 
-	return card_html_markup( $id, $url, $target, $image, $type, $title, $date );
+	return card_html_markup( $id, $url, $target, $image, $type, $title, $description, $date );
 
 }
 
