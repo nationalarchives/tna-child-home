@@ -171,7 +171,7 @@
       height: 24px; }
 
 /* Masthead */
-.masthead-wrapper {
+.masthead {
   display: block;
   background-color: #ddd;
   background-position: center right;
@@ -181,35 +181,35 @@
   padding: 0;
   position: relative;
   margin-bottom: 1.5em; }
-  .masthead-wrapper .masthead-header {
+  .masthead .masthead-header {
     margin: 58px 0; }
-    .masthead-wrapper .masthead-header h1 {
+    .masthead .masthead-header h1 {
       font-size: 3.6em;
       color: #008484;
       margin: 0;
       line-height: 1em; }
-    .masthead-wrapper .masthead-header h2 {
+    .masthead .masthead-header h2 {
       margin: 0; }
-  .masthead-wrapper a.button {
+  .masthead a.button {
     padding: 0.5em 2.6em;
     margin-bottom: 12px; }
-  .masthead-wrapper a.button:focus {
+  .masthead a.button:focus {
     color: #fff !important; }
-  .masthead-wrapper a.button span {
+  .masthead a.button span {
     font-size: 1.2em; }
-  .masthead-wrapper .opening-times {
+  .masthead .opening-times {
     padding: 0.9em 1.5em 0.9em 70px;
     text-align: left;
     background: url(../img/clock.png) left center no-repeat;
     position: relative;
     margin: 12px 0; }
   @media (max-width: 826px) {
-    .masthead-wrapper a.button {
+    .masthead a.button {
       padding: 0.5em 1.6em; } }
   @media (max-width: 767px) {
-    .masthead-wrapper {
+    .masthead {
       min-height: 300px; }
-      .masthead-wrapper h1 {
+      .masthead h1 {
         margin-top: 32px;
         margin-bottom: 16px;
         font-size: 1.8em; } }
