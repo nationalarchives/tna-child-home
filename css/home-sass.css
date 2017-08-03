@@ -209,7 +209,7 @@
     text-align: left;
     background: url(../img/clock.png) left center no-repeat;
     position: relative;
-    margin: 12px 0; }
+    margin-bottom: 0.7em; }
   @media (max-width: 960px) {
     .masthead a.button {
       padding: 0.5em 1em;
@@ -228,8 +228,7 @@
     .masthead .opening-times {
       padding: 64px 0 0 0;
       text-align: center;
-      background-position: center top;
-      margin: 0.7em 0; }
+      background-position: center top; }
     .masthead .opening-times a {
       display: block;
       clear: both; } }

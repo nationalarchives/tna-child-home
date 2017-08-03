@@ -45,7 +45,7 @@
     text-align: left;
     background: url(../img/clock.png) left center no-repeat;
     position: relative;
-    margin: 12px 0;
+    margin-bottom: 0.7em;
   }
   @media (max-width: 960px) {
     a.button {
@@ -72,7 +72,6 @@
       padding: 64px 0 0 0;
       text-align: center;
       background-position: center top;
-      margin: 0.7em 0;
     }
     .opening-times a {
       display: block;
