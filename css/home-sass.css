@@ -173,14 +173,21 @@
 /* Masthead */
 .masthead {
   display: block;
-  background-color: #ddd;
-  background-position: center right;
-  background-size: cover;
   height: auto;
   min-height: 260px;
   padding: 0;
   position: relative;
   margin-bottom: 1.5em; }
+  .masthead .masthead-image {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center right;
+    background-size: cover; }
   .masthead .masthead-header {
     margin: 58px 0; }
     .masthead .masthead-header h1 {
@@ -211,11 +218,21 @@
       font-size: 1em; } }
   @media (max-width: 480px) {
     .masthead .masthead-header {
-      margin: 48px 0;
+      margin: 38px 0;
       text-align: center; }
+    .masthead .masthead-image {
+      opacity: 0.15; }
     .masthead a.button {
       width: 100%;
-      margin: 0 0 0.7em; } }
+      margin: 0 auto 0.7em; }
+    .masthead .opening-times {
+      padding: 64px 0 0 0;
+      text-align: center;
+      background-position: center top;
+      margin: 0.7em 0; }
+    .masthead .opening-times a {
+      display: block;
+      clear: both; } }
 
 /*
  * Footer stylesheet

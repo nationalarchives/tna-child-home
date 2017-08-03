@@ -2,14 +2,22 @@
 
 .masthead {
   display: block;
-  background-color: #ddd;
-  background-position: center right;
-  background-size: cover;
   height: auto;
   min-height: 260px;
   padding: 0;
   position: relative;
   margin-bottom: 1.5em;
+  .masthead-image {
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center right;
+    background-size: cover;
+  }
   .masthead-header {
     margin: 58px 0;
     h1 {
@@ -50,12 +58,25 @@
   }
   @media (max-width: 480px) {
     .masthead-header {
-      margin: 48px 0;
+      margin: 38px 0;
       text-align: center;
+    }
+    .masthead-image {
+      opacity : 0.15;
     }
     a.button {
       width: 100%;
-      margin: 0 0 0.7em;
+      margin: 0 auto 0.7em;
+    }
+    .opening-times {
+      padding: 64px 0 0 0;
+      text-align: center;
+      background-position: center top;
+      margin: 0.7em 0;
+    }
+    .opening-times a {
+      display: block;
+      clear: both;
     }
   }
 }
