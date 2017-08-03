@@ -16,8 +16,10 @@ if ( get_option('home_masthead_btn_text_1') ) {
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h1><?php echo get_option('home_masthead_title'); ?></h1>
-						<h2><?php echo get_option('home_masthead_sub_title'); ?></h2>
+						<div class="masthead-header">
+							<h1><?php echo get_option('home_masthead_title'); ?></h1>
+							<h2><?php echo get_option('home_masthead_sub_title'); ?></h2>
+						</div>
 						<div class="opening-times">
 							<?php echo display_tna_opening_status( date('Y-m-d'), date('l'), get_openingtimes_overrides() ); ?>
 							<a href="http://www.nationalarchives.gov.uk/about/visit-us/">Plan your visit &gt</a>

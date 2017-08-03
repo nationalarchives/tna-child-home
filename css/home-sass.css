@@ -181,12 +181,15 @@
   padding: 0;
   position: relative;
   margin-bottom: 1.5em; }
-  .masthead-wrapper h1 {
-    font-size: 3.6em;
-    color: #008484;
-    margin: 1em 0 0; }
-  .masthead-wrapper h2 {
-    margin: 0 0 1em; }
+  .masthead-wrapper .masthead-header {
+    margin: 58px 0; }
+    .masthead-wrapper .masthead-header h1 {
+      font-size: 3.6em;
+      color: #008484;
+      margin: 0;
+      line-height: 1em; }
+    .masthead-wrapper .masthead-header h2 {
+      margin: 0; }
   .masthead-wrapper a.button {
     padding: 0.5em 2.6em;
     margin-bottom: 12px; }
@@ -197,7 +200,7 @@
   .masthead-wrapper .opening-times {
     padding: 0.9em 1.5em 0.9em 70px;
     text-align: left;
-    background: url(../img/clock.png) 12px center no-repeat;
+    background: url(../img/clock.png) left center no-repeat;
     position: relative;
     margin: 12px 0; }
   @media (max-width: 826px) {
