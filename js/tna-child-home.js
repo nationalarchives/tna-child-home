@@ -21,18 +21,4 @@ $(document).ready(function() {
             elements[i].hide();
         }
     }
-
-    $(function () {
-        if (!tnaCheckForThisCookie("dontShowHomeAlert")) {
-
-            $("#home_alert").show();
-        }
-    });
-
-    $("#alert_close_button").click(function () {
-
-        tnaSetThisCookie('dontShowHomeAlert', 1);
-
-        $("#home_alert").hide();
-    });
 });

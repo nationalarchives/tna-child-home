@@ -125,7 +125,7 @@
 /* Home banner */
 .home-banner {
   margin: 0 15px 1.5em 15px;
-  background-position: center center;
+  background-position: right center;
   background-size: cover;
   box-shadow: 0 2px 5px #ddd; }
   .home-banner .entry-wrapper {
@@ -150,9 +150,6 @@
       padding: 0 15px; } }
 
 /* Alert */
-.js #home_alert {
-  display: none; }
-
 .home-alert {
   background-color: #fff2ae;
   border-left: #FCE45C 4px solid;
@@ -161,14 +158,6 @@
   box-shadow: 0 2px 5px #ddd; }
   .home-alert .alert-content {
     padding-right: 30px; }
-  .home-alert a {
-    float: right;
-    margin-top: 20px;
-    width: 24px;
-    height: 24px; }
-    .home-alert a img {
-      width: 24px;
-      height: 24px; }
 
 /* Masthead */
 .masthead {
