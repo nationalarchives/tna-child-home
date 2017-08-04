@@ -1,8 +1,5 @@
 /* Alert */
 
-.js #home_alert {
-  display: none;
-}
 .home-alert {
   background-color: #fff2ae;
   border-left: #FCE45C 4px solid;
@@ -11,16 +8,6 @@
   box-shadow: 0 2px 5px #ddd;
   .alert-content {
     padding-right: 30px;
-  }
-  a {
-    float: right;
-    margin-top: 20px;
-    width: 24px;
-    height: 24px;
-    img {
-      width: 24px;
-      height: 24px;
-    }
   }
 }
 

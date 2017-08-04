@@ -525,23 +525,20 @@ function home_alert( $status, $title, $text ) {
 
 	if ( $status == 'enabled' ) {
 
-		$icon = make_path_relative( get_stylesheet_directory_uri() . '/img/close.svg' );
-
-		        $html = '<div id="home_alert" class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="home-alert">
-								<a id="alert_close_button" role="button" href="#"><img src="%s"></a>
-								<div class="alert-content">
-									<h3>%s</h3>
-									<p>%s</p>
-								</div>
-							</div>
+        $html = '<div id="home_alert" class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="home-alert">
+						<div class="alert-content">
+							<h3>%s</h3>
+							<p>%s</p>
 						</div>
 					</div>
-				</div>';
+				</div>
+			</div>
+		</div>';
 
-		return sprintf( $html, $icon, $title, $text );
+		return sprintf( $html, $title, $text );
 	}
 }
 
