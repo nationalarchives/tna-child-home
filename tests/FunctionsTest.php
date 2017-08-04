@@ -88,8 +88,10 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
         $image = 'image.jpg';
         $type = 'Event';
         $title = 'Title';
+        $date = 'Friday 26 May 2017, 10:00 am';
+        $description = 'Description';
 
-        $card = card_html( $id, $url, $image, $type, $title );
+        $card = card_html( $id, $url, $image, $type, $title, $description, $date );
 
         $this->assertEquals($card, '<div class="col-card-4">
                 <div class="card">
@@ -101,10 +103,12 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
 					class="homepage-card">
                         <div class="entry-image" style="background-image: url(image.jpg)">
                         </div>
-                        <div class="entry-content">
-                            <div class="content-type event-icon">Event</div>
+                        <div class="entry-content event">
+                            <div class="content-type">Event</div>
                             <h3>Title</h3>
+                            <p>Description</p>
                         </div>
+                        <div class="entry-date"><div class="date">Friday 26 May 2017, 10:00 am</div></div>
                     </a>
                 </div>
             </div>');

@@ -56,6 +56,7 @@
     background-color: #fff;
     box-shadow: 0 2px 5px #ddd; }
     .flex-row .card a {
+      position: relative;
       display: block;
       width: 100%; }
     .flex-row .card h3 {
@@ -76,7 +77,9 @@
     .flex-row .card .entry-content {
       display: block;
       width: 100%;
-      padding: 1em; }
+      padding: 1em 1em 1.6em 1em; }
+    .flex-row .card .event {
+      padding: 1em 1em 2.6em 1em; }
     .flex-row .card .entry-header {
       display: -webkit-box;
       display: -webkit-flex;
@@ -92,14 +95,23 @@
       color: #fff;
       margin: 0; }
     .flex-row .card .content-type {
-      color: #8b8b8b;
-      font-size: .9em; }
-    .flex-row .card .event-icon {
-      background: url(../img/icon-calendar.svg) no-repeat top right;
-      background-size: 16px 16px; }
-    .flex-row .card .media-icon {
-      background: url(../img/icon-play-circle-o.svg) no-repeat top right;
-      background-size: 16px 16px; }
+      color: #444;
+      font-size: .9em;
+      border-left: #fce45c 4px solid;
+      padding: 0 0.5em; }
+    .flex-row .card .entry-date {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 1em; }
+      .flex-row .card .entry-date .date {
+        color: #444;
+        background: url(../img/icon-calendar.svg) no-repeat 0px 4px;
+        background-size: 1em 1em;
+        padding-left: 2em; }
+  @media (max-width: 1200px) {
+    .flex-row .card .event {
+      padding: 1em 1em 3.6em 1em; } }
   @media (max-width: 768px) {
     .flex-row .col-card-4 {
       -webkit-box-flex: 0;
@@ -112,7 +124,11 @@
       -webkit-flex: 0 0 50%;
       -ms-flex: 0 0 50%;
       flex: 0 0 50%;
-      max-width: 50%; } }
+      max-width: 50%; }
+    .flex-row .card .event {
+      padding: 1em 1em 2.6em 1em; }
+    .flex-row .entry-date {
+      position: relative; } }
   @media (max-width: 480px) {
     .flex-row {
       display: block; }
@@ -141,6 +157,9 @@
     max-width: 1270px;
     margin: 0 auto;
     padding: 0 48% 0 15px; }
+  .home-banner .content-type {
+    border-left: #fce45c 4px solid;
+    padding: 0 0.5em; }
   .home-banner .content-type img {
     float: right;
     width: 1em;

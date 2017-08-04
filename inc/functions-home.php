@@ -50,10 +50,12 @@ function get_html_content( $url ) {
  * @param string $image
  * @return string
  */
-function get_content_and_display_card( $id, $url, $title, $image ) {
+function get_content_and_display_card( $id, $url, $title, $description, $image ) {
 
 	$meta_og_img = trim($image);
 	$meta_og_title = trim($title);
+	$meta_og_description = trim($description);
+	$meta_event_date = '';
 
 	if ( $url ) {
 
@@ -70,9 +72,19 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 				$meta_og_title = $meta->getAttribute('content');
 			}
 
+			if( $meta->getAttribute('property')=='og:description' && trim($description)=='' ) {
+				$meta_og_description = $meta->getAttribute('content');
+			}
+
 			if( $meta->getAttribute('property')=='og:image' && trim($image)=='' ) {
 				$meta_og_img[$i] = $meta->getAttribute('content');
 				$i++;
+			}
+
+			if (strpos($url, 'eventbrite') !== false) {
+				if( $meta->getAttribute('property')=='event:start_time' ) {
+					$meta_event_date = $meta->getAttribute('content');
+				}
 			}
 		}
 
@@ -82,7 +94,16 @@ function get_content_and_display_card( $id, $url, $title, $image ) {
 			if (isset($meta_og_img[1]) == false) {
 				$meta_og_img[1] = '';
 			}
-			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ) );
+			if ($meta_event_date) {
+				$date = date('l j F Y, H:i', strtotime($meta_event_date));
+			} else {
+				$date = '';
+			}
+			if (str_word_count($meta_og_description, 0) > 14) {
+				$words = explode(' ',$meta_og_description);
+				$meta_og_description = implode(' ', array_splice( $words , 0, 14)) . '...';
+			}
+			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ), esc_attr( $meta_og_description ), $date );
 		}
 	}
 }
@@ -125,12 +146,19 @@ function content_type( $url ) {
  * @param string $url
  * @param string $target
  * @param string $image
- * @param string $icon
  * @param string $type
  * @param string $title
+ * @param string $description
+ * @param string $date
  * @return string
  */
-function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
+function card_html_markup( $id, $url, $target, $image, $type, $title, $description, $date ) {
+
+	if ( $date ) {
+		$date = '<div class="entry-date"><div class="date">' . $date . '</div></div>';
+	}
+
+	$type_class = strtolower($type);
 
 	$html = '<div class="col-card-4">
                 <div class="card">
@@ -142,15 +170,36 @@ function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
 					class="homepage-card">
                         <div class="entry-image" style="background-image: url(%s)">
                         </div>
-                        <div class="entry-content">
-                            <div class="content-type %s">%s</div>
+                        <div class="entry-content %s">
+                            <div class="content-type">%s</div>
                             <h3>%s</h3>
+                            <p>%s</p>
                         </div>
+                        %s
                     </a>
                 </div>
             </div>';
 
-	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $icon, $type, $title );
+	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $type_class, $type, $title, $description, $date );
+}
+
+function card_html_wrapper( $content ) {
+
+	$html = '<div class="col-card-4"><div class="card">%s</div></div>';
+
+	return sprintf( $html, $content );
+}
+
+function card_html_link( $id, $url, $target, $type, $title, $content ) {
+
+	$html = '<a id="card-%s" href="%s" %s
+                    	data-gtm-name="%s"
+						data-gtm-id="card_%s"
+						data-gtm-position="card_position_%s"
+						data-gtm-creative="homepage_card_%s"
+					class="homepage-card">%s</a>';
+
+	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $content );
 }
 
 /**
@@ -165,21 +214,18 @@ function card_html_markup( $id, $url, $target, $image, $icon, $type, $title ) {
  * @param string $image
  * @param string $type
  * @param string $title
+ * @param string $description
+ * @param string $date
  * @return string
  */
-function card_html( $id, $url, $image, $type, $title ) {
+function card_html( $id, $url, $image, $type, $title, $description, $date ) {
 
 	$target = '';
-	$icon = '';
 	if ($type=='Event') {
 		$target = 'target="_blank"';
-		$icon = 'event-icon';
-	}
-	if ($type=='Multimedia') {
-		$icon = 'media-icon';
 	}
 
-	return card_html_markup( $id, $url, $target, $image, $icon, $type, $title );
+	return card_html_markup( $id, $url, $target, $image, $type, $title, $description, $date );
 
 }
 
