@@ -11,6 +11,8 @@ function tna_homepage_menu() {
 
 function homepage_admin_page_settings() {
 	register_setting( 'homepage-settings-group', 'home_masthead_desc' );
+	register_setting( 'homepage-settings-group', 'home_masthead_title' );
+	register_setting( 'homepage-settings-group', 'home_masthead_sub_title' );
 
 	for ( $i=1 ; $i<=3 ; $i++ ) {
 
@@ -51,11 +53,15 @@ function homepage_admin_page() {
 			<?php settings_fields( 'homepage-settings-group' ); ?>
 			<?php do_settings_sections( 'homepage-settings-group' ); ?>
 
-			<h2>Masthead description</h2>
+			<h2>Masthead title</h2>
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"><label for="home_masthead_desc">Description</label></th>
-					<td><textarea name="home_masthead_desc"><?php echo esc_attr( get_option('home_masthead_desc') ); ?></textarea></td>
+					<th scope="row"><label for="home_masthead_title">Title</label></th>
+					<td><input type="text" name="home_masthead_title" value="<?php echo esc_attr( get_option('home_masthead_title') ); ?>" /></td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><label for="home_masthead_sub_title">Sub title</label></th>
+					<td><input type="text" name="home_masthead_sub_title" value="<?php echo esc_attr( get_option('home_masthead_sub_title') ); ?>" /></td>
 				</tr>
 			</table>
 

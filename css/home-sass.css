@@ -160,62 +160,67 @@
     padding-right: 30px; }
 
 /* Masthead */
-.masthead-wrapper {
+.masthead {
   display: block;
-  background-color: #ddd;
-  background-position: center center;
-  background-size: cover;
   height: auto;
-  min-height: 380px;
+  min-height: 260px;
   padding: 0;
   position: relative;
   margin-bottom: 1.5em; }
-  .masthead-wrapper .masthead-overlay {
-    background-color: #000;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
+  .masthead .masthead-image {
+    content: "";
+    display: block;
     position: absolute;
-    bottom: 0;
-    width: 100%; }
-  .masthead-wrapper h1 {
-    margin: 12px 0; }
-  .masthead-wrapper a.button {
+    top: 0;
+    left: 0;
     width: 100%;
-    margin-bottom: 12px; }
-  .masthead-wrapper a.button:focus {
+    height: 100%;
+    background-position: center right;
+    background-size: cover; }
+  .masthead .masthead-header {
+    margin: 58px 0; }
+    .masthead .masthead-header h1 {
+      font-size: 3.6em;
+      color: #008484;
+      margin: 0;
+      line-height: 1em; }
+    .masthead .masthead-header h2 {
+      margin: 0; }
+  .masthead a.button {
+    padding: 0.5em 2.6em;
+    margin: 0 0.3em 0.7em; }
+  .masthead a.button:focus {
     color: #fff !important; }
-  .masthead-wrapper a.button span {
-    font-size: 1.2em;
-    font-family: 'Bitter', 'Open Sans', arial, serif; }
-  .masthead-wrapper .opening-times {
-    max-width: 300px;
-    float: right;
-    padding: 0.5em 1.5em 0.5em 70px;
-    border: 1px solid #fff;
-    border-radius: 0px;
+  .masthead a.button span {
+    font-size: 1.2em; }
+  .masthead .opening-times {
+    padding: 0.9em 1.5em 0.9em 70px;
     text-align: left;
-    background: url(../img/clock.png) 12px center no-repeat;
+    background: url(../img/clock.png) left center no-repeat;
     position: relative;
-    margin: 12px 0; }
-    .masthead-wrapper .opening-times a {
-      color: #fce45c; }
-  @media (max-width: 826px) {
-    .masthead-wrapper a.button {
-      padding: 0.5em 1.5em; } }
-  @media (max-width: 767px) {
-    .masthead-wrapper {
-      min-height: 300px; }
-      .masthead-wrapper h1 {
-        margin-top: 32px;
-        margin-bottom: 16px;
-        font-size: 1.8em; }
-      .masthead-wrapper .masthead-overlay {
-        position: relative;
-        height: 100%;
-        text-align: center; }
-      .masthead-wrapper .opening-times {
-        float: none;
-        margin: 12px auto; } }
+    margin-bottom: 0.7em; }
+  @media (max-width: 960px) {
+    .masthead a.button {
+      padding: 0.5em 1em;
+      margin: 0 0.1em 0.7em; }
+    .masthead a.button span {
+      font-size: 1em; } }
+  @media (max-width: 480px) {
+    .masthead .masthead-header {
+      margin: 38px 0;
+      text-align: center; }
+    .masthead .masthead-image {
+      opacity: 0.15; }
+    .masthead a.button {
+      width: 100%;
+      margin: 0 auto 0.7em; }
+    .masthead .opening-times {
+      padding: 64px 0 0 0;
+      text-align: center;
+      background-position: center top; }
+    .masthead .opening-times a {
+      display: block;
+      clear: both; } }
 
 /*
  * Footer stylesheet
