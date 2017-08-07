@@ -197,7 +197,7 @@
     background-position: center right;
     background-size: cover; }
   .masthead .masthead-header {
-    margin: 58px 0; }
+    margin: 58px 0 48px 0; }
     .masthead .masthead-header h1 {
       font-size: 3.6em;
       color: #008484;
@@ -215,9 +215,9 @@
   .masthead .opening-times {
     padding: 0.9em 1.5em 0.9em 70px;
     text-align: left;
-    background: url(../img/clock.png) left center no-repeat;
+    background: url("../img/clock.png") left center no-repeat;
     position: relative;
-    margin-bottom: 0.7em; }
+    margin-bottom: 48px; }
   @media (max-width: 960px) {
     .masthead a.button {
       padding: 0.5em 1em;
@@ -229,7 +229,7 @@
       opacity: 0.15; } }
   @media (max-width: 480px) {
     .masthead .masthead-header {
-      margin: 38px 0;
+      margin: 38px 0 18px 0;
       text-align: center; }
     .masthead a.button {
       width: 100%;
@@ -237,7 +237,8 @@
     .masthead .opening-times {
       padding: 64px 0 0 0;
       text-align: center;
-      background-position: center top; }
+      background-position: center top;
+      margin-bottom: 18px; }
     .masthead .opening-times a {
       display: block;
       clear: both; } }
