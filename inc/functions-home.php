@@ -137,73 +137,52 @@ function content_type( $url ) {
 	return 'Feature';
 }
 
-/**
- * Returns HTML markup for the cards.
- *
- * @since 1.0
- *
- * @param string $id
- * @param string $url
- * @param string $target
- * @param string $image
- * @param string $type
- * @param string $title
- * @param string $description
- * @param string $date
- * @return string
- */
-function card_html_markup( $id, $url, $target, $image, $type, $title, $description, $date ) {
-
-	if ( $date ) {
-		$date = '<div class="entry-date"><div class="date">' . $date . '</div></div>';
-	}
-
-	$type_class = strtolower($type);
-
-	$html = '<div class="col-card-4">
-                <div class="card">
-                    <a id="card-%s" href="%s" %s
-                    	data-gtm-name="%s"
-						data-gtm-id="card_%s"
-						data-gtm-position="card_position_%s"
-						data-gtm-creative="homepage_card_%s"
-					class="homepage-card">
-                        <div class="entry-image" style="background-image: url(%s)">
-                        </div>
-                        <div class="entry-content %s">
-                            <div class="content-type">%s</div>
-                            <h3>%s</h3>
-                            <p>%s</p>
-                        </div>
-                        %s
-                    </a>
-                </div>
-            </div>';
-
-	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $image, $type_class, $type, $title, $description, $date );
-}
-
-function card_html_wrapper( $content ) {
+function card_wrapper( $content ) {
 
 	$html = '<div class="col-card-4"><div class="card">%s</div></div>';
 
 	return sprintf( $html, $content );
 }
 
-function card_html_link( $id, $url, $target, $type, $title, $content ) {
+function card_link( $id, $url, $type, $title, $content ) {
 
-	$html = '<a id="card-%s" href="%s" %s
-                    	data-gtm-name="%s"
-						data-gtm-id="card_%s"
-						data-gtm-position="card_position_%s"
-						data-gtm-creative="homepage_card_%s"
-					class="homepage-card">%s</a>';
+	$target = '';
+	if ($type=='Event') {
+		$target = 'target="_blank"';
+	}
+
+	$html = '<a id="card-%s" href="%s" %s data-gtm-name="%s" data-gtm-id="card_%s" data-gtm-position="card_position_%s" data-gtm-creative="homepage_card_%s" class="homepage-card">%s</a>';
 
 	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $content );
 }
 
+function card_image( $image ) {
+
+	$html = '<div class="entry-image" style="background-image: url(%s)"></div>';
+
+	return sprintf( $html, $image );
+}
+
+function card_date( $date ) {
+
+	if ( $date ) {
+		$html = '<div class="entry-date"><div class="date">%s</div></div>';
+
+		return sprintf( $html, $date );
+	}
+}
+
+function card_content( $type, $title, $description ) {
+
+	$type_class = strtolower($type);
+
+	$html = '<div class="entry-content %s"><div class="content-type">%s</div><h3>%s</h3><p>%s</p></div>';
+
+	return sprintf( $html, $type_class, $type, $title, $description );
+}
+
 /**
- * Returns HTML markup for the cards with icons.
+ * Returns HTML markup for the cards.
  *
  * @since 1.0
  *
@@ -220,13 +199,9 @@ function card_html_link( $id, $url, $target, $type, $title, $content ) {
  */
 function card_html( $id, $url, $image, $type, $title, $description, $date ) {
 
-	$target = '';
-	if ($type=='Event') {
-		$target = 'target="_blank"';
-	}
+	$content = card_image( $image ) . card_content( $type, $title, $description ) . card_date( $date );
 
-	return card_html_markup( $id, $url, $target, $image, $type, $title, $description, $date );
-
+	return card_wrapper( card_link( $id, $url, $type, $title, $content ) );
 }
 
 /**
