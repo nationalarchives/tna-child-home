@@ -93,25 +93,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
 
         $card = card_html( $id, $url, $image, $type, $title, $description, $date );
 
-        $this->assertEquals($card, '<div class="col-card-4">
-                <div class="card">
-                    <a id="card-1" href="http://www.google.com" target="_blank"
-                    	data-gtm-name="Title"
-						data-gtm-id="card_1"
-						data-gtm-position="card_position_1"
-						data-gtm-creative="homepage_card_Event"
-					class="homepage-card">
-                        <div class="entry-image" style="background-image: url(image.jpg)">
-                        </div>
-                        <div class="entry-content event">
-                            <div class="content-type">Event</div>
-                            <h3>Title</h3>
-                            <p>Description</p>
-                        </div>
-                        <div class="entry-date"><div class="date">Friday 26 May 2017, 10:00 am</div></div>
-                    </a>
-                </div>
-            </div>');
+        $this->assertEquals($card, '<div class="col-card-4"><div class="card"><a id="card-1" href="http://www.google.com" target="_blank" data-gtm-name="Title" data-gtm-id="card_1" data-gtm-position="card_position_1" data-gtm-creative="homepage_card_Event" class="homepage-card"><div class="entry-image" style="background-image: url(image.jpg)"></div><div class="entry-content event"><div class="content-type">Event</div><h3>Title</h3><p>Description</p></div><div class="entry-date"><div class="date">Friday 26 May 2017, 10:00 am</div></div></a></div></div>');
     }
     public function test_banner_html()
     {
