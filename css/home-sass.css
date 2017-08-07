@@ -224,12 +224,13 @@
       margin: 0 0.1em 0.7em; }
     .masthead a.button span {
       font-size: 1em; } }
+  @media (max-width: 767px) {
+    .masthead .masthead-image {
+      opacity: 0.15; } }
   @media (max-width: 480px) {
     .masthead .masthead-header {
       margin: 38px 0;
       text-align: center; }
-    .masthead .masthead-image {
-      opacity: 0.15; }
     .masthead a.button {
       width: 100%;
       margin: 0 auto 0.7em; }
