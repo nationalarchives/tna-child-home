@@ -8,7 +8,7 @@
   position: relative;
   margin-bottom: 1.5em;
   .masthead-image {
-    content : "";
+    content: "";
     display: block;
     position: absolute;
     top: 0;
@@ -56,30 +56,38 @@
       font-size: 1em;
     }
   }
-
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .masthead-image {
-      opacity : 0.15;
+      background-image: url('../img/masthead-mobile-bg.jpg') !important;
+    }
+    .opening-times a {
+      display: block;
+      clear: both;
     }
   }
   @media (max-width: 480px) {
     .masthead-header {
-      margin: 38px 0 18px 0;
-      text-align: center;
+      margin: 68px 0 18px 0;
+      h1 {
+        font-size:3.2em;
+      }
+      h2 {
+        font-size:1.4em;
+      }
+    }
+    .masthead-image {
+      background-size: auto 336px;
+      background-repeat: no-repeat;
+      background-position: top right;
     }
     a.button {
       width: 100%;
       margin: 0 auto 0.7em;
     }
     .opening-times {
-      padding: 64px 0 0 0;
-      text-align: center;
-      background-position: center top;
-      margin-bottom: 18px;
-    }
-    .opening-times a {
-      display: block;
-      clear: both;
+      padding: 0;
+      background: none;
+      margin-bottom: 58px;
     }
   }
 }
