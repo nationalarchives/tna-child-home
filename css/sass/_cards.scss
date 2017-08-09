@@ -118,7 +118,7 @@
   }
   @media (max-width: 1200px) {
     .card .event {
-      padding: 1em 1em 3.6em 1em;
+      padding: 1em 1em 4em 1em;
     }
   }
   @media (max-width: 768px) {
@@ -151,6 +151,9 @@
       float: left;
       max-width: 100%;
       width: 100%;
+    }
+    .card .event {
+      padding: 1em 1em 4em 1em;
     }
   }
 }
