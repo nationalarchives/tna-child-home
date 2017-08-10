@@ -141,7 +141,7 @@ function content_type( $url ) {
  * @param $content
  * @return string
  */
-function card_wrapper($content ) {
+function card_wrapper( $content ) {
 
 	$html = '<div class="col-card-4"><div class="card">%s</div></div>';
 
@@ -156,7 +156,7 @@ function card_wrapper($content ) {
  * @param $content
  * @return string
  */
-function card_link($id, $url, $type, $title, $content ) {
+function card_link( $id, $url, $type, $title, $content ) {
 
 	$target = '';
 	if ($type=='Event') {
@@ -172,7 +172,7 @@ function card_link($id, $url, $type, $title, $content ) {
  * @param $image
  * @return string
  */
-function card_image($image ) {
+function card_image( $image ) {
 
 	$html = '<div class="entry-image" style="background-image: url(%s)"></div>';
 
@@ -183,7 +183,7 @@ function card_image($image ) {
  * @param $date
  * @return string
  */
-function card_date($date ) {
+function card_date( $date ) {
 
 	if ( $date ) {
 		$html = '<div class="entry-date"><div class="date">%s</div></div>';
@@ -198,7 +198,7 @@ function card_date($date ) {
  * @param $description
  * @return string
  */
-function card_content($type, $title, $description ) {
+function card_content( $type, $title, $description ) {
 
 	$type_class = strtolower($type);
 
@@ -542,4 +542,3 @@ function home_alert( $status, $title, $text ) {
 		return sprintf( $html, $title, $text );
 	}
 }
-
