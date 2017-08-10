@@ -117,26 +117,30 @@ function get_content_and_display_card( $id, $url, $title, $description, $image )
  * @return string
  */
 function content_type( $url ) {
+    $content_type = "Feature";
 	if (strpos($url, 'nationalarchives.gov.uk/about/news/') !== false) {
 
-		return 'News';
+        $content_type = 'News';
 	}
-	if (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
+	else if (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
 
-		return 'Blog';
+        $content_type = 'Blog';
 	}
-	if (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
+	else if (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
 
-		return 'Multimedia';
+        $content_type = 'Multimedia';
 	}
-	if (strpos($url, 'eventbrite') !== false) {
+	else if (strpos($url, 'eventbrite') !== false) {
 
-		return 'Event';
+        $content_type = 'Event';
 	}
-
-	return 'Feature';
+	return $content_type;
 }
 
+/**
+ * @param $content
+ * @return string
+ */
 function card_wrapper( $content ) {
 
 	$html = '<div class="col-card-4"><div class="card">%s</div></div>';
@@ -144,6 +148,14 @@ function card_wrapper( $content ) {
 	return sprintf( $html, $content );
 }
 
+/**
+ * @param $id
+ * @param $url
+ * @param $type
+ * @param $title
+ * @param $content
+ * @return string
+ */
 function card_link( $id, $url, $type, $title, $content ) {
 
 	$target = '';
@@ -156,6 +168,10 @@ function card_link( $id, $url, $type, $title, $content ) {
 	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $content );
 }
 
+/**
+ * @param $image
+ * @return string
+ */
 function card_image( $image ) {
 
 	$html = '<div class="entry-image" style="background-image: url(%s)"></div>';
@@ -163,6 +179,10 @@ function card_image( $image ) {
 	return sprintf( $html, $image );
 }
 
+/**
+ * @param $date
+ * @return string
+ */
 function card_date( $date ) {
 
 	if ( $date ) {
@@ -172,6 +192,12 @@ function card_date( $date ) {
 	}
 }
 
+/**
+ * @param $type
+ * @param $title
+ * @param $description
+ * @return string
+ */
 function card_content( $type, $title, $description ) {
 
 	$type_class = strtolower($type);
@@ -516,4 +542,3 @@ function home_alert( $status, $title, $text ) {
 		return sprintf( $html, $title, $text );
 	}
 }
-

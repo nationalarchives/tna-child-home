@@ -8,7 +8,7 @@
   position: relative;
   margin-bottom: 1.5em;
   .masthead-image {
-    content : "";
+    content: "";
     display: block;
     position: absolute;
     top: 0;
@@ -19,7 +19,7 @@
     background-size: cover;
   }
   .masthead-header {
-    margin: 58px 0;
+    margin: 58px 0 48px 0;
     h1 {
       font-size: 3.6em;
       color: #008484;
@@ -43,9 +43,9 @@
   .opening-times {
     padding: 0.9em 1.5em 0.9em 70px;
     text-align: left;
-    background: url(../img/clock.png) left center no-repeat;
+    background: url("../img/clock.png") left center no-repeat;
     position: relative;
-    margin-bottom: 0.7em;
+    margin-bottom: 48px;
   }
   @media (max-width: 960px) {
     a.button {
@@ -56,26 +56,38 @@
       font-size: 1em;
     }
   }
+  @media (max-width: 768px) {
+    .masthead-image {
+      background-image: url('../img/masthead-mobile-bg.jpg') !important;
+    }
+    .opening-times a {
+      display: block;
+      clear: both;
+    }
+  }
   @media (max-width: 480px) {
     .masthead-header {
-      margin: 38px 0;
-      text-align: center;
+      margin: 68px 0 18px 0;
+      h1 {
+        font-size:3.2em;
+      }
+      h2 {
+        font-size:1.4em;
+      }
     }
     .masthead-image {
-      opacity : 0.15;
+      background-size: auto 336px;
+      background-repeat: no-repeat;
+      background-position: top right;
     }
     a.button {
       width: 100%;
       margin: 0 auto 0.7em;
     }
     .opening-times {
-      padding: 64px 0 0 0;
-      text-align: center;
-      background-position: center top;
-    }
-    .opening-times a {
-      display: block;
-      clear: both;
+      padding: 0;
+      background: none;
+      margin-bottom: 58px;
     }
   }
 }
