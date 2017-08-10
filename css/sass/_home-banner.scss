@@ -2,14 +2,14 @@
 
 .home-banner {
   margin: 0 15px 1.5em 15px;
-  background-position: center center;
+  background-position: left center;
   background-size: cover;
   box-shadow: 0 2px 5px #ddd;
 
   .entry-wrapper {
     padding: 1.3em;
     width: 100%;
-    background: #000;
+    background: transparent;
     background: -webkit-linear-gradient(left, #000, transparent);
     background: -o-linear-gradient(right, #000, transparent);
     background: -moz-linear-gradient(right, #000, transparent);
@@ -20,6 +20,10 @@
     max-width: 1270px;
     margin: 0 auto;
     padding: 0 48% 0 15px;
+  }
+  .content-type {
+    border-left: #ebab01 4px solid;
+    padding: 0 0.5em;
   }
   .content-type img {
     float: right;

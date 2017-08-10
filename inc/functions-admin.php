@@ -11,6 +11,8 @@ function tna_homepage_menu() {
 
 function homepage_admin_page_settings() {
 	register_setting( 'homepage-settings-group', 'home_masthead_desc' );
+	register_setting( 'homepage-settings-group', 'home_masthead_title' );
+	register_setting( 'homepage-settings-group', 'home_masthead_sub_title' );
 
 	for ( $i=1 ; $i<=3 ; $i++ ) {
 
@@ -34,6 +36,10 @@ function homepage_admin_page_settings() {
 		register_setting( 'homepage-settings-group', 'open_times_'.$i );
 
 	}
+
+	register_setting( 'homepage-settings-group', 'home_alert_status' );
+	register_setting( 'homepage-settings-group', 'home_alert_title' );
+	register_setting( 'homepage-settings-group', 'home_alert_text' );
 }
 
 function homepage_admin_page() {
@@ -47,11 +53,15 @@ function homepage_admin_page() {
 			<?php settings_fields( 'homepage-settings-group' ); ?>
 			<?php do_settings_sections( 'homepage-settings-group' ); ?>
 
-			<h2>Masthead description</h2>
+			<h2>Masthead title</h2>
 			<table class="form-table">
 				<tr valign="top">
-					<th scope="row"><label for="home_masthead_desc">Description</label></th>
-					<td><textarea name="home_masthead_desc"><?php echo esc_attr( get_option('home_masthead_desc') ); ?></textarea></td>
+					<th scope="row"><label for="home_masthead_title">Title</label></th>
+					<td><input type="text" name="home_masthead_title" value="<?php echo esc_attr( get_option('home_masthead_title') ); ?>" /></td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><label for="home_masthead_sub_title">Sub title</label></th>
+					<td><input type="text" name="home_masthead_sub_title" value="<?php echo esc_attr( get_option('home_masthead_sub_title') ); ?>" /></td>
 				</tr>
 			</table>
 
@@ -107,6 +117,29 @@ function homepage_admin_page() {
 						</td>
 					</tr>
 			<?php } ?>
+			</table>
+
+			<?php submit_button(); ?>
+
+			<h2>Alert message</h2>
+			<table class="form-table home-alert">
+				<tr valign="top">
+					<th scope="row"><label for="home_alert_status">Homepage alert</label></th>
+					<td>
+						<select name="home_alert_status">
+							<option <?php if (get_option('home_alert_status') == 'disabled') { echo ' selected="selected"'; }; ?> value="disabled">Disabled</option>
+							<option <?php if (get_option('home_alert_status') == 'enabled') { echo ' selected="selected"'; }; ?> value="enabled">Enabled</option>
+						</select>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><label for="home_alert_title">Title</label></th>
+					<td><input type="text" name="home_alert_title" value="<?php echo esc_attr( get_option('home_alert_title') ); ?>" /></td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><label for="home_alert_text">Description</label></th>
+					<td><textarea name="home_alert_text"><?php echo esc_attr( get_option('home_alert_text') ); ?></textarea></td>
+				</tr>
 			</table>
 
 			<?php submit_button(); ?>

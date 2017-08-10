@@ -2,7 +2,7 @@
  * TNA Child home JS
  */
 
-jQuery(document).ready(function() {
+$(document).ready(function() {
 
     var $count = jQuery(".col-card").length;
 
@@ -21,5 +21,4 @@ jQuery(document).ready(function() {
             elements[i].hide();
         }
     }
-
 });
