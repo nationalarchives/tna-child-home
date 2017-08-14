@@ -33,6 +33,24 @@ function limit_words( $words, $number = 14 ) {
 }
 
 /**
+ * @param $result
+ *
+ * @return bool
+ */
+function check_result( $result ) {
+
+	if ( is_wp_error( $result ) ) {
+		$result = false;
+	} elseif ( wp_remote_retrieve_response_code( $result ) == '404' ) {
+		$result = false;
+	} else {
+		$result = true;
+	}
+
+	return $result;
+}
+
+/**
  * Gets the content of a URL via a HTTP request and returns the content.
  *
  * @since 1.0
@@ -48,7 +66,12 @@ function get_html_content( $url ) {
 
 	$request = new WP_Http;
 	$result = $request->request( $url );
-	$content = $result['body'];
+
+	if ( check_result( $result ) ) {
+		$content = $result['body'];
+	} else {
+		$content = null;
+	}
 
 	return $content;
 }
@@ -63,6 +86,7 @@ function get_html_content( $url ) {
  * @param string $id
  * @param string $url
  * @param string $title
+ * @param string $description
  * @param string $image
  * @return string
  */
