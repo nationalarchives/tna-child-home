@@ -89,7 +89,16 @@ function get_content_and_display_card( $id, $url, $title, $description, $image )
 		}
 
 		if ($meta_og_title == 'Page Not Found - The National Archives') {
-			return card_fallback( 'Latest news', $id );
+
+			$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
+			$image = get_stylesheet_directory_uri().'/img/events.jpg';
+			$image = make_path_relative($image);
+			$type = 'Events';
+			$title = 'Events - The National Archives';
+			$description = 'Find more information about our events programme and how to book tickets.';
+			$date = '';
+
+			return card_html( $id, $url, $image, $type, $title, $description, $date );
 		} else {
 			if (isset($meta_og_img[1]) == false) {
 				$meta_og_img[1] = '';
