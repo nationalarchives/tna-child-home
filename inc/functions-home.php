@@ -92,52 +92,70 @@ function get_html_content( $url ) {
  */
 function get_content_and_display_card( $id, $url, $title, $description, $image ) {
 
-	$meta_og_img = trim($image);
-	$meta_og_title = trim($title);
-	$meta_og_description = trim($description);
-	$meta_event_date = '';
+	$image = trim( $image );
+	$type = content_type( $url );
+	$title = trim( $title );
+	$description = trim( $description );
+	$date = '';
 
 	if ( $url ) {
 
-		$content_html = get_html_content($url);
+		$html_content = get_html_content($url);
 
-		$html = new DOMDocument();
-		@$html->loadHTML($content_html);
+		if ( $html_content ) {
 
-		$i = 1;
+			$html = new DOMDocument();
+			@$html->loadHTML($html_content);
 
-		foreach( $html->getElementsByTagName('meta') as $meta ) {
+			$meta_og_title = '';
+			$meta_og_description = '';
+			$meta_og_img = '';
+			$meta_event_date = '';
+			$i = 1;
 
-			if( $meta->getAttribute('property')=='og:title' && trim($title)=='' ) {
-				$meta_og_title = $meta->getAttribute('content');
-			}
+			foreach( $html->getElementsByTagName('meta') as $meta ) {
 
-			if( $meta->getAttribute('property')=='og:description' && trim($description)=='' ) {
-				$meta_og_description = $meta->getAttribute('content');
-			}
+				if( $meta->getAttribute('property')=='og:title' && trim($title)=='' ) {
+					$meta_og_title = $meta->getAttribute('content');
+				}
 
-			if( $meta->getAttribute('property')=='og:image' && trim($image)=='' ) {
-				$meta_og_img[$i] = $meta->getAttribute('content');
-				$i++;
-			}
+				if( $meta->getAttribute('property')=='og:description' && trim($description)=='' ) {
+					$meta_og_description = $meta->getAttribute('content');
+				}
 
-			if (strpos($url, 'eventbrite') !== false) {
-				if( $meta->getAttribute('property')=='event:start_time' ) {
-					$meta_event_date = $meta->getAttribute('content');
+				if( $meta->getAttribute('property')=='og:image' && trim($image)=='' ) {
+					$meta_og_img[$i] = $meta->getAttribute('content');
+					$i++;
+				}
+
+				if (strpos($url, 'eventbrite') !== false) {
+					if( $meta->getAttribute('property')=='event:start_time' ) {
+						$meta_event_date = $meta->getAttribute('content');
+					}
 				}
 			}
-		}
 
-		if ($meta_og_title == 'Page Not Found - The National Archives') {
-			return card_fallback( 'Latest news', $id );
-		} else {
 			if (isset($meta_og_img[1]) == false) {
 				$meta_og_img[1] = '';
 			}
 
+			if ($meta_og_title == 'Page Not Found - The National Archives') {
+				return card_fallback( 'Latest news', $id );
+			}
 
-			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ), esc_attr( $meta_og_description ), $meta_event_date );
+			$image = $meta_og_img[1];
+			$title = esc_attr( $meta_og_title );
+			$description = esc_attr( $meta_og_description );
+			$date = $meta_event_date;
+
+		} else {
+
+			// something is wrong - most likely an incorrect URL
+			$title = 'Error';
+
 		}
+
+		return card_html( $id, $url, $image, $type, $title, $description, $date );
 	}
 }
 
