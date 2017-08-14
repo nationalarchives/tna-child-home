@@ -212,7 +212,7 @@ function card_content( $type, $title, $description ) {
  *
  * @since 1.0
  *
- * @see card_html_markup
+ * @see card_html
  *
  * @param string $id
  * @param string $url
@@ -344,7 +344,7 @@ function is_card_active( $expire ) {
  *
  * @since 1.0
  *
- * @see card_html_markup
+ * @see card_html
  *
  * @param string $fallback
  * @param string $id
@@ -357,8 +357,6 @@ function card_fallback( $fallback, $id ) {
 	$image = make_path_relative($image);
 	$type = 'Events';
 	$title = 'Upcoming events and exhibitions at The National Archives';
-	$target = '';
-	$icon = 'event-icon';
 
 	if ( $fallback == 'Latest news' ) {
 
@@ -370,7 +368,6 @@ function card_fallback( $fallback, $id ) {
 		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
 		$type = 'News';
 		$title = $content->channel->item[0]->title;
-		$icon = '';
 
 	}
 	if ( $fallback == 'Latest blog post' ) {
@@ -383,11 +380,10 @@ function card_fallback( $fallback, $id ) {
 		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
 		$type = 'Blog';
 		$title = $content->channel->item[0]->title;
-		$icon = '';
 
 	}
 
-	return card_html_markup( $id, $url, $target, $image, $icon, $type, $title );
+	return card_html( $id, $url, $image, $type, $title, $description, $date );
 }
 
 /**
