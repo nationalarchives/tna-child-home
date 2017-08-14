@@ -17,6 +17,22 @@ function hide_editor_from_homepage() {
 }
 
 /**
+ * @param $words
+ * @param int $number
+ *
+ * @return string
+ */
+function limit_words( $words, $number = 14 ) {
+
+	if (str_word_count($words, 0) > $number) {
+		$explode_words = explode( ' ', $words );
+		$words = implode(' ', array_splice( $explode_words , 0, $number)) . '...';
+	}
+
+	return $words;
+}
+
+/**
  * Gets the content of a URL via a HTTP request and returns the content.
  *
  * @since 1.0
@@ -89,30 +105,14 @@ function get_content_and_display_card( $id, $url, $title, $description, $image )
 		}
 
 		if ($meta_og_title == 'Page Not Found - The National Archives') {
-
-			$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
-			$image = get_stylesheet_directory_uri().'/img/events.jpg';
-			$image = make_path_relative($image);
-			$type = 'Events';
-			$title = 'Events - The National Archives';
-			$description = 'Find more information about our events programme and how to book tickets.';
-			$date = '';
-
-			return card_html( $id, $url, $image, $type, $title, $description, $date );
+			return card_fallback( 'Latest news', $id );
 		} else {
 			if (isset($meta_og_img[1]) == false) {
 				$meta_og_img[1] = '';
 			}
-			if ($meta_event_date) {
-				$date = date('l j F Y, H:i', strtotime($meta_event_date));
-			} else {
-				$date = '';
-			}
-			if (str_word_count($meta_og_description, 0) > 14) {
-				$words = explode(' ',$meta_og_description);
-				$meta_og_description = implode(' ', array_splice( $words , 0, 14)) . '...';
-			}
-			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ), esc_attr( $meta_og_description ), $date );
+
+
+			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ), esc_attr( $meta_og_description ), $meta_event_date );
 		}
 	}
 }
@@ -195,6 +195,9 @@ function card_image( $image ) {
 function card_date( $date ) {
 
 	if ( $date ) {
+
+		$date = date('l j F Y, H:i', strtotime( $date ));
+
 		$html = '<div class="entry-date"><div class="date">%s</div></div>';
 
 		return sprintf( $html, $date );
@@ -209,7 +212,8 @@ function card_date( $date ) {
  */
 function card_content( $type, $title, $description ) {
 
-	$type_class = strtolower($type);
+	$type_class = strtolower( $type );
+	$description = limit_words( $description );
 
 	$html = '<div class="entry-content %s"><div class="content-type">%s</div><h3>%s</h3><p>%s</p></div>';
 
@@ -362,10 +366,11 @@ function is_card_active( $expire ) {
 function card_fallback( $fallback, $id ) {
 
 	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
-	$image = get_stylesheet_directory_uri().'/img/events.jpg';
-	$image = make_path_relative($image);
+	$image = make_path_relative( get_stylesheet_directory_uri().'/img/events.jpg' );
 	$type = 'Events';
-	$title = 'Upcoming events and exhibitions at The National Archives';
+	$title = 'Events - The National Archives';
+	$description = 'Find more information about our events programme and how to book tickets.';
+	$date = '';
 
 	if ( $fallback == 'Latest news' ) {
 
@@ -377,6 +382,7 @@ function card_fallback( $fallback, $id ) {
 		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
 		$type = 'News';
 		$title = $content->channel->item[0]->title;
+		$description = $content->channel->item[0]->description;
 
 	}
 	if ( $fallback == 'Latest blog post' ) {
@@ -389,6 +395,7 @@ function card_fallback( $fallback, $id ) {
 		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
 		$type = 'Blog';
 		$title = $content->channel->item[0]->title;
+		$description = $content->channel->item[0]->description;
 
 	}
 
