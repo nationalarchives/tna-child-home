@@ -151,8 +151,11 @@ function get_content_and_display_card( $id, $url, $title, $description, $image )
 		} else {
 
 			// something is wrong - most likely an incorrect URL
-			$title = 'Error';
-
+			$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
+			$image = make_path_relative( get_stylesheet_directory_uri().'/img/events.jpg' );
+			$type = 'Events';
+			$title = 'Events - The National Archives';
+			$description = 'Find more information about our events programme and how to book tickets.';
 		}
 
 		return card_html( $id, $url, $image, $type, $title, $description, $date );
@@ -168,20 +171,22 @@ function get_content_and_display_card( $id, $url, $title, $description, $image )
  * @return string
  */
 function content_type( $url ) {
+
     $content_type = "Feature";
+
 	if (strpos($url, 'nationalarchives.gov.uk/about/news/') !== false) {
 
         $content_type = 'News';
 	}
-	else if (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
+	elseif (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
 
         $content_type = 'Blog';
 	}
-	else if (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
+	elseif (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
 
         $content_type = 'Multimedia';
 	}
-	else if (strpos($url, 'eventbrite') !== false) {
+	elseif (strpos($url, 'eventbrite') !== false) {
 
         $content_type = 'Event';
 	}
