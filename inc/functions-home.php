@@ -307,6 +307,10 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 
 	$title = esc_attr($title);
 	$image = make_path_relative($image);
+	$target = '';
+	if ($type=='Event') {
+		$target = 'target="_blank"';
+	}
 
 	$html = '<div class="container">
 		        <div class="row">
@@ -322,7 +326,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 										data-gtm-id="hero_1"
 										data-gtm-position="hero_position_banner"
 										data-gtm-creative="homepage_hero_%s"
-		                            class="ghost-button homepage-hero" aria-label="%s" role="button">%s</a>
+		                            class="ghost-button homepage-hero" aria-label="%s" role="button" %s>%s</a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -330,7 +334,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 		        </div>
 		    </div>';
 
-	return sprintf( $html, $image, $type, $title, $excerpt, $url, $title, $type, $title, $button );
+	return sprintf( $html, $image, $type, $title, $excerpt, $url, $title, $type, $title, $target, $button );
 
 }
 
