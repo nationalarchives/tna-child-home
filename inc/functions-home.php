@@ -17,6 +17,40 @@ function hide_editor_from_homepage() {
 }
 
 /**
+ * @param $words
+ * @param int $number
+ *
+ * @return string
+ */
+function limit_words( $words, $number = 14 ) {
+
+	if (str_word_count($words, 0) > $number) {
+		$explode_words = explode( ' ', $words );
+		$words = implode(' ', array_splice( $explode_words , 0, $number)) . '...';
+	}
+
+	return $words;
+}
+
+/**
+ * @param $result
+ *
+ * @return bool
+ */
+function check_result( $result ) {
+
+	if ( is_wp_error( $result ) ) {
+		$result = false;
+	} elseif ( wp_remote_retrieve_response_code( $result ) == '404' ) {
+		$result = false;
+	} else {
+		$result = true;
+	}
+
+	return $result;
+}
+
+/**
  * Gets the content of a URL via a HTTP request and returns the content.
  *
  * @since 1.0
@@ -32,7 +66,12 @@ function get_html_content( $url ) {
 
 	$request = new WP_Http;
 	$result = $request->request( $url );
-	$content = $result['body'];
+
+	if ( check_result( $result ) ) {
+		$content = $result['body'];
+	} else {
+		$content = null;
+	}
 
 	return $content;
 }
@@ -47,64 +86,79 @@ function get_html_content( $url ) {
  * @param string $id
  * @param string $url
  * @param string $title
+ * @param string $description
  * @param string $image
  * @return string
  */
 function get_content_and_display_card( $id, $url, $title, $description, $image ) {
 
-	$meta_og_img = trim($image);
-	$meta_og_title = trim($title);
-	$meta_og_description = trim($description);
-	$meta_event_date = '';
+	$image = trim( $image );
+	$type = content_type( $url );
+	$title = trim( $title );
+	$description = trim( $description );
+	$date = '';
 
 	if ( $url ) {
 
-		$content_html = get_html_content($url);
+		$html_content = get_html_content($url);
 
-		$html = new DOMDocument();
-		@$html->loadHTML($content_html);
+		if ( $html_content ) {
 
-		$i = 1;
+			$html = new DOMDocument();
+			@$html->loadHTML($html_content);
 
-		foreach( $html->getElementsByTagName('meta') as $meta ) {
+			$meta_og_title = '';
+			$meta_og_description = '';
+			$meta_og_img = '';
+			$meta_event_date = '';
+			$i = 1;
 
-			if( $meta->getAttribute('property')=='og:title' && trim($title)=='' ) {
-				$meta_og_title = $meta->getAttribute('content');
-			}
+			foreach( $html->getElementsByTagName('meta') as $meta ) {
 
-			if( $meta->getAttribute('property')=='og:description' && trim($description)=='' ) {
-				$meta_og_description = $meta->getAttribute('content');
-			}
+				if( $meta->getAttribute('property')=='og:title' && trim($title)=='' ) {
+					$meta_og_title = $meta->getAttribute('content');
+				}
 
-			if( $meta->getAttribute('property')=='og:image' && trim($image)=='' ) {
-				$meta_og_img[$i] = $meta->getAttribute('content');
-				$i++;
-			}
+				if( $meta->getAttribute('property')=='og:description' && trim($description)=='' ) {
+					$meta_og_description = $meta->getAttribute('content');
+				}
 
-			if (strpos($url, 'eventbrite') !== false) {
-				if( $meta->getAttribute('property')=='event:start_time' ) {
-					$meta_event_date = $meta->getAttribute('content');
+				if( $meta->getAttribute('property')=='og:image' && trim($image)=='' ) {
+					$meta_og_img[$i] = $meta->getAttribute('content');
+					$i++;
+				}
+
+				if (strpos($url, 'eventbrite') !== false) {
+					if( $meta->getAttribute('property')=='event:start_time' ) {
+						$meta_event_date = $meta->getAttribute('content');
+					}
 				}
 			}
-		}
 
-		if ($meta_og_title == 'Page Not Found - The National Archives') {
-			return card_fallback( 'Latest news', $id );
-		} else {
 			if (isset($meta_og_img[1]) == false) {
 				$meta_og_img[1] = '';
 			}
-			if ($meta_event_date) {
-				$date = date('l j F Y, H:i', strtotime($meta_event_date));
-			} else {
-				$date = '';
+
+			if ($meta_og_title == 'Page Not Found - The National Archives') {
+				return card_fallback( 'Latest news', $id );
 			}
-			if (str_word_count($meta_og_description, 0) > 14) {
-				$words = explode(' ',$meta_og_description);
-				$meta_og_description = implode(' ', array_splice( $words , 0, 14)) . '...';
-			}
-			return card_html( $id, $url, $meta_og_img[1], content_type( $url ), esc_attr( $meta_og_title ), esc_attr( $meta_og_description ), $date );
+
+			$image = $meta_og_img[1];
+			$title = esc_attr( $meta_og_title );
+			$description = esc_attr( $meta_og_description );
+			$date = $meta_event_date;
+
+		} else {
+
+			// something is wrong - most likely an incorrect URL
+			$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
+			$image = make_path_relative( get_stylesheet_directory_uri().'/img/events.jpg' );
+			$type = 'Events';
+			$title = 'Events - The National Archives';
+			$description = 'Find more information about our events programme and how to book tickets.';
 		}
+
+		return card_html( $id, $url, $image, $type, $title, $description, $date );
 	}
 }
 
@@ -117,20 +171,22 @@ function get_content_and_display_card( $id, $url, $title, $description, $image )
  * @return string
  */
 function content_type( $url ) {
+
     $content_type = "Feature";
+
 	if (strpos($url, 'nationalarchives.gov.uk/about/news/') !== false) {
 
         $content_type = 'News';
 	}
-	else if (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
+	elseif (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
 
         $content_type = 'Blog';
 	}
-	else if (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
+	elseif (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
 
         $content_type = 'Multimedia';
 	}
-	else if (strpos($url, 'eventbrite') !== false) {
+	elseif (strpos($url, 'eventbrite') !== false) {
 
         $content_type = 'Event';
 	}
@@ -186,6 +242,9 @@ function card_image( $image ) {
 function card_date( $date ) {
 
 	if ( $date ) {
+
+		$date = date('l j F Y, H:i', strtotime( $date ));
+
 		$html = '<div class="entry-date"><div class="date">%s</div></div>';
 
 		return sprintf( $html, $date );
@@ -200,7 +259,8 @@ function card_date( $date ) {
  */
 function card_content( $type, $title, $description ) {
 
-	$type_class = strtolower($type);
+	$type_class = strtolower( $type );
+	$description = limit_words( $description );
 
 	$html = '<div class="entry-content %s"><div class="content-type">%s</div><h3>%s</h3><p>%s</p></div>';
 
@@ -212,7 +272,7 @@ function card_content( $type, $title, $description ) {
  *
  * @since 1.0
  *
- * @see card_html_markup
+ * @see card_html
  *
  * @param string $id
  * @param string $url
@@ -247,6 +307,10 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 
 	$title = esc_attr($title);
 	$image = make_path_relative($image);
+	$target = '';
+	if ($type=='Event') {
+		$target = 'target="_blank"';
+	}
 
 	$html = '<div class="container">
 		        <div class="row">
@@ -262,7 +326,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 										data-gtm-id="hero_1"
 										data-gtm-position="hero_position_banner"
 										data-gtm-creative="homepage_hero_%s"
-		                            class="ghost-button homepage-hero" aria-label="%s" role="button">%s</a>
+		                            class="ghost-button homepage-hero" aria-label="%s" role="button" %s>%s</a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -270,7 +334,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 		        </div>
 		    </div>';
 
-	return sprintf( $html, $image, $type, $title, $excerpt, $url, $title, $type, $title, $button );
+	return sprintf( $html, $image, $type, $title, $excerpt, $url, $title, $type, $title, $target, $button );
 
 }
 
@@ -344,7 +408,7 @@ function is_card_active( $expire ) {
  *
  * @since 1.0
  *
- * @see card_html_markup
+ * @see card_html
  *
  * @param string $fallback
  * @param string $id
@@ -353,12 +417,11 @@ function is_card_active( $expire ) {
 function card_fallback( $fallback, $id ) {
 
 	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
-	$image = get_stylesheet_directory_uri().'/img/events.jpg';
-	$image = make_path_relative($image);
+	$image = make_path_relative( get_stylesheet_directory_uri().'/img/events.jpg' );
 	$type = 'Events';
-	$title = 'Upcoming events and exhibitions at The National Archives';
-	$target = '';
-	$icon = 'event-icon';
+	$title = 'Events - The National Archives';
+	$description = 'Find more information about our events programme and how to book tickets.';
+	$date = '';
 
 	if ( $fallback == 'Latest news' ) {
 
@@ -370,7 +433,7 @@ function card_fallback( $fallback, $id ) {
 		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
 		$type = 'News';
 		$title = $content->channel->item[0]->title;
-		$icon = '';
+		$description = $content->channel->item[0]->description;
 
 	}
 	if ( $fallback == 'Latest blog post' ) {
@@ -383,11 +446,11 @@ function card_fallback( $fallback, $id ) {
 		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
 		$type = 'Blog';
 		$title = $content->channel->item[0]->title;
-		$icon = '';
+		$description = $content->channel->item[0]->description;
 
 	}
 
-	return card_html_markup( $id, $url, $target, $image, $icon, $type, $title );
+	return card_html( $id, $url, $image, $type, $title, $description, $date );
 }
 
 /**
