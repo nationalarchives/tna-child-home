@@ -243,7 +243,7 @@ function card_date( $date ) {
 
 	if ( $date ) {
 
-		$date = str_replace( '+01:00', '', $date );
+		date_default_timezone_set('Europe/London');
 
 		$date = date('l j F Y, H:i', strtotime( $date ));
 
