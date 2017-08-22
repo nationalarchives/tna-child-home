@@ -243,6 +243,8 @@ function card_date( $date ) {
 
 	if ( $date ) {
 
+		date_default_timezone_set('Europe/London');
+
 		$date = date('l j F Y, H:i', strtotime( $date ));
 
 		$html = '<div class="entry-date"><div class="date">%s</div></div>';
