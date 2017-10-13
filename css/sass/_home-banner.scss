@@ -45,13 +45,26 @@
     }
     .entry-image {
       display: table-cell;
-      width: 68%;
+      width: 50%;
     }
     .hero-banner-entry {
       display: table-cell;
     }
     .entry-date {
       position: relative;
+    }
+    .feature, .news, .bog, .multimedia {
+      min-height: 240px;
+    }
+  }
+  @media (min-width: 922px) {
+    .entry-image {
+      width: 60%;
+    }
+  }
+  @media (min-width: 1240px) {
+    .entry-image {
+      width: 68%;
     }
   }
 }

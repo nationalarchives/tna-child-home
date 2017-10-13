@@ -10,6 +10,6 @@ $image      = get_post_meta( $post->ID, 'home_banner_img', true );
 $title      = get_post_meta( $post->ID, 'home_banner_title', true );
 $excerpt    = get_post_meta( $post->ID, 'home_banner_excerpt', true );
 $url        = get_post_meta( $post->ID, 'home_banner_url', true );
-$button     = get_post_meta( $post->ID, 'home_banner_btn', true );
+$date     = get_post_meta( $post->ID, 'home_banner_date', true );
 
-echo home_banner( $expire, $status, $image, $title, $excerpt, $url, $button );
+echo home_banner( $expire, $status, $image, $title, $excerpt, $url, $date );

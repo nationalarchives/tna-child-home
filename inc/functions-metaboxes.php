@@ -55,12 +55,19 @@ function home_meta_boxes() {
 					'type' => 'media',
 					'std' => ''
 				),
-				array(
+				/*array(
 					'name' => 'Button text',
 					'desc' => 'Call to action button',
 					'id' => 'home_banner_btn',
 					'type' => 'select',
 					'options' => array('Find out more', 'Read more', 'Book now')
+				),*/
+				array(
+					'name' => 'Event date',
+					'desc' => 'Please select a date if this is an event',
+					'id' => 'home_banner_date',
+					'type' => 'date',
+					'std' => ''
 				),
 				array(
 					'name' => 'Expire date',

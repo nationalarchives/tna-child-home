@@ -302,7 +302,7 @@ function card_html( $id, $url, $image, $type, $title, $description, $date ) {
  * @param string $title
  * @param string $excerpt
  * @param string $url
- * @param string $button
+ * @param string $date
  * @return string
  */
 function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
@@ -312,6 +312,9 @@ function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
 	$target = '';
 	if ($type=='Event') {
 		$target = 'target="_blank"';
+	}
+	if ($type!=='Event') {
+		$date = '';
 	}
 
 	$content = card_image( $image ) . '<div class="hero-banner-entry">' . card_content( $type, $title, $excerpt ) . card_date( $date ) . '</div>';
@@ -350,13 +353,13 @@ function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
  * @param string $title
  * @param string $excerpt
  * @param string $url
- * @param string $button
+ * @param string $date
  * @return string
  */
-function home_banner( $expire, $status, $image, $title, $excerpt, $url, $button='' ) {
+function home_banner( $expire, $status, $image, $title, $excerpt, $url, $date ) {
 
 	if ( $status == 'Enable' && is_card_active( $expire ) ) {
-		return banner_html( $image, content_type( $url ), $title, $excerpt, $url, $button );
+		return banner_html( $image, content_type( $url ), $title, $excerpt, $url, $date );
 	}
 
 }

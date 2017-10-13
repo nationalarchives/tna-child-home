@@ -180,11 +180,19 @@
       display: table-row; }
     .flex-row .hero-banner .entry-image {
       display: table-cell;
-      width: 68%; }
+      width: 50%; }
     .flex-row .hero-banner .hero-banner-entry {
       display: table-cell; }
     .flex-row .hero-banner .entry-date {
-      position: relative; } }
+      position: relative; }
+    .flex-row .hero-banner .feature, .flex-row .hero-banner .news, .flex-row .hero-banner .bog, .flex-row .hero-banner .multimedia {
+      min-height: 240px; } }
+@media (min-width: 922px) {
+  .flex-row .hero-banner .entry-image {
+    width: 60%; } }
+@media (min-width: 1240px) {
+  .flex-row .hero-banner .entry-image {
+    width: 68%; } }
 
 /* Alert */
 .home-alert {
