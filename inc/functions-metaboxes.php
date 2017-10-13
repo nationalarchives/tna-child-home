@@ -64,7 +64,7 @@ function home_meta_boxes() {
 				),*/
 				array(
 					'name' => 'Event date',
-					'desc' => 'Please select a date if this is an event',
+					'desc' => 'Date format dd/mm/yyyy. If this is an event add the date of the event here, otherwise leave blank.',
 					'id' => 'home_banner_date',
 					'type' => 'date',
 					'std' => ''
