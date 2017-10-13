@@ -305,7 +305,7 @@ function card_html( $id, $url, $image, $type, $title, $description, $date ) {
  * @param string $button
  * @return string
  */
-function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
+function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
 
 	$title = esc_attr($title);
 	$image = make_path_relative($image);
@@ -314,29 +314,26 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
 		$target = 'target="_blank"';
 	}
 
+	$content = card_image( $image ) . '<div class="hero-banner-entry">' . card_content( $type, $title, $excerpt ) . card_date( $date ) . '</div>';
+
 	$html = '<div class="container">
-		        <div class="row">
-		            <div class="home-banner" style="background-image: url(%s);">
-		                <div class="entry-wrapper">
-		                    <div class="entry-content">
-		                        <div class="content-type">%s</div>
-		                        <h2>%s</h2>
-		                        <p>%s</p>
-		                        <div class="banner-call-to-action">
-		                            <a id="hero-banner" href="%s"
-			                            data-gtm-name="%s"
-										data-gtm-id="hero_1"
-										data-gtm-position="hero_position_banner"
-										data-gtm-creative="homepage_hero_%s"
-		                            class="ghost-button homepage-hero" aria-label="%s" role="button" %s>%s</a>
-		                        </div>
-		                    </div>
+		        <div class="flex-row">
+			        <div class="col-card-12">
+			            <div class="card hero-banner clearfix">
+		                     <a id="hero-banner" href="%s"
+	                            data-gtm-name="%s"
+								data-gtm-id="hero_1"
+								data-gtm-position="hero_position_banner"
+								data-gtm-creative="homepage_hero_%s"
+	                            class="homepage-hero" aria-label="%s" %s>
+	                            %s
+			                </a>
 		                </div>
-		            </div>
+			        </div>
 		        </div>
 		    </div>';
 
-	return sprintf( $html, $image, $type, $title, $excerpt, $url, $title, $type, $title, $target, $button );
+	return sprintf( $html, $url, $title, $type, $title, $target, $content );
 
 }
 
@@ -356,7 +353,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
  * @param string $button
  * @return string
  */
-function home_banner( $expire, $status, $image, $title, $excerpt, $url, $button ) {
+function home_banner( $expire, $status, $image, $title, $excerpt, $url, $button='' ) {
 
 	if ( $status == 'Enable' && is_card_active( $expire ) ) {
 		return banner_html( $image, content_type( $url ), $title, $excerpt, $url, $button );

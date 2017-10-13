@@ -36,3 +36,22 @@
     }
   }
 }
+
+.flex-row .hero-banner {
+  @media (min-width: 768px) {
+    display: table;
+    a {
+      display: table-row;
+    }
+    .entry-image {
+      display: table-cell;
+      width: 68%;
+    }
+    .hero-banner-entry {
+      display: table-cell;
+    }
+    .entry-date {
+      position: relative;
+    }
+  }
+}
