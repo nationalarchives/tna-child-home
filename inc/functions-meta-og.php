@@ -1,5 +1,49 @@
 <?php
 /**
+ * @param $result
+ *
+ * @return bool
+ */
+function check_result( $result ) {
+
+	if ( is_wp_error( $result ) ) {
+		$result = false;
+	} elseif ( wp_remote_retrieve_response_code( $result ) == '404' ) {
+		$result = false;
+	} else {
+		$result = true;
+	}
+
+	return $result;
+}
+
+/**
+ * Gets the content of a URL via a HTTP request and returns the content.
+ *
+ * @since 1.0
+ *
+ * @param string $url
+ * @return string
+ */
+function get_html_content( $url ) {
+
+	if ( !class_exists('WP_Http') ) {
+		include_once( ABSPATH . WPINC . '/class-http.php');
+	}
+
+	$request = new WP_Http;
+	$result = $request->request( $url );
+
+	if ( check_result( $result ) ) {
+		$content = $result['body'];
+	} else {
+		$content = null;
+	}
+
+	return $content;
+}
+
+/**
  * Extracts the OG meta data.
  *
  * @since 1.0
@@ -13,7 +57,7 @@ function get_meta_og_data( $url ) {
 
 	if ( $url ) {
 
-		$html_content = get_html_content($url);
+		$html_content = get_html_content( $url );
 
 		if ( $html_content ) {
 

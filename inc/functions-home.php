@@ -33,50 +33,6 @@ function limit_words( $words, $number = 14 ) {
 }
 
 /**
- * @param $result
- *
- * @return bool
- */
-function check_result( $result ) {
-
-	if ( is_wp_error( $result ) ) {
-		$result = false;
-	} elseif ( wp_remote_retrieve_response_code( $result ) == '404' ) {
-		$result = false;
-	} else {
-		$result = true;
-	}
-
-	return $result;
-}
-
-/**
- * Gets the content of a URL via a HTTP request and returns the content.
- *
- * @since 1.0
- *
- * @param string $url
- * @return string
- */
-function get_html_content( $url ) {
-
-	if ( !class_exists('WP_Http') ) {
-		include_once( ABSPATH . WPINC . '/class-http.php');
-	}
-
-	$request = new WP_Http;
-	$result = $request->request( $url );
-
-	if ( check_result( $result ) ) {
-		$content = $result['body'];
-	} else {
-		$content = null;
-	}
-
-	return $content;
-}
-
-/**
  * Returns HTML markup for a card.
  *
  * @since 1.0
@@ -240,21 +196,6 @@ function card_content( $type, $title, $description ) {
 }
 
 /**
- * @param $type
- * @param $title
- * @param $description
- * @return string
- */
-function banner_content( $type, $title, $description ) {
-
-	$type_class = strtolower( $type );
-
-	$html = '<div class="entry-content %s"><div class="content-type">%s</div><h3>%s</h3><p>%s</p></div>';
-
-	return sprintf( $html, $type_class, $type, $title, $description );
-}
-
-/**
  * Returns HTML markup for the cards.
  *
  * @since 1.0
@@ -275,6 +216,21 @@ function card_html( $id, $url, $image, $type, $title, $description, $date ) {
 	$content = card_image( $image ) . card_content( $type, $title, $description ) . card_date( $date );
 
 	return card_wrapper( card_link( $id, $url, $type, $title, $content ) );
+}
+
+/**
+ * @param $type
+ * @param $title
+ * @param $description
+ * @return string
+ */
+function banner_content( $type, $title, $description ) {
+
+	$type_class = strtolower( $type );
+
+	$html = '<div class="entry-content %s"><div class="content-type">%s</div><h3>%s</h3><p>%s</p></div>';
+
+	return sprintf( $html, $type_class, $type, $title, $description );
 }
 
 /**
