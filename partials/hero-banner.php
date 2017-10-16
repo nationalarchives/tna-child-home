@@ -19,7 +19,7 @@ if( !empty( $transient ) && is_card_active( $expire ) ) {
 
 } elseif ( is_card_active( $expire ) ) {
 
-	$html = home_banner( $expire, $status, $image, $title, $excerpt, $url );
+	$html = display_home_banner( $expire, $status, $image, $title, $excerpt, $url );
 
 	set_transient( 'homepage_banner_html', $html, MONTH_IN_SECONDS );
 

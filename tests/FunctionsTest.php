@@ -99,9 +99,9 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('banner_html'));
     }
-    public function test_home_banner()
+    public function test_display_home_banner()
     {
-        $this->assertTrue(function_exists('home_banner'));
+        $this->assertTrue(function_exists('display_home_banner'));
     }
     public function test_update_page_delete_transient()
     {
