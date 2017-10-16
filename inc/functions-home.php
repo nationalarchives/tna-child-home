@@ -162,6 +162,31 @@ function get_content_and_display_card( $id, $url, $title, $description, $image )
 	}
 }
 
+function get_date_from_og( $url ) {
+
+	if ( $url && strpos($url, 'eventbrite') !== false ) {
+
+		$html_content = get_html_content( $url );
+
+		if ( $html_content ) {
+
+			$html = new DOMDocument();
+			@$html->loadHTML( $html_content );
+
+			$meta_event_date = '';
+
+			foreach ( $html->getElementsByTagName( 'meta' ) as $meta ) {
+
+				if ( $meta->getAttribute( 'property' ) == 'event:start_time' ) {
+					$meta_event_date = $meta->getAttribute( 'content' );
+				}
+			}
+
+			return $meta_event_date;
+		}
+	}
+}
+
 /**
  * Returns content type based on URL.
  *
@@ -270,6 +295,21 @@ function card_content( $type, $title, $description ) {
 }
 
 /**
+ * @param $type
+ * @param $title
+ * @param $description
+ * @return string
+ */
+function banner_content( $type, $title, $description ) {
+
+	$type_class = strtolower( $type );
+
+	$html = '<div class="entry-content %s"><div class="content-type">%s</div><h3>%s</h3><p>%s</p></div>';
+
+	return sprintf( $html, $type_class, $type, $title, $description );
+}
+
+/**
  * Returns HTML markup for the cards.
  *
  * @since 1.0
@@ -302,22 +342,19 @@ function card_html( $id, $url, $image, $type, $title, $description, $date ) {
  * @param string $title
  * @param string $excerpt
  * @param string $url
- * @param string $date
  * @return string
  */
-function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
+function banner_html( $image, $type, $title, $excerpt, $url ) {
 
 	$title = esc_attr($title);
 	$image = make_path_relative($image);
 	$target = '';
+	$date = get_date_from_og( $url );
 	if ($type=='Event') {
 		$target = 'target="_blank"';
 	}
-	if ($type!=='Event') {
-		$date = '';
-	}
 
-	$content = card_image( $image ) . '<div class="hero-banner-entry">' . card_content( $type, $title, $excerpt ) . card_date( $date ) . '</div>';
+	$content = card_image( $image ) . '<div class="hero-banner-entry">' . banner_content( $type, $title, $excerpt ) . card_date( $date ) . '</div>';
 
 	$html = '<div class="container">
 		        <div class="flex-row">
@@ -353,13 +390,12 @@ function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
  * @param string $title
  * @param string $excerpt
  * @param string $url
- * @param string $date
  * @return string
  */
-function home_banner( $expire, $status, $image, $title, $excerpt, $url, $date ) {
+function home_banner( $expire, $status, $image, $title, $excerpt, $url ) {
 
 	if ( $status == 'Enable' && is_card_active( $expire ) ) {
-		return banner_html( $image, content_type( $url ), $title, $excerpt, $url, $date );
+		return banner_html( $image, content_type( $url ), $title, $excerpt, $url );
 	}
 
 }
@@ -369,14 +405,20 @@ function home_banner( $expire, $status, $image, $title, $excerpt, $url, $date ) 
  *
  * @since 1.0
  */
-function update_page_delete_transient(){
+function update_page_delete_transient() {
 	for ( $i=1 ; $i<=6 ; $i++ ) {
 
-		$transient = get_transient( 'homepage_cards_html'.$i );
+		$transient_cards = get_transient( 'homepage_cards_html'.$i );
 
-		if( $transient  ) {
+		if( $transient_cards  ) {
 			delete_transient( 'homepage_cards_html'.$i );
 		}
+	}
+
+	$transient_banner = get_transient( 'homepage_banner_html' );
+
+	if( $transient_banner  ) {
+		delete_transient( 'homepage_banner_html' );
 	}
 }
 

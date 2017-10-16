@@ -63,13 +63,6 @@ function home_meta_boxes() {
 					'options' => array('Find out more', 'Read more', 'Book now')
 				),*/
 				array(
-					'name' => 'Event date',
-					'desc' => 'Date format dd/mm/yyyy. If this is an event add the date of the event here, otherwise leave blank.',
-					'id' => 'home_banner_date',
-					'type' => 'date',
-					'std' => ''
-				),
-				array(
 					'name' => 'Expire date',
 					'desc' => $descExpire,
 					'id' => 'home_banner_expire',
