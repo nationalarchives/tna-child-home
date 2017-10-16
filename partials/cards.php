@@ -24,7 +24,7 @@ for ( $i=1 ; $i<=6 ; $i++ ) {
 
 	} elseif ( is_card_active( $expire ) ) {
 
-		$html = get_content_and_display_card( $i, $url, $title, $description, $image );
+		$html = display_card( $i, $url, $title, $description, $image );
 
 		set_transient( 'homepage_cards_html'.$i, $html, MONTH_IN_SECONDS );
 

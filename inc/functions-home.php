@@ -77,7 +77,7 @@ function get_html_content( $url ) {
 }
 
 /**
- * Extracts the OG title and OG image of HTML content and returns HTML markup with title and image.
+ * Returns HTML markup for a card.
  *
  * @since 1.0
  *
@@ -90,100 +90,45 @@ function get_html_content( $url ) {
  * @param string $image
  * @return string
  */
-function get_content_and_display_card( $id, $url, $title, $description, $image ) {
-
-	$image = trim( $image );
-	$type = content_type( $url );
-	$title = trim( $title );
-	$description = trim( $description );
-	$date = '';
+function display_card( $id, $url, $title, $description, $image ) {
 
 	if ( $url ) {
 
-		$html_content = get_html_content($url);
+		$og_data = get_meta_og_data( $url );
 
-		if ( $html_content ) {
+		if ( $og_data ) {
 
-			$html = new DOMDocument();
-			@$html->loadHTML($html_content);
+			$image       = trim( $image );
+			$type        = content_type( $url );
+			$title       = trim( $title );
+			$description = trim( $description );
+			$date        = $og_data['date'];
 
-			$meta_og_title = '';
-			$meta_og_description = '';
-			$meta_og_img = '';
-			$meta_event_date = '';
-			$i = 1;
-
-			foreach( $html->getElementsByTagName('meta') as $meta ) {
-
-				if( $meta->getAttribute('property')=='og:title' && trim($title)=='' ) {
-					$meta_og_title = $meta->getAttribute('content');
-				}
-
-				if( $meta->getAttribute('property')=='og:description' && trim($description)=='' ) {
-					$meta_og_description = $meta->getAttribute('content');
-				}
-
-				if( $meta->getAttribute('property')=='og:image' && trim($image)=='' ) {
-					$meta_og_img[$i] = $meta->getAttribute('content');
-					$i++;
-				}
-
-				if (strpos($url, 'eventbrite') !== false) {
-					if( $meta->getAttribute('property')=='event:start_time' ) {
-						$meta_event_date = $meta->getAttribute('content');
-					}
-				}
+			if ( trim( $title ) == '' ) {
+				$title = $og_data['title'];
 			}
-
-			if (isset($meta_og_img[1]) == false) {
-				$meta_og_img[1] = '';
+			if ( trim( $description ) == '' ) {
+				$description = $og_data['description'];
 			}
-
-			if ($meta_og_title == 'Page Not Found - The National Archives') {
+			if ( trim( $image ) == '' ) {
+				$image = $og_data['img'][0];
+			}
+			if ( $title == 'Page Not Found - The National Archives' ) {
 				return card_fallback( 'Latest news', $id );
 			}
-
-			$image = $meta_og_img[1];
-			$title = esc_attr( $meta_og_title );
-			$description = esc_attr( $meta_og_description );
-			$date = $meta_event_date;
 
 		} else {
 
 			// something is wrong - most likely an incorrect URL
-			$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
-			$image = make_path_relative( get_stylesheet_directory_uri().'/img/events.jpg' );
-			$type = 'Events';
-			$title = 'Events - The National Archives';
+			$url         = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
+			$image       = make_path_relative( get_stylesheet_directory_uri() . '/img/events.jpg' );
+			$type        = 'Event';
+			$title       = 'Events - The National Archives';
 			$description = 'Find more information about our events programme and how to book tickets.';
+			$date        = '';
 		}
 
 		return card_html( $id, $url, $image, $type, $title, $description, $date );
-	}
-}
-
-function get_date_from_og( $url ) {
-
-	if ( $url && strpos($url, 'eventbrite') !== false ) {
-
-		$html_content = get_html_content( $url );
-
-		if ( $html_content ) {
-
-			$html = new DOMDocument();
-			@$html->loadHTML( $html_content );
-
-			$meta_event_date = '';
-
-			foreach ( $html->getElementsByTagName( 'meta' ) as $meta ) {
-
-				if ( $meta->getAttribute( 'property' ) == 'event:start_time' ) {
-					$meta_event_date = $meta->getAttribute( 'content' );
-				}
-			}
-
-			return $meta_event_date;
-		}
 	}
 }
 
@@ -349,7 +294,8 @@ function banner_html( $image, $type, $title, $excerpt, $url ) {
 	$title = esc_attr($title);
 	$image = make_path_relative($image);
 	$target = '';
-	$date = get_date_from_og( $url );
+	$og_data = get_meta_og_data( $url );
+	$date = $og_data['date'];
 	if ($type=='Event') {
 		$target = 'target="_blank"';
 	}
@@ -462,7 +408,7 @@ function card_fallback( $fallback, $id ) {
 
 	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
 	$image = make_path_relative( get_stylesheet_directory_uri().'/img/events.jpg' );
-	$type = 'Events';
+	$type = 'Event';
 	$title = 'Events - The National Archives';
 	$description = 'Find more information about our events programme and how to book tickets.';
 	$date = '';
