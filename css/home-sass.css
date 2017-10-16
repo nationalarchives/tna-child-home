@@ -144,35 +144,6 @@
         padding: 1em 1em 4em 1em; } }
 
 /* Home banner */
-.home-banner {
-  margin: 0 15px 1.5em 15px;
-  background-position: left center;
-  background-size: cover;
-  box-shadow: 0 2px 5px #ddd; }
-  .home-banner .entry-wrapper {
-    padding: 1.3em;
-    width: 100%;
-    background: transparent;
-    background: -webkit-linear-gradient(left, #000, transparent);
-    background: -o-linear-gradient(right, #000, transparent);
-    background: -moz-linear-gradient(right, #000, transparent);
-    background: linear-gradient(to right, #000, transparent); }
-  .home-banner .entry-content {
-    color: #fff;
-    max-width: 1270px;
-    margin: 0 auto;
-    padding: 0 48% 0 15px; }
-  .home-banner .content-type {
-    border-left: #ebab01 4px solid;
-    padding: 0 0.5em; }
-  .home-banner .content-type img {
-    float: right;
-    width: 1em;
-    height: 1em; }
-  @media (max-width: 480px) {
-    .home-banner .entry-content {
-      padding: 0 15px; } }
-
 .flex-row .hero-banner p {
   margin-bottom: .5em; }
 @media (min-width: 768px) {
