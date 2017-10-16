@@ -34,9 +34,9 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('home_meta_boxes'));
     }
-    public function test_get_content_and_display_card()
+    public function test_display_card()
     {
-        $this->assertTrue(function_exists('get_content_and_display_card'));
+        $this->assertTrue(function_exists('display_card'));
     }
     public function test_content_type()
     {
