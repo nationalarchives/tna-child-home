@@ -10,7 +10,7 @@ function home_meta_boxes() {
 	$descFallback = '‘Latest news/blog’ will display the most recently published content. ‘What’s On’ is a static card.';
 	// $descCardTitle = 'Only enter substitute text here when you need to override the automated title.';
 	// $descCardImage = 'If you need to override the automated image, paste the image URL here after uploading it to the image library. Image size 768px x 576px.';
-	$descBannerImage = 'Add or paste image URL from media library. Image size 1240px x 630px (~1.91:1 aspect ratio).';
+	$descBannerImage = 'Add or paste image URL from media library. Image size 860px x 450px (~1.91:1 aspect ratio).';
 
 	$home_meta_boxes = array(
 		array(
@@ -55,13 +55,13 @@ function home_meta_boxes() {
 					'type' => 'media',
 					'std' => ''
 				),
-				array(
+				/*array(
 					'name' => 'Button text',
 					'desc' => 'Call to action button',
 					'id' => 'home_banner_btn',
 					'type' => 'select',
 					'options' => array('Find out more', 'Read more', 'Book now')
-				),
+				),*/
 				array(
 					'name' => 'Expire date',
 					'desc' => $descExpire,

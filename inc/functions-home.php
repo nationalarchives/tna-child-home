@@ -33,51 +33,7 @@ function limit_words( $words, $number = 14 ) {
 }
 
 /**
- * @param $result
- *
- * @return bool
- */
-function check_result( $result ) {
-
-	if ( is_wp_error( $result ) ) {
-		$result = false;
-	} elseif ( wp_remote_retrieve_response_code( $result ) == '404' ) {
-		$result = false;
-	} else {
-		$result = true;
-	}
-
-	return $result;
-}
-
-/**
- * Gets the content of a URL via a HTTP request and returns the content.
- *
- * @since 1.0
- *
- * @param string $url
- * @return string
- */
-function get_html_content( $url ) {
-
-	if ( !class_exists('WP_Http') ) {
-		include_once( ABSPATH . WPINC . '/class-http.php');
-	}
-
-	$request = new WP_Http;
-	$result = $request->request( $url );
-
-	if ( check_result( $result ) ) {
-		$content = $result['body'];
-	} else {
-		$content = null;
-	}
-
-	return $content;
-}
-
-/**
- * Extracts the OG title and OG image of HTML content and returns HTML markup with title and image.
+ * Returns HTML markup for a card.
  *
  * @since 1.0
  *
@@ -90,72 +46,42 @@ function get_html_content( $url ) {
  * @param string $image
  * @return string
  */
-function get_content_and_display_card( $id, $url, $title, $description, $image ) {
-
-	$image = trim( $image );
-	$type = content_type( $url );
-	$title = trim( $title );
-	$description = trim( $description );
-	$date = '';
+function display_card( $id, $url, $title, $description, $image ) {
 
 	if ( $url ) {
 
-		$html_content = get_html_content($url);
+		$og_data = get_meta_og_data( $url );
 
-		if ( $html_content ) {
+		if ( $og_data ) {
 
-			$html = new DOMDocument();
-			@$html->loadHTML($html_content);
+			$image       = trim( $image );
+			$type        = content_type( $url );
+			$title       = trim( $title );
+			$description = trim( $description );
+			$date        = $og_data['date'];
 
-			$meta_og_title = '';
-			$meta_og_description = '';
-			$meta_og_img = '';
-			$meta_event_date = '';
-			$i = 1;
-
-			foreach( $html->getElementsByTagName('meta') as $meta ) {
-
-				if( $meta->getAttribute('property')=='og:title' && trim($title)=='' ) {
-					$meta_og_title = $meta->getAttribute('content');
-				}
-
-				if( $meta->getAttribute('property')=='og:description' && trim($description)=='' ) {
-					$meta_og_description = $meta->getAttribute('content');
-				}
-
-				if( $meta->getAttribute('property')=='og:image' && trim($image)=='' ) {
-					$meta_og_img[$i] = $meta->getAttribute('content');
-					$i++;
-				}
-
-				if (strpos($url, 'eventbrite') !== false) {
-					if( $meta->getAttribute('property')=='event:start_time' ) {
-						$meta_event_date = $meta->getAttribute('content');
-					}
-				}
+			if ( trim( $title ) == '' ) {
+				$title = $og_data['title'];
 			}
-
-			if (isset($meta_og_img[1]) == false) {
-				$meta_og_img[1] = '';
+			if ( trim( $description ) == '' ) {
+				$description = $og_data['description'];
 			}
-
-			if ($meta_og_title == 'Page Not Found - The National Archives') {
+			if ( trim( $image ) == '' ) {
+				$image = $og_data['img'][0];
+			}
+			if ( $title == 'Page Not Found - The National Archives' ) {
 				return card_fallback( 'Latest news', $id );
 			}
-
-			$image = $meta_og_img[1];
-			$title = esc_attr( $meta_og_title );
-			$description = esc_attr( $meta_og_description );
-			$date = $meta_event_date;
 
 		} else {
 
 			// something is wrong - most likely an incorrect URL
-			$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
-			$image = make_path_relative( get_stylesheet_directory_uri().'/img/events.jpg' );
-			$type = 'Events';
-			$title = 'Events - The National Archives';
+			$url         = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
+			$image       = make_path_relative( get_stylesheet_directory_uri() . '/img/events.jpg' );
+			$type        = 'Event';
+			$title       = 'Events - The National Archives';
 			$description = 'Find more information about our events programme and how to book tickets.';
+			$date        = '';
 		}
 
 		return card_html( $id, $url, $image, $type, $title, $description, $date );
@@ -194,153 +120,6 @@ function content_type( $url ) {
 }
 
 /**
- * @param $content
- * @return string
- */
-function card_wrapper( $content ) {
-
-	$html = '<div class="col-card-4"><div class="card">%s</div></div>';
-
-	return sprintf( $html, $content );
-}
-
-/**
- * @param $id
- * @param $url
- * @param $type
- * @param $title
- * @param $content
- * @return string
- */
-function card_link( $id, $url, $type, $title, $content ) {
-
-	$target = '';
-	if ($type=='Event') {
-		$target = 'target="_blank"';
-	}
-
-	$html = '<a id="card-%s" href="%s" %s data-gtm-name="%s" data-gtm-id="card_%s" data-gtm-position="card_position_%s" data-gtm-creative="homepage_card_%s" class="homepage-card">%s</a>';
-
-	return sprintf( $html, $id, $url, $target, $title, $id, $id, $type, $content );
-}
-
-/**
- * @param $image
- * @return string
- */
-function card_image( $image ) {
-
-	$html = '<div class="entry-image" style="background-image: url(%s)"></div>';
-
-	return sprintf( $html, $image );
-}
-
-/**
- * @param $date
- * @return string
- */
-function card_date( $date ) {
-
-	if ( $date ) {
-
-		date_default_timezone_set('Europe/London');
-
-		$date = date('l j F Y, H:i', strtotime( $date ));
-
-		$html = '<div class="entry-date"><div class="date">%s</div></div>';
-
-		return sprintf( $html, $date );
-	}
-}
-
-/**
- * @param $type
- * @param $title
- * @param $description
- * @return string
- */
-function card_content( $type, $title, $description ) {
-
-	$type_class = strtolower( $type );
-	$description = limit_words( $description );
-
-	$html = '<div class="entry-content %s"><div class="content-type">%s</div><h3>%s</h3><p>%s</p></div>';
-
-	return sprintf( $html, $type_class, $type, $title, $description );
-}
-
-/**
- * Returns HTML markup for the cards.
- *
- * @since 1.0
- *
- * @see card_html
- *
- * @param string $id
- * @param string $url
- * @param string $image
- * @param string $type
- * @param string $title
- * @param string $description
- * @param string $date
- * @return string
- */
-function card_html( $id, $url, $image, $type, $title, $description, $date ) {
-
-	$content = card_image( $image ) . card_content( $type, $title, $description ) . card_date( $date );
-
-	return card_wrapper( card_link( $id, $url, $type, $title, $content ) );
-}
-
-/**
- * Returns HTML markup for the banner.
- *
- * @since 1.0
- *
- * @param string $image
- * @param string $type
- * @param string $title
- * @param string $excerpt
- * @param string $url
- * @param string $button
- * @return string
- */
-function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
-
-	$title = esc_attr($title);
-	$image = make_path_relative($image);
-	$target = '';
-	if ($type=='Event') {
-		$target = 'target="_blank"';
-	}
-
-	$html = '<div class="container">
-		        <div class="row">
-		            <div class="home-banner" style="background-image: url(%s);">
-		                <div class="entry-wrapper">
-		                    <div class="entry-content">
-		                        <div class="content-type">%s</div>
-		                        <h2>%s</h2>
-		                        <p>%s</p>
-		                        <div class="banner-call-to-action">
-		                            <a id="hero-banner" href="%s"
-			                            data-gtm-name="%s"
-										data-gtm-id="hero_1"
-										data-gtm-position="hero_position_banner"
-										data-gtm-creative="homepage_hero_%s"
-		                            class="ghost-button homepage-hero" aria-label="%s" role="button" %s>%s</a>
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		    </div>';
-
-	return sprintf( $html, $image, $type, $title, $excerpt, $url, $title, $type, $title, $target, $button );
-
-}
-
-/**
  * Returns HTML markup for the banner if not expired.
  *
  * @since 1.0
@@ -353,13 +132,12 @@ function banner_html( $image, $type, $title, $excerpt, $url, $button ) {
  * @param string $title
  * @param string $excerpt
  * @param string $url
- * @param string $button
  * @return string
  */
-function home_banner( $expire, $status, $image, $title, $excerpt, $url, $button ) {
+function display_home_banner( $expire, $status, $image, $title, $excerpt, $url ) {
 
 	if ( $status == 'Enable' && is_card_active( $expire ) ) {
-		return banner_html( $image, content_type( $url ), $title, $excerpt, $url, $button );
+		return banner_html( $image, content_type( $url ), $title, $excerpt, $url );
 	}
 
 }
@@ -369,14 +147,20 @@ function home_banner( $expire, $status, $image, $title, $excerpt, $url, $button 
  *
  * @since 1.0
  */
-function update_page_delete_transient(){
+function update_page_delete_transient() {
 	for ( $i=1 ; $i<=6 ; $i++ ) {
 
-		$transient = get_transient( 'homepage_cards_html'.$i );
+		$transient_cards = get_transient( 'homepage_cards_html'.$i );
 
-		if( $transient  ) {
+		if( $transient_cards  ) {
 			delete_transient( 'homepage_cards_html'.$i );
 		}
+	}
+
+	$transient_banner = get_transient( 'homepage_banner_html' );
+
+	if( $transient_banner  ) {
+		delete_transient( 'homepage_banner_html' );
 	}
 }
 
@@ -420,7 +204,7 @@ function card_fallback( $fallback, $id ) {
 
 	$url = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
 	$image = make_path_relative( get_stylesheet_directory_uri().'/img/events.jpg' );
-	$type = 'Events';
+	$type = 'Event';
 	$title = 'Events - The National Archives';
 	$description = 'Find more information about our events programme and how to book tickets.';
 	$date = '';
@@ -574,7 +358,6 @@ function landingpage_link_html_markup( $title, $url, $text ) {
             </div>';
 
 	return sprintf( $html, $url, $title, $text );
-
 }
 
 /**
