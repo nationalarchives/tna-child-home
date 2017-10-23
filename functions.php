@@ -7,6 +7,8 @@ define( 'HOME_EDD_VERSION', '1.2' );
 include 'inc/functions-global.php';
 include 'inc/functions-menu.php';
 include 'inc/functions-metaboxes.php';
+include 'inc/functions-meta-og.php';
+include 'inc/functions-cards.php';
 include 'inc/functions-home.php';
 include 'inc/functions-admin.php';
 include 'inc/functions-openingtimes.php';

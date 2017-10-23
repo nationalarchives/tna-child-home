@@ -22,7 +22,7 @@
   flex-wrap: wrap;
   margin-left: -15px;
   margin-right: -15px; }
-  .flex-row .col-card-4, .flex-row .col-card-3 {
+  .flex-row .col-card-12, .flex-row .col-card-4, .flex-row .col-card-3 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -30,6 +30,9 @@
     padding-left: 15px;
     padding-right: 15px;
     margin-bottom: 1.5em; }
+  .flex-row .col-card-12 {
+    max-width: 100%;
+    min-width: 100%; }
   .flex-row .col-card-4 {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 33.33333%;
@@ -141,34 +144,30 @@
         padding: 1em 1em 4em 1em; } }
 
 /* Home banner */
-.home-banner {
-  margin: 0 15px 1.5em 15px;
-  background-position: left center;
-  background-size: cover;
-  box-shadow: 0 2px 5px #ddd; }
-  .home-banner .entry-wrapper {
-    padding: 1.3em;
-    width: 100%;
-    background: transparent;
-    background: -webkit-linear-gradient(left, #000, transparent);
-    background: -o-linear-gradient(right, #000, transparent);
-    background: -moz-linear-gradient(right, #000, transparent);
-    background: linear-gradient(to right, #000, transparent); }
-  .home-banner .entry-content {
-    color: #fff;
-    max-width: 1270px;
-    margin: 0 auto;
-    padding: 0 48% 0 15px; }
-  .home-banner .content-type {
-    border-left: #ebab01 4px solid;
-    padding: 0 0.5em; }
-  .home-banner .content-type img {
-    float: right;
-    width: 1em;
-    height: 1em; }
-  @media (max-width: 480px) {
-    .home-banner .entry-content {
-      padding: 0 15px; } }
+.flex-row .hero-banner p {
+  margin-bottom: .5em; }
+@media (min-width: 768px) {
+  .flex-row .hero-banner {
+    display: table; }
+    .flex-row .hero-banner a {
+      display: table-row; }
+    .flex-row .hero-banner .entry-image {
+      display: table-cell;
+      width: 50%; }
+    .flex-row .hero-banner .hero-banner-entry {
+      display: table-cell; }
+    .flex-row .hero-banner .entry-date {
+      position: relative; }
+    .flex-row .hero-banner .feature, .flex-row .hero-banner .news, .flex-row .hero-banner .bog, .flex-row .hero-banner .multimedia {
+      min-height: 240px; }
+    .flex-row .hero-banner .event {
+      padding: 1em 1em 1.6em 1em; } }
+@media (min-width: 922px) {
+  .flex-row .hero-banner .entry-image {
+    width: 60%; } }
+@media (min-width: 1240px) {
+  .flex-row .hero-banner .entry-image {
+    width: 68%; } }
 
 /* Alert */
 .home-alert {

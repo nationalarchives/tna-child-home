@@ -34,9 +34,9 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('home_meta_boxes'));
     }
-    public function test_get_content_and_display_card()
+    public function test_display_card()
     {
-        $this->assertTrue(function_exists('get_content_and_display_card'));
+        $this->assertTrue(function_exists('display_card'));
     }
     public function test_content_type()
     {
@@ -99,9 +99,9 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('banner_html'));
     }
-    public function test_home_banner()
+    public function test_display_home_banner()
     {
-        $this->assertTrue(function_exists('home_banner'));
+        $this->assertTrue(function_exists('display_home_banner'));
     }
     public function test_update_page_delete_transient()
     {
@@ -134,6 +134,10 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     public function test_home_alert()
     {
         $this->assertTrue(function_exists('home_alert'));
+    }
+    public function test_get_meta_og_data()
+    {
+        $this->assertTrue(function_exists('get_meta_og_data'));
     }
 
     public function test_is_tna_open()
