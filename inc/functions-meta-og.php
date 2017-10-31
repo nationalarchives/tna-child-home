@@ -104,3 +104,32 @@ function get_meta_og_data( $url ) {
 
 	return false;
 }
+
+function get_meta_og_on_save( $post_id ) {
+
+	$data = $_POST;
+
+	if ( $data['home_banner_url'] ) {
+
+		$current = get_post_meta( $post_id, 'home_banner_url_old', true );
+
+		if ( $current ) {
+			if ( $data['home_banner_url'] !== $current ) {
+				$data['home_banner_title'] = '';
+				$data['home_banner_excerpt'] = '';
+				update_post_meta( $post_id, 'home_banner_url_old', $data['home_banner_url'] );
+			}
+		} else {
+			add_post_meta( $post_id, 'home_banner_url_old', $data['home_banner_url'], true );
+		}
+
+		$og = get_meta_og_data( $data['home_banner_url'] );
+
+		if ( trim($data['home_banner_title']) == '' ) {
+			$_POST['home_banner_title'] = $og['title'];
+		}
+		if ( trim($data['home_banner_excerpt']) == '' ) {
+			$_POST['home_banner_excerpt'] = $og['description'];
+		}
+	}
+}

@@ -55,13 +55,6 @@ function home_meta_boxes() {
 					'type' => 'media',
 					'std' => ''
 				),
-				/*array(
-					'name' => 'Button text',
-					'desc' => 'Call to action button',
-					'id' => 'home_banner_btn',
-					'type' => 'select',
-					'options' => array('Find out more', 'Read more', 'Book now')
-				),*/
 				array(
 					'name' => 'Expire date',
 					'desc' => $descExpire,
