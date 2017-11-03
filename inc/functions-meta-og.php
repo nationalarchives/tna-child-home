@@ -107,29 +107,45 @@ function get_meta_og_data( $url ) {
 
 function get_meta_og_on_save( $post_id ) {
 
-	$data = $_POST;
+	$template_file = get_post_meta( $post_id, '_wp_page_template' ,true );
 
-	if ( $data['home_banner_url'] ) {
+	if ( $template_file == 'page-home.php' ) {
 
-		$current = get_post_meta( $post_id, 'home_banner_url_old', true );
+		$data = $_POST;
 
-		if ( $current ) {
-			if ( $data['home_banner_url'] !== $current ) {
-				$data['home_banner_title'] = '';
-				$data['home_banner_excerpt'] = '';
-				update_post_meta( $post_id, 'home_banner_url_old', $data['home_banner_url'] );
+		if ( $data['home_banner_url'] ) {
+
+			$current = get_post_meta( $post_id, 'home_banner_url_old', true );
+
+			if ( $current ) {
+				if ( $data['home_banner_url'] !== $current ) {
+					$data['home_banner_title'] = '';
+					$data['home_banner_excerpt'] = '';
+					$data['home_banner_img'] = '';
+					update_post_meta( $post_id, 'home_banner_url_old', $data['home_banner_url'] );
+				}
+			} else {
+				add_post_meta( $post_id, 'home_banner_url_old', $data['home_banner_url'], true );
 			}
-		} else {
-			add_post_meta( $post_id, 'home_banner_url_old', $data['home_banner_url'], true );
-		}
 
-		$og = get_meta_og_data( $data['home_banner_url'] );
+			$og = get_meta_og_data( $data['home_banner_url'] );
 
-		if ( trim($data['home_banner_title']) == '' ) {
-			$_POST['home_banner_title'] = $og['title'];
-		}
-		if ( trim($data['home_banner_excerpt']) == '' ) {
-			$_POST['home_banner_excerpt'] = $og['description'];
+			if ( trim($data['home_banner_title']) == '' ) {
+				$_POST['home_banner_title'] = esc_attr($og['title']);
+			}
+			if ( trim($data['home_banner_excerpt']) == '' ) {
+				$_POST['home_banner_excerpt'] = esc_attr($og['description']);
+			}
+			if ( trim($data['home_banner_img']) == '' ) {
+				$_POST['home_banner_img'] = esc_attr($og['img'][0]);
+			}
+			if ( isset($og['date']) ) {
+				if ( trim($data['home_banner_expire']) == '' ) {
+					$date = esc_attr($og['date']);
+					$date = date('Y-m-d', strtotime($date));
+					$_POST['home_banner_expire'] = $date;
+				}
+			}
 		}
 	}
 }
