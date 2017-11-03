@@ -146,8 +146,6 @@ function get_meta_og_on_save( $post_id ) {
 					$date = date('Y-m-d', strtotime($date));
 					$_POST['home_banner_expire'] = $date;
 				}
-			} else {
-				$_POST['home_banner_expire'] = '';
 			}
 		}
 
@@ -186,8 +184,6 @@ function get_meta_og_on_save( $post_id ) {
 						$date = date('Y-m-d', strtotime($date));
 						$_POST['home_card_expire_'.$i] = $date;
 					}
-				} else {
-					$_POST['home_card_expire_'.$i] = '';
 				}
 			}
 		}
