@@ -6,10 +6,10 @@
 function home_meta_boxes() {
 
 	$descUrl = 'Enter the URL from the page you want to link to. This will automatically pull in the title and image (press preview to view).';
-	$descExpire = 'Date format dd/mm/yyyy. If set the content will expire at midnight on day specified and fallback content will be displayed.';
+	$descExpire = 'Date format yyyy/mm/dd. If set the content will expire at midnight on day specified and fallback content will be displayed.';
 	$descFallback = '‘Latest news/blog’ will display the most recently published content. ‘What’s On’ is a static card.';
-	// $descCardTitle = 'Only enter substitute text here when you need to override the automated title.';
-	// $descCardImage = 'If you need to override the automated image, paste the image URL here after uploading it to the image library. Image size 768px x 576px.';
+	$descCardTitle = 'Only enter substitute text here when you need to override the automated title.';
+	$descCardImage = 'If you need to override the automated image, paste the image URL here after uploading it to the image library. Image size 768px x 576px.';
 	$descBannerImage = 'Add or paste image URL from media library. Image size 860px x 450px (~1.91:1 aspect ratio).';
 
 	$home_meta_boxes = array(
@@ -79,26 +79,26 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_1',
-					'type' => 'text',
-					'std' => ''
-				),
-				/*array(
-					'name' => 'Override title',
+					'name' => 'Title',
 					'desc' => $descCardTitle,
 					'id' => 'home_card_title_1',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
-					'name' => 'Override image',
+					'name' => 'Excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_1',
+					'type' => 'textarea',
+					'std' => ''
+				),
+				array(
+					'name' => 'Image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_1',
 					'type' => 'media',
 					'std' => ''
-				),*/
+				),
 				array(
 					'name' => 'Expire date',
 					'desc' => $descExpire,
@@ -130,26 +130,26 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_2',
-					'type' => 'text',
-					'std' => ''
-				),
-				/*array(
-					'name' => 'Override title',
+					'name' => 'Title',
 					'desc' => $descCardTitle,
 					'id' => 'home_card_title_2',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
-					'name' => 'Override image',
+					'name' => 'Excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_2',
+					'type' => 'textarea',
+					'std' => ''
+				),
+				array(
+					'name' => 'Image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_2',
 					'type' => 'media',
 					'std' => ''
-				),*/
+				),
 				array(
 					'name' => 'Expire date',
 					'desc' => $descExpire,
@@ -181,26 +181,26 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
+					'name' => 'Excerpt',
 					'desc' => '',
 					'id' => 'home_card_excerpt_3',
-					'type' => 'text',
+					'type' => 'textarea',
 					'std' => ''
 				),
-				/*array(
-					'name' => 'Override title',
+				array(
+					'name' => 'Title',
 					'desc' => $descCardTitle,
 					'id' => 'home_card_title_3',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
-					'name' => 'Override image',
+					'name' => 'Image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_3',
 					'type' => 'media',
 					'std' => ''
-				),*/
+				),
 				array(
 					'name' => 'Expire date',
 					'desc' => $descExpire,
@@ -232,26 +232,26 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_4',
-					'type' => 'text',
-					'std' => ''
-				),
-				/*array(
-					'name' => 'Override title',
+					'name' => 'Title',
 					'desc' => $descCardTitle,
 					'id' => 'home_card_title_4',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
-					'name' => 'Override image',
+					'name' => 'Excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_4',
+					'type' => 'textarea',
+					'std' => ''
+				),
+				array(
+					'name' => 'Image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_4',
 					'type' => 'media',
 					'std' => ''
-				),*/
+				),
 				array(
 					'name' => 'Expire date',
 					'desc' => $descExpire,
@@ -283,26 +283,26 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_5',
-					'type' => 'text',
-					'std' => ''
-				),
-				/*array(
-					'name' => 'Override title',
+					'name' => 'Title',
 					'desc' => $descCardTitle,
 					'id' => 'home_card_title_5',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
-					'name' => 'Override image',
+					'name' => 'Excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_5',
+					'type' => 'textarea',
+					'std' => ''
+				),
+				array(
+					'name' => 'Image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_5',
 					'type' => 'media',
 					'std' => ''
-				),*/
+				),
 				array(
 					'name' => 'Expire date',
 					'desc' => $descExpire,
@@ -334,26 +334,26 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Override excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_6',
-					'type' => 'text',
-					'std' => ''
-				),
-				/*array(
-					'name' => 'Override title',
+					'name' => 'Title',
 					'desc' => $descCardTitle,
 					'id' => 'home_card_title_6',
 					'type' => 'text',
 					'std' => ''
 				),
 				array(
-					'name' => 'Override image',
+					'name' => 'Excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_6',
+					'type' => 'textarea',
+					'std' => ''
+				),
+				array(
+					'name' => 'Image',
 					'desc' => $descCardImage,
 					'id' => 'home_card_img_6',
 					'type' => 'media',
 					'std' => ''
-				),*/
+				),
 				array(
 					'name' => 'Expire date',
 					'desc' => $descExpire,
