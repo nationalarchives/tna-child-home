@@ -181,17 +181,17 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Excerpt',
-					'desc' => '',
-					'id' => 'home_card_excerpt_3',
-					'type' => 'textarea',
-					'std' => ''
-				),
-				array(
 					'name' => 'Title',
 					'desc' => $descCardTitle,
 					'id' => 'home_card_title_3',
 					'type' => 'text',
+					'std' => ''
+				),
+				array(
+					'name' => 'Excerpt',
+					'desc' => '',
+					'id' => 'home_card_excerpt_3',
+					'type' => 'textarea',
 					'std' => ''
 				),
 				array(

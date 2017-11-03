@@ -122,6 +122,7 @@ function get_meta_og_on_save( $post_id ) {
 					$data['home_banner_title'] = '';
 					$data['home_banner_excerpt'] = '';
 					$data['home_banner_img'] = '';
+					$data['home_banner_expire'] = '';
 					update_post_meta( $post_id, 'home_banner_url_old', $data['home_banner_url'] );
 				}
 			} else {
@@ -139,11 +140,54 @@ function get_meta_og_on_save( $post_id ) {
 			if ( trim($data['home_banner_img']) == '' ) {
 				$_POST['home_banner_img'] = esc_attr($og['img'][0]);
 			}
-			if ( isset($og['date']) ) {
+			if ( isset($og['date']) && strpos($data['home_banner_url'], 'eventbrite') !== false ) {
 				if ( trim($data['home_banner_expire']) == '' ) {
 					$date = esc_attr($og['date']);
 					$date = date('Y-m-d', strtotime($date));
 					$_POST['home_banner_expire'] = $date;
+				}
+			} else {
+				$_POST['home_banner_expire'] = '';
+			}
+		}
+
+		for ( $i=1 ; $i<=6 ; $i++ ) {
+
+			if ( $data['home_card_url_'.$i] ) {
+
+				$current = get_post_meta( $post_id, 'home_card_url_old_'.$i, true );
+
+				if ( $current ) {
+					if ( $data['home_card_url_'.$i] !== $current ) {
+						$data['home_card_title_'.$i] = '';
+						$data['home_card_excerpt_'.$i] = '';
+						$data['home_card_img_'.$i] = '';
+						$data['home_card_expire_'.$i] = '';
+						update_post_meta( $post_id, 'home_card_url_old_'.$i, $data['home_card_url_'.$i] );
+					}
+				} else {
+					add_post_meta( $post_id, 'home_card_url_old_'.$i, $data['home_card_url_'.$i], true );
+				}
+
+				$og = get_meta_og_data( $data['home_card_url_'.$i] );
+
+				if ( trim($data['home_card_title_'.$i]) == '' ) {
+					$_POST['home_card_title_'.$i] = esc_attr($og['title']);
+				}
+				if ( trim($data['home_card_excerpt_'.$i]) == '' ) {
+					$_POST['home_card_excerpt_'.$i] = esc_attr($og['description']);
+				}
+				if ( trim($data['home_card_img_'.$i]) == '' ) {
+					$_POST['home_card_img_'.$i] = esc_attr($og['img'][0]);
+				}
+				if ( isset($og['date']) && strpos($data['home_card_url_'.$i], 'eventbrite') !== false) {
+					if ( trim($data['home_card_expire_'.$i]) == '' ) {
+						$date = esc_attr($og['date']);
+						$date = date('Y-m-d', strtotime($date));
+						$_POST['home_card_expire_'.$i] = $date;
+					}
+				} else {
+					$_POST['home_card_expire_'.$i] = '';
 				}
 			}
 		}
