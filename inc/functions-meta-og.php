@@ -167,22 +167,29 @@ function get_meta_og_on_save( $post_id ) {
 					add_post_meta( $post_id, 'home_card_url_old_'.$i, $data['home_card_url_'.$i], true );
 				}
 
-				$og = get_meta_og_data( $data['home_card_url_'.$i] );
+				if (    trim($data['home_card_title_'.$i]) == '' ||
+				        trim($data['home_card_excerpt_'.$i]) == '' ||
+				        trim($data['home_card_img_'.$i]) == '' ||
+				        trim($data['home_card_expire_'.$i]) == '' )
+				{
 
-				if ( trim($data['home_card_title_'.$i]) == '' ) {
-					$_POST['home_card_title_'.$i] = esc_attr($og['title']);
-				}
-				if ( trim($data['home_card_excerpt_'.$i]) == '' ) {
-					$_POST['home_card_excerpt_'.$i] = esc_attr($og['description']);
-				}
-				if ( trim($data['home_card_img_'.$i]) == '' ) {
-					$_POST['home_card_img_'.$i] = esc_attr($og['img'][0]);
-				}
-				if ( isset($og['date']) && strpos($data['home_card_url_'.$i], 'eventbrite') !== false) {
-					if ( trim($data['home_card_expire_'.$i]) == '' ) {
-						$date = esc_attr($og['date']);
-						$date = date('Y-m-d', strtotime($date));
-						$_POST['home_card_expire_'.$i] = $date;
+					$og = get_meta_og_data( $data[ 'home_card_url_' . $i ] );
+
+					if ( trim( $data[ 'home_card_title_' . $i ] ) == '' ) {
+						$_POST[ 'home_card_title_' . $i ] = esc_attr( $og['title'] );
+					}
+					if ( trim( $data[ 'home_card_excerpt_' . $i ] ) == '' ) {
+						$_POST[ 'home_card_excerpt_' . $i ] = esc_attr( $og['description'] );
+					}
+					if ( trim( $data[ 'home_card_img_' . $i ] ) == '' ) {
+						$_POST[ 'home_card_img_' . $i ] = esc_attr( $og['img'][0] );
+					}
+					if ( strpos( $data[ 'home_card_url_' . $i ], 'eventbrite' ) !== false ) {
+						if ( trim( $data[ 'home_card_expire_' . $i ] ) == '' ) {
+							$date                              = esc_attr( $og['date'] );
+							$date                              = date( 'Y-m-d', strtotime( $date ) );
+							$_POST[ 'home_card_expire_' . $i ] = $date;
+						}
 					}
 				}
 			}
