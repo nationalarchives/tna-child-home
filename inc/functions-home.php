@@ -211,29 +211,35 @@ function card_fallback( $fallback, $id ) {
 
 	if ( $fallback == 'Latest news' ) {
 
-		$rss = file_get_contents( 'http://www.nationalarchives.gov.uk/category/news/feed/' );
+		$rss = get_html_content( 'http://www.nationalarchives.gov.uk/category/news/feed/' );
 
-		$content = new SimpleXmlElement( $rss );
+		if ( $rss ) {
 
-		$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
-		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
-		$type = 'News';
-		$title = $content->channel->item[0]->title;
-		$description = $content->channel->item[0]->description;
+			$content = new SimpleXmlElement( $rss );
+
+			$url         = str_replace( 'livelb', 'www', $content->channel->item[0]->link );
+			$image       = str_replace( 'livelb', 'www', $content->channel->item[0]->enclosure['url'] );
+			$type        = 'News';
+			$title       = $content->channel->item[0]->title;
+			$description = $content->channel->item[0]->description;
+		}
 
 	}
 	if ( $fallback == 'Latest blog post' ) {
 
-		$rss = file_get_contents( 'http://blog.nationalarchives.gov.uk/feed/' );
+		$rss = get_html_content( 'http://blog.nationalarchives.gov.uk/feed/' );
 
-		$content = new SimpleXmlElement( $rss );
+		if ( $rss ) {
 
-		$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
-		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
-		$type = 'Blog';
-		$title = $content->channel->item[0]->title;
-		$description = $content->channel->item[0]->description;
+			$content = new SimpleXmlElement( $rss );
 
+			$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
+			$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
+			$type = 'Blog';
+			$title = $content->channel->item[0]->title;
+			$description = $content->channel->item[0]->description;
+
+		}
 	}
 
 	return card_html( $id, $url, $image, $type, $title, $description, $date );
