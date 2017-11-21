@@ -44,48 +44,25 @@ function limit_words( $words, $number = 14 ) {
  * @param string $title
  * @param string $description
  * @param string $image
+ * @param string $date
  * @return string
  */
-function display_card( $id, $url, $title, $description, $image ) {
+function display_card( $id, $url, $title, $description, $image, $date ) {
 
-	if ( $url ) {
+	$type = content_type( $url );
 
-		$og_data = get_meta_og_data( $url );
+	if ( !$fp = curl_init($url) ) {
 
-		if ( $og_data ) {
-
-			$image       = trim( $image );
-			$type        = content_type( $url );
-			$title       = trim( $title );
-			$description = trim( $description );
-			$date        = $og_data['date'];
-
-			if ( trim( $title ) == '' ) {
-				$title = $og_data['title'];
-			}
-			if ( trim( $description ) == '' ) {
-				$description = $og_data['description'];
-			}
-			if ( trim( $image ) == '' ) {
-				$image = $og_data['img'][0];
-			}
-			if ( $title == 'Page Not Found - The National Archives' ) {
-				return card_fallback( 'Latest news', $id );
-			}
-
-		} else {
-
-			// something is wrong - most likely an incorrect URL
-			$url         = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
-			$image       = make_path_relative( get_stylesheet_directory_uri() . '/img/events.jpg' );
-			$type        = 'Event';
-			$title       = 'Events - The National Archives';
-			$description = 'Find more information about our events programme and how to book tickets.';
-			$date        = '';
-		}
-
-		return card_html( $id, $url, $image, $type, $title, $description, $date );
+		// URL return 404
+		$url         = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
+		$image       = make_path_relative( get_stylesheet_directory_uri() . '/img/events.jpg' );
+		$type        = 'Event';
+		$title       = 'Events - The National Archives';
+		$description = 'Find more information about our events programme and how to book tickets.';
+		$date        = '';
 	}
+
+	return card_html( $id, $url, $image, $type, $title, $description, $date );
 }
 
 /**
@@ -165,6 +142,17 @@ function update_page_delete_transient() {
 }
 
 /**
+ * @param $date
+ * @param string $format
+ *
+ * @return bool
+ */
+function validate_date( $date, $format = 'Y-m-d H:i:s' ) {
+	$d = DateTime::createFromFormat($format, $date);
+	return $d && $d->format($format) == $date;
+}
+
+/**
  * Checks if the card has expired based on date input.
  *
  * @since 1.0
@@ -174,18 +162,19 @@ function update_page_delete_transient() {
  */
 function is_card_active( $expire ) {
 
-	if ($expire) {
+	if ( validate_date($expire, 'Y-m-d') ) {
+
 		$expire_date = strtotime($expire);
+		$current_date = strtotime('today');
+
+		if ( $current_date <= $expire_date ) {
+			return true;
+		} else {
+			return false;
+		}
+
 	} else {
-		$expire_date = 9999999999;
-	}
-
-	$current_date = strtotime('today');
-
-	if ( $current_date <= $expire_date ) {
 		return true;
-	} else {
-		return false;
 	}
 }
 

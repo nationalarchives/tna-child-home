@@ -6,8 +6,9 @@
 function home_meta_boxes() {
 
 	$descUrl = 'Enter the URL from the page you want to link to. This will automatically pull in the title and image (press preview to view).';
-	$descExpire = 'Date format yyyy/mm/dd. If set the content will expire at midnight on day specified and fallback content will be displayed.';
-	$descFallback = '‘Latest news/blog’ will display the most recently published content. ‘What’s On’ is a static card.';
+	$descExpire = 'If event date set the card will expire at midnight on day specified and fallback content will be displayed. Date format yyyy-mm-dd.';
+	$descExpireBanner = 'If event date set the card will expire at midnight on day specified. Date format yyyy-mm-dd.';
+	$descFallback = 'This feature is only in use if an event date is selected. ‘What’s On’ is a static card. ‘Latest news/blog’ will display the most recently published content.';
 	$descCardTitle = 'Only enter substitute text here when you need to override the automated title.';
 	$descCardImage = 'If you need to override the automated image, paste the image URL here after uploading it to the image library. Image size 768px x 576px.';
 	$descBannerImage = 'Add or paste image URL from media library. Image size 860px x 450px (~1.91:1 aspect ratio).';
@@ -56,8 +57,8 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Expire date',
-					'desc' => $descExpire,
+					'name' => 'Event date',
+					'desc' => $descExpireBanner,
 					'id' => 'home_banner_expire',
 					'type' => 'date',
 					'std' => ''
@@ -100,7 +101,7 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Expire date',
+					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_1',
 					'type' => 'date',
@@ -111,7 +112,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_1',
 					'type' => 'select',
-					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('What’s on', 'Latest news', 'Latest blog post')
 				)
 			)
 		),
@@ -151,7 +152,7 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Expire date',
+					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_2',
 					'type' => 'date',
@@ -162,7 +163,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_2',
 					'type' => 'select',
-					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('What’s on', 'Latest news', 'Latest blog post')
 				)
 			)
 		),
@@ -202,7 +203,7 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Expire date',
+					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_3',
 					'type' => 'date',
@@ -213,7 +214,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_3',
 					'type' => 'select',
-					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('What’s on', 'Latest news', 'Latest blog post')
 				)
 			)
 		),
@@ -253,7 +254,7 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Expire date',
+					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_4',
 					'type' => 'date',
@@ -264,7 +265,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_4',
 					'type' => 'select',
-					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('What’s on', 'Latest news', 'Latest blog post')
 				)
 			)
 		),
@@ -304,7 +305,7 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Expire date',
+					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_5',
 					'type' => 'date',
@@ -315,7 +316,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_5',
 					'type' => 'select',
-					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('What’s on', 'Latest news', 'Latest blog post')
 				)
 			)
 		),
@@ -355,7 +356,7 @@ function home_meta_boxes() {
 					'std' => ''
 				),
 				array(
-					'name' => 'Expire date',
+					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_6',
 					'type' => 'date',
@@ -366,7 +367,7 @@ function home_meta_boxes() {
 					'desc' => $descFallback,
 					'id' => 'home_card_fallback_6',
 					'type' => 'select',
-					'options' => array('Select fallback content', 'Latest news', 'Latest blog post', 'What’s on')
+					'options' => array('What’s on', 'Latest news', 'Latest blog post')
 				)
 			)
 		)

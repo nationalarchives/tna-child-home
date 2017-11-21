@@ -44,11 +44,12 @@ function card_image( $image ) {
 
 /**
  * @param $date
+ * @param $type
  * @return string
  */
-function card_date( $date ) {
+function card_date( $date, $type ) {
 
-	if ( $date ) {
+	if ( $date && $type == 'Event' ) {
 
 		date_default_timezone_set('Europe/London');
 
@@ -109,7 +110,7 @@ function banner_content( $type, $title, $description ) {
  */
 function card_html( $id, $url, $image, $type, $title, $description, $date ) {
 
-	$content = card_image( $image ) . card_content( $type, $title, $description ) . card_date( $date );
+	$content = card_image( $image ) . card_content( $type, $title, $description ) . card_date( $date, $type );
 
 	return card_wrapper( card_link( $id, $url, $type, $title, $content ) );
 }
@@ -137,7 +138,7 @@ function banner_html( $image, $type, $title, $excerpt, $url ) {
 		$target = 'target="_blank"';
 	}
 
-	$content = card_image( $image ) . '<div class="hero-banner-entry">' . banner_content( $type, $title, $excerpt ) . card_date( $date ) . '</div>';
+	$content = card_image( $image ) . '<div class="hero-banner-entry">' . banner_content( $type, $title, $excerpt ) . card_date( $date, $type ) . '</div>';
 
 	$html = '<div class="container">
 		        <div class="flex-row">
