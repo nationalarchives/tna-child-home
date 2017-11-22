@@ -6,8 +6,8 @@
 function home_meta_boxes() {
 
 	$descUrl = 'Enter the URL from the page you want to link to. This will automatically pull in the title and image (press preview to view).';
-	$descExpire = 'If event date set the card will expire at midnight on day specified and fallback content will be displayed. Date format yyyy-mm-dd.';
-	$descExpireBanner = 'If event date set the card will expire at midnight on day specified. Date format yyyy-mm-dd.';
+	$descExpire = 'If expire date and time set the card will expire at this specified time and fallback content will be displayed. Date format yyyy-mm-ddThh:mm.';
+	$descExpireBanner = 'If expire date and time set the card will expire at this specified time. Date format yyyy-mm-ddThh:mm.';
 	$descFallback = 'This feature is only in use if an event date is selected. ‘What’s On’ is a static card. ‘Latest news/blog’ will display the most recently published content.';
 	$descCardTitle = 'Only enter substitute text here when you need to override the automated title.';
 	$descCardImage = 'If you need to override the automated image, paste the image URL here after uploading it to the image library. Image size 768px x 576px.';
@@ -58,9 +58,16 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Event date',
+					'desc' => '',
+					'id' => 'home_banner_date',
+					'type' => 'datetime',
+					'std' => ''
+				),
+				array(
+					'name' => 'Expire date',
 					'desc' => $descExpireBanner,
 					'id' => 'home_banner_expire',
-					'type' => 'date',
+					'type' => 'datetime',
 					'std' => ''
 				)
 			)
@@ -102,6 +109,13 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Event date',
+					'desc' => '',
+					'id' => 'home_card_date_1',
+					'type' => 'datetime',
+					'std' => ''
+				),
+				array(
+					'name' => 'Expire date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_1',
 					'type' => 'datetime',
@@ -153,6 +167,13 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Event date',
+					'desc' => '',
+					'id' => 'home_card_date_2',
+					'type' => 'datetime',
+					'std' => ''
+				),
+				array(
+					'name' => 'Expire date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_2',
 					'type' => 'datetime',
@@ -204,6 +225,13 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Event date',
+					'desc' => '',
+					'id' => 'home_card_date_3',
+					'type' => 'datetime',
+					'std' => ''
+				),
+				array(
+					'name' => 'Expire date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_3',
 					'type' => 'datetime',
@@ -255,6 +283,13 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Event date',
+					'desc' => '',
+					'id' => 'home_card_date_4',
+					'type' => 'datetime',
+					'std' => ''
+				),
+				array(
+					'name' => 'Expire date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_4',
 					'type' => 'datetime',
@@ -306,6 +341,13 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Event date',
+					'desc' => '',
+					'id' => 'home_card_date_5',
+					'type' => 'datetime',
+					'std' => ''
+				),
+				array(
+					'name' => 'Expire date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_5',
 					'type' => 'datetime',
@@ -357,6 +399,13 @@ function home_meta_boxes() {
 				),
 				array(
 					'name' => 'Event date',
+					'desc' => '',
+					'id' => 'home_card_date_6',
+					'type' => 'datetime',
+					'std' => ''
+				),
+				array(
+					'name' => 'Expire date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_6',
 					'type' => 'datetime',

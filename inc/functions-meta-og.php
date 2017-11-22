@@ -67,11 +67,12 @@ function get_meta_og_data( $url ) {
 			$html = new DOMDocument();
 			@$html->loadHTML( $html_content );
 
-			$data['title']       = '';
-			$data['description'] = '';
-			$data['img']         = '';
-			$data['date']        = '';
-			$i                   = 0;
+			$data['title']          = '';
+			$data['description']    = '';
+			$data['img']            = '';
+			$data['start_datetime'] = '';
+			$data['end_datetime']   = '';
+			$i                      = 0;
 
 			foreach ( $html->getElementsByTagName( 'meta' ) as $meta ) {
 
@@ -90,7 +91,10 @@ function get_meta_og_data( $url ) {
 
 				if ( strpos( $url, 'eventbrite' ) !== false ) {
 					if ( $meta->getAttribute( 'property' ) == 'event:start_time' ) {
-						$data['date'] = $meta->getAttribute( 'content' );
+						$data['start_datetime'] = $meta->getAttribute( 'content' );
+					}
+					if ( $meta->getAttribute( 'property' ) == 'event:end_time' ) {
+						$data['end_datetime'] = $meta->getAttribute( 'content' );
 					}
 				}
 			}
@@ -123,6 +127,7 @@ function get_meta_og_on_save( $post_id ) {
 					$data['home_banner_title']   = '';
 					$data['home_banner_excerpt'] = '';
 					$data['home_banner_img']     = '';
+					$data['home_banner_date']    = '';
 					$data['home_banner_expire']  = '';
 					update_post_meta( $post_id, 'home_banner_url_old', $data['home_banner_url'] );
 				}
@@ -141,12 +146,15 @@ function get_meta_og_on_save( $post_id ) {
 			if ( trim( $data['home_banner_img'] ) == '' ) {
 				$_POST['home_banner_img'] = esc_attr( $og['img'][0] );
 			}
-			if ( isset( $og['date'] ) && strpos( $data['home_banner_url'], 'eventbrite' ) !== false ) {
-				if ( trim( $data['home_banner_expire'] ) == '' ) {
-					$date                        = esc_attr( $og['date'] );
-					$date                        = date( 'Y-m-d', strtotime( $date ) );
-					$_POST['home_banner_expire'] = $date;
-				}
+			if ( trim( $data['home_banner_date'] ) == '' && strpos( $data['home_banner_url'], 'eventbrite' ) !== false ) {
+				$date = esc_attr( $og['start_datetime'] );
+				$date = date( 'Y-m-d\TH:i', strtotime( $date ) );
+				$_POST['home_banner_date'] = $date;
+			}
+			if ( trim( $data['home_banner_expire'] ) == '' && strpos( $data['home_banner_url'], 'eventbrite' ) !== false ) {
+				$date = esc_attr( $og['end_datetime'] );
+				$date = date( 'Y-m-d\TH:i', strtotime( $date ) );
+				$_POST['home_banner_expire'] = $date;
 			}
 		}
 
@@ -187,7 +195,7 @@ function get_meta_og_on_save( $post_id ) {
 					}
 					if ( strpos( $data[ 'home_card_url_' . $i ], 'eventbrite' ) !== false ) {
 						if ( trim( $data[ 'home_card_expire_' . $i ] ) == '' ) {
-							$date                              = esc_attr( $og['date'] );
+							$date                              = esc_attr( $og['end_datetime'] );
 							$date                              = date( 'Y-m-d', strtotime( $date ) );
 							$_POST[ 'home_card_expire_' . $i ] = $date;
 						}
