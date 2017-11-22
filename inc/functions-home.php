@@ -162,7 +162,7 @@ function validate_date( $date, $format = 'Y-m-d H:i:s' ) {
  */
 function is_card_active( $expire ) {
 
-	if ( validate_date($expire, 'Y-m-d') ) {
+	if ( validate_date($expire, 'Y-m-d\TH:i') ) {
 
 		$expire_date = strtotime($expire);
 		$current_date = strtotime('today');
