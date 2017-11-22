@@ -21,9 +21,10 @@ function card_wrapper( $content ) {
  */
 function card_link( $id, $url, $type, $title, $content ) {
 
-	$target = '';
-	if ($type=='Event') {
+	if ( $type == 'Event' ) {
 		$target = 'target="_blank"';
+	} else {
+		$target = '';
 	}
 
 	$html = '<a id="card-%s" href="%s" %s data-gtm-name="%s" data-gtm-id="card_%s" data-gtm-position="card_position_%s" data-gtm-creative="homepage_card_%s" class="homepage-card">%s</a>';
@@ -132,10 +133,11 @@ function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
 
 	$title = esc_attr($title);
 	$image = make_path_relative($image);
-	$target = '';
 
-	if ($type=='Event') {
+	if ( $type == 'Event' ) {
 		$target = 'target="_blank"';
+	} else {
+		$target = '';
 	}
 
 	$content = card_image( $image ) . '<div class="hero-banner-entry">' . banner_content( $type, $title, $excerpt ) . card_date( $date, $type ) . '</div>';
