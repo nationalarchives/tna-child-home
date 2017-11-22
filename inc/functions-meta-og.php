@@ -157,6 +157,9 @@ function get_meta_og_on_save( $post_id ) {
 					$date = date( 'Y-m-d\TH:i', strtotime( $date ) );
 					$_POST['home_banner_expire'] = $date;
 				}
+			} else {
+				$_POST['home_banner_date'] = $data['home_banner_date'];
+				$_POST['home_banner_expire'] = $data['home_banner_expire'];
 			}
 		}
 
@@ -208,6 +211,9 @@ function get_meta_og_on_save( $post_id ) {
 							$date = date( 'Y-m-d\TH:i', strtotime( $date ) );
 							$_POST[ 'home_card_expire_' . $i ] = $date;
 						}
+					} else {
+						$_POST[ 'home_card_date_' . $i ] = $data[ 'home_card_date_' . $i ];
+						$_POST[ 'home_card_expire_' . $i ] = $data[ 'home_card_expire_' . $i ];
 					}
 				}
 			}
