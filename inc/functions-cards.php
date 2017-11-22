@@ -125,15 +125,15 @@ function card_html( $id, $url, $image, $type, $title, $description, $date ) {
  * @param string $title
  * @param string $excerpt
  * @param string $url
+ * @param string $date
  * @return string
  */
-function banner_html( $image, $type, $title, $excerpt, $url ) {
+function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
 
 	$title = esc_attr($title);
 	$image = make_path_relative($image);
 	$target = '';
-	$og_data = get_meta_og_data( $url );
-	$date = $og_data['date'];
+
 	if ($type=='Event') {
 		$target = 'target="_blank"';
 	}

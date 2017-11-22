@@ -111,10 +111,10 @@ function content_type( $url ) {
  * @param string $url
  * @return string
  */
-function display_home_banner( $expire, $status, $image, $title, $excerpt, $url ) {
+function display_home_banner( $expire, $status, $image, $title, $excerpt, $url, $date ) {
 
 	if ( $status == 'Enable' && is_card_active( $expire ) ) {
-		return banner_html( $image, content_type( $url ), $title, $excerpt, $url );
+		return banner_html( $image, content_type( $url ), $title, $excerpt, $url, $date );
 	}
 
 }
