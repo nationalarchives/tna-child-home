@@ -104,7 +104,7 @@ function home_meta_boxes() {
 					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_1',
-					'type' => 'date',
+					'type' => 'datetime',
 					'std' => ''
 				),
 				array(
@@ -155,7 +155,7 @@ function home_meta_boxes() {
 					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_2',
-					'type' => 'date',
+					'type' => 'datetime',
 					'std' => ''
 				),
 				array(
@@ -206,7 +206,7 @@ function home_meta_boxes() {
 					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_3',
-					'type' => 'date',
+					'type' => 'datetime',
 					'std' => ''
 				),
 				array(
@@ -257,7 +257,7 @@ function home_meta_boxes() {
 					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_4',
-					'type' => 'date',
+					'type' => 'datetime',
 					'std' => ''
 				),
 				array(
@@ -308,7 +308,7 @@ function home_meta_boxes() {
 					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_5',
-					'type' => 'date',
+					'type' => 'datetime',
 					'std' => ''
 				),
 				array(
@@ -359,7 +359,7 @@ function home_meta_boxes() {
 					'name' => 'Event date',
 					'desc' => $descExpire,
 					'id' => 'home_card_expire_6',
-					'type' => 'date',
+					'type' => 'datetime',
 					'std' => ''
 				),
 				array(
