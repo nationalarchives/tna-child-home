@@ -113,6 +113,8 @@ function content_type( $url ) {
  */
 function display_home_banner( $expire, $status, $image, $title, $excerpt, $url, $date ) {
 
+	$excerpt = limit_words( $excerpt, 36 );
+
 	if ( $status == 'Enable' && is_card_active( $expire ) ) {
 		return banner_html( $image, content_type( $url ), $title, $excerpt, $url, $date );
 	}
