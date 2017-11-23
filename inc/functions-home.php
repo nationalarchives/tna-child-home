@@ -164,10 +164,12 @@ function validate_date( $date, $format = 'Y-m-d H:i:s' ) {
  */
 function is_card_active( $expire ) {
 
+	date_default_timezone_set('Europe/London');
+
 	if ( validate_date($expire, 'Y-m-d\TH:i') ) {
 
 		$expire_date = strtotime($expire);
-		$current_date = strtotime('today');
+		$current_date = strtotime( date('Y-m-d H:i:s') );
 
 		if ( $current_date <= $expire_date ) {
 			return true;
