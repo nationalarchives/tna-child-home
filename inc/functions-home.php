@@ -33,11 +33,28 @@ function limit_words( $words, $number = 14 ) {
 }
 
 /**
+ * @param $url
+ *
+ * @return bool
+ */
+function url_exists( $url ) {
+
+	$response = wp_remote_get( $url );
+	$response_code = wp_remote_retrieve_response_code( $response );
+
+	if ( $response_code  == '404' || $response_code == null ) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+/**
  * Returns HTML markup for a card.
  *
  * @since 1.0
  *
- * @see get_html_content and card_html
+ * @see card_html
  *
  * @param string $id
  * @param string $url
@@ -51,7 +68,7 @@ function display_card( $id, $url, $title, $description, $image, $date ) {
 
 	$type = content_type( $url );
 
-	if ( !$fp = curl_init($url) ) {
+	if ( !url_exists( $url ) ) {
 
 		// URL return 404
 		$url         = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
