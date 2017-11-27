@@ -166,9 +166,13 @@ function update_page_delete_transient() {
  *
  * @return bool
  */
-function validate_date( $date, $format = 'Y-m-d H:i:s' ) {
-	$d = DateTime::createFromFormat($format, $date);
-	return $d && $d->format($format) == $date;
+function validate_date( $date ) {
+
+	// expected format Y-m-d\TH:i
+	if (preg_match('/^\d{4}-\d{2}\-\d{2}T\d{2}:\d{2}/', $date)) { // Is in correct format
+		return ((bool)strtotime($date)); // Is a valid date
+	}
+	return false;
 }
 
 /**
@@ -183,7 +187,7 @@ function is_card_active( $expire ) {
 
 	date_default_timezone_set('Europe/London');
 
-	if ( validate_date($expire, 'Y-m-d\TH:i') ) {
+	if ( validate_date($expire) ) {
 
 		$expire_date = strtotime($expire);
 		$current_date = strtotime( date('Y-m-d H:i:s') );
