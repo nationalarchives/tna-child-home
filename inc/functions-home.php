@@ -66,9 +66,9 @@ function url_exists( $url ) {
  */
 function display_card( $id, $url, $title, $description, $image, $date ) {
 
-	$type = content_type( $url );
-
 	if ( $url ) {
+
+		$type = content_type( $url );
 
 		if ( !url_exists( $url ) ) {
 
