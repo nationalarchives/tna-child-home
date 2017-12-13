@@ -14,6 +14,8 @@ $date       = get_post_meta( $post->ID, 'home_banner_date', true );
 
 if ( is_card_active( $expire ) ) {
 
+	$excerpt = clean_excerpt( $excerpt );
+
 	echo display_home_banner( $expire, $status, $image, $title, $excerpt, $url, $date );
 
 }

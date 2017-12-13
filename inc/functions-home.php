@@ -165,7 +165,7 @@ function update_page_delete_transient() {
 
 function clean_excerpt( $excerpt ) {
 
-	$text = preg_replace('/<a href=\"(.*?)\">(.*?)<\/a>/', "\\2", $excerpt);
+	$text = strip_tags($excerpt, '<strong><em>');
 
 	return $text;
 }
