@@ -66,20 +66,23 @@ function url_exists( $url ) {
  */
 function display_card( $id, $url, $title, $description, $image, $date ) {
 
-	$type = content_type( $url );
+	if ( $url ) {
 
-	if ( !url_exists( $url ) ) {
+		$type = content_type( $url );
 
-		// URL return 404
-		$url         = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
-		$image       = make_path_relative( get_stylesheet_directory_uri() . '/img/events.jpg' );
-		$type        = 'Event';
-		$title       = 'Events - The National Archives';
-		$description = 'Find more information about our events programme and how to book tickets.';
-		$date        = '';
+		if ( !url_exists( $url ) ) {
+
+			// URL return 404
+			$url         = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
+			$image       = make_path_relative( get_stylesheet_directory_uri() . '/img/events.jpg' );
+			$type        = 'Event';
+			$title       = 'Events - The National Archives';
+			$description = 'Find more information about our events programme and how to book tickets.';
+			$date        = '';
+		}
+
+		return card_html( $id, $url, $image, $type, $title, $description, $date );
 	}
-
-	return card_html( $id, $url, $image, $type, $title, $description, $date );
 }
 
 /**
@@ -92,23 +95,23 @@ function display_card( $id, $url, $title, $description, $image, $date ) {
  */
 function content_type( $url ) {
 
-    $content_type = "Feature";
+	$content_type = "Feature";
 
 	if (strpos($url, 'nationalarchives.gov.uk/about/news/') !== false) {
 
-        $content_type = 'News';
+		$content_type = 'News';
 	}
 	elseif (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
 
-        $content_type = 'Blog';
+		$content_type = 'Blog';
 	}
 	elseif (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
 
-        $content_type = 'Multimedia';
+		$content_type = 'Multimedia';
 	}
 	elseif (strpos($url, 'eventbrite') !== false) {
 
-        $content_type = 'Event';
+		$content_type = 'Event';
 	}
 	return $content_type;
 }
@@ -160,9 +163,15 @@ function update_page_delete_transient() {
 	}
 }
 
+function clean_excerpt( $excerpt ) {
+
+	$text = strip_tags($excerpt, '<strong><em>');
+
+	return $text;
+}
+
 /**
  * @param $date
- * @param string $format
  *
  * @return bool
  */
@@ -311,7 +320,7 @@ function cards_admin_notice() {
 		<div class="notice notice-error card-error">
 			<p><?php _e( 'You haven\'t edited the fields correctly. Please enter content for either 3 or 6 cards.', 'cards-error' ); ?></p>
 		</div>
-	<?php
+		<?php
 		delete_transient( get_current_user_id().'cards_error' );
 	}
 	$cards_error_fallback = get_transient( get_current_user_id().'cards_error_fallback' );
@@ -394,7 +403,7 @@ function home_alert( $status, $title, $text ) {
 
 	if ( $status == 'enabled' ) {
 
-        $html = '<div id="home_alert" class="container">
+		$html = '<div id="home_alert" class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="home-alert">
