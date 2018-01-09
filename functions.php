@@ -1,7 +1,7 @@
 <?php
 
 // Theme version
-define( 'HOME_EDD_VERSION', '1.4' );
+define( 'HOME_EDD_VERSION', '1.5' );
 
 // Include functions
 include 'inc/functions-global.php';
@@ -25,6 +25,7 @@ add_action( 'save_post', 'check_cards' );
 add_action( 'admin_notices', 'cards_admin_notice' );
 add_action( 'admin_enqueue_scripts', 'admin_style' );
 add_action( 'admin_menu', 'tna_homepage_menu' );
+add_action( 'save_post', 'get_meta_og_on_save' );
 
 // add_filter
 add_filter( 'nav_menu_css_class', 'attributes_filter', 100, 1 );

@@ -33,49 +33,46 @@ function limit_words( $words, $number = 14 ) {
 }
 
 /**
+ * @param $url
+ *
+ * @return bool
+ */
+function url_exists( $url ) {
+
+	$response = wp_remote_get( $url );
+	$response_code = wp_remote_retrieve_response_code( $response );
+
+	if ( $response_code  == '404' || $response_code == null ) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+/**
  * Returns HTML markup for a card.
  *
  * @since 1.0
  *
- * @see get_html_content and card_html
+ * @see card_html
  *
  * @param string $id
  * @param string $url
  * @param string $title
  * @param string $description
  * @param string $image
+ * @param string $date
  * @return string
  */
-function display_card( $id, $url, $title, $description, $image ) {
+function display_card( $id, $url, $title, $description, $image, $date ) {
 
 	if ( $url ) {
 
-		$og_data = get_meta_og_data( $url );
+		$type = content_type( $url );
 
-		if ( $og_data ) {
+		if ( !url_exists( $url ) ) {
 
-			$image       = trim( $image );
-			$type        = content_type( $url );
-			$title       = trim( $title );
-			$description = trim( $description );
-			$date        = $og_data['date'];
-
-			if ( trim( $title ) == '' ) {
-				$title = $og_data['title'];
-			}
-			if ( trim( $description ) == '' ) {
-				$description = $og_data['description'];
-			}
-			if ( trim( $image ) == '' ) {
-				$image = $og_data['img'][0];
-			}
-			if ( $title == 'Page Not Found - The National Archives' ) {
-				return card_fallback( 'Latest news', $id );
-			}
-
-		} else {
-
-			// something is wrong - most likely an incorrect URL
+			// URL return 404
 			$url         = 'http://www.nationalarchives.gov.uk/about/visit-us/whats-on/events/';
 			$image       = make_path_relative( get_stylesheet_directory_uri() . '/img/events.jpg' );
 			$type        = 'Event';
@@ -98,23 +95,23 @@ function display_card( $id, $url, $title, $description, $image ) {
  */
 function content_type( $url ) {
 
-    $content_type = "Feature";
+	$content_type = "Feature";
 
 	if (strpos($url, 'nationalarchives.gov.uk/about/news/') !== false) {
 
-        $content_type = 'News';
+		$content_type = 'News';
 	}
 	elseif (strpos($url, 'blog.nationalarchives.gov.uk') !== false) {
 
-        $content_type = 'Blog';
+		$content_type = 'Blog';
 	}
 	elseif (strpos($url, 'media.nationalarchives.gov.uk') !== false) {
 
-        $content_type = 'Multimedia';
+		$content_type = 'Multimedia';
 	}
 	elseif (strpos($url, 'eventbrite') !== false) {
 
-        $content_type = 'Event';
+		$content_type = 'Event';
 	}
 	return $content_type;
 }
@@ -134,10 +131,12 @@ function content_type( $url ) {
  * @param string $url
  * @return string
  */
-function display_home_banner( $expire, $status, $image, $title, $excerpt, $url ) {
+function display_home_banner( $expire, $status, $image, $title, $excerpt, $url, $date ) {
+
+	$excerpt = limit_words( $excerpt, 36 );
 
 	if ( $status == 'Enable' && is_card_active( $expire ) ) {
-		return banner_html( $image, content_type( $url ), $title, $excerpt, $url );
+		return banner_html( $image, content_type( $url ), $title, $excerpt, $url, $date );
 	}
 
 }
@@ -164,6 +163,27 @@ function update_page_delete_transient() {
 	}
 }
 
+function clean_excerpt( $excerpt ) {
+
+	$text = strip_tags($excerpt, '<strong><em>');
+
+	return $text;
+}
+
+/**
+ * @param $date
+ *
+ * @return bool
+ */
+function validate_date( $date ) {
+
+	// expected format Y-m-d\TH:i
+	if (preg_match('/^\d{4}-\d{2}\-\d{2}T\d{2}:\d{2}/', $date)) { // Is in correct format
+		return ((bool)strtotime($date)); // Is a valid date
+	}
+	return false;
+}
+
 /**
  * Checks if the card has expired based on date input.
  *
@@ -174,18 +194,21 @@ function update_page_delete_transient() {
  */
 function is_card_active( $expire ) {
 
-	if ($expire) {
+	date_default_timezone_set('Europe/London');
+
+	if ( validate_date($expire) ) {
+
 		$expire_date = strtotime($expire);
+		$current_date = strtotime( date('Y-m-d H:i:s') );
+
+		if ( $current_date <= $expire_date ) {
+			return true;
+		} else {
+			return false;
+		}
+
 	} else {
-		$expire_date = 9999999999;
-	}
-
-	$current_date = strtotime('today');
-
-	if ( $current_date <= $expire_date ) {
 		return true;
-	} else {
-		return false;
 	}
 }
 
@@ -211,29 +234,35 @@ function card_fallback( $fallback, $id ) {
 
 	if ( $fallback == 'Latest news' ) {
 
-		$rss = file_get_contents( 'http://www.nationalarchives.gov.uk/category/news/feed/' );
+		$rss = get_html_content( 'http://www.nationalarchives.gov.uk/category/news/feed/' );
 
-		$content = new SimpleXmlElement( $rss );
+		if ( $rss ) {
 
-		$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
-		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
-		$type = 'News';
-		$title = $content->channel->item[0]->title;
-		$description = $content->channel->item[0]->description;
+			$content = new SimpleXmlElement( $rss );
+
+			$url         = str_replace( 'livelb', 'www', $content->channel->item[0]->link );
+			$image       = str_replace( 'livelb', 'www', $content->channel->item[0]->enclosure['url'] );
+			$type        = 'News';
+			$title       = $content->channel->item[0]->title;
+			$description = $content->channel->item[0]->description;
+		}
 
 	}
 	if ( $fallback == 'Latest blog post' ) {
 
-		$rss = file_get_contents( 'http://blog.nationalarchives.gov.uk/feed/' );
+		$rss = get_html_content( 'http://blog.nationalarchives.gov.uk/feed/' );
 
-		$content = new SimpleXmlElement( $rss );
+		if ( $rss ) {
 
-		$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
-		$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
-		$type = 'Blog';
-		$title = $content->channel->item[0]->title;
-		$description = $content->channel->item[0]->description;
+			$content = new SimpleXmlElement( $rss );
 
+			$url = str_replace('livelb', 'www', $content->channel->item[0]->link);
+			$image = str_replace('livelb', 'www', $content->channel->item[0]->enclosure['url']);
+			$type = 'Blog';
+			$title = $content->channel->item[0]->title;
+			$description = $content->channel->item[0]->description;
+
+		}
 	}
 
 	return card_html( $id, $url, $image, $type, $title, $description, $date );
@@ -291,7 +320,7 @@ function cards_admin_notice() {
 		<div class="notice notice-error card-error">
 			<p><?php _e( 'You haven\'t edited the fields correctly. Please enter content for either 3 or 6 cards.', 'cards-error' ); ?></p>
 		</div>
-	<?php
+		<?php
 		delete_transient( get_current_user_id().'cards_error' );
 	}
 	$cards_error_fallback = get_transient( get_current_user_id().'cards_error_fallback' );
@@ -374,7 +403,7 @@ function home_alert( $status, $title, $text ) {
 
 	if ( $status == 'enabled' ) {
 
-        $html = '<div id="home_alert" class="container">
+		$html = '<div id="home_alert" class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="home-alert">

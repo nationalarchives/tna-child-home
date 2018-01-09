@@ -21,9 +21,10 @@ function card_wrapper( $content ) {
  */
 function card_link( $id, $url, $type, $title, $content ) {
 
-	$target = '';
-	if ($type=='Event') {
+	if ( $type == 'Event' ) {
 		$target = 'target="_blank"';
+	} else {
+		$target = '';
 	}
 
 	$html = '<a id="card-%s" href="%s" %s data-gtm-name="%s" data-gtm-id="card_%s" data-gtm-position="card_position_%s" data-gtm-creative="homepage_card_%s" class="homepage-card">%s</a>';
@@ -44,11 +45,12 @@ function card_image( $image ) {
 
 /**
  * @param $date
+ * @param $type
  * @return string
  */
-function card_date( $date ) {
+function card_date( $date, $type ) {
 
-	if ( $date ) {
+	if ( $date && $type == 'Event' ) {
 
 		date_default_timezone_set('Europe/London');
 
@@ -109,7 +111,7 @@ function banner_content( $type, $title, $description ) {
  */
 function card_html( $id, $url, $image, $type, $title, $description, $date ) {
 
-	$content = card_image( $image ) . card_content( $type, $title, $description ) . card_date( $date );
+	$content = card_image( $image ) . card_content( $type, $title, $description ) . card_date( $date, $type );
 
 	return card_wrapper( card_link( $id, $url, $type, $title, $content ) );
 }
@@ -124,20 +126,21 @@ function card_html( $id, $url, $image, $type, $title, $description, $date ) {
  * @param string $title
  * @param string $excerpt
  * @param string $url
+ * @param string $date
  * @return string
  */
-function banner_html( $image, $type, $title, $excerpt, $url ) {
+function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
 
 	$title = esc_attr($title);
 	$image = make_path_relative($image);
-	$target = '';
-	$og_data = get_meta_og_data( $url );
-	$date = $og_data['date'];
-	if ($type=='Event') {
+
+	if ( $type == 'Event' ) {
 		$target = 'target="_blank"';
+	} else {
+		$target = '';
 	}
 
-	$content = card_image( $image ) . '<div class="hero-banner-entry">' . banner_content( $type, $title, $excerpt ) . card_date( $date ) . '</div>';
+	$content = card_image( $image ) . '<div class="hero-banner-entry">' . banner_content( $type, $title, $excerpt ) . card_date( $date, $type ) . '</div>';
 
 	$html = '<div class="container">
 		        <div class="flex-row">
