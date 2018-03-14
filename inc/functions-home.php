@@ -163,7 +163,11 @@ function update_page_delete_transient() {
 	}
 }
 
-function clean_excerpt( $excerpt ) {
+/**
+ * @param $excerpt
+ * @return string
+ */
+function clean_excerpt($excerpt ) {
 
 	$text = strip_tags($excerpt, '<strong><em>');
 
@@ -399,7 +403,7 @@ function landingpage_link_html_markup( $title, $url, $text ) {
  * @param string $text
  * @return string
  */
-function home_alert( $status, $title, $text ) {
+function home_alert($status, $title, $text ) {
 
 	if ( $status == 'enabled' ) {
 
@@ -422,13 +426,11 @@ function home_alert( $status, $title, $text ) {
 
 
 /**
- * Returns schema.org html mark-up
+ * Renders schema.org to the homepage
  *
  * @since 1.0
- *
- * @echo string
  */
-function renderSchema(){
+function render_schema(){
     global $post;
     $canonicalUrl = wp_get_canonical_url();
     $pageDescription = "";
@@ -437,8 +439,10 @@ function renderSchema(){
         if (function_exists('get_post_meta')) {
             $pageDescription = get_post_meta($post->ID, '_yoast_wpseo_metadesc', true);
         }
-    } else {
+    } elseif( !empty(get_the_excerpt($post->ID)) ) {
         $pageDescription = get_the_excerpt($post->ID);
+    } else {
+        $pageDescription = get_bloginfo('description');
     }
     $schema =
         '<script type="application/ld+json">
