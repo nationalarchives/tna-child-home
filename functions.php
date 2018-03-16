@@ -26,6 +26,7 @@ add_action( 'admin_notices', 'cards_admin_notice' );
 add_action( 'admin_enqueue_scripts', 'admin_style' );
 add_action( 'admin_menu', 'tna_homepage_menu' );
 add_action( 'save_post', 'get_meta_og_on_save' );
+add_action( 'wp_head', 'render_schema' );
 
 // add_filter
 add_filter( 'nav_menu_css_class', 'attributes_filter', 100, 1 );

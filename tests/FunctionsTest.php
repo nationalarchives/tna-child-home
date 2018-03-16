@@ -214,4 +214,8 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
         $results = display_tna_opening_status('2017-05-31', 'Saturday', $array);
         $this->assertEquals($results, 'Open today 09:00 - 17:00');
     }
+    public function test_render_schema()
+    {
+        $this->assertTrue(function_exists('render_schema'));
+    }
 }

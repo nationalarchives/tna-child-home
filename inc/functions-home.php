@@ -163,7 +163,11 @@ function update_page_delete_transient() {
 	}
 }
 
-function clean_excerpt( $excerpt ) {
+/**
+ * @param $excerpt
+ * @return string
+ */
+function clean_excerpt($excerpt ) {
 
 	$text = strip_tags($excerpt, '<strong><em>');
 
@@ -399,7 +403,7 @@ function landingpage_link_html_markup( $title, $url, $text ) {
  * @param string $text
  * @return string
  */
-function home_alert( $status, $title, $text ) {
+function home_alert($status, $title, $text ) {
 
 	if ( $status == 'enabled' ) {
 
@@ -418,4 +422,62 @@ function home_alert( $status, $title, $text ) {
 
 		return sprintf( $html, $title, $text );
 	}
+}
+
+
+/**
+ * Renders schema.org to the homepage
+ *
+ * @since 1.0
+ */
+function render_schema(){
+    global $post;
+    $canonicalUrl = wp_get_canonical_url();
+    $pageDescription = "";
+    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+    if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
+        if( function_exists( 'get_post_meta' ) ) {
+            if( get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true ) ) {
+                $pageDescription = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+            } else {
+                $pageDescription = get_the_excerpt( $post->ID );
+            }
+        }
+    } elseif ( has_excerpt( $post->ID ) ) {
+        $pageDescription = get_the_excerpt( $post->ID );
+    } else {
+        $pageDescription = get_bloginfo('description');
+    }
+    $schema =
+        '<script type="application/ld+json">
+                {
+                     "@context": "http://schema.org",
+                        "@type": "Organization",
+                        "@id": "%s",
+                     "name": "The National Archives",
+                     "legalName" : "The National Archives",
+                     "description" : "%s",
+                     "url": "%s",
+                     "logo": "http://nationalarchives.gov.uk/wp-content/themes/tna-base/img/logo-white.png",
+                     "address": {
+                         "@type": "PostalAddress",
+                         "streetAddress": "The National Archives, Kew, Richmond, Surrey",
+                         "addressLocality": "Kew",
+                         "addressRegion": "Surrey",
+                         "postalCode": "TW9 4DU",
+                         "addressCountry": "GB"
+                     },
+                     "telephone": " +44 (0) 20 8876 3444",
+                     "sameAs": [
+                         "https://www.facebook.com/TheNationalArchives",
+                         "https://twitter.com/@UKNatArchives",
+                         "https://www.youtube.com/c/TheNationalArchivesUK",
+                         "https://www.flickr.com/photos/nationalarchives",
+                         "http://www.nationalarchives.gov.uk/rss/"
+                     ]
+                }
+            </script>';
+    if (is_front_page()) {
+        echo sprintf($schema, $canonicalUrl, $pageDescription, $canonicalUrl);
+    }
 }
