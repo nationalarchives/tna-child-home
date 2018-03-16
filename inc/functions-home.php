@@ -433,17 +433,18 @@ function home_alert($status, $title, $text ) {
 function render_schema(){
     global $post;
     $canonicalUrl = wp_get_canonical_url();
-    $yoastDescription = get_post_meta($post->ID, '_yoast_wpseo_metadesc', true);
     $pageDescription = "";
     include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
     if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
-        if (function_exists('get_post_meta')) {
-            if (!empty($yoastDescription) && $yoastDescription != ""){
-                $pageDescription = $yoastDescription;
+        if( function_exists( 'get_post_meta' ) ) {
+            if( get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true ) ) {
+                $pageDescription = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+            } else {
+                $pageDescription = get_the_excerpt( $post->ID );
             }
         }
-    } elseif( !empty(get_the_excerpt($post->ID)) ) {
-        $pageDescription = get_the_excerpt($post->ID);
+    } elseif ( has_excerpt( $post->ID ) ) {
+        $pageDescription = get_the_excerpt( $post->ID );
     } else {
         $pageDescription = get_bloginfo('description');
     }
