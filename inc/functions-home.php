@@ -450,33 +450,33 @@ function render_schema(){
     }
     $schema =
         '<script type="application/ld+json">
-                {
-                     "@context": "http://schema.org",
-                        "@type": "Organization",
-                        "@id": "%s",
-                     "name": "The National Archives",
-                     "legalName" : "The National Archives",
-                     "description" : "%s",
-                     "url": "%s",
-                     "logo": "http://nationalarchives.gov.uk/wp-content/themes/tna-base/img/logo-white.png",
-                     "address": {
-                         "@type": "PostalAddress",
-                         "streetAddress": "The National Archives, Kew, Richmond, Surrey",
-                         "addressLocality": "Kew",
-                         "addressRegion": "Surrey",
-                         "postalCode": "TW9 4DU",
-                         "addressCountry": "GB"
-                     },
-                     "telephone": " +44 (0) 20 8876 3444",
-                     "sameAs": [
-                         "https://www.facebook.com/TheNationalArchives",
-                         "https://twitter.com/@UKNatArchives",
-                         "https://www.youtube.com/c/TheNationalArchivesUK",
-                         "https://www.flickr.com/photos/nationalarchives",
-                         "http://www.nationalarchives.gov.uk/rss/"
-                     ]
-                }
-            </script>';
+            {
+                "@context": "http://schema.org",
+                    "@type": "Organization",
+                    "@id": "%s",
+                "name": "The National Archives",
+                "legalName" : "The National Archives",
+                "description" : "%s",
+                "url": "%s",
+                "logo": "http://www.nationalarchives.gov.uk/wp-content/uploads/2015/06/logo-a-tna-600x315.jpg",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "The National Archives, Kew, Richmond, Surrey",
+                    "addressLocality": "Kew",
+                    "addressRegion": "London",
+                    "postalCode": "TW9 4DU",
+                    "addressCountry": "GB"
+                },
+                "telephone": " +44 (0) 20 8876 3444",
+                "sameAs": [
+                    "https://www.facebook.com/TheNationalArchives",
+                    "https://twitter.com/uknatarchives",
+                    "https://www.youtube.com/channel/UCUuzebc1yADDJEnOLA5P9xw",
+                    "https://www.flickr.com/photos/nationalarchives",
+                    "http://www.nationalarchives.gov.uk/rss/"
+                ]
+            }
+        </script>';
     if (is_front_page()) {
         echo sprintf($schema, $canonicalUrl, $pageDescription, $canonicalUrl);
     }
