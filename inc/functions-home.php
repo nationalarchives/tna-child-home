@@ -431,11 +431,12 @@ function home_alert($status, $title, $text ) {
  * @since 1.0
  */
 function render_schema(){
+	global $wp;
     global $post;
-    $canonical_url = wp_get_canonical_url();
+    $canonical_url = version_compare( get_bloginfo('version'), '4.6', '=<') ? wp_get_canonical_url() : home_url(add_query_arg(array(),$wp->request));
     $page_description = "";
     include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-    if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
+    if ( is_plugin_active( 'wordpress-seo/wp-seo.php' )) {
         if( function_exists( 'get_post_meta' ) ) {
             if( get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true ) ) {
                 $page_description = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
