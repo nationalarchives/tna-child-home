@@ -112,6 +112,8 @@ function get_meta_og_data( $url ) {
 
 function get_meta_og_on_save( $post_id ) {
 
+	date_default_timezone_set('Europe/London');
+
 	$template_file = get_post_meta( $post_id, '_wp_page_template', true );
 
 	if ( $template_file == 'page-home.php' ) {
