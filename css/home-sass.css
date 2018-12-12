@@ -179,6 +179,13 @@
   .home-alert .alert-content {
     padding-right: 30px; }
 
+.alert-dark {
+  background-color: #222;
+  color: #fff;
+  border-left: #000 4px solid; }
+  .alert-dark a {
+    color: #fce45c; }
+
 /* Masthead */
 .masthead {
   display: block;

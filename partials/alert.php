@@ -18,5 +18,6 @@ $allow = array(
 $status     = esc_attr( get_option( 'home_alert_status' ) );
 $title      = esc_attr( get_option( 'home_alert_title' ) );
 $text       = wp_kses( get_option( 'home_alert_text' ), $allow );
+$theme     = get_option( 'home_alert_theme' );
 
-echo home_alert( $status, $title, $text );
+echo home_alert( $status, $title, $text, $theme );
