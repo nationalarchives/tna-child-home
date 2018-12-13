@@ -40,6 +40,7 @@ function homepage_admin_page_settings() {
 	register_setting( 'homepage-settings-group', 'home_alert_status' );
 	register_setting( 'homepage-settings-group', 'home_alert_title' );
 	register_setting( 'homepage-settings-group', 'home_alert_text' );
+	register_setting( 'homepage-settings-group', 'home_alert_theme' );
 }
 
 function homepage_admin_page() {
@@ -129,6 +130,15 @@ function homepage_admin_page() {
 						<select name="home_alert_status">
 							<option <?php if (get_option('home_alert_status') == 'disabled') { echo ' selected="selected"'; }; ?> value="disabled">Disabled</option>
 							<option <?php if (get_option('home_alert_status') == 'enabled') { echo ' selected="selected"'; }; ?> value="enabled">Enabled</option>
+						</select>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><label for="home_alert_theme">Theme</label></th>
+					<td>
+						<select name="home_alert_theme">
+							<option <?php if (get_option('home_alert_theme') == 'yellow') { echo ' selected="selected"'; }; ?> value="yellow">Yellow</option>
+							<option <?php if (get_option('home_alert_theme') == 'dark') { echo ' selected="selected"'; }; ?> value="dark">Dark</option>
 						</select>
 					</td>
 				</tr>

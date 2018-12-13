@@ -403,14 +403,19 @@ function landingpage_link_html_markup( $title, $url, $text ) {
  * @param string $text
  * @return string
  */
-function home_alert($status, $title, $text ) {
+function home_alert($status, $title, $text, $theme ) {
+
+	$theme_class = '';
+	if ( $theme == 'dark' ) {
+		$theme_class = 'alert-dark';
+	}
 
 	if ( $status == 'enabled' ) {
 
 		$html = '<div id="home_alert" class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="home-alert">
+					<div class="home-alert %s">
 						<div class="alert-content">
 							<h3>%s</h3>
 							<p>%s</p>
@@ -420,7 +425,7 @@ function home_alert($status, $title, $text ) {
 			</div>
 		</div>';
 
-		return sprintf( $html, $title, $text );
+		return sprintf( $html, $theme_class, $title, $text );
 	}
 }
 

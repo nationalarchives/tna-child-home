@@ -179,6 +179,13 @@
   .home-alert .alert-content {
     padding-right: 30px; }
 
+.alert-dark {
+  background-color: #222;
+  color: #fff;
+  border-left: #000 4px solid; }
+  .alert-dark a {
+    color: #fce45c; }
+
 /* Masthead */
 .masthead {
   display: block;
@@ -253,20 +260,6 @@
 /*
  * Footer stylesheet
  */
-.follow-us a {
-  display: inline-block; }
-  .follow-us a img {
-    background-color: #008484;
-    border-radius: 50%;
-    padding: 9px;
-    margin: 0 0.2em 0.3em 0;
-    width: 46px;
-    transition: 0.4s ease-in-out;
-    -webkit-transition: 0.4s ease-in-out;
-    -moz-transition: 0.4s ease-in-out; }
-    .follow-us a img:hover {
-      background: #555; }
-
 .footer-col {
   padding: 0 20px 0 20px; }
   .footer-col .opening-times .open_table {
