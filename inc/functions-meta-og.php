@@ -196,7 +196,7 @@ function get_meta_og_on_save( $post_id ) {
 						$_POST[ 'home_card_excerpt_' . $i ] = esc_attr( $og['description'] );
 					}
 					if ( trim( $data[ 'home_card_img_' . $i ] ) == '' ) {
-						$_POST[ 'home_card_img_' . $i ] = esc_attr( $og['img'][0] );
+						$_POST[ 'home_card_img_' . $i ] = esc_attr( $og['img'] );
 					}
 					if ( strpos( $data[ 'home_card_url_' . $i ], 'eventbrite' ) !== false ) {
 						if ( trim( $data[ 'home_card_date_' . $i ] ) == '' ) {
