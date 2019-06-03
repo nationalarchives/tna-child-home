@@ -81,7 +81,7 @@ function display_card( $id, $url, $title, $description, $image, $date ) {
 			$date        = '';
 		}
 
-		$url = rm_livelb( $url );
+        $image = rm_livelb( $image );
 
 		return card_html( $id, $url, $image, $type, $title, $description, $date );
 	}
