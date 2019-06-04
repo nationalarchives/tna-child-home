@@ -81,6 +81,8 @@ function display_card( $id, $url, $title, $description, $image, $date ) {
 			$date        = '';
 		}
 
+        $image = rm_livelb( $image );
+
 		return card_html( $id, $url, $image, $type, $title, $description, $date );
 	}
 }
@@ -486,4 +488,19 @@ function render_schema(){
     if (is_front_page()) {
         echo sprintf($schema, $canonical_url, $page_description, $canonical_url);
     }
+}
+
+function rm_livelb( $url ) {
+
+    if ( strpos($url, 'livelb.nationalarchives.gov.uk') !== false ) {
+
+        $url = strstr( $url, '/wp-content' );
+
+    } elseif ( strpos($url, 'testlb.nationalarchives.gov.uk') !== false ) {
+
+        $url = strstr( $url, '/wp-content' );
+
+    }
+
+    return $url;
 }
