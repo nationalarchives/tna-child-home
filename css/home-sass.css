@@ -77,16 +77,13 @@
     margin: 58px 0 48px 0; }
     .masthead .masthead-header h1 {
       font-size: 3.6em;
-      color: #008484;
       margin: 0;
       line-height: 1em; }
     .masthead .masthead-header h2 {
       margin: 0; }
   .masthead a.button {
     padding: 0.5em 2.6em;
-    margin: 0 0.3em 0.7em; }
-  .masthead a.button:focus {
-    color: #fff !important; }
+    margin: 0 0.3em 1em; }
   .masthead a.button span {
     font-size: 1.2em; }
   .masthead .opening-times {
