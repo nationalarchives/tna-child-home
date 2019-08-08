@@ -143,7 +143,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
 	$content = card_image( $image ) . '<div class="hero-banner-entry">' . banner_content( $type, $title, $excerpt ) . card_date( $date, $type ) . '</div>';
 
 	$html = '<div class="container">
-		        <div class="flex-row">
+		        <div class="row">
 			        <div class="col-md-12">
 			            <div class="card hero-banner clearfix">
 		                     <a id="hero-banner" href="%s"
