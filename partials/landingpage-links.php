@@ -6,7 +6,7 @@
 if ( get_option('home_landing_page_title_1') ) { ?>
 
 	<div class="container">
-		<div class="flex-row equal-heights">
+		<div class="row cards">
 			<?php
 
 			for ( $i=1 ; $i<=4 ; $i++ ) {
