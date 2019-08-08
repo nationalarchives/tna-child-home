@@ -6,7 +6,7 @@
  */
 function card_wrapper( $content ) {
 
-	$html = '<div class="col-card-4"><div class="card">%s</div></div>';
+	$html = '<div class="col-md-4"><div class="card">%s</div></div>';
 
 	return sprintf( $html, $content );
 }
@@ -144,7 +144,7 @@ function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
 
 	$html = '<div class="container">
 		        <div class="flex-row">
-			        <div class="col-card-12">
+			        <div class="col-md-12">
 			            <div class="card hero-banner clearfix">
 		                     <a id="hero-banner" href="%s"
 	                            data-gtm-name="%s"

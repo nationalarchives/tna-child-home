@@ -13,7 +13,7 @@ get_header(); ?>
 	<?php get_template_part( 'partials/hero', 'banner' ); ?>
 
 	<div class="container">
-		<div class="flex-row equal-heights">
+		<div class="row cards">
 
 			<?php get_template_part( 'partials/cards' ); ?>
 

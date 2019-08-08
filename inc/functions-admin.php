@@ -4,7 +4,7 @@
  */
 
 function tna_homepage_menu() {
-	add_menu_page( 'Homepage settings', 'Homepage', 'editor', 'homepage-admin-page', 'homepage_admin_page', 'dashicons-admin-generic', 21  );
+	add_menu_page( 'Homepage settings', 'Homepage', 'administrator', 'homepage-admin-page', 'homepage_admin_page', 'dashicons-admin-generic', 21  );
 
 	add_action( 'admin_init', 'homepage_admin_page_settings' );
 }
@@ -44,7 +44,7 @@ function homepage_admin_page_settings() {
 }
 
 function homepage_admin_page() {
-	if (!current_user_can('editor'))  {
+	if (!current_user_can('administrator'))  {
 		wp_die( __('You do not have sufficient pilchards to access this page.')    );
 	}
 	?>
