@@ -5,22 +5,24 @@
 
 if ( get_option('home_landing_page_title_1') ) { ?>
 
-	<div class="container">
-		<div class="row cards">
-			<?php
+    <div class="cards">
+        <div class="container">
+            <div class="row">
+                <?php
 
-			for ( $i=1 ; $i<=4 ; $i++ ) {
+                for ( $i=1 ; $i<=4 ; $i++ ) {
 
-				$title = esc_attr( get_option( 'home_landing_page_title_'.$i ) );
-				$url = esc_attr( get_option( 'home_landing_page_url_'.$i ) );
-				$text = esc_attr( get_option( 'home_landing_page_text_'.$i ) );
+                    $title = esc_attr( get_option( 'home_landing_page_title_'.$i ) );
+                    $url = esc_attr( get_option( 'home_landing_page_url_'.$i ) );
+                    $text = esc_attr( get_option( 'home_landing_page_text_'.$i ) );
 
-				echo landingpage_link_html_markup( $title, $url, $text );
+                    echo landingpage_link_html_markup( $title, $url, $text );
 
-			}
+                }
 
-			?>
-		</div>
-	</div>
+                ?>
+            </div>
+        </div>
+    </div>
 
 <?php }
