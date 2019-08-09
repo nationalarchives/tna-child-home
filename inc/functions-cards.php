@@ -136,5 +136,5 @@ function banner_html( $image, $type, $title, $description, $url, $date ) {
 
     $content = card_image( $image ) . card_content( $type, $title, $description ) . card_date( $date, $type );
 
-    return card_wrapper( card_link( '00', $url, $type, $title, $content ) );
+    return card_wrapper( card_link( 'hero', $url, $type, $title, $content ) );
 }
