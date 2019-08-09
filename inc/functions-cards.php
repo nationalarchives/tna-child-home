@@ -124,41 +124,17 @@ function card_html( $id, $url, $image, $type, $title, $description, $date ) {
  * @param string $image
  * @param string $type
  * @param string $title
- * @param string $excerpt
+ * @param string $description
  * @param string $url
  * @param string $date
  * @return string
  */
-function banner_html( $image, $type, $title, $excerpt, $url, $date ) {
+function banner_html( $image, $type, $title, $description, $url, $date ) {
 
 	$title = esc_attr($title);
 	$image = make_path_relative($image);
 
-	if ( $type == 'Event' ) {
-		$target = 'target="_blank"';
-	} else {
-		$target = '';
-	}
+    $content = card_image( $image ) . card_content( $type, $title, $description ) . card_date( $date, $type );
 
-	$content = card_image( $image ) . '<div class="hero-banner-entry">' . banner_content( $type, $title, $excerpt ) . card_date( $date, $type ) . '</div>';
-
-	$html = '<div class="container">
-		        <div class="row">
-			        <div class="col-md-12">
-			            <div class="card hero-banner clearfix">
-		                     <a id="hero-banner" href="%s"
-	                            data-gtm-name="%s"
-								data-gtm-id="hero_1"
-								data-gtm-position="hero_position_banner"
-								data-gtm-creative="homepage_hero_%s"
-	                            class="homepage-hero" aria-label="%s" %s>
-	                            %s
-			                </a>
-		                </div>
-			        </div>
-		        </div>
-		    </div>';
-
-	return sprintf( $html, $url, $title, $type, $title, $target, $content );
-
+    return card_wrapper( card_link( '00', $url, $type, $title, $content ) );
 }
