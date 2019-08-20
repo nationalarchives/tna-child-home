@@ -18,8 +18,11 @@ function tnatheme_globals() {
 		$pre_path = '';
 	}
 }
+
+
+
 // If web development machine
-if ( $_SERVER['SERVER_ADDR'] !== $_SERVER['REMOTE_ADDR'] ) {
+if ( isset($_SERVER['SERVER_ADDR']) && isset($_SERVER['REMOTE_ADDR']) && ($_SERVER['SERVER_ADDR'] !== $_SERVER['REMOTE_ADDR']) ) {
 	tnatheme_globals();
 } else {
 	$pre_path = '';
