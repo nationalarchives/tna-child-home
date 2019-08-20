@@ -10,15 +10,17 @@ get_header(); ?>
 
 	<?php get_template_part( 'partials/alert' ); ?>
 
-	<?php get_template_part( 'partials/hero', 'banner' ); ?>
+	<?php get_template_part( 'partials/hero', 'card' ); ?>
 
-	<div class="container">
-		<div class="flex-row equal-heights">
+    <div class="cards">
+        <div class="container">
+            <div class="row">
 
-			<?php get_template_part( 'partials/cards' ); ?>
+                <?php get_template_part( 'partials/cards' ); ?>
 
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 
 	<?php get_template_part( 'partials/landingpage', 'links' ); ?>
 

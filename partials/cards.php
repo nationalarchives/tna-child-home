@@ -14,12 +14,13 @@ for ( $i=1 ; $i<=6 ; $i++ ) {
 	$date       = get_post_meta( $post->ID, 'home_card_date_'.$i, true );
 	$expire     = get_post_meta( $post->ID, 'home_card_expire_'.$i, true );
 	$fallback   = get_post_meta( $post->ID, 'home_card_fallback_'.$i, true );
+    $label      = '';
 
 	if ( is_card_active( $expire ) ) {
 
 		$excerpt = clean_excerpt( $excerpt );
 
-		echo display_card( $i, $url, $title, $excerpt, $image, $date );
+		echo display_card( $i, $url, $title, $excerpt, $image, $date, $label );
 
 	} else {
 

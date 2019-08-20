@@ -7,8 +7,6 @@ define( 'HOME_EDD_VERSION', '1.7' );
 include 'inc/functions-global.php';
 include 'inc/functions-menu.php';
 include 'inc/functions-metaboxes.php';
-include 'inc/functions-meta-og.php';
-include 'inc/functions-cards.php';
 include 'inc/functions-home.php';
 include 'inc/functions-admin.php';
 include 'inc/functions-openingtimes.php';
@@ -25,7 +23,6 @@ add_action( 'save_post', 'check_cards' );
 add_action( 'admin_notices', 'cards_admin_notice' );
 add_action( 'admin_enqueue_scripts', 'admin_style' );
 add_action( 'admin_menu', 'tna_homepage_menu' );
-add_action( 'save_post', 'get_meta_og_on_save' );
 add_action( 'wp_head', 'render_schema' );
 
 // add_filter

@@ -16,6 +16,10 @@ if ( is_card_active( $expire ) ) {
 
 	$excerpt = clean_excerpt( $excerpt );
 
+	echo '<div class="hero-card"><div class="container"><div class="row cards">';
+
 	echo display_home_banner( $expire, $status, $image, $title, $excerpt, $url, $date );
+
+    echo '</div></div></div>';
 
 }
