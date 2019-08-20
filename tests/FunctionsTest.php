@@ -7,7 +7,6 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(true);
         $this->assertFalse(false);
     }
-
     public function test_tnatheme_globals()
     {
         $this->assertTrue(function_exists('tnatheme_globals'));
@@ -81,20 +80,6 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('card_html'));
     }
-    public function test_card_html_output()
-    {
-        $id = 1;
-        $url = 'http://www.google.com';
-        $image = 'image.jpg';
-        $type = 'Event';
-        $title = 'Title';
-        $date = 'Friday 26 May 2017, 10:00 am';
-        $description = 'Description';
-
-        $card = card_html( $id, $url, $image, $type, $title, $description, $date );
-
-        $this->assertEquals($card, '<div class="col-card-4"><div class="card"><a id="card-1" href="http://www.google.com" target="_blank" data-gtm-name="Title" data-gtm-id="card_1" data-gtm-position="card_position_1" data-gtm-creative="homepage_card_Event" class="homepage-card"><div class="entry-image" style="background-image: url(image.jpg)"></div><div class="entry-content event"><div class="content-type">Event</div><h3>Title</h3><p>Description</p></div><div class="entry-date"><div class="date">Friday 26 May 2017, 10:00</div></div></a></div></div>');
-    }
     public function test_banner_html()
     {
         $this->assertTrue(function_exists('banner_html'));
@@ -139,7 +124,6 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('get_meta_og_data'));
     }
-
     public function test_is_tna_open()
     {
         $this->assertTrue(function_exists('is_tna_open'));
@@ -151,68 +135,6 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     public function test_display_tna_opening_status()
     {
         $this->assertTrue(function_exists('display_tna_opening_status'));
-    }
-    public function test_display_tna_opening_status_override_open()
-    {
-        $array = array(
-            'status1' => 'open',
-            'date1' => '2017-06-01',
-            'times1' => '09:00 - 17:00'
-        );
-        $results = display_tna_opening_status('2017-06-01', 'Thursday', $array);
-        $this->assertEquals($results, 'Open today 09:00 - 17:00');
-    }
-    public function test_display_tna_opening_status_override_closed()
-    {
-        $array = array(
-            'status1' => 'closed',
-            'date1' => '2017-06-01',
-            'times1' => ''
-        );
-        $results = display_tna_opening_status('2017-06-01', 'Thursday', $array);
-        $this->assertEquals($results, 'Closed today');
-    }
-    public function test_display_tna_opening_status_sunday()
-    {
-        $array = array();
-        $results = display_tna_opening_status('2017-05-28', 'Sunday', $array);
-        $this->assertEquals($results, 'Closed today');
-    }
-    public function test_display_tna_opening_status_monday()
-    {
-        $array = array();
-        $results = display_tna_opening_status('2017-05-29', 'Monday', $array);
-        $this->assertEquals($results, 'Closed today');
-    }
-    public function test_display_tna_opening_status_tuesday()
-    {
-        $array = array();
-        $results = display_tna_opening_status('2017-05-30', 'Tuesday', $array);
-        $this->assertEquals($results, 'Open today 09:00 - 19:00');
-    }
-    public function test_display_tna_opening_status_wednesday()
-    {
-        $array = array();
-        $results = display_tna_opening_status('2017-05-31', 'Wednesday', $array);
-        $this->assertEquals($results, 'Open today 09:00 - 17:00');
-    }
-    public function test_display_tna_opening_status_thursday()
-    {
-        $array = array();
-        $results = display_tna_opening_status('2017-06-01', 'Thursday', $array);
-        $this->assertEquals($results, 'Open today 09:00 - 19:00');
-    }
-    public function test_display_tna_opening_status_friday()
-    {
-        $array = array();
-        $results = display_tna_opening_status('2017-05-31', 'Friday', $array);
-        $this->assertEquals($results, 'Open today 09:00 - 17:00');
-    }
-    public function test_display_tna_opening_status_saturday()
-    {
-        $array = array();
-        $results = display_tna_opening_status('2017-05-31', 'Saturday', $array);
-        $this->assertEquals($results, 'Open today 09:00 - 17:00');
     }
     public function test_render_schema()
     {
