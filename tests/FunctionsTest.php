@@ -37,10 +37,6 @@ class FunctionsTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('display_card'));
     }
-    public function test_content_type()
-    {
-        $this->assertTrue(function_exists('content_type'));
-    }
     public function test_content_type_news()
     {
         $url = 'http://www.nationalarchives.gov.uk/about/news/the-national-archives-gets-top-marks-for-educational-visits/';
