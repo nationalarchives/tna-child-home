@@ -34,9 +34,13 @@ function banner_html( $image, $type, $title, $description, $url, $date ) {
     $title = esc_attr($title);
     $image = make_path_relative($image);
 
-    $content = card_image( $image ) . card_content( $type, $title, $description ) . card_date( $date, $type );
+    $content = card_image( $image, $type ) . card_content( $type, $title, $description ) . card_date( $date, $type );
 
-    return card_wrapper( card_link( 'hero', $url, $type, $title, $content ) );
+    $html  = '<div class="col-md-4"><div class="card">';
+    $html .= card_link( 'hero', $url, $type, $title, $content );
+    $html .= '</div></div>';
+
+    return $html;
 }
 
 /**
