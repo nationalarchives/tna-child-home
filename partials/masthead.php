@@ -22,7 +22,6 @@ if ( get_option('home_masthead_btn_text_1') ) {
 						<h2><?php echo get_option('home_masthead_sub_title'); ?></h2>
 					</div>
 					<div class="opening-times">
-						<?php echo display_tna_opening_status( date('Y-m-d'), date('l'), get_openingtimes_overrides() ); ?>
 						<a href="https://www.nationalarchives.gov.uk/about/visit-us/">Plan your visit &gt;</a>
 					</div>
 					<div class="masthead-buttons">
