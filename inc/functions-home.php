@@ -281,7 +281,7 @@ function render_schema(){
                 "legalName" : "The National Archives",
                 "description" : "%s",
                 "url": "%s",
-                "logo": "http://www.nationalarchives.gov.uk/wp-content/uploads/2015/06/logo-a-tna-600x315.jpg",
+                "logo": "http://www.nationalarchives.gov.uk/wp-content/uploads/sites/24/2019/07/tna-logo-600x315.jpg",
                 "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "The National Archives, Kew, Richmond, Surrey",
