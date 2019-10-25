@@ -22,7 +22,6 @@
     margin: 58px 0 48px 0;
     h1 {
       font-size: 3.6em;
-      color: #008484;
       margin: 0;
       line-height: 1em;
     }
@@ -32,10 +31,7 @@
   }
   a.button {
     padding: 0.5em 2.6em;
-    margin: 0 0.3em 0.7em;
-  }
-  a.button:focus {
-    color: #fff !important;
+    margin: 0 0.3em 1em;
   }
   a.button span {
     font-size: 1.2em;
