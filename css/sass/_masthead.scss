@@ -42,6 +42,13 @@
     background: url("../img/clock.png") left center no-repeat;
     position: relative;
     margin-bottom: 48px;
+    a {
+      color: #004880;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
   @media (max-width: 960px) {
     a.button {

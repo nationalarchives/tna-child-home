@@ -65,6 +65,11 @@
     background: url("../img/clock.png") left center no-repeat;
     position: relative;
     margin-bottom: 48px; }
+    .masthead .opening-times a {
+      color: #004880;
+      text-decoration: underline; }
+      .masthead .opening-times a:hover {
+        text-decoration: none; }
   @media (max-width: 960px) {
     .masthead a.button {
       padding: 0.5em 1em;
