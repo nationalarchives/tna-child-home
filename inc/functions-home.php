@@ -294,9 +294,10 @@ function render_schema(){
                 "sameAs": [
                     "https://www.facebook.com/TheNationalArchives",
                     "https://twitter.com/uknatarchives",
-                    "https://www.youtube.com/channel/UCUuzebc1yADDJEnOLA5P9xw",
+                    "https://www.youtube.com/c/TheNationalArchivesUK",
                     "https://www.flickr.com/photos/nationalarchives",
-                    "http://www.nationalarchives.gov.uk/rss/"
+                    "http://www.nationalarchives.gov.uk/rss/",
+		    "https://www.instagram.com/nationalarchivesuk/"
                 ]
             }
         </script>';
