@@ -12,7 +12,7 @@ if ( get_option('home_masthead_btn_text_1') ) {
 		$masthead_image = 'style="background-image: url(' . make_path_relative($feature_image[0]) . ')"';
 	} ?>
 
-	<div class="masthead">
+	<div class="masthead" id="breadcrumb-holder">
 		<div class="masthead-image" <?php echo $masthead_image; ?>></div>
 		<div class="container">
 			<div class="row">
