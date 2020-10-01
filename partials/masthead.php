@@ -31,7 +31,7 @@ if ( get_option('home_masthead_btn_text_1') ) {
 							$btn_url = esc_attr( get_option('home_masthead_btn_url_'.$i) );
 
 							?>
-								<a class="button" role="button" href="<?php echo $btn_url ?>">
+								<a class="button" href="<?php echo $btn_url ?>">
 									<span><?php echo $btn_text ?></span>
 								</a>
 						<?php } ?>
