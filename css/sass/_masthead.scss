@@ -24,9 +24,10 @@
       font-size: 3.6em;
       margin: 0;
       line-height: 1em;
-    }
-    h2 {
-      margin: 0;
+      span {
+        font-size: .45em;
+        display: block;
+      }
     }
   }
   a.button {
@@ -73,9 +74,9 @@
       margin: 68px 0 18px 0;
       h1 {
         font-size:3.2em;
-      }
-      h2 {
-        font-size:1.4em;
+        span {
+          font-size:.44em;
+        }
       }
     }
     .masthead-image {

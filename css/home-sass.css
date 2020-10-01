@@ -52,8 +52,9 @@
       font-size: 3.6em;
       margin: 0;
       line-height: 1em; }
-    .masthead .masthead-header h2 {
-      margin: 0; }
+      .masthead .masthead-header h1 span {
+        font-size: .45em;
+        display: block; }
   .masthead a.button {
     padding: 0.5em 2.6em;
     margin: 0 0.3em 1em; }
@@ -87,8 +88,8 @@
       margin: 68px 0 18px 0; }
       .masthead .masthead-header h1 {
         font-size: 3.2em; }
-      .masthead .masthead-header h2 {
-        font-size: 1.4em; }
+        .masthead .masthead-header h1 span {
+          font-size: .44em; }
     .masthead .masthead-image {
       background-size: auto 336px;
       background-repeat: no-repeat;

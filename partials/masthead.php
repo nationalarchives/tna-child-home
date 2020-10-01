@@ -18,8 +18,8 @@ if ( get_option('home_masthead_btn_text_1') ) {
 			<div class="row">
 				<div class="col-md-12">
 					<div class="masthead-header">
-						<h1><?php echo get_option('home_masthead_title'); ?></h1>
-						<h2><?php echo get_option('home_masthead_sub_title'); ?></h2>
+						<h1><?php echo get_option('home_masthead_title'); ?>
+						<span><?php echo get_option('home_masthead_sub_title'); ?></span></h1>
 					</div>
 <!--					<div class="opening-times">-->
 <!--						<a href="https://www.nationalarchives.gov.uk/about/visit-us/">Plan your visit &gt;</a>-->
@@ -31,7 +31,7 @@ if ( get_option('home_masthead_btn_text_1') ) {
 							$btn_url = esc_attr( get_option('home_masthead_btn_url_'.$i) );
 
 							?>
-								<a class="button" role="button" href="<?php echo $btn_url ?>">
+								<a class="button" href="<?php echo $btn_url ?>">
 									<span><?php echo $btn_text ?></span>
 								</a>
 						<?php } ?>
