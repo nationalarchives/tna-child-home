@@ -18,6 +18,7 @@ if ( get_option('home_masthead_btn_text_1') ) {
 			<div class="row">
 				<div class="col-md-12">
 					<div class="masthead-header">
+                        <h1 class="sr-only">The National Archives</h1>
 						<h2><?php echo get_option('home_masthead_title'); ?>
 						<span><?php echo get_option('home_masthead_sub_title'); ?></span></h2>
 					</div>
