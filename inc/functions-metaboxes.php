@@ -11,7 +11,7 @@ function home_meta_boxes() {
 	$descFallback = 'This feature is only in use if an expire date/time is selected. ‘What’s On’ is a static card. ‘Latest news/blog’ will display the most recently published content.';
 	$descCardTitle = 'Only enter substitute text here when you need to override the automated title.';
 	$descCardImage = 'If you need to override the automated image, paste the image URL here after uploading it to the image library. Image size 768px x 576px.';
-	$descBannerImage = 'Add or paste image URL from media library. Image size 860px x 450px (~1.91:1 aspect ratio).';
+	$descBannerImage = 'Add or paste image URL from media library. Image size 860px x 260px (~3.3:1 aspect ratio).';
 
 	$home_meta_boxes = array(
 		array(
