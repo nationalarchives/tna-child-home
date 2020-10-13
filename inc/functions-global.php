@@ -4,23 +4,20 @@
  */
 
 // For breadcrumbs and URLs
-// Edit as required
 function tnatheme_globals() {
-	global $pre_path;
-	global $pre_crumbs;
-	// If internal TNA
-	if (substr($_SERVER['REMOTE_ADDR'], 0, 3) === '10.') {
-		$pre_path = '';
-		$pre_crumbs = '';
-		// If external TNA
-	} else {
-		$pre_crumbs = '';
-		$pre_path = '';
-	}
+    global $pre_path;
+    global $pre_crumbs;
+    if (isset($_SERVER['HTTP_X_NGINX_PROXY'])) {
+        $pre_crumbs = '';
+        $pre_path = '';
+    } elseif (substr($_SERVER['REMOTE_ADDR'], 0, 3) === '10.') {
+        $pre_path = '';
+        $pre_crumbs = '';
+    } else {
+        $pre_crumbs = '';
+        $pre_path = '';
+    }
 }
-
-
-
 // If web development machine
 if ( isset($_SERVER['SERVER_ADDR']) && isset($_SERVER['REMOTE_ADDR']) && ($_SERVER['SERVER_ADDR'] !== $_SERVER['REMOTE_ADDR']) ) {
 	tnatheme_globals();
