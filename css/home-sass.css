@@ -26,7 +26,8 @@
   color: #fff;
   border-left: #000 4px solid; }
   .alert-dark a, .alert-dark a:hover, .alert-dark a:visited, .alert-dark a:active {
-    color: #ffffff; }
+    color: #ffffff;
+    display: block; }
 
 /* Masthead */
 .masthead {
