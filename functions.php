@@ -1,7 +1,7 @@
 <?php
 
 // Theme version
-define( 'HOME_EDD_VERSION', '1.9.1' );
+define( 'HOME_EDD_VERSION', '1.9' );
 
 // Include functions
 include 'inc/functions-global.php';
