@@ -7,7 +7,8 @@
 function tnatheme_globals() {
     global $pre_path;
     global $pre_crumbs;
-    if (isset($_SERVER['HTTP_X_NGINX_PROXY'])) {
+    $headers = apache_request_headers();
+    if ( isset($_SERVER['HTTP_X_NGINX_PROXY']) && isset($headers['X_HOST_TYPE']) && $headers['X_HOST_TYPE'] == 'public' ) {
         $pre_crumbs = '';
         $pre_path = '';
     } elseif (substr($_SERVER['REMOTE_ADDR'], 0, 3) === '10.') {
