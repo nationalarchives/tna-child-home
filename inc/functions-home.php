@@ -255,7 +255,7 @@ function home_alert($status, $title, $text, $theme ) {
 function render_schema(){
 	global $wp;
     global $post;
-    $canonical_url = version_compare( get_bloginfo('version'), '4.6', '=<') ? wp_get_canonical_url() : home_url(add_query_arg(array(),$wp->request));
+    $canonical_url = version_compare( get_bloginfo('version'), '4.6', '<=') ? wp_get_canonical_url() : home_url(add_query_arg(array(),$wp->request));
     $page_description = "";
     include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
     if ( is_plugin_active( 'wordpress-seo/wp-seo.php' )) {
@@ -285,7 +285,7 @@ function render_schema(){
                 "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "The National Archives, Kew, Richmond, Surrey",
-                    "addressLocality": "Kew",   
+                    "addressLocality": "Kew",
                     "addressRegion": "London",
                     "postalCode": "TW9 4DU",
                     "addressCountry": "GB"
